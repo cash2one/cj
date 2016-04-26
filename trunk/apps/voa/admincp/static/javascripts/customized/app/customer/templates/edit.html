@@ -1,0 +1,56 @@
+<!-- 新建-编辑项目 -->
+<div class="">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel" id="edit">
+				<div class="panel-heading">
+					<span class="panel-title">编辑</span>
+			<div class="panel-heading-controls">			
+				<div class="panel-heading-text"></div>
+			</div>
+				</div>
+				<div class="panel-body">
+                    <!-- 
+					<div class="note note-info">
+						了解更多操作，请点击
+						<a href="" target="_blank">帮助</a>
+					</div> -->
+                    <form id="js-form">
+                    <input type="hidden" name="dataid" value="<%= dataid %>"/>
+					<table id="js-form-customize" class="table table-bordered table-striped" style="margin-bottom:0;">
+						<tbody>
+                        <!-- 暂时注释 2014-12-17
+                            <tr>
+                                <td>分类</td>
+                                <td>
+                                    <select name="classid" class="form-control">
+                                        <option value="0">请选择分类</option>
+                                        <% $.each(cate, function (k1, c1){ if (c1.pid == "0") {%>
+                                        <optgroup label="<%=c1.classname%>">
+                                            <% $.each(cate, function (k2, c2){ if (c2.pid == c1.classid){ %>
+                                            <option value="<%=c2.classid%>"><%=c2.classname%></option>
+                                             <% }}); %>
+                                        </optgroup>
+                                        <% }}); %>
+                                       
+                                    </select>
+                                  
+                                </td>
+                            </tr>-->
+                        <!-- 表单 --> 
+						</tbody>
+					</table>
+                    </form>
+				</div>
+
+				<div class="panel-footer">
+					<a href="#" class="js-btn-save btn btn-primary">保存</a>
+					&nbsp;&nbsp;
+					<a href="#" class="btn btn-default">取消</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 新建编辑面页结束 -->
+

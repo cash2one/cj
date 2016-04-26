@@ -1,0 +1,91 @@
+<div data-role="header"  data-position="fixed" class="mod-list-header" role="banner" id="superreport_view_header">
+    <h1 class="ui-title" role="heading" aria-level="1">
+        <input name="mode1" id="datepicker" type="text" value="<%= reporttime %>"  data-role="datebox" data-options='{"mode":"datebox", "useLang": "zh-CN", "overrideDateFieldOrder":["y", "m","d"]}'/>
+    </h1>
+
+    <a id="backward" href="javascript:;" data-rel="back" class="ui-btn-left ui-alt-icon no-ui-shadow ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-left ui-corner-all" data-role="button" role="button">前一天</a>
+
+    <a href="javascript:;" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-r ui-btn-icon-right ui-corner-all" id="forward">后一天</a>
+</div>
+<div role="main" class="mod-common-list" id="superreport_view">
+    <% if (report.length) { %>
+    <ul class="view" data-role="listview">
+        <li class="name">
+            <h3><%= csp_name %></h3>
+            <% if (power ==1 && editable == true) { %>
+            <a href="#/edit/<%= dr_id %>" class="jqm-search-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all edit-daily"></a>
+            <% } %>
+        </li>
+        <li class="title-line">
+            <span class="rank-0">项目</span>
+            <span class="rank-1">今日</span>
+            <span class="rank-2">昨日</span>
+            <span class="rank-2">趋势</span>
+        </li>
+
+        <% $.each(report, function (key, item){ %>
+            <% if (item.type == 'int') {%>
+            <li>
+                <span class="rank-0"><%= item.fieldname %></span>
+                <span class="rank-1"><%= item.current+item.unit %></span>
+                <span class="rank-2"><%= item.forward+item.unit %></span>
+                <span class="rank-3 <% if(item.gap>0){ %>up<% }else if(item.gap<0){ %>down <%}else{ %>stay<%}%>"><%= item.gap %></span>
+            </li>
+            <% } %>
+        <% }); %>
+
+    </ul>
+
+    <% $.each(report, function (key, item){ %>
+        <% if (item.type == 'text' && item.current != '') {%>
+            <h4><%= item.fieldname %></h4>
+            <ul class="form_textarea_text" data-role="listview"><%= (item.current == undefined) ? '' : item.current %></ul>
+        <% } %>
+    <% }); %>
+
+    <h4>
+        汇报人：<%= username %>
+        <span class="report-time"><%= created_u %></span>
+    </h4>
+    <ul class="form_textarea_text" data-role="listview">
+        <a  data-ajax="false" class="ui-link comment" id="comment_switch">评论</a>
+    </ul>
+    <div id="comment_input">
+        <ul data-role="listview" class="form-group-textarea m-t-10">
+            <textarea placeholder="请输入评论内容" required="" name="comment" class="form-control" id="comment"></textarea>
+        </ul>
+        <div class="ui-grid-b footer">
+            <div class="ui-block-c btn-submit">
+                <a class="ui-shadow ui-btn ui-corner-all ui-mini" id="comment_submit">提交</a>
+            </div>
+        </div>
+    </div>
+    <div id="comments_contain">
+        <% if(comments_total > 0) { %>
+        <h4>评论内容</h4>
+        <ul class="ui-nodisc-icon ui-alt-icon comment-conten"  data-role="listview">
+            <% $.each(comments, function (key, item){ %>
+            <li>
+                <p class="comment-title"><%= _.escape(item.comment) %></p>
+                <p><%= item.username %></p>
+                <p class="ui-li-aside"><%= item.created_u %></p>
+            </li>
+            <% }); %>
+        </ul>
+        <% } %>
+    </div>
+
+    <% } else { %>
+
+        <div class="empty-text">
+            <p>暂无数据<p>
+        </div>
+    <% } %>
+    <div class="footer footer-one ">
+        <button class="js-btn-nextpage ui-btn ui-btn-a ui-corner-all" onclick="history.back()">返回</button>
+    </div>
+</div>
+
+<div data-role="footer"  class="footer-btn">
+
+</div>

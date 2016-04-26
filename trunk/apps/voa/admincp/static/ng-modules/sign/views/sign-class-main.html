@@ -1,0 +1,133 @@
+<!-- 班次主页 -->
+<div class="sign_class container-fluid" data-ng-controller="SignClassMainCtrl">
+    <!-- 搜索 -->
+    <div class="panel panel-default font12">
+        <div class="panel-heading"><strong>搜索班次</strong></div>
+        <div class="panel-body">
+            <form class="form-inline vcy-from-search">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>班次：</label>
+                        <input type="text" class="form-control" placeholder="输入班次名称"
+                               data-ng-model="searchName" data-ng-keydown="searchEnterClass($event)" />
+                        <span class="space"></span>
+                        <button type="submit" class="btn btn-info margin-left-12" data-ng-click="searchClass()">
+                            <i class="fa fa-search"></i> 搜索
+                        </button>
+                        <span class="space"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <p class="lead">
+        <i class="icon-info-sign h4 text-success"></i>
+        系统默认有一个09：00 - 18：00的工作班次，您可以进行编辑或者新增其他班次。
+        <span class="text-info" data-toggle="modal" data-target="#classHelp">查看指引</span>
+    </p>
+    <!-- 主表格 -->
+    <div class="table-light">
+        <div class="table-header">
+            <div class="table-caption font12 clearfix">
+                <a class="btn btn-success pull-right" data-ng-href="#/app/page/sign/sign-class-add">
+                    <i class="fa fa-plus-square"></i> 新增班次
+                </a>
+            </div>
+        </div>
+
+        <div class="table-light">
+            <table class="table table-striped table-hover font12 table-bordered">
+                <thead>
+                <tr>
+                    <th>班次名称</th>
+                    <th>上班时间</th>
+                    <th>下班时间</th>
+                    <th>班次类型</th>
+                    <th>考勤规则</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody data-ng-show="classList.length > 0">
+                <tr data-ng-repeat="class in classList">
+                    <td data-ng-bind="class.name">默认班次</td>
+                    <td data-ng-bind="class._str_work_begin">09：00</td>
+                    <td data-ng-bind="class._str_work_end">18：00</td>
+                    <td data-ng-bind="class._str_type">常规</td>
+                    <td>
+                        <span class="text-info" data-ng-click="queryRule(class)">
+                            查看考勤规则
+                        </span>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" data-ng-click="classEdit(class)">
+                            <i class="fa fa-edit"></i> 编辑 <!--{{class.sbid}}-->
+                        </a>
+                        <span data-ng-if="class.flag == 0 ? true :false ">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="javascript:void(0);" class="text-danger"
+                               data-ng-click="classDel(class)">
+                                <i class="fa fa-times"></i> 删除
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr data-ng-show="classList.length > 0">
+                    <td colspan="6" class="text-right vcy-page"
+                        poler-pagination="polerPaginationCtrl" download="getClassPage(page)">
+                        <!-- 分页 -->
+                    </td>
+                </tr>
+                <tr data-ng-show="classList.length==null || classList.length==0">
+                    <td colspan="6" class="success">
+                        暂无任何数据
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal-查看指引 -->
+    <div class="modal fade" id="classHelp" tabindex="-1" role="dialog" aria-labelledby="classHelp">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title text-center">班次设置指引</h4>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>
+                            系统已有一个上班时间为09：00 - 18：00的默认班次，您可以进行编辑修改，但不可删除。
+                            <br /><br />
+                            <img src="/admincp/static/images/sign/guide0101.png" alt="图片" class="img-responsive" />
+                            <br /><br />
+                        </li>
+                        <li>
+                            或者您可以新增一个或多个班次，班次中设置班次类型、工作时间段，以及考勤规则。
+                            <br /><br />
+                            <img src="/admincp/static/images/sign/guide0201.png" alt="图片" class="img-responsive" />
+                            <br /><br />
+                            <img src="/admincp/static/images/sign/guide0202.png" alt="图片" class="img-responsive" />
+                            <br /><br />
+                        </li>
+                        <li>
+                            班次设置完毕后，进入人员排班页面，对部门进行排班，并设置排班起止时间、循环周期以及考勤范围。
+                            <br /><br />
+                            <img src="/admincp/static/images/sign/guide0301.png" alt="图片" class="img-responsive" />
+                            <br /><br />
+                            <img src="/admincp/static/images/sign/guide0302.png" alt="图片" class="img-responsive" />
+                            <br /><br />
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

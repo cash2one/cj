@@ -1,0 +1,23 @@
+<!-- 设置微信  -->
+<div class="sign_settings container-fluid" data-ng-controller="SignSettingsWeixinCtrl">
+    <div class="sign_settings_weixin">
+        <p class="lead"><small>提示：发布后最多24小时会更新到新的菜单。</small></p>
+        <form class="form-horizontal">
+            <h3>微信菜单</h3>
+            <div class="form-group" data-ng-repeat="menu in wxcpmenu">
+                <label for="order1" class="col-md-1 control-label">菜单{{number[$index]}}</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="order1" maxlength="5" data-ng-model="menu.name">
+                    <p class="tips">最多输入5个字符</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-3">
+                    <button type="button" class="btn btn-primary btn-lg" repeat-submit="menuSave()">保存</button>
+                    <button type="button" class="btn btn-default btn-lg" repeat-submit="returnPage()">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

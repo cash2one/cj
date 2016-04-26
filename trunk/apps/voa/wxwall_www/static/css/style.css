@@ -1,0 +1,25 @@
+.wxs-page-width{width:1010px;margin:1px auto;}
+.wxs-navbar{height:86px;padding:6px;margin-bottom:10px;}
+	.wxs-navbar .logo{float:left;}
+		.wxs-navbar .logo h1{width:210px;height:80px;margin:0;padding:0;text-indent:-1000px;background:url(../images/logo.png) no-repeat;}
+	.wxs-navbar .navigations{float:right;}
+		.wxs-vcy-links{float:right;height:20px;}
+		.wxs-links{height:66px;}
+
+.wxs-footer{margin-top:30px;padding-left:6px;padding-right:6px;}
+
+.wxs-login{margin:60px 0 80px 0;}
+
+.wxs-msg{width:68%;margin:60px auto;}
+
+.wxs-wrapper{width:100%;}
+.font-12{font-size:12px;}
+.weight-normal{font-weight:normal;}
+
+.wxscreen-avator{width:58px;height:58px;display:block;margin:0 auto;}
+
+.item_message_pic{max-height:90px;}
+
+.font12{font-size:12px}
+.col-w-12{width:12%}
+.col-w-7{width:7%}

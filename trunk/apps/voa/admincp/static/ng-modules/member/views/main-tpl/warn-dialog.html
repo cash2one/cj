@@ -1,0 +1,24 @@
+<!--删除部门-->
+<div class="dialog_box modal-content">
+    <div class="modal-header contacts-img">
+        <button type="button" class="close" aria-hidden="true" data-ng-click="$dismiss()">×</button>
+        <h4 class="modal-title" data-ng-bind="title"></h4>
+    </div>
+    <div class="dialog_content js_dialog_content">
+        <div class="dialog_tip warning">
+            <div class="tip_text">
+                <div class="tip_text_title">
+                    <img src="/admincp/static/images/warm.jpg" data-ng-show="isBtn" />
+                    <span data-ng-bind="text"></span>
+                </div>
+                <div class="tip_text_detail" data-ng-show="tips" data-ng-bind="tips"></div>
+            </div>
+        </div>
+    </div>
+    <div class="props-foot-right tag-clear">
+        <button type="button" name="btn_submit" data-ng-show="isBtn" class="btn btn-default" data-ng-click="$dismiss()">取消</button>
+        <button type="button" name="btn_submit" class="btn btn-info" data-ng-click="$close()">确认</button>
+    </div>
+</div>
+
+

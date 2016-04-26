@@ -1,0 +1,108 @@
+
+/*global*/
+body,
+article,
+section,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hgroup,
+textarea,
+p,
+progress,
+a,
+ul,
+ol,
+li,
+dl,
+dd,
+dt,
+em,
+div,
+small,
+span,
+footer,
+menu,
+canvas,
+select,
+option,
+figure,
+figcaption,
+time,
+input,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  color: #333333;
+  background-color: #efeff4;
+  padding-bottom: 50px;
+  min-width: 300px;
+  width: 100%;
+  height: 100%;
+}
+img,
+fieldset {
+  border: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+
+.mod_common_list {
+  border-top: none!important;
+}
+.mod_common_list > li {
+  margin-left: 0!important;
+}
+.mod_common_list {
+  border-bottom: none;
+}
+#workright { 
+  float: right;
+  width: 70%;
+}
+#workleft {
+  float: left;
+  width: 30%;
+  text-align: center;
+  min-height: 500px;
+  background: #f8f8f8 url(/static/mobile/app/workorder/images/border.png) repeat-y right;
+  padding-top: 20px;
+}
+#workleft li.over {
+  background: #f8f8f8 url(/static/mobile/app/workorder/images/arrow.png) repeat-y right;
+}
+#workleft li {
+  height: 60px;
+  line-height: 60px;
+}
+#workleft li a {
+  font-size: 16px;
+  color: #666;
+}
+#workleft li.over a {
+  color: #0099ff;
+}

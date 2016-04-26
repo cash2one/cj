@@ -1,0 +1,741 @@
+/* 设置主页 */
+a.point-tran {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+.sign_settings.container-fluid{
+    padding-left: 15px;
+    padding-right: 15px;
+    min-height: 500px;
+}
+.sign_settings_main li{
+    padding:0 20px;
+    border-bottom: 1px solid #ccc;
+}
+.sign_settings_main li > a{
+    display: block;
+    overflow: hidden;
+}
+.sign_settings_main li > a:hover{
+    text-decoration: none;
+    color:inherit;
+}
+.sign_settings_main li dl{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.sign_settings_main li dl dt{
+    width: 200px;
+    color:#333;
+    text-align: left;
+}
+.sign_settings_main li dl dd{
+    color:#999;
+    margin-left: 220px;
+}
+.sign_settings_main li dl dd .icon-angle-right{
+    height: 30px;
+    line-height: 30px;
+    font-size: 24px;
+}
+.sign_settings_main .checkbox-slider-lg{
+    line-height: 30px;
+}
+.sign_settings_main .checkbox-slider-lg input+span:after,.sign_settings_main .checkbox-slider-lg input+span:before {
+    height: 30px;
+    line-height: 30px;
+}
+
+/* 签到设置 */
+/********************************************************张大爷的分割线**************************************************************/
+.sign-in-main.container-fluid{
+    padding:20px;
+    margin:0;
+}
+.sign-in-main .con-one{
+    margin-bottom:80px;
+}
+.sign-in-main .con-one dl{
+    font-size:14px;
+    margin: 0;
+}
+.sign-in-main .con-one dl dt{
+    height: 70px;
+    line-height: 70px;
+    font-weight: normal;
+    width:120px;
+}
+.sign-in-main .con-one dl dd h5{
+    float: left;
+    line-height: 70px;
+    font-size:14px;
+    height: 70px;
+    margin: 0;
+}
+.sign-in-main .con-one dl dd input{
+    margin: 19px 5px 0 5px;
+    float: left;
+    padding:0 3px;
+    border:1px solid #ccc;
+    border-radius: 3px;
+    height:32px;
+}
+.sign-in-main .con-one dl dd input:hover{
+    border:1px solid #00b211;
+}
+.sign-in-main .con-one dl dd .input2{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    margin-left: 11px;
+    width: 100%;
+    height:40px;
+    line-height:40px;
+}
+.sign-in-main .con-one dl dd p{
+    position: absolute;
+    left: 0;
+    top: 110px;
+    margin-left: 11px;
+    font-size:12px;
+    color:#888;
+    width: 100%;
+    height:30px;
+    line-height:30px;
+}
+.sign-in-main .con-two{
+    margin-bottom:30px;;
+}
+.sign-in-main .con-two button{
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+.sign-in-main .con-three{
+    color:#888;
+    margin-left:11px;
+}
+
+/* 设置微信 */
+/********************************************************华丽的分割线**************************************************************/
+.sign_settings_weixin .lead{
+    padding: 10px 20px;
+    border: 1px solid #d0d3a5;
+    margin: 20px 0;
+    font-size: 16px;
+    background-color: #faffbd;
+}
+.sign_settings_weixin .tips{
+    padding-top: 9px;
+    color:#999;
+}
+.sign_settings_weixin .form-horizontal{
+    border:1px solid #ccc;
+}
+.sign_settings_weixin .form-horizontal h3{
+    font-size: 16px;
+    margin:0;
+    padding:10px 20px;
+    color:#666;
+    background: #eee;
+    border-bottom: 1px solid #ccc;
+    margin-bottom:20px;
+}
+.sign_settings_weixin .form-horizontal .form-group{
+    margin: 0 auto 15px;
+}
+.sign_settings_weixin .form-horizontal button{
+    margin-right:20px;
+}
+
+    /* 人员排班 */
+/********************************************************华丽的分割线**************************************************************/
+.sign-member-main .add-member{
+    float: left;
+    line-height: 30px;
+}
+.sign-member-main .padding-bottom-none{
+    padding-bottom:0;
+}
+.sign-member-main .margin-one{
+    margin:0 5%;
+}
+.sign-member-main .department{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.sign-member-main .plus{
+    color:#46b8da;
+    margin-right:2px;
+}
+.sign-member-main .mian-choose{
+    margin-right: 20px;
+    padding:0 10px 5px 10px;
+    display: inline-block;
+    border:1px solid #ccc;
+    max-width: 300px;
+    height: inherit;
+}
+.sign-member-main .mian-choose span{
+    background-color: #f4b04f;
+    border-radius: 5px;
+    padding: 2px 5px;
+    color: #ffffff;
+    float: left;
+    margin: 5px 5px 0 0;
+}
+.table-light .border-back-no {
+    background-color: #fff;
+    border: none;
+    margin-bottom: 20px;
+}
+.table-light a{
+    cursor: pointer;
+}
+/* 新增人员排班 */
+/********************************************************华丽的分割线**************************************************************/
+.newadd-main{
+    padding:20px;
+}
+.newadd-main .fl-left{
+    float:left;
+}
+.newadd-main .newadd-top{
+    padding-bottom:10px;
+    margin-bottom:30px;
+    border-bottom:1px solid #ccc;
+    font-size: 14px;
+    line-height:30px;
+}
+.newadd-top .department{
+    border:1px solid #ccc;
+    float: left;
+    padding: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.newadd-top .department i{
+    margin-right:5px;
+}
+.newadd-main .newadd-top .mian-choose{
+    padding:0 10px 5px 10px;
+    display: inline-block;
+    max-width: 80%;
+    height: inherit;
+    border:none;
+}
+.newadd-main .newadd-top .mian-choose span{
+    background-color: #f4b04f;
+    border-radius: 5px;
+    padding: 2px 5px;
+    color: #ffffff;
+    float: left;
+    margin:5px 5px 0 0;
+}
+.newadd-main .newadd-top .mian-choose i{
+    cursor: pointer;
+}
+.newadd-main .newadd-top .ts{
+    color:#ff0000;
+    font-size: 12px;
+}
+.newadd-main .border-none{
+    border:none;
+    margin:0;
+}
+.newadd-main .range{
+    height:70px;
+    line-height:30px;
+    padding-bottom:10px;
+    margin-bottom:30px;
+    border-bottom:1px solid #ccc;
+    font-size: 14px;
+}
+.newadd-main .range dl{
+    height:30px;
+    margin:0;
+}
+.newadd-main .range dl dt{
+    float: left;
+    font-weight: normal;
+    line-height: 30px;
+    height:30px;
+    margin:0;
+    width:90px;
+    text-align: right;
+}
+.newadd-main .range dl dt i{
+    color:#ff0000;
+}
+.newadd-main .range dl dd{
+    float: left;
+    line-height: 30px;
+    margin-left:30px;
+}
+.newadd-main .range dl dd input{
+    float: left;
+    line-height: 30px;
+    width:200px;
+    padding:0 3px;
+}
+.newadd-main .range dl dd p{
+    float: left;
+    height:30px;
+    line-height: 30px;
+    margin-left:10px;
+    color:#0082ca;
+}
+.newadd-main .map{
+    width:60%;
+    margin-left:130px;
+    border: 1px solid #ccc;
+    margin-bottom:30px;
+}
+.newadd-main .margin-none{
+    margin:0;
+}
+.newadd-main .button{
+    width:60%;
+    margin:0 0 30px 240px;
+    height:30px;
+}
+.newadd-main .button input{
+    height:30px;
+    padding:0 10px;
+    border-radius: 5px;
+    width:100px;
+    font-size: 14px;
+}
+.newadd-main .button .input1{
+    margin-right:200px;
+}
+.newadd-main .newadd-top p,.newadd-main .newadd-top span{
+    float:left;
+}
+.newadd-main .newadd-top label{
+    font-weight: normal;
+}
+.newadd-main .newadd-top p{
+    margin:0 30px 0 0;
+}
+.newadd-main .newadd-top p input{
+    margin:0 5px 0 0;
+    vertical-align:middle
+}
+.newadd-main .newadd-top .margin-left-30{
+    margin-left: 30px;
+}
+.newadd-main .newadd-con{
+    margin-bottom:30px;
+}
+.newadd-main .newadd-con .newadd-con-top{
+    position: relative;
+    height:110px;
+    margin:0;
+}
+.newadd-main .newadd-con .newadd-con-top dl,.newadd-main .newadd-con .newadd-con-bottom dl{
+    height:30px;
+    font-size: 14px;
+    padding:0;
+}
+.newadd-main .newadd-con .newadd-con-top dl dt,.newadd-main .newadd-con .newadd-con-bottom dl dt{
+    float:left;
+    font-weight: normal;
+    line-height: 30px;
+}
+.newadd-main .newadd-con .newadd-con-top dl dd,.newadd-main .newadd-con .newadd-con-bottom dl dd{
+    float:left;
+}
+.newadd-main .newadd-con .newadd-con-top dl dd input,.newadd-main .newadd-con .newadd-con-bottom dl dd input{
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.newadd-main .newadd-con .newadd-con-top dl dd input{
+    width:120px;
+    float:left;
+}
+.newadd-main .newadd-con .newadd-con-top dl dd span{
+    float:left;
+    position: initial;
+    width: 30px;
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+}
+.newadd-main .newadd-con .newadd-con-top .input-group-addon{
+    color:#888;
+}
+.newadd-main .newadd-con .newadd-con-top span{
+    position: absolute;
+    top:60px;
+    left:100px;
+    color:#ff0000;
+}
+.newadd-main .newadd-con .newadd-con-top span i{
+    margin-right:10px;
+}
+.newadd-main .newadd-con .newadd-con-bottom{
+    position: relative;
+    padding-bottom: 30px;
+    margin:0;
+    border-bottom:1px solid #ccc;
+}
+.newadd-main .newadd-con .newadd-con-bottom dl dd span{
+    float:left;
+}
+.newadd-main .newadd-con .newadd-con-bottom dl dt{
+    float:left;
+}
+.newadd-main .newadd-con .newadd-con-bottom dl dd{
+    height:30px;
+    line-height: 30px;
+}
+.newadd-main .newadd-con .newadd-con-bottom dl dd span{
+    margin:0 10px;
+}
+.newadd-main .newadd-con .newadd-con-bottom dl dd select{
+    height:30px;
+    line-height: 30px;
+    width:100px;
+    margin-right:20px;
+}
+.newadd-main .newadd-con .newadd-con-bottom dl dd input{
+    float:left;
+    width:30px;
+    height:30px;
+    line-height: 30px;
+}
+.newadd-main .newadd-con .newadd-con-bottom dl dd p{
+    float:left;
+    margin:0 0 0 10px;
+}
+.newadd-main .newadd-con .newadd-con-bottom .table{
+    width: 60%;
+    margin-left: 100px;
+}
+/* 日历 */
+
+.newadd-main .newadd-con .newadd-con-bottom  .month{
+    width:601px;
+    border-top:1px solid #ccc;
+    border-left:1px solid #ccc;
+    margin: 50px 0 20px 100px;
+    position: relative;
+}
+.newadd-main .newadd-con .newadd-con-bottom  .month ul{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+.newadd-main .newadd-con .newadd-con-bottom  .month li h5{
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    line-height: 36px;
+    font-size: 16px;
+}
+.newadd-main .newadd-con .newadd-con-bottom  .month li{
+    width:150px;
+    height:106px;
+    list-style-type:none;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+}
+.newadd-main .newadd-con .newadd-con-bottom  .month li:hover{
+    background: #f4f4f4;
+}
+.newadd-main .newadd-con .newadd-con-bottom  .month li p{
+    margin:0;
+    line-height: 22px;
+    font-weight: normal;
+}
+.newadd-main .newadd-con .newadd-con-bottom  .month li label{
+    width: 150px;
+    height: 106px;
+    padding: 0 5px;
+    margin: 0;
+}
+.newadd-main .newadd-con .newadd-con-bottom  .month li input{
+    position: absolute;
+    top:5px;
+    margin:0;
+    right:5px;
+}
+
+
+/* end */
+
+.newadd-main .newadd-con .table-main label{
+    margin:0;
+}
+.newadd-main .newadd-con .table-main input{
+    vertical-align: middle;
+    margin:0;
+}
+.newadd-main .newadd-con .table-main label input{
+    margin-right:4px;
+}
+.newadd-main .newadd-con .table-main label{
+    width:100%;
+}
+
+.newadd-main .newadd-con .newadd-con-bottom  .ts{
+    margin-left:100px;
+}
+.newadd-main .newadd-con .newadd-con-bottom .ts i{
+    color:#46b8da;
+}
+.newadd-main .newadd-con .newadd-con-bottom  .ts i{
+    margin-right:5px;
+}
+.newadd-main .newadd-con .newadd-con-bottom .span1{
+    position: absolute;
+    top: 87px;
+    left: 72%;
+    background-color: #f4f4f4;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.newadd-main .newadd-con .newadd-con-bottom .span-checkbox{
+    position: absolute;
+    top: -40px;
+    left: 90%;
+    margin:0;
+    background-color: #eee;
+    width: 60px;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+
+}
+.newadd-main .newadd-con .newadd-con-bottom label{
+    font-weight: normal;
+    margin:0;
+}
+.newadd-main .newadd-con .newadd-con-bottom input{
+    margin:0;
+    font-weight: normal;
+    vertical-align: middle;
+}
+.newadd-main .newadd-con .con-three{
+    position: relative;
+    margin:0;
+    border-bottom:1px solid #ccc;
+}
+.newadd-main .newadd-con .con-three .top{
+    height:30px;
+    line-height: 30px;
+    font-size: 14px;
+    margin:10px 0;
+}
+.newadd-main .newadd-con .con-three .out-date{
+    border-bottom:1px solid #ccc;
+    margin-left:100px;
+    font-size: 14px;
+    width:80%;
+    margin-bottom:20px;
+}
+.newadd-main .newadd-con .con-three .out-date .top{
+    height:30px;
+    margin-bottom:10px;
+    line-height: 30px;
+}
+/*.newadd-main .newadd-con .con-three .out-date .top input,.newadd-main .newadd-con .con-three .out-date .top p{
+    float:left;
+    margin:0;
+}
+.newadd-main .newadd-con .con-three .out-date .top input{
+    height:30px;
+    margin:0 10px;
+    line-height: 24px;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    background: #fff;
+    text-align: center;
+}*/
+.newadd-main .newadd-con .con-three .out-date .top .input1{
+    width:100px;
+    height:30px;
+    margin:0 10px;
+    line-height: 24px;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    background: #fff;
+    text-align: center;
+
+}
+.newadd-main .newadd-con .con-three .out-date .top .input2{
+    width:120px;
+    margin-left:20px;
+    height:30px;
+    line-height: 24px;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    background: #fff;
+    text-align: center;
+}
+.newadd-main .newadd-con .con-three .out-date .bottom{
+    margin-left:65px;
+    width:80%;
+    min-height: 30px;
+    padding:10px 10px 0 0;
+    line-height: 30px;
+}
+.newadd-main .newadd-con .con-three .out-date .bottom ul{
+    float: left;
+    padding: 0;
+}
+.newadd-main .newadd-con .con-three .out-date .bottom li{
+    float:left;
+    margin:0 10px 10px 0;
+    height:34px;
+    list-style:none;
+    padding:1px 8px;
+    color:#555;
+    border-radius: 3px;
+    border:1px solid #ccc;
+}
+.newadd-main .newadd-con .con-three .out-date .bottom li i{
+    cursor:pointer;
+    margin-left:5px;
+    font-style: normal;
+    color: #e14430;
+}
+.newadd-main .newadd-con .con-three .border-no{
+    border:none;
+}
+
+    /* 班次主页 */
+/********************************************************华丽的分割线**************************************************************/
+.sign_class.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+    min-height: 700px;
+    background: #fafafa;
+}
+.sign_class .lead{
+    padding-left: 20px;
+    font-size: 14px;
+}
+.sign_class .text-info{
+    cursor: pointer;
+}
+.sign_class .text-info:hover{
+    text-decoration: underline;
+}
+.sign_class .form-horizontal.col-md-8{
+    margin-left:8%;
+    position: relative;
+    float: none;
+}
+.sign_class .form-horizontal .control-label.text-left{
+    text-align: left;
+    padding-right: 0;
+}
+.sign_class input[readonly]{
+    background: #fff;
+}
+
+
+/* 颜色表 */
+.color-green{
+    color:#009e13;
+}
+.newadd-main .newadd-con .con-three .out-date .top .blue{
+    background:#46b8da;
+    color:#fff;
+    border:1px solid #46b8da;
+}
+.newadd-main .newadd-con .con-three .out-date .top .btn-green{
+    background:#4cb64c;
+    color:#fff;
+    border:1px solid #4cb64c;
+}
+.newadd-main .button .bg-yellow{
+    background: #54c89b;
+    color:#fff;
+    border:1px solid #54c89b;
+}
+.newadd-main .button .bg-gray{
+    background: #e8e8e8;
+    border:1px solid #eee;
+}
+.sign-member-main .add-member .blue-ico{
+ color:#46b8da;
+}
+
+
+
+/*************************************许西的分割线**********************************/
+.dialog_tip {
+    padding: 56px 20px 56px 30px;
+}
+.dialog_tip .tip_text {
+    display: block;
+    overflow: hidden;
+
+}
+.dialog_tip .tip_text_title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.dialog_tip .tip_text_title img{
+    height: 33px;
+    width: 33px;
+    margin-right: 6px;
+}
+.dialog_tip .tip_text_detail {
+    color: #777;
+    text-align: center;
+}
+
+
+
+.btn-warning {
+    background-image: -webkit-linear-gradient(top, #f0ad4e 0%, #eb9316 100%);
+    background-image:      -o-linear-gradient(top, #f0ad4e 0%, #eb9316 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f0ad4e), to(#eb9316));
+    background-image:         linear-gradient(to bottom, #f0ad4e 0%, #eb9316 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff0ad4e', endColorstr='#ffeb9316', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-color: #e38d13;
+}
+.btn-warning:hover,
+.btn-warning:focus {
+    background-color: #eb9316;
+    background-position: 0 -15px;
+}
+.btn-warning:active,
+.btn-warning.active {
+    background-color: #eb9316;
+    border-color: #e38d13;
+}
+.btn-warning:disabled,
+.btn-warning[disabled] {
+    background-color: #eb9316;
+    background-image: none;
+}
+
+
+
+.props-foot-right{
+
+    float: right;
+    margin: 5px;
+}

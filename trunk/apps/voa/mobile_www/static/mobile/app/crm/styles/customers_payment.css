@@ -1,0 +1,65 @@
+
+
+#workrightOne ul{
+   height: 90px;
+   line-height: 90px;
+   margin-top: 0px;
+}
+
+ 
+#workrightOne label.red{
+	height: 90px;
+    color: #FC8487;
+    text-align: left;
+    margin: 0;
+}
+ 
+#workrightOne label.red strong{
+	font-size: 30px;
+	color: #FB2434;
+}
+
+#workrightTwo .right-time {
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 0px;
+  text-align: right;
+  height: 50px;
+  color: #6A727F;
+  margin-top: 0px;
+}
+
+#workrightTwo li{
+	height: 50px; 
+	line-height: 50px;
+}
+#workrightTwo li label{
+	color:#2A3D54;
+}
+
+#workrightTwo h3{
+	font-size: 10px;
+}
+
+#workrightOne {
+    margin-bottom: 15px;
+}
+#workrightTwo {
+	 
+	margin-bottom: 15px;
+
+}
+ 
+
+#paymentID{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#paymentID .ui-btn{
+   text-shadow:none;
+   color: #fff;
+   background-color: #1385CC;
+}
+ 
+ 

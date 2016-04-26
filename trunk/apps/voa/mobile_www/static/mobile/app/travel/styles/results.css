@@ -1,0 +1,63 @@
+#results .ui-listview li p{
+  color: #70798a;
+  font-size: 14px;
+  padding-right: 50px;
+}
+
+#results .ui-listview li p.ui-li-aside{
+  font-size: 15px;
+  right: 13px;
+  padding-right: 0;
+} 
+#results .day-total{
+  font-size: 22px;
+  color: #3b475a;
+  text-align: center;
+}
+#results .day-total span{
+  color: #fe5955;
+  font-size: 36px;
+  margin-top: 30px;
+  display: block;
+}
+
+#results_head{border-width: 1px;}
+#results_head .ui-icon-back-l {
+  left: 3px;
+  padding-left: 23px;
+}
+#results_head .ui-icon-back-r {
+  right: 3px;
+  padding-right: 23px;
+}
+#results_head .ui-icon-back-l:after,
+#results_head .ui-icon-back-r:after {
+  background-size: 16px 16px;
+  width: 16px;
+  margin-top: -10px;
+  padding-left: 0;
+}
+
+.ui-icon-calendar:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-image: url("../images/icon-date.png");
+  background-size: 16px 16px;
+  opacity: 1;
+  background-color: #fff;
+
+}
+.ui-icon-calendar{
+  padding: 0;
+  margin-top:0px ;
+  margin-left:-20px;
+  background-color: #fff!important;
+  border: 0!important;
+}
+#results_head.calendar{border-width: 1px 0 1px 0}
+.calendar h1{
+  padding: 3px auto!important;
+}

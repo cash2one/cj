@@ -1,0 +1,375 @@
+.choose-person-plugin ol,
+.choose-person-plugin ul {
+  list-style: none;
+}
+.choose-person-plugin a {
+  cursor: pointer;
+  color: #337ab7;
+  text-decoration: none;
+}
+.choose-person-plugin img {
+  vertical-align: middle;
+}
+.choose-person-plugin .modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: hidden !important;
+}
+.choose-person-plugin .modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.choose-person-plugin .modal.fade .modal-dialog {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  -webkit-transform: translate(0, -25%);
+  -ms-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+}
+.choose-person-plugin .modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.choose-person-plugin .modal-dialog {
+  z-index: 1200;
+}
+.choose-person-plugin .modal-head {
+  position: relative;
+  line-height: 60px;
+  padding: 0 20px;
+  background: #f6f7f7;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 4px 4px 0 0;
+}
+.choose-person-plugin .modal-lr {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.choose-person-plugin .modal-l {
+  width: 250px;
+  border-right: 1px solid #e5e5e5;
+}
+.choose-person-plugin .modal-r {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+.choose-person-plugin .modal-l,
+.choose-person-plugin .modal-r {
+  position: relative;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.choose-person-plugin .modal-search,
+.choose-person-plugin .personnal-search {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 54px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.choose-person-plugin .modal-search.no-item .dem-item-wrap {
+  display: none;
+}
+.choose-person-plugin .dem-item-wrap,
+.choose-person-plugin .per-item-wrap {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  height: 54px;
+  padding: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.choose-person-plugin li.sel-item {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin: 0 2px;
+  line-height: 30px;
+  background: #dde4ea;
+  text-align: center;
+  cursor: pointer;
+}
+.choose-person-plugin li.sel-item .sel-item-del {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 9;
+  display: none;
+}
+.choose-person-plugin li.sel-item:hover .sel-item-del {
+  display: block;
+}
+.choose-person-plugin .sel-personal-name {
+  display: block;
+  width: 60px;
+}
+.choose-person-plugin .sel-dpm-item {
+  padding: 0 5px;
+}
+.choose-person-plugin .sel-dpm-item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  cursor: pointer;
+}
+.choose-person-plugin .sel-dpm-item li {
+  padding: 0;
+  list-style: none;
+  cursor: pointer;
+}
+.choose-person-plugin .search-wrap {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 100%;
+}
+.choose-person-plugin .search-wrap .fadajing {
+  display: block;
+  width: 17px;
+  height: 100%;
+  margin: 0px 15px;
+  cursor: pointer;
+  background: url(images/fangdajing.png) center center no-repeat;
+}
+.choose-person-plugin .search-wrap input:focus {
+  outline: none;
+}
+.choose-person-plugin .search-wrap input {
+  display: block;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  border: none;
+  height: 100%;
+  width: 69px;
+  padding: 0 5px;
+  margin: 0;
+}
+.choose-person-plugin .department-tree {
+  position: absolute;
+  width: 100%;
+  top: 54px;
+  bottom: 0;
+  overflow: auto;
+  background: #f6f7f7;
+}
+.choose-person-plugin .dpm-name {
+  vertical-align: middle;
+  font-size: 14px;
+  cursor: pointer;
+}
+.choose-person-plugin .chosePer-warning {
+  background-position: -120px 0;
+}
+.choose-person-plugin .chosePer-warning-p {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 180px;
+  padding: 5px 0;
+  margin-left: -90px;
+  background: #f5dea6;
+  color: #777;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0;
+  border-radius: 0 0 5px 5px;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  transition: all 0.4s ease-in;
+}
+.choose-person-plugin .chosePer-options {
+  text-align: right;
+  padding: 10px 20px 0;
+}
+.choose-person-plugin .chosePer-options .chosePer-fn {
+  color: #333;
+  padding: 0 5px;
+  text-decoration: none;
+}
+.choose-person-plugin .chosePer-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background: url(images/chosePer.png) no-repeat;
+}
+.choose-person-plugin .chosePer-warning-p .ver-bottom {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.choose-person-plugin .chosePer-close {
+  background-position: -160px 0;
+}
+.choose-person-plugin .chosePer-delete {
+  background-position: -140px 0;
+}
+.choose-person-plugin .cy-arrow {
+  background-position: -20px 0;
+  cursor: pointer;
+}
+.choose-person-plugin .cy-open {
+  background-position: 0px 0;
+  cursor: pointer;
+}
+.choose-person-plugin .cy-folder {
+  cursor: pointer;
+  background-position: -100px 0;
+}
+.choose-person-plugin .cy-kongbai {
+  background: none;
+}
+.choose-person-plugin .ps-special-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 1px;
+  left: 0;
+  z-index: 11;
+  background: #fff;
+  display: none;
+}
+.choose-person-plugin .per-item-Wrap {
+  height: 54px;
+  padding: 10px 0;
+  overflow-y: hidden;
+}
+.choose-person-plugin .per-list-wrap {
+  position: relative;
+  height: 380px;
+  overflow-y: auto;
+}
+.choose-person-plugin .per-btnGroup {
+  border-top: 1px solid #e5e5e5;
+  padding: 12px 0;
+  text-align: right;
+}
+.choose-person-plugin .personnal-list {
+  padding: 0;
+}
+.choose-person-plugin .personnal-avatar-wrap {
+  position: relative;
+  padding: 10px;
+}
+.choose-person-plugin .personnal-item {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+.choose-person-plugin .personnal-item .per-avatar {
+  position: relative;
+  width: 65px;
+  height: 65px;
+  margin-bottom: 10px;
+}
+.choose-person-plugin .personnal-item .per-name {
+  display: block;
+  max-width: 65px;
+  color: #333333;
+  font-size: 14px;
+}
+.choose-person-plugin .personnal-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.choose-person-plugin .ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.choose-person-plugin .input-close {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+.choose-person-plugin .tree .tree-item-content {
+  padding: 10px;
+  cursor: pointer;
+}
+.choose-person-plugin .isChecked {
+  position: absolute;
+  top: 0;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s ease-in;
+}
+.choose-person-plugin .isChecked .checked {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(images/checked.png) center center no-repeat;
+}
+.choose-person-plugin .load-more {
+  text-align: center;
+}
+.choose-person-plugin .modal-btn {
+  display: inline-block;
+  text-align: center;
+  outline: 0;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 0 5px;
+  text-decoration: none;
+}
+.choose-person-plugin .btn-large {
+  padding: 5px 40px;
+}
+.choose-person-plugin .btn-default {
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  color: #333333;
+}
+.choose-person-plugin .btn-default:hover {
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  color: #333333;
+}
+.choose-person-plugin .btn-confrim {
+  color: #fff;
+  background: #40bff4;
+}
+.choose-person-plugin .btn-confrim:hover {
+  color: #fff;
+  background: #40bff4;
+}
+.choose-person-plugin .choose-department {
+  width: 100%;
+  height: 350px;
+  overflow: auto;
+  background: #f6f7f7;
+}
+.choose-person-plugin .choose-body {
+  position: relative;
+  padding: 15px 0;
+}
+.choose-person-plugin .choose-body-department {
+  padding: 0;
+}
+.choose-person-plugin .chosePer-checkBox {
+  background-position: -40px 0;
+  cursor: pointer;
+}
+.choose-person-plugin .chosePer-checkBox.checked {
+  background-position: -60px 0;
+  cursor: pointer;
+}

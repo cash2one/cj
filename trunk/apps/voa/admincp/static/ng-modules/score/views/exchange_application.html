@@ -1,0 +1,64 @@
+<div ng-controller="exchangeApplicationCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title font12"><strong>兑换信息</strong></h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal panel-default font12">
+                <input type="hidden" name="formhash" value="{$formhash}" />
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="id_rights">订单状态</label>
+                    <div class="col-sm-9" data-ng-bind="detaill.status"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="id_rights">订单编号</label>
+                    <div class="col-sm-9" data-ng-bind="detaill.order_number"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="id_rights">兑换时间</label>
+                    <!-- <div class="col-sm-9">2016-03-21 16：00</div> -->
+                    <div class="col-sm-9" data-ng-bind="detaill.create_time * 1000 | date:'yyyy-MM-dd HH:mm:ss'"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="id_rights">奖品信息</label>
+                    <div class="col-sm-9" id="contact_container">
+                        <dl class="dl-horizontal goods_info">
+                            <dt>
+                                <img src="{{detaill.pic_url[0].url}}" class="img-thumbnail goods_img">
+                            </dt>
+                            <dd>
+                                <div>
+                                    <span data-ng-bind="detaill.title"></span>
+                                    <span class="score_num">{{detaill.scr}}积分</span>
+                                </div>
+                                <p>数量：{{detaill.award_num}}</p>
+                                <p>累计消耗积分：{{detaill.score}}</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="id_content">成员信息</label>
+                    <div class="col-sm-9">
+                        <dl class="dl-horizontal member_info">
+                            <dt>姓名</dt>
+                            <dd data-ng-bind="detaill.member_info.u_name"></dd>
+                            <dt>手机号</dt>
+                            <dd data-ng-bind="detaill.member_info.u_phone"></dd>
+                            <dt>电子邮箱</dt>
+                            <dd data-ng-bind="detaill.member_info.u_email"></dd>
+                            <dt>备注</dt>
+                            <dd data-ng-bind="detaill.member_info.u_desc"></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="form-group" ng-hide="isHideBtn">
+                    <div class="col-sm-offset-2 col-sm-6">
+                        <button type="button" class="btn btn-success" ng-click="isSureExchange()">同意兑换</button>
+                        <button type="button" class="btn btn-danger" ng-click="fillReason()">拒绝兑换</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

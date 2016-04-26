@@ -1,0 +1,57 @@
+     
+<div data-role="header" data-position="fixed" data-theme="a">
+    <% if (!disable_deps) {%>
+    <nav class="mod_list_nav nav js-nav">
+    <!-- <a href="#/favorites">常用</a> -->
+
+    <a data-for="js-contacts" class="current"><span class="contact_icon"></span>同事</a>
+
+    <a data-for="js-deps"><span class="group_icon"></span>部门</a>
+
+    </nav>
+    <% } %>
+    <div class="contacts-search-box clearfix">
+        <div class="mod_photo_uploader search-icon">
+            <div class="photo-scrollable js-current-checked">            
+            </div>
+        </div>
+        <div  class="search-contacts">
+            <input style="display:none" value="" data-role="none">
+            <input type="search" name="search" id="search" value="" placeholder="搜索" data-role="none">       
+        </div>
+    </div>
+</div>
+<div role="main" class="ui-content">
+    <div class="ui-scroll">
+         <ul id="js-contacts" data-role="listview" class="<%=input_type%>-contral" data-autodividers="true" data-filter="true" data-input="#search" data-inset="true">
+        <% $.each(contacts, function (k, item){ %>
+            <li ><alphaindex><%=item.alphaindex%></alphaindex>
+                    <label>
+                <input data-type="<%=input_name_contacts%>" data-name="<%=item.realname%>" type="<%=input_type%>" name="id" value="<%=item.uid%>">
+                    <img data-src="<%=item.face%>" width="40" height="40" class="lazy-loaded"><h3 <% if (item.jobtitle=="") { %>class="h3-Single"<% } %>><%=item.realname%></h3><% if (item.jobtitle!="") {%><p><%=item.jobtitle%></p><% } %>
+                 </label>
+            </li>
+            <% }) %>
+        </ul>
+        <ul id="js-deps" data-role="listview" class="<%=input_type%>-contral Single" data-filter="true" data-input="#search" data-inset="true" style="display: none">
+         
+        <% $.each(deps, function (k, item){ %>
+            <li><label>
+                <input data-type="<%=input_name_deps%>" data-name="<%=item.name%>" type="<%=input_type%>" name="id" value="<%=item.departmentid%>">
+                   <h3><%=item.name%></h3>
+                 </label>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+       
+<div data-role="footer" data-position="fixed" class="ui-grid-a" id="footer">
+    <div class="ui-block-a no-shadow btn-submit">
+        <input class="js-contact-save" type="button" value="确定" >
+    </div>
+    <div class="ui-block-b">
+        <input class="js-contact-close ui-btn ui-corner-all" type="button" value="关闭" >
+    </div>
+</div>

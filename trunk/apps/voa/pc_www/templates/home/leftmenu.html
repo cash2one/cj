@@ -1,0 +1,36 @@
+<a class="toIndex" href="#"></a>
+<div class="panel">
+	<div class="user">
+		<img src="<%= user.face %>" />
+		<h1><%= user.name %></h1>
+		<a class="logout" href="login.html">退出</a>
+	</div>
+	<div class="menu plugin_scrollbar">
+	
+		<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+		<div class="viewport">
+             <div class="overview">
+				<% for (var sub in menu){ %>
+					<h2><%= sub %></h2>
+					<ul>
+					<% var items = menu[sub].list; %>
+					<% for (var k in items) { %>
+						<% var item = items[k]; %>
+							<li><a href="<%= item.url %>">
+								<i style="background-image:url(<%= item.icon[0] %>); background-position:<%= item.icon[1] %>;"></i>
+								<label><%= k %></label>
+								<% if ('unread' in item || item.unread>0){ %>
+									<span class="unread"><%= item.unread %></span>
+								<% } %>
+							</a></li>
+					<% } %>
+					</ul>
+				<% } %>
+				<div class="copy">
+					<%= copyright %>
+				</div>
+			 </div>
+         </div>
+			
+	</div>
+</div>

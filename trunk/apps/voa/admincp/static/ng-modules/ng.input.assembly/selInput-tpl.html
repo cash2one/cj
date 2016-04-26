@@ -1,0 +1,60 @@
+<div class="assemblyBox clearfix">
+	<div class="assemblyListBox">
+		<div class="clearfix assemblyList Js_assemblyList" data-ng-repeat="item in myData">
+			<div class="assemblyItemLeft">
+				<div class="upanddownBox">
+					<a href="javascript:;" class="assemblyMovePos assemblyToUp Js_assmblyOrder" data-ng-if="!$first" style="{{$last?'margin-top:5px;':'';}}" data-order-type="0"></a>
+					<a href="javascript:;" class="assemblyMovePos assemblyToDown Js_assmblyOrder" data-ng-if="!$last" style="{{$first?'margin-top:5px;':'';}}" data-order-type="1"></a>
+				</div>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='text'">文本输入 | </span>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='textarea'">多行文本 | </span>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='number'">数字输入 | </span>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='radio'">单项选择 | </span>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='checkbox'">多项选择 | </span>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='date'">日期 | </span>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='time'">时间 | </span>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='dateandtime'">日期时间 | </span>
+				<span class="assemblyTypeLabel" data-ng-if="item.type=='img'">上传图片 | </span>
+			</div>
+			<div class="assemblyItemRight">
+				<input type="text" data-ng-model="item.title" data-ng-change="changeVal(item)" />
+				<!-- <input type="text" data-ng-model="item.title" data-ng-if="item.type=='text'" maxlength="{{enterLen}}" />
+				<input type="text" data-ng-model="item.title" data-ng-if="item.type=='textarea'" maxlength="{{enterLen}}" />
+				<input type="text" data-ng-model="item.title" data-ng-if="item.type=='radio'" maxlength="{{enterLen}}" />
+				<input type="text" data-ng-model="item.title" data-ng-if="item.type=='checkbox'" maxlength="{{enterLen}}" />
+				<input type="text" data-ng-model="item.title" data-ng-if="item.type=='img'" maxlength="{{enterLen}}" />
+				<input type="text" data-ng-model="item.title" data-ng-if="item.type=='number'" maxlength="6" />
+				<input type="text" data-ng-model="item.title" data-ng-if="item.type=='date'" maxlength="6" />
+				<input type="text" data-ng-model="item.title" data-ng-if="item.type=='time'" maxlength="6" />
+				<input type="text" data-ng-model="item.title" data-ng-if="item.type=='dateandtime'" maxlength="6" /> -->
+				<div data-ng-if="item.type=='img'">最多可上传<input type="text" data-ng-model="item.value[0].max" class="assemBlyAddImagesNum" />张照片（请填写1-9的整数）</div>
+				<div data-ng-if="item.type=='radio' || item.type=='checkbox'" class="assemblyOpts">
+					<p data-ng-if="item.value.length>0">选项列表</p>
+					<ul>
+						<li data-ng-repeat="i in item.value">
+							<input type="text" data-ng-model="i.name" maxlength="6" />
+							<s class="Js_radioAndChkDelBtn" data-ng-show="item.value.length > 1 && $parent.item.type=='radio'"></s>
+							<s class="Js_radioAndChkDelBtn" data-ng-show="item.value.length > 2 && $parent.item.type=='checkbox'"></s>
+						</li>
+					</ul>
+					<a href="javascript:;" class="Js_addAsseblyOptsItem">+ 添加选项</a>
+				</div>
+			</div>
+			<div class="isSureBox">
+				<label>
+					<input type="checkbox" data-ng-model="item.is_null" data-ng-true-value="1" data-ng-false-value="0" data-ng-checked="item.is_null==1"/>必填
+				</label>
+			</div>
+			<a href="javascript:;" class="assemBlyItemDel Js_assemBlyItemDel"></a>
+		</div>
+		<p data-ng-show="myData.length == myLen" data-ng-style="{'color':'red'}">*添加的模板数量已经达到15条，不可再添加</p>
+	</div>
+	<div class="addAssemblyBox col-sm-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading addAssemblyTitle">添加自定义项目</div>
+			<div class="panel-body">
+				<a href="javascript:;" data-ng-repeat="item in myFn" class="btn btn-default Js_addTextAssembly" data-type="{{item.type}}" data-index="{{$index}}">{{item.label}}</a>
+			</div>
+		</div>
+	</div>
+</div>

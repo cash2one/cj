@@ -1,0 +1,225 @@
+@CHARSET "UTF-8";
+
+.ui-content{
+	padding:0;
+	min-width: 290px;	
+}
+#js-contacts,#js-deps{
+	margin: 0;
+	padding-bottom: 80px;
+	background-color:#fff; 
+}
+#js-contacts .mod-common-list .ui-listview li{
+	padding-left: 0;
+}
+#contacts_window-popup{
+	top:15px!important;bottom:15px;left:15px!important;right:15px!important;position: fixed;max-height: 100%;
+}
+#contacts_form .mod_photo_uploader{width: inherit!important;}
+#contacts_window{max-height: 100%;overflow: hidden;min-height: 220px;}
+#contacts_window .ui-content{ }
+#contacts_window .ui-scroll{overflow-y:scroll;overflow-x:hidden;display: block;max-height: 500px; }
+#footer .ui-input-btn{width:76%!important;}
+#footer .btn-submit .ui-btn{  
+  color: #fff;
+  background:green;
+  font-weight: normal;
+  text-shadow:none;
+}
+.ui-grid-a>.ui-block-a, .ui-grid-a>.ui-block-b{
+	text-align: center;
+}
+/*nav*/
+nav.mod_list_nav{height: 41px;background-color:#fff;border-bottom: 1px solid #c8d0d7;overflow: inherit; }
+.mod_list_nav a.ui-link{border-width: 0; background-color:#fff;text-shadow: none;color:#515167}
+.mod_list_nav a.ui-link.current:before{border-bottom: 2px solid #00a2f6;left:5%;margin-left:-3%;position: absolute;width: 96%;z-index: 99;}
+.mod_list_nav a.ui-link.current{border-bottom:0;}
+.mod_list_nav> a:before{background: none;}
+
+/*搜索人员*/
+.contacts-search-box{
+	display: block;
+	position: relative;
+	padding: 8px;
+	background-color: #fff;
+}
+.mod_photo_uploader{
+	padding-top:0;
+	padding-left:0;
+	display: block;
+	height: 42px;
+	float:left; 
+	border: 0;
+	background: none;
+	max-width:80%;
+	overflow-x:auto;
+	overflow-y:hidden;
+	white-space:nowrap;	
+}
+.search-icon{    
+	min-width: 30px;
+	background: url('../images/icon_search.png') no-repeat 11px 13px;
+    -webkit-background-size: 16px 14px;
+    background-size: 16px 14px;
+}
+.mod_photo_uploader .photo-scrollable span {
+    width: 40px;
+    height: 40px; 
+    line-height: 40px;
+    font-size: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    display: inline-block;  
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden; 
+    border: 1px solid #ccc;
+    color: #999;
+    background: #fff;
+    margin-right: 8px;	
+}
+
+
+.mod_photo_uploader .photo-scrollable .photo {
+  	width: 40px;
+  	height: 40px; 
+  	margin-right: 4px;
+	margin-bottom: 0;
+	display: inline-block;
+}
+.mod_photo_uploader .photo-scrollable .photo img {
+  width: 40px;
+}
+
+.search-content{	
+	overflow:hidden;
+	display: inline-block;
+	background-color: #888;
+	width: 100%;
+	position: absolute;
+
+}
+.search-contacts{
+	display: block;
+	float:left;
+	margin-left: 6px;
+}
+
+.contacts-search-box input{
+	width: 97%;
+	position: absolute;
+	border: 0;
+	background: rgba(0,0,0,0);
+	padding: 6px 0;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+/*选择人员*/
+.checkbox-contral .ui-li-static,
+.radio-contral .ui-li-static,
+.checkbox-contral .ui-li-divider,
+.radio-contral .ui-li-divider{
+	border-radius: 0!important;
+	border-width: 1px 0 0 0!important; 	
+	padding: 0!important;
+	margin:0!important;
+	position: relative;	
+	text-shadow:none;
+}
+.checkbox-contral .ui-li-divider,
+.radio-contral .ui-li-divider{
+	padding: 5px 20px!important;
+	background-color: #f7f7f7;
+	color: #3b475a;
+	border-top:1px solid #c8d0d7!important;
+	border-width: 1px 0 1px 0!important;
+	overflow: inherit!important;
+}
+.checkbox-contral .ui-first-child,
+.radio-contral .ui-first-child{
+	border-top:0!important;
+}
+.checkbox-contral .ui-li-divider:after,
+.radio-contral .ui-li-divider:after{
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 1px;
+	width: 100%;
+	background-color: #d9e2eb;
+	bottom: -1px;
+}
+.checkbox-contral .ui-li-static,.radio-contral .ui-li-static{	
+	margin-left:13px!important;
+	border-color:#d9e2eb;
+}
+.checkbox-contral li .ui-checkbox,.radio-contral li .ui-radio{
+	margin:0!important;
+}
+.h3-Single{
+  padding-top: 10px!important;
+  padding-bottom: 10px!important;
+}
+.checkbox-contral .ui-li-has-thumb,.radio-contral .ui-li-has-thumb{
+	min-height: 40px!important;
+	border-width: 1px 0 0 0!important;
+}
+/*头像滚动*/
+.photo-scrollable {
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+alphaindex {
+    display: none;
+}
+
+/*图标*/
+.contact_icon,
+.group_icon{	
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	margin-right: 6px;
+	background: url('../images/contact_icon.png') no-repeat 0 0;
+    -webkit-background-size: 18px 18px;
+    background-size: 18px 18px;
+    vertical-align: middle;
+}
+.group_icon{
+	background: url('../images/group_icon.png') no-repeat 0 0;
+	-webkit-background-size: 18px 18px;
+    background-size: 18px 18px;
+}
+.current .contact_icon{
+	background: url('../images/contact_icon_selected.png') no-repeat 0 0;
+	-webkit-background-size: 18px 18px;
+    background-size: 18px 18px;
+}
+.current .group_icon{
+	background: url('../images/group_icon_selected.png') no-repeat 0 0;
+	-webkit-background-size: 18px 18px;
+    background-size: 18px 18px;
+}
+
+.radio-contral .ui-radio .ui-btn.ui-radio-on:after,
+.checkbox-contral .ui-checkbox .ui-btn.ui-checkbox-on:after,
+.checkbox-contral .ui-checkbox-off:after, 
+.radio-contral .ui-radio-off:after{
+	background: url('../images/selected.png') no-repeat 0 0;
+	-webkit-background-size: 23px 23px;
+    background-size: 23px 23px;
+    border:0;
+    width: 23px;
+    height:23px;
+    left:0;
+    border-radius: 0;
+    top:45%;
+}
+.checkbox-contral .ui-checkbox-off:after, 
+.radio-contral .ui-radio-off:after{
+    background-image: url('../images/select.png');	
+}

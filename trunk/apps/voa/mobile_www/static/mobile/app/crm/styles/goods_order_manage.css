@@ -1,0 +1,143 @@
+.enter_address li ,.address li{
+  margin: 0!important;  
+  border-color:#5e6b85;
+  background-color: #5e6b85; 
+  padding: 10px 0 10px 36px!important; 
+
+}
+.enter_address li:before ,.address li:before{  
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;  
+  top: 50%;
+  margin-top: -10px;
+  width: 22px;
+  height: 22px;
+  -webkit-background-size: 22px 22px;
+  background-size: 22px 22px;
+  margin-left: 6px;
+  background-image: url("../images/icon_location.png");
+}
+  #goods_order ul.enter_address li a h3,
+  #goods_order ul.address li a h3,
+  #goods_order ul.enter_address li a p,
+  #goods_order ul.address li a p,
+  #goods_order ul.address li a .ui-li-aside{
+  color: #fff;
+}
+
+#goods_order ul.address li a .ui-li-aside{
+  font-size: 18px;
+  top:0;
+  right: 33px;
+}
+#goods_order ul.list li .imgbox {
+  overflow: hidden;
+  display: block; 
+}
+#goods_order ul.list li .imgbox img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 13px;
+  border: 1px solid #e1e1e1;
+  vertical-align: middle;
+}
+#goods_order ul.list li .mt_title {
+  height: 32px;
+  overflow: hidden;
+  font-size: 14px;
+  color: #252525;
+  line-height: 16px;
+  margin: 0;
+  padding-right: 66px;
+}
+#goods_order .view li{
+  margin-left: 10px;
+}
+#goods_order .view li .format{
+  color: #818998;
+  font-size: 12px;
+  margin: 0px;
+  padding-right: 66px;
+}
+#goods_order ul.list li .js-price {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  font-size: 16px;
+  margin: 0px;
+}
+#goods_order ul.list li .num{
+  margin-top: 3px;
+  font-weight: bold;
+}
+#goods_order li.shopping a.shop{
+  background-color: #fe5955;
+  color: #fff;
+  text-shadow:none;
+  padding-bottom:10px;
+  padding-top: 10px; 
+}
+#goods_order li.shopping a.shop:hover{
+  background-color: #fe5955;
+  color: #fff;
+  text-shadow:none;
+  padding-bottom:10px;
+  padding-top: 10px; 
+}
+.mod-common-list .view .total{text-align: right;color: #666;font-size: 12px;font-weight: normal;}
+.mod-common-list .view .total p{position: absolute;padding-left: 66px;}
+.mod-common-list .view .total span{font-size: 20px;color: #fe5955;padding-left:5px;}
+
+.empty_order{
+  display: block;
+  background-image:url(../images/empty_order.png);
+  -webkit-background-size: 80px 80px;
+  background-size: 80px 80px;
+  width:80px;
+  height: 80px;
+  margin: 3px auto;  
+}
+.empty_order_text{
+  font-size: 16px;
+  color: #a1a1a1;
+  text-align: center;
+  display: block;
+  padding: 10px;
+  margin: 3px auto; 
+  line-height: 28px;
+
+}
+
+.ui-controlgroup-horizontal{position: relative;}
+.controlgroup-textinput{
+    padding: 4px;
+    width: 100px;
+}
+
+.footer .weixin_pay.ui-btn {
+  color: #fff!important;
+  background: #67ad03!important;
+  text-shadow: none;
+}
+.footer .weixin_pay.ui-btn:hover,
+.footer .weixin_pay.ui-btn:focus {
+  background: #669933!important;
+  color: #fff;
+  text-shadow: none;
+}
+
+.footer .weixin_another.ui-btn {
+  color: #fff;
+  background: #1bc6c3;
+  text-shadow: none;
+  margin: 1em 0;
+}
+.footer .weixin_another.ui-btn:hover,
+.footer .weixin_another.ui-btn:focus {
+  background: #009999!important;
+  color: #fff;
+  text-shadow: none;
+}

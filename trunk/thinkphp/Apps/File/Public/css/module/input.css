@@ -1,0 +1,19 @@
+input {
+  display: block;
+  border-radius: .156rem;
+  padding: .25rem .312rem;
+  font-size: .44rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 0.031rem #dfdfdf;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+input:focus {
+  box-shadow: 0 0 0 0.031rem #00a5ff;
+}

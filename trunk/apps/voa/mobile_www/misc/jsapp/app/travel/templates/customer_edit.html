@@ -1,0 +1,27 @@
+<div data-role="header">
+    <h1>编辑</h1>
+    <a href="javascript: history.go(-1);" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+</div>
+<div id="customer_edit">
+    <form id="js-form">
+        <div class="content-view mod_common_list clearfix" >
+        <input name="dataid" value="<%=dataid%>" type="hidden" />
+        <input name="goods_id" value="<%=goods_id%>" type="hidden" />
+        <div class="ui-field-contain">
+            <label for="text-12">分类</label>
+            <select name="classid" class="form-control">
+                <option value="0">请选择分类</option>
+                <% $.each(cate, function (k1, c1){ if (c1.pid == "0") {%><optgroup label="<%=c1.classname%>"><% $.each(cate, function (k2, c2){ if (c2.pid == c1.classid){ %>
+                    <option value="<%=c2.classid%>">
+                        <%=c2.classname%></option>
+                    <% }}); %></optgroup>
+                <% }}); %></select>
+        </div>
+        <div id="js-row-input"></div>
+    </div>
+    <div class="ui-field-footer">        
+        <button type="submit" class="ui-btn ui-btn-a js-btn-save ui-corner-all">提交</button>
+    </div>
+
+    </form>
+</div>

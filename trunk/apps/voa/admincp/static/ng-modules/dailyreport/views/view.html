@@ -1,0 +1,142 @@
+<div  data-ng-controller="reportViewCtrl">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" data-ng-class="{'active':viewType==1,'Js_viewType':true}" data-ng-click="changeViewType(1)"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">报告详情</a></li>
+        <li role="presentation" data-ng-class="{'active':viewType==2,'Js_viewType':true}" data-ng-click="changeViewType(2)"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">评论回复(<span data-ng-bind="comment_count" data-ng-bind="reportList.length"></span>)</a></li>
+    </ul>
+<div class="panel panel-default interior-content">
+
+
+        <!-- Nav tabs -->
+
+    <div>
+        <!-- Tab panes -->
+        <div class="tab-content" >
+            <div role="tabpanel" data-ng-class="{'tab-pane':true,'active':viewType==1}" id="home">
+                    <div class="particulars">
+                        <div class="row" >
+                            <div class="row particulars_1" >
+                                <div class="col-md-3 txt-right"><span>类型：</span></div>
+                                <div class="col-md-8" data-ng-bind="detailMsg.drt_name"></div>
+                            </div>
+
+                            <div class="row particulars_1">
+                                <div class="col-md-3 txt-right"><span>提交时间：</span></div>
+                                <div class="col-md-8" >
+                                	<span class="submit-time"  data-ng-bind="detailMsg.dr_created|date:'yyyy-MM-dd HH:mm:ss'"></span>
+                                </div>
+                            </div>
+
+                            <div class="row particulars_1">
+                                <div class="col-md-3 txt-right"><span>报告提交人：</span></div>
+                                <div class="col-md-8" >
+                                	<span class="report-name"  data-ng-bind="detailMsg.m_username"></span>
+                                </div>
+                            </div>
+
+                            <div class="row particulars_1">
+                                <div class="col-md-3 txt-right"><span>所属部门：</span></div>
+                                <div class="col-md-8" data-ng-if="detailMsg.cd_names.length>0">
+                                    <span class="submit-time" data-ng-repeat="rec in detailMsg.cd_names" data-ng-bind="$last ? rec.cd_name : rec.cd_name"></span>
+                                </div>
+                                <div class="col-md-8" data-ng-if="detailMsg.cd_names.length<=0">
+                                    <span class="submit-time" data-ng-bind="detailMsg.shortname"></span>
+                                </div>
+                            </div>
+
+                            <div class="row particulars_1">
+                                <div class="col-md-3 txt-right"><span>报告标题：</span></div>
+                                <div class="col-md-8" data-ng-bind="detailMsg.dr_subject"></div>
+                            </div>
+
+                            <div class="row particulars_1" data-ng-repeat="item in detailMsg.dr_content">
+                                <div data-ng-if="item.type | isTextx">
+                                    <div class="col-md-3 txt-right" >
+                                        <span data-ng-bind="item.title + '：'"></span>
+                                    </div>
+                                    <div class="col-md-8">
+                                    	<span class="submit-time" data-ng-bind="item.content"></span>
+                                    </div>
+                                </div>
+                                <div data-ng-if="item.type == 'img'">
+                                    <div class="col-md-3 txt-right" ><span data-ng-bind="item.title + '：'"></span></div>
+                                    <div class="col-md-8 tupian">
+                                        <a data-ng-repeat="obj in item.content" data-ng-href="{{obj.url}}" target="_blank">
+                                            <img style="width:64px;height: 64px;" class="img-thumbnail" data-ng-src="{{obj.url}}"  alt=""/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row particulars_1">
+                                <div class="col-md-3 txt-right"><span>接收人：</span></div>
+                                <div class="col-md-8">
+                                    <span class="report-name" data-ng-repeat="rec in detailMsg.locus[0].recipient" data-ng-bind="$last ? rec.m_username : rec.m_username + ','"></span>
+                                </div>
+                            </div>
+
+                            <div class="row particulars_1">
+                                <div class="col-md-3 txt-right"><span>抄送人：</span></div>
+                                <div class="col-md-8">
+                                    <span  class="report-name" data-ng-repeat="cc in detailMsg.locus[0].copytos" data-ng-bind="$last ? cc.m_username : cc.m_username + ','"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="row particulars_1" data-ng-repeat="forward in detailMsg.locus">
+                                <div data-ng-if="$index >= 1 ">
+                                    <div class="col-md-3 txt-right">
+                                        <span>转发轨迹：<br /></span>
+                                        <b class="gj-time" data-ng-bind="forward.dr_created*1000 | date:'yyyy-MM-dd HH:mm'"></b>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <span data-ng-bind="forward.forword_uname + ' 转发给'"></span> <span data-ng-repeat="fw in forward.recipient" data-ng-bind="$last ? fw.m_username : fw.m_username + ','"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="waibtn">
+    <a data-ng-href="#/app/page/dailyreport/main" class="btn btn-default return">返回</a>
+    <button type="button" class="btn btn-danger shanchu" data-ng-click="reportDetail()">删除</button>
+
+</div>
+            </div>
+
+<!--评论回复-->
+            <div role="tabpanel" data-ng-class="{'tab-pane':true,'active':viewType==2}" id="profile">
+                <div data-ng-show="reportList.length == 0" style="text-align: center;">该报告暂无评论</div>
+                <ul data-ng-if="reportList.length > 0" class="list-group">
+                    <li class="list-group-item" data-ng-repeat="item in reportList">
+                        <div class="report-commentlist-box">
+                            <div class="avatar">
+                                <img data-ng-src="{{item.m_face}}" alt="" class="portrait"/>
+                            </div>
+                            <div class="comment-context-margin">
+                                <div>
+                                    <span data-ng-bind=" item.m_username "></span><span class="commentTitleTxt">发表于</span><span data-ng-bind="item.drp_created | date:'yyyy-MM-dd HH:mm:ss'"></span>
+                                </div>
+                                <div class="comment-item-message">
+                                    <span data-ng-bind="item.drp_message"></span>
+                                </div>
+                                <p class="comment-item-user" data-ng-bind="item.drp_comment_user+'：'+item.drp_comment_content" data-ng-if="item.drp_comment_user">
+                                </p>
+                                <div class="comment-item-removeBtn">
+                                    <a data-ng-click="remove(item)">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        <span>删除</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div data-ng-show="reportList.length > 0" colspan="7" class="text-right vcy-page"
+                    poler-pagination="polerPaginationCtrl" download="getReportPage(page)">
+                    <!-- 分页 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>

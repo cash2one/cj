@@ -1,0 +1,17 @@
+
+    <div class="contacts-search-box clearfix">
+        <div class="mod_photo_uploader">
+            <div class="photo-scrollable js-contacts-form-row">
+            <% if (typeof contacts != "undefined") { %>
+                <% $.each(contacts, function(k, item) { %>
+                    <a id="people_<%=item.id%>"><span><%=item.name%></span><input name="<%=item.input_name%>" value="<%=item.id%>" type="hidden"></a>
+                <% })%>
+            <% } %>
+            </div>
+        </div>
+        <div  class="search-contacts">
+              
+            <a id="js-call-contacts" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext">联系人</a>
+        </div>
+    </div>
+ 

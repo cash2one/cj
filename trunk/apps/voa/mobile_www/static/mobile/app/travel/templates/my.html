@@ -1,0 +1,77 @@
+<div class="" id="my">
+	<div data-role="content" class="ui-content jqm-content" >
+		<ul data-role="listview" class="info ui-alt-icon ui-nodisc-icon">
+			<li data-icon="false">
+				<a href="javascript:;" class="thumbnail">
+					<% console.log(window.userinfo);%>
+					<img src="<%=window.userinfo.m_face%>" class="thumbnail">
+					<h2>员工帐号:<%=window.userinfo.m_mobilephone%></h2>
+					<!-- <p>昨天提成：<span><%=sales_counts.yesterday%></span>元</p> -->
+				</a>
+			</li>
+		</li>
+	</ul>
+	<ul class="crm js-container clearfix" data-role="listview" data-inset="true">
+		<li class="js-item">
+			<div class="item-box my-order">
+				<a href="#/goods_order_manage" class="js-cover">
+					<div class="title"><span class="icon icon-order"></span>我的订单</div>
+					<p>
+						今日订单：
+						<span><%=sales_counts.order_num%>笔</span>
+					</p>
+				</a>
+			</div>
+		</li>
+		<!--
+		<li class="js-item">
+			<div class="item-box">
+				<a href="#/results" class="js-cover">
+					<div class="title"><span class="icon icon-results"></span>我的业绩</div>
+					<p>
+						今日收益：
+						<span class="money"><%=sales_counts.today%>元</span>
+					</p>
+				</a>
+			</div>
+		</li>
+
+		<li class="js-item">
+			<div class="item-box">
+				<a href="/frontend/superreport/index" class="js-cover">
+					<div class="title"><span class="icon icon-data"></span>我的数据</div>
+				</a>
+			</div>
+		</li>-->
+		<li class="js-item">
+			<div class="item-box">
+				<a href="#/goods_list" class="js-cover">
+					<div class="title"><span class="icon icon-shop"></span>我的微店</div>
+				</a>
+			</div>
+		</li>
+		<li class="js-item">
+			<div class="item-box">
+				<a href="#/customers_list" class="js-cover">
+					<div class="title"><span class="icon icon-customer"></span>我的客户</div>
+				</a>
+			</div>
+		</li>
+		<li class="js-item">
+			<div class="item-box">
+				<a href="/frontend/talk/index?__view=list" class="js-cover">
+					<div class="title"><span class="icon icon-message"></span>我的消息</div>
+				</a>
+			</div>
+		</li>
+		<!-- <li class="js-item">
+			<div class="item-box">
+				<a href="#/my_qrcode" class="js-cover">
+					<div class="title"><span class="icon icon-qr"></span>我的二维码</div>
+				</a>
+			</div>
+		</li> -->
+	</ul>
+
+</div>
+</div>

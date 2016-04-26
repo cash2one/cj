@@ -1,0 +1,30 @@
+.btn {
+  display: inline-block;
+  padding: .107rem .375rem;
+  margin-bottom: 0;
+  font-size: .56em;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: .03125rem solid transparent;
+  border-radius: .156rem;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #00a5ff;
+  border-color: #00a5ff;
+}

@@ -1,0 +1,30 @@
+<!--新建标签-->
+<div class="modal-content" data-ng-controller="AddTagCtrl">
+    <div class="modal-header contacts-img">
+        <button type="button" class="close" data-ng-click="$dismiss()">×</button>
+        <h4 class="modal-title">添加标签</h4>
+    </div>
+    <form name="form_member_fields" method="post">
+        <div class="props-content">
+            <div>
+                <div>
+                    <label>
+                        <span class="text-danger">*</span>
+                        <span>标签名称</span>
+                        <input type="text" data-ng-model="tagName" maxlength="16"
+                               placeholder="最多输入16个汉字"/>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <span>&nbsp&nbsp&nbsp排&nbsp序&nbsp号&nbsp</span>
+                        <input type="number" min="0" data-ng-model="order" />
+                    </label>
+                </div>
+            </div>
+            <div class="props-foot-right">
+                <button type="button" class="btn btn-info" data-ng-click="apply()">确认</button>
+            </div>
+        </div>
+    </form>
+</div>

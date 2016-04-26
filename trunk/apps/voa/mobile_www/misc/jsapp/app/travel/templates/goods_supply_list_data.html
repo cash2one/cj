@@ -1,0 +1,26 @@
+<% $.each(goods.data, function (key, item){ %>
+    <li <% if (item.pulled) { %>
+        data-icon="check"
+        <% } %>
+        >
+        <div class="supply_content">
+            <h4 class="js-subject">
+            <a href="#/goods_detail/<%=item.dataid%>/1">
+                <%=item.subject%></a></h4>
+            <label class="money js-price">
+                ¥
+                <%=item.price%></label>
+            <p>
+                <span class="supply_lable">14-11-09结束</span>
+                <span class="supply_lable red">60人团</span>
+            </p>
+            <% if (null == item.pulled) { %>
+            <a href="#" data-dataid="<%=item.dataid%>" class="js-supply-add add"></a>
+
+            <% } %> 
+            <% if (null != item.pulled) { %>
+            <span class="add_gray" alt="已添加"></span>
+
+            <% } %> </div>
+    </li>
+    <% }); %>

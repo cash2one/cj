@@ -1,0 +1,16 @@
+INSERT INTO `{$prefix}blessing_redpack_setting{$suffix}` (`key`, `value`, `type`, `comment`, `status`, `created`, `updated`, `deleted`) VALUES
+('invite_department', '', '0', '自由红包注册邀请的部门', '1', '0', '0', '0'),
+('mchid', '', '0', '微信支付商家号', '1', '1450756716', '1450757277', '0'),
+('mchkey', '', '0', '微信支付商家秘钥', '1', '1450756716', '1450757277', '0'),
+('qrcode_id', '', '0', '企业号二维码id', '1', '0', '0', '0'),
+('perpage', '10', '0', '每页记录数', '1', '0', '1448346162', '0'),
+('pluginid', '43', '0', '插件id', '1', '0', '1448100924', '0'),
+('agentid', '0', '0', '应用id', '1', '0', '0', '0'),
+('redpack_id', '0', '0', '扫码活动红包ID', '1', '0', '1448346162', '0'),
+('redpack_max', '20000', '0', '红包最大值', '1', '0', '1448346162', '0'),
+('redpack_min', '100', '0', '红包最小值', '1', '0', '1448346162', '0'),
+('redpack_url', '/h5/index.html#/app/page/redpacket/chat-list', '0', '红包首页url', '1', '0', '0', '0'),
+('register_url', '/h5/index.html#/app/page/redpacket/enter-information', '0', '红包扫码注册页面url', '1', '0', '0', '0'),
+('wxpay_certificate1', '', '1', '微信支付证书1', '1', '0', '1448346162', '0'),
+('wxpay_certificate2', '', '1', '微信支付证书2', '1', '0', '1448346162', '0'),
+('wxpay_certificate3', '', '1', '微信支付证书3', '1', '0', '1448346162', '0');

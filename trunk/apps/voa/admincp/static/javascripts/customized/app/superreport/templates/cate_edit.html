@@ -1,0 +1,39 @@
+<!-- Modal -->
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">编辑</h4>
+                            </div>
+                            <div class="modal-body">
+                        
+
+                                <form id="form-adminer-edit" class="form-horizontal font12" role="form" method="POST" action="">
+                                <input type="hidden" name="classid" value="<%=classid%>" />
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">分类名称</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="classname" placeholder="分类名称">
+                                        </div>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="ca_password" class="col-sm-2 control-label">父级</label>
+                                        <div class="col-sm-10">
+                                            <select name="pid" class="form-control">
+                                            <option value="0">选择父类</option>
+                                            <% $.each(pcate, function (k, item) { %>
+                                            <option value="<%=item.classid%>"><%=item.classname%></option>
+                                            <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+                                </form>
+                            </div> <!-- / .modal-body -->
+                            <div class="modal-footer">
+                                <a href="#/cate" class="btn btn-default">返回</a>
+                                <button type="button" class="btn btn-primary" >保存</button>
+                            </div>
+                        </div> <!-- / .modal-content -->
+                    </div> <!-- / .modal-dialog -->
+              

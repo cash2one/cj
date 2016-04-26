@@ -1,0 +1,123 @@
+<div data-ng-controller="newReportModelCtrl">
+    <div class="stat-panel">
+        <div class="stat-row">
+            <!-- left -->
+            <div class="stat-cell col-sm-4 padding-sm-hr bordered no-border-r valign-top no-padding"
+                 style="background-color:#f5f5f5;">
+                 <div class="iphoneBox">
+                 	<div class="iphoneContextBox">
+                 		<div class="iphoneContent" id="Js_iphoneContent">
+                 			<div class="iphoneModelList" data-ng-repeat="mi in assemblyModel.assemblyList">
+                 				<div data-ng-if="mi.type=='text'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div class="imitateAssembly imitateTypeText"></div>
+                 				</div>
+                 				<div data-ng-if="mi.type=='textarea'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div class="imitateAssembly imitateTypeTextarea"></div>
+                 				</div>
+                 				<div data-ng-if="mi.type=='number'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div class="imitateAssembly imitateTypeText"></div>
+                 				</div>
+                 				<div data-ng-if="mi.type=='radio'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div data-ng-class="{rcNoFocus:!$first,imitateTypeRadio:true,imitateTypeRc:$first}" ng-repeat="n in mi.value"><s data-ng-class="{radionfc:!$first}"></s>{{n.name}}</div>
+                 				</div>
+                 				<div data-ng-if="mi.type=='checkbox'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div data-ng-class="{rcNoFocus:!$first,imitateTypeCheckbox:true,imitateTypeRc:$first}" ng-repeat="n in mi.value"><s></s>{{n.name}}</div>
+                 				</div>
+                 				<div data-ng-if="mi.type=='date'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div class="imitateAssembly imitateTypeText"></div>
+                 				</div>
+                 				<div data-ng-if="mi.type=='time'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div class="imitateAssembly imitateTypeText"></div>
+                 				</div>
+                 				<div data-ng-if="mi.type=='dateandtime'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div class="imitateAssembly imitateTypeText"></div>
+                 				</div>
+                 				<div data-ng-if="mi.type=='img'">
+                 					<p>{{mi.title}}<span data-ng-if="mi.is_null"> *</span></p>
+                 					<div class="imitateTypeImages">
+                 						<i></i>
+                 					</div>
+                 				</div>
+                 			</div>
+                 		</div>
+                 	</div>
+                 </div>
+            </div>
+            <!-- right 添加新建报告前台模板组件 -->
+            <div class="stat-cell col-sm-8 bordered no-padding" style="overflow:hidden; background-color: #f5f5f5;">
+            	<div class="panel-body" style="background-color: #f5f5f5;">
+            		<div style="border-bottom: 1px solid #ccc;">
+	            		<div class="form-group">
+	            			<div class="row col-sm-10">
+			            		<label class="control-label phoneModelLabelTxt">报告类型名称：</label>
+			            		<div class="col-md-6 col-sm-5">
+									<input type="text" class="form-control js-askfor-input form-small askfor-input" id="temp_title" placeholder="最多输入10个汉字" maxlength="10" data-ng-model="assemblyModel.drt_name" >
+								</div>
+			            	</div>
+	            		</div>
+	            		<div class="form-group">
+	            			<div class="row col-sm-10">
+			            		<label class="control-label phoneModelLabelTxt">排序号：</label>
+			            		<div class="col-md-6 col-sm-5">
+									<input type="text" class="form-control js-askfor-input form-small askfor-input"data-ng-model="assemblyModel.drt_sort" placeholder="输入排序号" maxlength="5">
+								</div>
+			            	</div>
+	            		</div>
+	            		<div class="form-group">
+	            			<div class="row col-sm-10">
+			            		<label class="control-label phoneModelLabelTxt">是否启用：</label>
+			            		<div class="col-md-6 col-sm-5">
+			            			<label class="reportIsUse">
+			            				<input type="radio" name="isuse" data-ng-model="assemblyModel.drt_switch" value="1">启用
+			            			</label>
+			            			<label class="reportIsUse">
+			            				<input type="radio" name="isuse" data-ng-model="assemblyModel.drt_switch" value="0">禁用
+			            			</label>
+								</div>
+			            	</div>
+	            		</div>
+	            		<div class="form-group">
+	            			<div class="row col-sm-12">
+			            		<label class="control-label phoneModelLabelTxt">可见范围：</label>
+			            		<div class="col-md-8 pmltBox">
+			            			<a class="{{rvrb_all_class}} select-btn" data-ng-click="rvrbAll()">全公司</a>
+			            			<a class="{{rvrb_part_class}} select-btn" data-ng-click="rvrbPart()">指定部门</a>
+								</div>
+			            	</div>
+	            		</div>
+	            		<div class="form-group"  data-ng-show="depList.length > 0">
+		            		<div class="row col-sm-10">
+			            		<label class="control-label phoneModelLabelTxt"></label>
+			            		<div class="col-md-6 col-sm-5 depListBox">
+									<span data-ng-repeat="dep in depList" class="biaoqian">
+			            			<span class="biaoqian-1">{{dep.name}}</span>
+									</span>
+								</div>
+			            	</div>
+		            	</div>
+	            	</div>
+	            	<div class="assemblyParentBox">
+	            		<assembly-input-box my-data="assemblyModel.assemblyList" my-fn="assemblyModel.fnList" my-len=15 enter-len=10></assembly-input-box>
+	            	</div>
+            	</div>
+            	<div class="assemblySaveBox clearfix">
+            		<div class="col-md-1 col-md-offset-3">
+            			<a class="btn btn-success btn-lg select-btn" data-ng-click="save()">保存</a>
+            		</div>
+            		<div class="col-md-1 col-md-offset-1">
+            			<a class="btn btn-default btn-lg select-btn" data-ng-href="#/app/page/dailyreport/ReportTemplate">返回</a>
+            		</div>
+            	</div>
+            </div>
+
+        </div>
+    </div>
+</div>

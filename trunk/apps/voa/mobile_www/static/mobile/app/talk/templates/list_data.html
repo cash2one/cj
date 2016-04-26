@@ -1,0 +1,10 @@
+<li data-icon="false" rel="<%= item.tv_uid %>" update="<%= item.sendtime %>">
+    <a href="#/chat_sale/<%= item.goodsid %>/<%= item.tv_uid %>" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+        <h3><%= item.username %></h3>
+        <p><%= item.message %></p>
+        <p class="right-time">
+	        <%= item.lasttsStr %>
+	        <% if(item.newct > 0){ %><span></span><% } %><%= item.newct > 0 ? item.newct + '条未读' : '' %>
+        </p>
+    </a>
+</li>

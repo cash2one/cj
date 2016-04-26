@@ -1,0 +1,67 @@
+@charset "utf-8";
+*{font-family:'Microsoft YaHei UI','Microsoft YaHei',SimSun,'Segoe UI',Tahoma,Helvetica,Sans-Serif;}
+body{background:#f5f5f5}
+*{font-family:'Microsoft YaHei UI','Microsoft YaHei',SimSun,'Segoe UI',Tahoma,Helvetica,Sans-Serif;}
+
+.ht-top-navigation{height:22px;font-size:12px;font-family:"ËÎÌו"}
+	.ht-top-left{float:left;margin-left:10px;}
+		.ht-top-left a{color:#00C;text-decoration:underline;}
+			.ht-top-left a:hover{text-decoration:none;}
+	.ht-top-right{float:right;margin-right:10px;height:22px;line-height:22px;}
+		.ht-top-right a{color:#00C;text-decoration:underline;}
+			.ht-top-right a:hover{text-decoration:none;}
+			.ht-top-right a.red{color:red;font-weight:bold;}
+	
+.ht-header{margin:0 0 10px 0;background:#fff;}
+.ht-navigation{background:#2b6aaa url(nav_bg.png) repeat-x scroll 0 0;height:41px;}
+	.ht-navigation .container{background:url(nav_bg.png) repeat-x scroll 0 0;height:41px;color:#fff;}
+	.navLink{overflow:hidden;height:41px;}
+	.navLink a{color:#FFFFFF;display:block;float:left;font-family: "ËÎÌו";font-size: 14px;font-weight: bold;height: 41px;line-height:41px;width:5.88%;text-align:center;overflow:hidden;text-decoration:none;vertical-align:middle;}
+		.navLink a:hover,.navLink a.current{text-decoration:none;background:#255c94;color:#ff0}
+	.ht-logo h1{margin:0;padding:0;}
+
+	.ht-search{margin-top:20px;}
+		.ht-search .input-wrapper {-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;border-color: #A7A7A7 #C7C7C7 #CDCDCD #C3C3C3;border-image: none;border-style: solid;border-width: 1px;display: inline-block;height: 32px;margin-right: 5px;vertical-align: top;width: 408px;}
+			.ht-search .input-wrapper input{background: none repeat scroll 0 0 #FFFFFF;border: 0 none;font: 16px/22px arial;height: 22px;margin: 5px 0 0 7px;outline: 0 none;padding: 0;width: 398px;}
+			.ht-search .search-btn{background: url(search_button.png) repeat scroll 0 0 #DDDDDD;border: 0 none;cursor: pointer;font-size: 14px;height:32px;padding:0;width:95px;}
+
+.ht-footer{margin-top:10px;text-align:center;font-size:12px;/*border-top:2px solid #2b6aaa;*/font-family:"ËÎÌו"}
+	.ht-footer .container{padding-top:10px;background:none;padding-bottom:20px;}
+		.ht-footer-left{text-align:left;}
+		.ht-footer-right{text-align:right}
+
+.common-warnning{background:#F2F8FF;border:1px solid #B2DAFF;margin-top:40px;margin-bottom:40px;padding:40px;font-size:14px;}
+	.common-warnning-title{font-size:32px;font-weight:normal;background:url(info_error.png) no-repeat 0 4px;text-indent:40px;height:40px;line-height:40px;}
+	.common-warnning-msg{margin-left:40px;}
+
+.bd-carousel{border:1px solid #000;}
+.bd-carousel-inner{visibility:hidden;}
+.bd-carousel-263-197{width:263px;height:197px;overflow:hidden;margin-bottom:5px;}
+.bd-carousel-263-197 img{width:263px;height:197px;border:none;}
+
+.bd-li{margin-left:0;padding-left:12px;}
+
+.fixBoxClass{top:10px;}
+
+#wrapper{border:1px solid #e5e5e5;background:#fff;}
+
+/* scrolltotop */
+.scrolltotop{display:none}
+.scrolltotop a
+	,.scrolltotop a:hover{background:url(scroll_to_top.png) no-repeat}
+.scrolltotop a{
+	background-position:0 0;float:left;height:50px;overflow:hidden;width:50px;position:fixed;bottom:35px;cursor:pointer;right:20px;outline:none;
+	_position:absolute;_right:auto;
+	_left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft, 10)||0)-(parseInt(this.currentStyle.marginRight, 10)||20));
+	_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||20)-(parseInt(this.currentStyle.marginBottom, 10)||20)));
+}
+.scrolltotop a:hover{background-position:-51px 0px;}
+.scrolltotop i{display:none;}
+/*~~~~~~~~~~~~~~~~~~~*/
+
+/* page */
+.pageWrapper{font-size:14px;height:30px;text-align:center;margin:20px 0;}
+	.pageWrapper .pagination{margin-top:0;margin-bottom:0;}
+/*~~~~~~~~~~~~~~*/
+
+.bd-carousel-inner h2.title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}

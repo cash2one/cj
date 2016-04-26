@@ -1,0 +1,31 @@
+<div data-role="header">
+    <h1 class="ui-title" role="heading" aria-level="1">货源</h1>
+    <a href="#/goods_list" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+</div>
+<!-- /header -->
+<div data-role="content" class="ui-content jqm-content" data-iscroll id="goods_supply">
+<div class="iscroll-pulldown">
+        <span class="iscroll-pull-icon"></span>
+        <span class="iscroll-pull-label"></span>
+      </div>
+    <ul class="list iscroll-wrapper" data-role="listview" data-inset="true"  >
+   <%=data%>
+   </ul>
+    <div class="iscroll-pullup">
+        <span class="iscroll-pull-icon"></span>
+        <span class="iscroll-pull-label"></span>
+      </div>
+</div>
+   
+<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
+    <p id="question">确定添加本产品？</p>
+    <div class="ui-grid-a">
+        <div class="ui-block-a ui-btn-inline">
+            <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a " data-rel="back">添加</a>
+        </div>
+        <div class="ui-block-b ui-btn-inline">
+            <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a " data-rel="back">取消</a>
+        </div>
+    </div>
+</div>
+<!-- /popup -->

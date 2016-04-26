@@ -1,0 +1,228 @@
+<!-- 部门递归模板 -->
+<script id="/admincp/static/ng-modules/member/views/dep-node.html" type="text/ng-template">
+    <div class="main-name clearfix" data-ng-class="{gaoliang:dep.isActive}">
+        <span class="main-icon" data-ng-click="toggleDep(dep,$event)">
+            <i class="fa fa-caret-right main-pos"
+               data-ng-class="{'fa-caret-down':dep.isOpen, 'fa-caret-right':!dep.isOpen}"></i>
+            <i class="fa fa-folder main-pos"></i>
+        </span>
+        <span title="{{dep.cd_name}}" class="main-width" data-ng-bind="dep.cd_name"
+              data-ng-click="getDepMemberList(dep,$event)"> <!-- 部门名称 --> </span>
+        <div class="main-window" style="position: relative;">
+            (<span data-ng-click="getDepMemberList(dep,$event)" data-ng-bind="dep.cd_usernum"></span>)
+            <span class="dropdown-toggle" data-ng-click="showPopup(dep,$event);">
+                <i class="fa fa-caret-square-o-down"></i>
+            </span>
+            <!--编辑小弹窗-->
+            <div data-ng-show="dep.isDialog">
+                <ul class="dropdown-menu" style="left:inherit;right:-87px;display: block;">
+                    <!-- 弹窗部门 -->
+                    <li><a href="javascript:void(0);"
+                           data-ng-click="addChildDepartment(dep)">添加子部门</a></li>
+                    <!-- 弹窗部门_初始化 -->
+                    <li data-ng-if="!(dep.cd_id == departmentList[0].cd_id)">
+                        <a href="javascript:void(0);" data-ng-click="editChildDepartment(dep)">编辑</a>
+                    </li>
+                    <!-- 弹窗保险机制是否确定 -->
+                    <li data-ng-if="!(dep.cd_id == departmentList[0].cd_id)">
+                        <a href="javascript:void(0);" data-ng-click="delDepartment(dep)">删除</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 部门下的子部门 -->
+    <ul data-ng-show="dep.isOpen">
+        <li data-ng-repeat="dep in dep.childList"
+            class="main-li"
+            data-ng-include="'/admincp/static/ng-modules/member/views/dep-node.html'">
+        </li>
+    </ul>
+</script>
+<!-- 页面view -->
+<div data-ng-controller="MemberCtrl">
+    <div class="stat-panel">
+        <div class="stat-row">
+            <!-- left -->
+            <div class="stat-cell col-sm-3 padding-sm-hr bordered no-border-r valign-top no-padding"
+                 style="background-color:#f5f5f5;">
+                <div class="category main-input">
+                    <!-- 搜索和添加 -->
+                    <div class="padding-sm border-b" style="position: relative;">
+                        <!-- 搜索 调用部门列表接口 -->
+                        <div  class="pull-left">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control tag-input" placeholder="搜索部门"
+                                       data-ng-model="searchDepartment"
+                                       data-ng-keydown="searchEnterDep($event)" />
+                                <span class="input-group-btn" data-ng-click="search()">
+                                    <button class="btn" type="button">
+                                        <span class="fa fa-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 添加 显示下面的ul -->
+                        <button class="add-sub-cate btn btn-info pull-right btn-col"
+                                data-ng-click="searchDialog($event)">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <div data-ng-show="isSearchDialog">
+                            <ul class="dropdown-menu"
+                                style="min-width: 100px;left: inherit;top:43px;right:-49px;display: block;" >
+                                <!-- 弹窗部门 -->
+                                <li><a href="javascript:void(0);"
+                                       data-ng-click="addChildDepartment()">添加部门</a></li>
+                                <li><a data-ng-href="#/app/page/member/props">设置属性</a></li>
+                                <li><a data-ng-href="#/app/page/member/tag">设置标签</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="border-t"></div>
+                    <!-- 部门 -->
+                    <div class="slimScrollDiv all-overflow">
+                        <div class="main-ul" data-loading="0" data-layer="10">
+                           <ul>
+                               <!--部门输出-->
+                               <li class="main-li" data-ng-repeat="dep in departmentList"
+                                   data-ng-include="'/admincp/static/ng-modules/member/views/dep-node.html'">
+                               </li>
+                           </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- right 表格选人 -->
+            <div class="stat-cell col-sm-9 bordered no-padding" style="overflow:hidden;">
+                <div class="panel-heading" style="background-color: #f5f5f5;">
+                    <div class="border-b">
+                        <!-- 调用选人组件 -->
+                        <a href="javascript:void(0);" class="btn btn-info" data-ng-click="addMember()">
+                            <i class="fa fa-plus"></i>添加员工
+                        </a>
+                        <a class="btn btn-warning" data-ng-href="/admincp/manage/member/impmem">批量导入</a>
+                        <a class="btn btn-warning" href="javascript:void(0);" data-ng-click="export()">批量导出</a>
+                        <div class="panel-heading-controls" style="width:30%;margin-top: 0;">
+                            <form onsubmit="return false;">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="搜索员工"
+                                           data-ng-model="searchMember" data-ng-keydown="searchEnterMem($event)" />
+                                    <span class="input-group-btn" data-ng-click="searchMemberFn()">
+                                        <button class="btn" type="button">
+                                            <span class="fa fa-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover font12 margin-0"
+                       data-ng-show="memberList.length!=null">
+                    <thead>
+                    <tr class="title">
+                        <td class="text-left title-checkbox">
+                            <label class="checkbox" data-ng-click="allChecked($event)">
+                                <!--span上加.lbl-choose后出现选中效果-->
+                                <span class="lbl lbl-width"
+                                      data-ng-class="{'lbl-choose':isAllChecked}">全选</span>
+                            </label>
+                        </td>
+                        <td class="title-name">姓名</td>
+                        <td class="title-sex">性别</td>
+                        <td class="title-job">职位</td>
+                        <td class="title-phone">手机</td>
+                        <td >邮箱</td>
+                        <td class="title-status">
+                            <div class="btn-group btn-group-xs">
+                                <button type="button" class="btn">状态</button>
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-caret-down" style="line-height: 1"></i>
+                                </button>
+                                <ul id="ul_member_status" class="dropdown-menu status-width" style="min-width:70px;">
+                                    <li data-ng-click="memberStatus(1)">
+                                        <a href="javascript:void(0);" data-status="1">已关注</a>
+                                    </li>
+                                    <li data-ng-click="memberStatus(4)">
+                                        <a href="javascript:void(0);" data-status="4">未关注</a>
+                                    </li>
+                                    <li data-ng-click="memberStatus(2)">
+                                        <a href="javascript:void(0);" data-status="2">禁用</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                        <tr class="row_member contacts-img" data-ng-click="detail($event,list)"
+                            data-ng-repeat="list in memberList">
+                            <td class="text-left"  data-ng-click="checkbox($event,list)">
+                                <label class="px-single" >
+                                    <span class="lbl" data-ng-class="{'lbl-choose':list.ischecked}" ></span>
+                                </label>
+                            </td>
+                            <td class="text-left td_name">
+                                <img data-ng-src="{{list.m_face}}" />
+                                <span data-ng-bind="list.m_username"></span>
+                            </td>
+                            <td data-ng-bind="list.m_gender" class="text-left title-sex"></td>
+                            <td class="text-left title-job" data-ng-bind="list.cj_name"></td>
+                            <td data-ng-bind="list.m_mobilephone" class="text-left title-phone"></td>
+                            <td data-ng-bind="list.m_email" class="text-left title-email"></td>
+                            <td data-ng-bind="list.m_qywxstatus" class="text-left title-status"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+
+                        <tr>
+                            <td colspan="7" class="text-right vcy-page"
+                                poler-pagination="polerPaginationCtrl" download="getMemberPage(page)">
+                                <!-- 分页 -->
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="no-infor" data-ng-show="memberList.length==null">暂无任何数据</div>
+                <!--人员详情-->
+                <div class="modal-content main-info contacts-img" data-ng-class="{active:isMemberDetail}"
+                     data-ng-include="'/admincp/static/ng-modules/member/views/detail.html'"
+                     data-ng-click="clearClick($event)"></div>
+
+                <!--批量选择-->
+                <div class="modal-content main-info contacts-img" data-ng-class="{active:isMemberBatch}"
+                     data-ng-click="clearClick($event)">
+                    <div class="modal-header contact-detail-header" style="background-color: #f5f5f5;">
+                        <button type="button" class="close" data-ng-click="closeMemberBatch()">×</button>
+                        <h4 class="modal-title">批量选择</h4>
+                    </div>
+                    <div class="modal-body contact-detail-body padding-sm" style="background-color:#fdfdfd;">
+                        <div class="row">
+                            <div id="div_select_col_72" class="col-md-3" data-ng-repeat="mem in memList">
+                                <div class="img-box">
+                                    <img data-ng-src="{{mem.m_face}}" alt="{{mem.name}}">
+                                    <span>{{mem.m_username | ignoreLength:4}}</span>
+                                    <button type="button" class="close"
+                                            data-ng-click="cancelMember($event,mem)" >
+                                        <i class="fa fa-minus-circle text-danger"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer contact-detail-footer text-left" style="padding-top: 9px;background-color: #f5f5f5;">
+                        <button type="button" id="btn_member_select_invite" class="btn btn-info"
+                                data-ng-click="batInvitePost()">邀请关注</button>
+                        <button type="button" class="btn btn-info" name="btn_member_detail_invite"
+                                data-ng-click="moveMem()">移动</button>
+                        <button type="button" id="btn_member_select_delete" class="btn btn-danger"
+                                data-ng-click="batchMemberDetail()">删除</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

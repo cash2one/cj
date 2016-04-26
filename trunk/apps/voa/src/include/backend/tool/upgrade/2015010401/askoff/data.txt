@@ -1,0 +1,4 @@
+INSERT INTO `oa_askoff_setting` (`aos_key`, `aos_value`, `aos_type`, `aos_comment`, `aos_status`, `aos_created`, `aos_updated`, `aos_deleted`) VALUES
+('upload_image',	'1',	0,	'是否允许上传图片',	1,	1419249045,	0,	0),
+('upload_image_max_count',	'10',	0,	'最多允许上传的图片数',	1,	1419249045,	0,	0),
+('upload_image_min_count',	'0',	0,	'最少允许上传的图片数',	1,	1419249045,	1419558911,	0);

@@ -1,0 +1,33 @@
+<div class="table-light" style="width: 70%;" data-ng-controller="settingCtrl">
+    <div class="table-header">
+        <div class="table-caption font12">
+            活动分类
+        </div>
+    </div>
+    <div class="panel panel-default font12">
+        <div class="panel-body">
+            <div class="form-horizontal font12">
+                <table id="type_table" class="table table-striped table-bordered table-hover font12">
+                    <tr data-ng-repeat="type in types">
+                        <td>排序号*</td>
+                        <td>
+                            <input type="hidden" name="id" data-ng-model="type.id"/>
+                            <input type="number" min="0" class="form-control order_sort" name="order_sort" data-ng-model="type.order_sort"/>
+                        </td>
+                        <td>活动类型*</td>
+                        <td><input type="text" class="form-control title" name="title" data-ng-model="type.title" maxlength="10"
+                                   placeholder="不超过10个字符"/></td>
+                        <td>
+                            <button data-ng-if="types.length>0" type="button" class="btn delete"
+                                    data-ng-click="delete(type.id,$index)">删除</button></td>
+                    </tr>
+                </table>
+                <div class="form-group padding-sm col-sm-4">
+                    <button class="btn btn-primary" data-ng-click="save()">保存</button>
+                    <button id="add" type="button" class="btn addBtn col-sm-offset-1" data-ng-click="add()" data-ng-disabled="types.length>=maxLength">新增</button>
+                    <button type="button" class="btn btn-default col-sm-offset-1" data-ng-click="cancel()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

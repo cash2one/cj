@@ -1,0 +1,39 @@
+<!-- 设置主页 -->
+<div class="sign-in-main container-fluid" data-ng-controller="SignSetSignInCtrl">
+    <div class="con-one">
+        <dl class="row">
+            <dt class="col-md-1">签到时间范围：</dt>
+            <dd class="col-md-9">
+                <h5>签到时间点前</h5>
+                <input type="text" data-ng-model="signIn.sign_start_range"
+                       data-ng-keyup="checkValMax('signIn.sign_start_range',1,720)" placeholder="请输入小于720的数字" />
+                <h5>分钟开始</h5>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-md-1">签到规则：</dt>
+            <dd class="col-md-9">
+                <h5>超过签到时间</h5>
+                <input type="text" data-ng-model="signIn.sign_come_late_range"
+                       data-ng-keyup="checkValMax('signIn.sign_come_late_range',1,120)" placeholder="请输入小于120的数字" />
+                <h5>分钟签到记为迟到</h5>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-md-1">签到提醒：</dt>
+            <dd class="col-md-9">
+                <h5>签到时间点前</h5>
+                <input type="text"  maxlength="4" data-ng-model="signIn.sign_remind_on_rage"
+                       data-ng-keyup="checkValMax('signIn.sign_remind_on_rage',1,60)" placeholder="请输入小于60的数字" />
+                <h5>分钟提醒</h5>
+                <input class="input2" type="text" maxlength="20" data-ng-model="signIn.sign_remind_on"
+                       placeholder="请输入20字以内的字符">
+            </dd>
+        </dl>
+    </div>
+    <div class="container-fluid con-two">
+        <button repeat-submit="signInSave()" class="btn btn-primary btn-lg" >保存</button>
+        <button data-ng-click="returnPage()" class="btn btn-default btn-lg">返回</button>
+    </div>
+    <div class="con-three">提示：上述签到设置适用于常规班次的考勤规则</div>
+</div>

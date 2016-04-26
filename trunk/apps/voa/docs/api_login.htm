@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<title>API登录调试</title>
+	<style type="text/css">
+	h1{color:blue}
+	p{display:block;}
+	label{float:left;width:120px;font-size:17px;}
+	input{font-size:17px;display:block;width:62%}
+	.row{display:block;margin:20px 0}
+	.row div{display:block}
+	button{font-size:15px;padding:10px}
+	#account, #password{width:120px;}
+	#tip{color:#000;height:40px;font-size:14px}
+	#input-tip{font-size:12px;font-weight:bold;}
+	#input-tip ol{font-weight:normal}
+	</style>
+</head>
+<body>
+<!-- 存放于/api/目录内，用于调试登录前台用户 -->
+<h1>API 登录过程调试</h1>
+<form id="form" onsubmit="javascript:return false;">
+	<div class="row">
+		<label>登录账号:</label>
+		<div><input type="tel" id="account" name="account" value="" placeholder="input mobilephone" /></div>
+	</div>
+	<div class="row">
+		<label>登录密码:</label>
+		<div><input type="text" id="password" name="password" value="" placeholder="input password" /></div>
+	</div>
+	<div class="row">
+		<label>待访问的 Url:</label>
+		<div><input type="text" id="url" name="url" value="/frontend/sign/index" placeholder="visit url" /></div>
+	</div>
+	<div class="row">
+		<button type="submit">提交登录请求</button>
+		&nbsp;&nbsp;
+		<button type="button" id="check">检查当前登录状态</button>
+	</div>
+	<div id="tip"></div>
+	<div id="input-tip">
+		帮助说明：
+		<ol>
+			<li>本工具用于通过 API 登录前端以及验证 API 接口调试之用，禁止上载至线上服务器！</li>
+			<li>请将本工具存放于 OA API 目录下使用(/trunk/apps/voa/api_www/)，但禁止 Git 提交！</li>
+			<li>登录帐号可以是手机号也可以是邮箱地址</li>
+			<li>待访问的 URL 可以在登录/验证通过后，点击访问，可直接调试GET类的接口，后面再完善POST类的接口调试。</li>
+		</ol>
+		<small>by Deepseath</small>
+	</div>
+</form>
+<script type="text/javascript" src="/misc/scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/misc/scripts/md5.js"></script>
+<script type="text/javascript">
+jQuery.cookie=function (name,value,options){
+	if(typeof value!='undefined'){
+		// name and value given, set cookie
+		options=options||{};
+		if(value===null){
+			value='';
+			options.expires=-1;
+		}
+		var expires='';
+		if(options.expires&&(typeof options.expires=='number'||options.expires.toUTCString)){
+			var date;
+			if(typeof options.expires=='number'){
+				date=new Date();
+				date.setTime(date.getTime()+(options.expires*24*60*60*1000));
+			}else{
+				date=options.expires;
+			}
+			expires='; expires='+date.toUTCString();
+			// use expires attribute, max-age is not supported by IE
+		}
+		var path=options.path?'; path='+options.path:'';
+		var domain=options.domain?'; domain='+options.domain:'';
+		var secure=options.secure?'; secure':'';
+		document.cookie=[name,'=',encodeURIComponent(value),expires,path,domain,secure].join('');
+	}else{
+		// only name given, get cookie
+		var cookieValue=null;
+		if(document.cookie&&document.cookie!=''){
+			var cookies=document.cookie.split(';');
+			for(var i=0;i<cookies.length;i++){
+				var cookie=jQuery.trim(cookies[i]);
+				// Does this cookie string begin with the name we want?
+				if(cookie.substring(0,name.length+1)==(name+'=')){
+					cookieValue=decodeURIComponent(cookie.substring(name.length+1));
+					break;
+				}
+			}
+		}
+		return cookieValue;
+	}
+};
+
+var jq_tip = jQuery('#tip');
+jQuery(function(){
+	
+	jQuery('#account').val($.cookie('__api_account__'));
+	jQuery('#password').val($.cookie('__api_password__'));
+	jQuery('#url').val($.cookie('__api_url__'));
+
+	jQuery('#check').click(function(){
+		jQuery.ajax({
+			"url":"addressbook/get/departments",
+			"beforeSend":function(){
+				jq_tip.text('loading ... ...');
+			},
+			"complete":function(){
+			},
+			"dataType":"json",
+			"error":function(){
+				alert('request error');
+			},
+			"type":"get",
+			"success":function(data){
+				if (typeof(data.errcode) == 'undefined') {
+					alert('request api error');
+					return false;
+				}
+				if (!data.errcode) {
+					jq_tip.html('登录验证成功，<a href="'+jQuery.trim(jQuery('#url').val())+'" target="_blank">点击继续访问</a>').css('color','green');
+				} else {
+					jq_tip.html('errcode:'+data.errcode+'<br />'+'errmsg: '+data.errmsg).css('color','red');
+					return false;
+				}
+			}
+		});
+	});
+
+	jQuery('#form').submit(function(){
+		var account = jQuery.trim(jQuery('#account').val());
+		var password = jQuery.trim(jQuery('#password').val());
+		if (!account) {
+			alert('account is null');
+			jQuery('#account').focus();
+			return false;
+		}
+		if (!password) {
+			alert('password is null');
+			jQuery('#password').focus();
+			return false;
+		}
+		$.cookie('__api_account__', account, {"expires":365});
+		$.cookie('__api_password__', password, {"expires":365});
+		$.cookie('__api_url__', jQuery.trim(jQuery('#url').val()), {"expires":365});
+		jQuery.ajax({
+			"url":"auth/post/login/",
+			"beforeSend":function(){
+				jq_tip.text('loading ... ...');
+			},
+			"complete":function(){
+			},
+			"data":{"account":account,"password":hex_md5(password)},
+			"dataType":"json",
+			"error":function(){
+				alert('request error');
+			},
+			"type":"post",
+			"success":function(data){
+				if (typeof(data.errcode) == 'undefined') {
+					alert('request api error');
+					return false;
+				}
+				if (!data.errcode) {
+					jq_tip.html('<strong>登录成功！<a href="'+jQuery.trim(jQuery('#url').val())+'" target="_blank">点击访问</a></strong>').css('color', 'blue');
+				} else {
+					jq_tip.html('errcode:'+data.errcode+'<br />'+'errmsg: '+data.errmsg).css('color','red');
+					return false;
+				}
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

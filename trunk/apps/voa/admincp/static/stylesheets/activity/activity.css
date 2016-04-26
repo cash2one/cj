@@ -1,0 +1,29 @@
+/* 活动 */
+.ui-margin-right{
+    margin-right:10px;
+}
+.ui-badge-cornernum{
+    width:15px;
+    height:15px;
+    position: absolute;
+    font-size: 12px;
+    top: 30px;
+    color:#f74c31;
+    display: inline-block;
+    text-align: center;
+    padding: 0 6px;
+    background-clip: padding-box;
+}
+
+.unit-right{
+    right:0;
+    position:absolute;
+}
+
+.ui-apply-top{
+    padding-top:35px;
+}
+
+.hk {
+    width:150px;
+}

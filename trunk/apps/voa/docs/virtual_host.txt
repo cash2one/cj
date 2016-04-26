@@ -1,0 +1,56 @@
+apache:
+
+<VirtualHost *:80>
+	ServerAdmin zhuxun37@gmail.com
+	DocumentRoot "C:\web\wbs\trunk\apps\voa\mobile_www"
+	ServerName demo.vchangyi.com
+	ServerAlias demo.vchangyi.com
+	<IfModule mod_rewrite.c>
+		RewriteEngine on
+		RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !\.(css|eot|gif|htm|html|ico|jpeg|jpg|js|otf|php|png|svg|swf|thumb|ttf|txt|woff|xml)$
+        RewriteRule ^/(admincp|wall) /$1/index.php [L]
+
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !\.(css|eot|gif|htm|html|ico|jpeg|jpg|js|otf|php|png|svg|swf|thumb|ttf|txt|woff|xml)$
+        RewriteRule .* /index.php [L]
+	</IfModule>
+	SetEnv RUN_MODE development
+	ErrorLog "C:\web\error.log"
+	CustomLog "C:\web\access.log" common
+</VirtualHost>
+
+
+nginx:
+server {
+	listen 80;
+	server_name demo.vchangyi.com;
+	access_log /home/logs/demo.vchangyi.com-access.log combined_realip;
+	error_log /home/logs/demo.vchangyi.com-error.log crit;
+	root /data/wwwroot/vchangyi.com/apps/voa/mobile_www;
+	location ~* ^.+.(css|eot|gif|htm|html|ico|jpeg|jpg|js|otf|png|svg|swf|thumb|ttf|txt|woff|xml) {
+		root /data/wwwroot/vchangyi.com/apps/voa/mobile_www;
+		access_log /dev/null;
+		expires 10d;
+	}
+
+	location / {
+		index index.html index.htm index.php;
+		root /data/wwwroot/vchangyi.com/apps/voa/mobile_www;
+		#access_log /tmp/demo.vchangyi.com-access.log combined buffer=32k;
+
+		rewrite ^/admincp /admincp/index.php last;
+		rewrite ^/wall /wall/index.php last;
+		rewrite ^(.*)$ /index.php last;
+	}
+
+	location ~ \.php$ {
+		include fastcgi_params;
+		fastcgi_pass  unix:/tmp/php-fcgi.sock;
+		fastcgi_index index.php;
+		fastcgi_param RUN_MODE "development"
+		fastcgi_param SCRIPT_FILENAME /data/wwwroot/vchangyi.com/apps/voa/mobile_www$fastcgi_script_name;
+	}
+}

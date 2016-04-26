@@ -1,0 +1,156 @@
+/* 邀请人员 */
+body {
+	background-color: #343535;
+}
+
+
+.head {
+	height: 58px;
+	text-align: center;
+}
+.head-text {
+	color: #FFF;
+	padding-top: 5px;
+	font-size: 16px;
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Verdana, Geneva, sans-serif;
+	margin-top: 10px;
+}
+
+
+.central {
+	height: 445px;
+	margin-top: 10px;
+}
+.central-circle-back {
+	height: 90px;
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	text-align: center;
+}
+.central-circle {
+	width: 80px;
+	height: 80px;
+	border-radius: 100px;
+	background-color: #FFF;
+	margin: 0 auto;
+}
+.central-backing {
+	height: 342px;
+	background-color: #FFF;
+	position: relative;
+	top: 40px;
+	border-radius: 30px;
+	width: 85%;
+	margin: auto;
+}
+.central-backing-head {
+	background-color: #00A6FF;
+	height: 80px;
+	border-radius: 30px 30px 0 0;
+	text-align: center;
+}
+.central-backing-head-text {
+	margin: 0 auto;
+	padding-top: 48px;
+	font-size: 16px;
+	color: #FFF;
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Verdana, Geneva, sans-serif;
+}
+.central-qrcode {
+	height: 170px;
+	width: 170px;
+	margin: 31px auto;
+}
+.central-hr-area {
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	height: 5px;
+}
+.central-hr {
+	height: 5px;
+	background-color: #343535;
+}
+.central-hr-circle {
+	border: 5px solid #343535;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	border-radius: 100px;
+	background-color: #FFF;
+	margin-top: -21px;
+}
+
+
+.central-bottom {
+	text-align: center;
+	height: 139px;
+}
+.central-bottom-text {
+	margin: 0 auto;
+	position: absolute;
+	font-size: 17px;
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Verdana, Geneva, sans-serif;
+	width: 100%;
+	margin-top: 32px;
+}
+.central-bottom-text2-area {
+	width: 100%;
+	position: absolute;
+	margin: 57px auto;
+}
+.central-bottom-text2 {
+	font-size: 15px;
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Verdana, Geneva, sans-serif;
+	width: 80%;
+	margin: 5px auto;
+}
+
+
+.bottom {
+	margin-top: -44px;
+	width: 100%;
+	text-align: center;
+}
+.bottom-text {
+	font-size: 14px;
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Verdana, Geneva, sans-serif;
+	margin: 0 auto;
+	color: #9E9C9C;
+}
+
+
+/*concern  企业二维码页面*/
+.concern-text-area {
+	width: 100%;
+	text-align: center;
+}
+.concern-text {
+	font-size: 17px;
+	margin: 0 auto;
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Verdana, Geneva, sans-serif;
+}
+.concern-img {
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 12px;
+}
+.concern-success {
+	margin-left: 50px;
+}
+.share-area {
+	width: 100%;
+	text-align: center;
+}
+.share-text {
+	color: #00A6FF;
+	margin: 0 auto;
+	font-size: 14px;
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Verdana, Geneva, sans-serif;
+	margin-top: -13px;
+}
+.ui-dialog-bg {
+	background: url(../images/weixin_share.png) rgba(0,0,0,0.8) right top no-repeat;
+	background-size: 250px auto;
+}

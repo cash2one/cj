@@ -1,0 +1,29 @@
+<div data-role="header" class="mod-list-header" role="banner" id="superreport_view_header">
+    <h1 class="ui-title" role="heading" aria-level="1">
+        <input name="mode1" id="datepicker" type="text" data-role="datebox" data-options='{"mode":"datebox", "useLang": "zh-CN", "overrideDateFieldOrder":["y", "m"],"overrideDateFormat":"%Y-%m"}' value="<%= year+'-'+month %>" />
+    </h1>
+    <a id="backward" href="javascript:;" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-left ui-corner-all" data-role="button" role="button">前一月</a>
+
+    <a id="forward" href="javascript:;" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-r ui-btn-icon-right ui-corner-all">后一月</a>
+</div>
+<nav class="mod_list_nav nav">
+<a>门店列表:<%= total %></a>
+</nav>
+<div role="main" class="mod-common-list m-t-10" id="shop_list">
+    <% if(list) { %>
+    <ul class="link" data-role="listview">
+        <% $.each(list, function (key, item){ %>
+        <li data-icon="false">
+            <a href="#/month/<%= item.csp_id%>/<%= year %>/<%= month %>">
+                <h3>
+                    <span><%= item.csp_name %></span>
+                </h3>
+                <p class="ui-li-aside">
+                    <%= item.area %>
+                </p>
+            </a>
+        </li>
+        <% }); %>
+    </ul>
+    <% } %>
+</div>

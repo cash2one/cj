@@ -1,0 +1,22 @@
+<h1><%= listName %></h1>
+<div class="listContainer plugin_scrollbar">
+	
+	<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+	<div class="viewport">
+		 <div class="overview">
+			<ul>
+				<% for (var i=0, lng=list.length; i<lng; i++) { %>
+					<% var item = list[i]; %>
+					<li <%= i==lng-1
+									?'class="last"'
+									:'' %> id="anlst_<%= item.id %>">
+						<i></i>
+						<a href="#announcement/<%= item.id %>" class="title"><%= item.title %></a>
+						<p><%= item.time %>&nbsp;&nbsp;<%= item.author %></p>
+					</li>
+				<% } %>
+			</ul>
+		 </div>
+	 </div>
+		
+</div>

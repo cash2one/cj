@@ -1,0 +1,22 @@
+<ul class="pagination">
+    <li class="disabled"><a>共 {{totalNumber}} 条</a></li>
+    <li data-ng-if="curPage>1" data-ng-click="prevPage();">
+        <a href="javascript:;" title="上一页" class="point-tran"> « </a>
+    </li>
+
+    <li data-ng-class="{'active': curPage==1}" data-ng-click="goPage(1)">
+        <a href="javascript:;">1</a>
+    </li>
+
+    <li ng-repeat="page in paginationList" data-ng-class="{'active': curPage==page}"
+            data-ng-click="goPage(page)">
+        <a href="" title="5" data-ng-bind="page<0?'...':page"></a>
+    </li>
+    <!--<li class="disabled"><a>...</a></li>-->
+
+    <li data-ng-class="{'active': curPage==pages}" data-ng-hide="pages<=1"
+        data-ng-click="goPage(pages)">
+        <a href="" title="{{pages}}" data-ng-bind="pages"></a></li>
+    <!-- » -->
+    <li data-ng-if="curPage<pages" data-ng-click="nextPage()"><a href="" title="下一页"> » </a></li>
+</ul>

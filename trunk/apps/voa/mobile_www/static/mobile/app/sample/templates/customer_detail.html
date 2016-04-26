@@ -1,0 +1,67 @@
+<div data-role="header">
+    <h1>详情</h1>
+    <a href="#/customers_list" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+    <a href="#right-panel" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-alt-icon ui-nodisc-icon ">Open right panel</a>
+</div>
+<!-- /header -->
+
+<div role="main" class="ui-content jqm-content jqm-fullwidth" id="customer_datail">
+    <form>
+        <div class="head_title">基本资料</div>
+        <div class="content-view mod_common_list">
+       
+        <div class="head_title">意向产品</div>
+        <ul data-role="listview" class="mod_common_list js-follow-list love_prodeuct">
+            <li class="js-item" style="display:none">
+                <a href="#">Acura</a>
+            </li>
+            <!-- 
+            <li >
+                <a href="" class="more"><center>查看更多 >></center></a>
+            </li>
+             -->
+  
+        </ul>
+        
+           
+          <!-- 
+            <span class=" ui-btn ui-corner-all">添加图片备注</span>
+             -->
+           
+        </div>
+    </form>
+</div>
+
+<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
+  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+  <div style="padding:0 30px;">
+    <p id="question">确定删除？</p>
+         
+        <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a ui-corner-all" data-rel="back">确定</a>
+    
+  </div>
+</div>
+<!-- /popup -->
+
+<!-- 弹出输入内容框 -->
+<div data-role="popup" id="js-add-comment-popup" data-theme="a" class="ui-corner-all">
+    <form>
+        <div style="padding:10px 20px;">
+            <textarea id="remark" placeholder="请输入备注" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all ui-textinput-autogrow"></textarea>
+            <span id="remark_yes" class="ui-btn ui-corner-all ui-mini ui-btn-a ui-corner-all">提交</span>
+        </div>
+    </form>
+</div>
+<!-- /content -->
+
+
+<div data-role="panel" id="right-panel" data-display="push" data-theme="b" data-position="right">
+<ul data-role="listview" data-theme="b" data-divider-theme="a" data-count-theme="a">
+    <li data-role="list-divider">Divider</li>
+    <li><a href="index.html" data-theme="a">Inbox </a></li>
+    <li><a href="index.html">Outbox </a></li>
+    <li><a href="index.html">Sent </a></li>
+</ul>
+       <!--  <a href="javascript:void(0);" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-right">Close</a> -->
+</div><!-- /panel -->
+    

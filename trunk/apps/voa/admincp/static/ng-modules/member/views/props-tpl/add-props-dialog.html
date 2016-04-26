@@ -1,0 +1,33 @@
+<!--设置属性弹窗-->
+<div class="modal-content" data-ng-controller="AddPropsDialogCtrl">
+    <div class="modal-header contacts-img">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                data-ng-click="$close()">×</button>
+        <h4 class="modal-title">添加自定义字段</h4>
+    </div>
+
+    <form name="form_member_fields" >
+        <div class="props-content">
+            <div>
+                <div data-ng-repeat="field in tempField">
+                    <label>
+                        <span>字段名称</span>
+                        <input type="text" name=""maxlength="8" placeholder="最多输入8个汉字"
+                               data-ng-model="field.name"/>
+                        <a class=" btn btn-danger danger-padding" data-ng-click="moveField(field)">删除</a>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <a class="btn btn-info" data-ng-click="createField()">添加字段</a>
+                    </label>
+                </div>
+            </div>
+            <div class="props-foot-right tag-clear">
+                <button type="submit" name="btn_submit" class="btn btn-default" data-ng-click="$dismiss()">取消</button>
+                <button type="submit" name="btn_submit" class="btn btn-info" data-ng-click="$close(tempField)">确认</button>
+            </div>
+        </div>
+
+    </form>
+</div>

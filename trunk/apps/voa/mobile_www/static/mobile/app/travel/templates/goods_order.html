@@ -1,0 +1,61 @@
+<div data-role="header" class="mod-list-header">
+    <h1>产品支付</h1>
+    <a id="back" href="javascript:history.go(-1);" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">返回</a>
+
+</div>
+<!-- /header -->
+
+<div role="main" class="mod-common-list" id="goods_order" >
+
+    <!--已经填地址-->
+
+    <ul class="ui-nodisc-icon address js-weixin-address js-yes" data-role="listview">
+        <li>
+            <a href="javascript:;" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+                <h3>收货人：<i id="js_adr_name"><%=adr.name%></i></h3>
+                <p id="js_adr_address"><%=adr.adr%></p>
+                <p class="ui-li-aside tel" id="js_adr_phone"><%=adr.phone%></p>
+            </a>
+        </li>
+    </ul>
+    <!--未填地址-->
+
+    <ul data-role="listview" class="js-weixin-address ui-nodisc-icon link enter_address js-no">
+        <li>
+            <a href="javascript:;">
+                <h3>请填写收货地址</h3>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="view list m-t-10 " data-role="listview">
+        <% $.each(goods, function (k, item) {%>
+        <li>
+            <div class="imgbox" style="float:left;">
+                <img src="<%=item.goods.cover%>" ></div>
+            <p class="mt_title js-subject"><%=item.goods.subject%></p>
+            <% if (item.style_name) { %>
+            <p class="format">规格：<%=item.style_name%></p>
+            <% } %>
+            <p class="ui-li-aside js-price">单价：¥ <%=item.price%><br><span class="num">数量：<%=item.num%></span></p>
+            
+        </li>
+        <% }); %>
+        <li class="clearfix">            
+                <div class="total">共<%=goods.length%>件商品 合计：<span>¥<%=(price)%></span></div>
+           
+        </li>
+
+    </ul>
+   
+</div>
+
+<div class="footer footer-one ">
+    <div id="debug" style="display: none;">
+
+    </div>
+    <a href="#/goods_order_list" id="js_weixin_pay" class="ui-btn ui-btn-a ui-corner-all weixin_pay clearfix">点击进行微信支付</a>
+    <!--<a class="ui-btn ui-btn-a ui-corner-all weixin_another js-share-out">邀请好友微信代付</a>-->
+</div>
+<div id="js-share-out" data-role="popup" data-theme="none" data-shadow="false" class="weixin_share">
+</div>

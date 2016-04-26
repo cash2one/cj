@@ -1,0 +1,21 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !\.(js|ico|gif|jpg|png|css|xml|swf|txt|woff|ttf|eot|svg|otf|php|htm|html|map)$
+RewriteRule ^(admincp|wall|api|pc) /$1/index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !\.(js|ico|gif|jpg|png|css|xml|swf|txt|woff|ttf|eot|svg|otf|php|htm|html|map)$
+
+RewriteRule ^(File|ChatGroup|Guestbook|PubApi|Sales|UcRpc|CaRpc|Activity|News|Sign|BlessingRedpack|Askfor|Addressbook|Notin)(.*)$ /Nfw.php/$1$2 [L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !\.(js|ico|gif|jpg|png|css|xml|swf|txt|woff|ttf|eot|svg|otf|php|htm|html|map)$
+RewriteRule .* /index.php [L]
+
+
+

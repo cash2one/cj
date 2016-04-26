@@ -1,0 +1,117 @@
+<div class="panel panel-default" data-ng-controller="editCtrl as ms">
+    <div class="panel-body">
+        <!-- left -->
+        <div class="left-col">
+            <div class="profile-block">
+                <div class="panel profile-photo">
+                    <h1 id="prev_title"></h1>
+                    <img id="preview" src="/admincp/static/images/act_preview.png">
+                    <div id="mobile_body">
+                        <div id="prev_content">
+                            <div></div>
+                            <img id="reg_img" src="/admincp/static/images/reg.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- right  -->
+        <div class="right-col">
+            <div class="panel tl-body">
+                <form class ="form-horizontal font12">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">活动名称</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control js-askfor-input form-small askfor-input"
+                                   placeholder="不超过64个字符" maxlength="64"
+                                   data-ng-model="subject">
+                            <span>{{subject.length}}/64</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">活动类型</label>
+                        <div class="col-sm-5">
+                            <select name="ac_type" class="form-control form-small" data-width="auto"
+                                    data-ng-model="typeid">
+                                <option value="0">请选择</option>
+                                <option data-ng-repeat="type in types" value="{{type.id}}">{{type.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">活动封面</label>
+                        <div class="col-sm-10">
+                            <span class="introduce">（在活动列表中显示的活动图片，图片建议尺寸：900像素 * 500像素）</span>
+                            <div class="row padding-sm">
+                               <div cycp-upload name="cover" data-ng-model="cover" pic-url="{{picurl}}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">开始时间</label>
+                        <div class="col-sm-4">
+                             <div data-ng-if="ms.begintime" date-time-picker dateplaceholder="开始日期" timeplaceholder="开始时间" data-ng-model="ms.begintime"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">结束时间</label>
+                        <div class="col-sm-4">
+                            <div date-time-picker data-ng-if="ms.overtime" dateplaceholder="结束日期" timeplaceholder="结束时间"
+                                 data-ng-model="ms.overtime"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">查看权限</label>
+                        <div class="col-sm-10">
+                            <span class="introduce">（有权限的员工才能查看并推广活动）</span>
+                            <div class="row padding-sm">
+                                <button type="button" class="btn btn-primary" id="all_btn">全公司</button>
+                                <button type="button" class="btn col-md-offset-1" id="specified_btn">指定对象</button>
+                            </div>
+                            <div id="user_dep_container" style="display: none;">
+                                <hr>
+                                <div class="row">
+                                    <label class="col-sm-2 text-right padding-sm">选择部门：</label>
+
+                                    <div id="deps_container" class="col-sm-10">
+                                        <div class="angularjs-area" data-ng-controller="ChooseShimCtrl">
+                                            <a class="btn btn-defaul" data-ng-click="selectDepartment(dep_arr,selectedDepartmentCallBack)">选择部门</a>
+                                        </div>
+                                        <pre id="dep_deafult_data" data-ng-show="select_dep_name!=''"
+                                             style="margin-top: 10px;font-size: 12px; letter-spacing: 1px; background-color: #FAFAFA;">{{select_dep_name}}</pre>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <label class="col-sm-2 text-right padding-sm">选择人员：</label>
+                                    <div id="users_container" class="col-sm-10">
+                                        <div class="angularjs-area" data-ng-controller="ChooseShimCtrl">
+                                            <a class="btn btn-defaul" data-ng-click="selectPerson(m_uid,selectedMuidCallBack)">选择人员</a>
+                                        </div>
+                                        <pre id="m_uid_deafult_data" data-ng-show="select_m_uid_name!=''"
+                                             style="margin-top: 10px;font-size: 12px;letter-spacing: 1px; background-color: rgb(250, 250, 250);">{{select_m_uid_name}}</pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="myEditor">活动内容</label>
+                        <div class="row col-sm-10 ">
+                            <div id="myEditor" ueditor data-ng-model="editor"></div>
+                        </div>
+                    </div>
+                </form>
+            <div class="clearfix">
+                <div class="col-md-1 col-md-offset-3" data-ng-show="is_push==0">
+                    <a class="btn btn-success btn-lg select-btn" data-ng-click="publish(0)">保存草稿</a>
+                </div>
+                <div class="col-md-1 col-md-offset-2">
+                    <a class="btn btn-default btn-lg select-btn" data-ng-click="publish(1)">发布</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

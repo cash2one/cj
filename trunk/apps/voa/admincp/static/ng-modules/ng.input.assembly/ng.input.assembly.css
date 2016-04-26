@@ -1,0 +1,232 @@
+/*.assemblyBox{
+  background-color: #f5f5f5;
+  padding-top: 0;
+}
+.addAssemblyBox{
+  float: right;
+  border : 1px solid #000;
+  padding: 10px;
+  padding-top: 0;
+}
+
+.addAssemblyBox a{
+  width : 200px;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid #000;
+  text-align: center;
+  display: block;
+  margin-top: 5px;
+  color: #000;
+  text-decoration: none;
+}
+
+.addAssemblyBox .addAssemblyTitle{
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "微软雅黑";
+} 
+
+.assemblyListBox{
+  float: left;
+}
+
+.assemblyList{
+  position: relative;
+  padding-left: 200px;
+}
+
+.assemblyItemLeft{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+}
+.upanddownBox{
+  width: 10px;
+  height: 22px;
+  float: left;
+  margin-top: 4px;
+  margin-right: 6px;
+}
+
+.assemblyMovePos{
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+
+.assemblyMovePos.assemblyToUp{
+  background: red;
+}
+
+.assemblyMovePos.assemblyToDown{
+  margin-top: 2px;
+  background: blue;
+}
+
+.assemblyTypeLabel{
+  float: left;
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.assemblyTxtEnterBox{
+  float: left;
+}
+
+.assemblyTxtEnterBox input{
+  width: 100px;
+  height: 30px;
+}
+
+.assemblyItemRight{}
+
+.assemblyItemRight input{
+  width: 270px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.assemBlyItemDel{
+  position: absolute;
+  right: -20px;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+}*/
+
+.assemblyBox{
+  background-color: #f5f5f5;
+  padding-top: 0;
+}
+.addAssemblyBox{
+  float: right;
+}
+
+.addAssemblyBox a{
+  display: block;
+  margin-top: 5px;
+}
+
+.assemblyListBox{
+  float: left;
+}
+
+.assemblyList{
+  position: relative;
+  padding-left: 90px;
+}
+
+.assemblyItemLeft{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 90px;
+}
+.upanddownBox{
+  width: 10px;
+  height: 22px;
+  float: left;
+  margin-top: 4px;
+  margin-right: 6px;
+}
+
+.assemblyMovePos{
+  display: block;
+  width: 10px;
+  height: 6px;
+  background: url('/admincp/static/images/assIcon.png') no-repeat;
+}
+
+.assemblyMovePos.assemblyToUp{
+  margin-top: 4px;
+  background-position: 0 0;
+}
+
+.assemblyMovePos.assemblyToDown{
+  background-position: 0 -6px;
+}
+
+.assemblyTypeLabel{
+  float: left;
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.assemblyTxtEnterBox{
+  float: left;
+}
+
+.assemblyTxtEnterBox input{
+  width: 100px;
+  height: 30px;
+}
+
+.assemblyItemRight{}
+
+.assemblyItemRight input{
+  width: 270px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.assemBlyItemDel{
+  position: absolute;
+  right: -75px;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background: url('/admincp/static/images/assIcon.png') no-repeat 0 -12px;
+}
+
+.assemBlyAddImagesNum{
+  width: 50px !important;
+  margin: 0 3px;
+}
+
+.isSureBox{
+  position: absolute;
+  right: -50px;
+  top: 5px;
+}
+.assemblyOpts ul{
+  margin: 0; 
+  padding: 0;
+}
+.assemblyOpts li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  width: 270px;
+}
+
+.assemblyOpts li input{
+  margin-bottom: 5px;
+}
+
+.assemblyOpts li s{
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  right: -18px;
+  top: 10px;
+  background:url('/admincp/static/images/assIcon.png') no-repeat 0 -23px;
+}
+
+.assemblyOpts a{
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.assemblyOpts p{
+  margin-bottom: 2px;
+}

@@ -1,0 +1,35 @@
+<div class="score" ng-controller="setupCtrl">
+    <table class="table item">
+        <tbody>
+            <tr>
+                <th ng-show="isOpen">积分功能</th>
+                <td ng-hide="isOpen">积分功能</td>
+                <td class="describe">开启则表示采用积分功能，请设置好积分规则</td>
+                <td>
+                    <div class="switchTip">
+                        <span ng-show="isOpen">已开启</span>
+                        <span ng-hide="isOpen">已关闭</span>
+                    </div>
+                    <div class="switch">
+                        <input class="switch_btn" type="checkbox" ng-model="isOpen" ng-click="isCloseSwitch()">
+                        <label></label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>积分规则</td>
+                <td class="describe">设置好相应的积分项和分值</td>
+                <td>
+                    <a class="fa fa-angle-right" href="#/app/page/score/integration_rule"></a>
+                </td>
+            </tr>
+            <tr>
+                <td>奖品设置</td>
+                <td class="describe">可设置的奖品，奖品可用积分兑换</td>
+                <td>
+                    <a class="fa fa-angle-right" href="#/app/page/score/match_arrangement"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,117 @@
+.note-name{
+	width: 220px!important;
+}
+
+
+.founder{
+	margin: 0px;
+}
+
+
+.classify{
+	width: 160px;
+	height: 250px;
+}
+
+
+.classify-left{
+	margin-left: 140px;
+}
+
+.course-classify{
+	width: 175px!important;
+
+}
+
+.type-inside {
+    margin-bottom: 0px;
+}
+
+.report-btn {
+    margin-left: 55px;
+}
+
+
+.note-headline{
+	width: 200px;
+	height: 25px;
+}
+
+
+
+.enclosure li{
+	float: left;
+	width: 45%;
+	margin-right: 1%;
+	height: 64px;
+	border: 1px solid #ddd;
+	list-style: none;
+}
+
+.enclosure p{
+	margin: 8px 0 0 62px;
+	line-height: 16px;
+	height: 16px;
+	overflow: hidden;
+}
+
+.enclosure i{
+	float: left;
+	overflow: hidden;
+	display: block;
+	margin: 8px 0 0 8px;
+	height: 48px;
+	width: 48px;
+	text-align: center;
+	line-height: 48px;
+	font-size: 16px;
+	background-color: #666;
+	color: #fff;
+	font-weight: 600;
+	font-style: normal;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+
+.enclosureul{
+	margin-top: 10px;
+	margin-left: -40px;
+}
+
+.delete-1{
+	color: red;
+}
+
+
+.select-courses p{
+	text-align: center;
+}
+
+.courses-btn{
+	text-align: center;
+	margin-top: 35px;
+}
+
+.courses-1{
+
+	height: 250px !important;
+	float: left;
+}
+
+.note-curriculum{text-align: center;}
+.note-selectcurri-item dd{height: 250px; border: 1px solid #ccc;padding: 5px 10px;margin-top: 10px}
+.note-selectcurri-item p{margin: 0; padding: 0; line-height: 18px; cursor: pointer;}
+.note-selectcurri-item p.note-current{background:#999;}
+.select-courses-1{
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.down{
+	margin-top: 35px;
+}
+
+.confirm{
+	margin-right: 60px;
+}

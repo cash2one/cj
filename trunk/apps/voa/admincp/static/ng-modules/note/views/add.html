@@ -1,0 +1,122 @@
+<!--添加笔记-->
+<style>
+	.modal-open{overflow: auto!important;}
+</style>
+
+
+<div data-ng-controller="AddCtrl">
+	<div class="panel panel-default wai">
+		<div class="panel-heading">
+			<h3 class="panel-title font12"><strong>添加笔记</strong></h3>
+		</div>
+		<div class="panel-body upload">
+			<div class="form-group">
+				<label class="control-label col-sm-1">所属课程:{{parentData.id}}</label>
+				<div class="col-sm-9">
+
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">+ 选择课程</button>
+
+					<span data-ng-bind="selObj.selName" ></span>
+
+					<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content select-courses">
+								<br/>
+								<p class="select-courses-1">选择课程</p>
+								<div class="clearfix note-curriculum down">
+									<div class="col-sm-3 classify-left">
+										<dl class="col-sm-8  note-selectcurri-item classify">
+											<span class="stair">课程一级分类</span>
+											<dd>
+												<p data-ng-repeat="item in grandPaData" data-ng-bind="item.title" data-ng-class="{'note-current':item.id==grandPaData[grandPaIndex].id}" data-ng-click="changeCurriculumData($index,1)"></p>
+											</dd>
+										</dl>
+									</div>
+									<div class="col-sm-3">
+										<dl class="col-sm-8  note-selectcurri-item classify">
+											<span data-ng-if="parentData[parentIndex].id" class="stair">课程二级分类</span>
+											<span data-ng-if="!parentData[parentIndex].id" class="stair">课程名称</span>
+											<dd>
+												<p data-ng-if="parentData[0].sub" data-ng-repeat="item in parentData" data-ng-bind="item.title" data-ng-class="{'note-current':item.id==parentData[parentIndex].id}" data-ng-click="changeCurriculumData($index,2)"></p>
+												<p data-ng-if="!parentData[0].sub" data-ng-repeat="item in parentData" data-ng-bind="item.title" data-ng-class="{'note-current':item.cid==parentData[parentIndex].cid}" data-ng-click="changeCurriculumData($index,2)"></p>
+											</dd>
+										</dl>
+									</div>
+									<div class="col-sm-3" data-ng-if="childData">
+										<dl class="col-sm-8  note-selectcurri-item classify">
+											<span>课程名称</span>
+											<dd>
+												<!-- <select size=18 class="form-control" data-ng-options="n.id as n.title for n in grandPaData[parentIndex].sub[childIndex].sub" data-ng-selected="n.id==child" data-ng-model="child">
+												</select> -->
+												<p data-ng-repeat="item in childData" data-ng-bind="item.title" data-ng-class="{'note-current':item.cid==childData[childIndex].cid}" data-ng-click="changeCurriculumData($index,3)"></p>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="courses-btn">
+									<button type="button" class="btn btn-success confirm" data-dismiss="modal" data-ng-click="sure()">确定</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="cancel()">取消</button>
+								</div>
+								<br/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-1">笔记标题:</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control note-headline" data-ng-model="note_title">
+					<!--<input type="button" ng-click="aaaaaa()"/>-->
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-1">笔记内容:</label>
+				<div class="col-sm-8">
+					<div id="myEditor" data-ng-model='opt'></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-1">上传附件:</label>
+				<div class="col-sm-9">
+					<div class="form-group">
+							<div class="row">
+								<div class="col-sm-2">
+									<div class="uploader_box">
+								<span class="btn btn-info fileinput-button">
+									<i class="glyphicon glyphicon-plus"></i>
+									<span>选择文件</span>
+									<input id="attachUpload" type="file" name="file" multiple>
+								</span>
+									</div>
+								</div>
+								<div class="col-sm-9">
+									<p class="form-control-static">支持txt,pdf,doc,ppt,xls,docx,pptx,xlsx等格式，单个文件大小不超过30M。</p>
+								</div>
+							</div>
+
+							<div id="attach_progress" class="progress" style="display:none;margin-top:5px">
+								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="50" style="width: 0%">
+								</div>
+							</div>
+							<ul id="attach_list" class="jt-attach-list enclosure enclosureul">
+								<li data-ng-repeat="item in addFileList" data-ng-style="{'margin-top':'10px'}">
+									<i class="ext-pdf" data-ng-bind="item.type"></i>
+									<p data-ng-bind="item.name"></p>
+									<p>
+										<a href="" class="delete-1" data-ng-click="del(item.id)">删除</a>
+									</p>
+								</li>
+							</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-success" data-ng-click="save()">发布</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div data-role="header" data-position="fixed" data-theme="a" class="mod-list-header">
+    <div class="mod-search-box"><input id="js-search" data-type="search"  type="search" placeholder="搜索"></div>	
+</div>
+
+	
+	<div role="main" class="mod-common-list">
+		<form>
+			<h4>目录</h4>
+			<ul id="list" class="touch iscroll-wrapper ui-nodisc-icon ui-alt-icon link" data-role="listview" >
+				<%=data%>
+			</ul>
+		</form>
+	</div>
+	<div class="ui-field-footer">        
+        <button class="js-btn-nextpage ui-btn ui-btn-a ui-corner-all">显示更多</button>
+    </div>
+	<!-- /content -->
+	<div class="empty">		
+		<div class="empty-text">
+			<p>还没有目录哦</p>
+		</div>
+	</div>

@@ -1,0 +1,18 @@
+<div role="main" class="mod-common-list m-t-10" id="superreport_view">
+    <div class="empty-text">
+
+    <% if(errcode == 1) { %>
+        <p>您还不是店长或区域负责人，请先进入后台绑定！<p>
+    <% } else if (errcode == 2){ %>
+        <p>您不是店长或区域负责人，没有访问权限！<p>
+    <% } else if (errcode == 3){ %>
+        <p>您不是店长，不能发送报表！<p>
+    <% } else if (errcode == 8020){ %>
+        <p>今日报表已存在，点击<a href="#/daily">查看</a><p>
+    <% } else if (errcode == 8014){ %>
+        <p>还没有设置模板！<p>
+    <%} %>
+    </div>
+</div>
+
+

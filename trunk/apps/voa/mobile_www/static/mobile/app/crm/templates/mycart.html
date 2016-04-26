@@ -1,0 +1,65 @@
+<div data-role="header" class="mod-list-header">
+    <h1>我的购物车</h1>
+    <% if (goods_id) {%>
+    <a id="back" href="#/goods_detail/<%=goods_id%>" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">返回</a>
+    <% } else { %>
+    <a id="back" href="#/goods_list" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">返回</a>
+    <% } %>
+    <a id="" href="javascript:;"data-ajax="false" class="ui-link edit-link js-cart-edit" >编辑</a>
+
+</div>
+<!-- /header -->
+
+<div data-role="content" class="m-t-10 mod-common-list" id="mycart" >
+    <ul class="view list" data-role="listview">
+        <!--
+        <li class="goods-num">
+            <a href="#" class="btn-select"></a>
+            <div class="imgbox" style="float:left;">
+                <img src="<%=goods.cover%>" >
+            </div>
+            <p class="mt_title js-subject">ffffffffff<%=goods.subject%></p>
+            <p class="js-price">¥ 777777</p>
+            <div class="num-box ui-mini" data-role="controlgroup" data-type="horizontal">
+                <button class="js-plus-num ui-nodisc-icon ui-alt-icon ui-btn-icon-notext ui-btn ui-shadow ui-corner-all ui-icon-plus">+</button>
+                <input name="goods_num" value="1" type="text" id="search-control-group" data-wrapper-class="controlgroup-textinput ui-btn" >
+                <button class="js-minus-num ui-nodisc-icon ui-alt-icon ui-btn-icon-notext ui-btn ui-shadow ui-corner-all ui-icon-minus">-</button>                
+            </div>            
+        </li>-->
+        <% if (!_.isEmpty(goods)) {%>
+        <% $.each(goods, function (k, item){ %>
+        <li class="goods-num js-item" data-cartid="<%=item.cartid%>">
+            <a href="javascript:;" class="btn-select js-card-select"></a>
+            <div class="imgbox" style="float:left;">
+                <img src="<%=item.goods.cover%>" >
+            </div>
+            <p class="mt_title js-subject"><%=item.goods.subject%> </p>
+            <p >规格: <%=item.style_name%></p>
+            <p class="js-price">单价: ¥ <%=item.goods.price%></p>
+            <div class="num-box ui-mini js-goods-num" data-role="controlgroup" data-type="horizontal">
+                <button class="js-minus-num ui-nodisc-icon ui-alt-icon ui-btn-icon-notext ui-btn ui-shadow ui-corner-all ui-icon-minus">-</button>
+                <input data-amount="<%=item.style_amount%>" data-price="<%=item.style_price%>" name="goods_num" value="<%=item.num%>" type="text" id="search-control-group" data-wrapper-class="controlgroup-textinput ui-btn" >
+                <button class="js-plus-num ui-nodisc-icon ui-alt-icon ui-btn-icon-notext ui-btn ui-shadow ui-corner-all ui-icon-plus">+</button>           
+            </div>            
+        </li>
+        <% }); }%>
+
+    </ul>
+</div>
+<!-- /content -->
+<div data-role="footer" data-position="fixed" class="mycart-footer">
+    
+       <a href="javascript:;" class="select"><span class="btn-select js-all-select"></span><span id="js_total">总计：¥ <span id="js_cart_amounts">0</span></span></a>
+       <a href="javascript:;" class="btn btn-order" id="js_buy">结算 (<span class="js-cart-num">0</span>)</a>
+        <a href="javascript:;" class="btn btn-order" id="js_del" style="display: none">删除 (<span class="js-cart-num">0</span>)</a>
+    
+</div>
+<% if (_.isEmpty(goods)) {%>
+<div class="empty">
+    <h3 class="title">购物车快饿瘪了TAT</h3>
+    <p class="conten">开给我挑点宝贝儿</p>
+    <div class="footer footer-one">
+        <a href="#/goods_list" class="ui-btn ui-btn-a ui-corner-all">去逛逛</a>
+    </div>
+<% } %>
+</div>

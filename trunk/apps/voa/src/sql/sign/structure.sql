@@ -1,0 +1,220 @@
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_detail{$suffix}` (
+  `sd_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `sr_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '签到信息ID',
+  `sd_reason` varchar(255) NOT NULL DEFAULT '' COMMENT '签到说明',
+  `type` tinyint(3) NOT NULL COMMENT '当前备注的签到类型: 1=签到 2=签退',
+  `sd_status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '记录状态, 1=初始化，2=已更新，3=已删除',
+  `sd_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `sd_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `sd_deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`sd_id`),
+  KEY `sq_id` (`sr_id`,`sd_status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='签到管理备注说明';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_attachment{$suffix}` (
+  `said` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `outid` int(10) unsigned NOT NULL COMMENT '外部考勤记录id',
+  `atid` varchar(255) NOT NULL COMMENT '附件id',
+  `status` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '新建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`said`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='外出考勤附件表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_batch{$suffix}` (
+  `sbid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '班次id',
+  `name` varchar(255) NOT NULL COMMENT '班次名称',
+  `work_begin` int(10) unsigned NOT NULL COMMENT '工作开始时间',
+  `work_end` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '工作结束时间',
+  `work_days` varchar(255) DEFAULT NULL COMMENT '工作日',
+  `start_begin` int(10) unsigned DEFAULT NULL COMMENT '启用时间',
+  `start_end` int(10) unsigned DEFAULT NULL COMMENT '截止时间',
+  `longitude` double DEFAULT NULL COMMENT '经度',
+  `latitude` double DEFAULT NULL COMMENT '纬度',
+  `address` varchar(255) DEFAULT NULL COMMENT '考勤地点',
+  `address_range` int(10) unsigned DEFAULT NULL COMMENT '考勤范围',
+  `sb_set` int(10) unsigned DEFAULT NULL COMMENT '上下班打卡设置,1上班，2下班，3上下班',
+  `late_range` int(10) unsigned DEFAULT NULL COMMENT '晚退多久算加班',
+  `remind_on` varchar(255) NOT NULL COMMENT '签到提醒',
+  `remind_off` varchar(255) NOT NULL COMMENT '签退提醒',
+  `leave_early_range` int(10) NOT NULL DEFAULT '0' COMMENT '早退时间范围',
+  `come_late_range` int(10) NOT NULL DEFAULT '0' COMMENT '晚到多久算迟到',
+  `enable` int(10) unsigned DEFAULT '1' COMMENT '是否启用,1启用,0停用',
+  `range_on` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否开启考勤范围',
+  `remind_on_rage` int(10) DEFAULT NULL COMMENT '上班时间点前XX分钟提醒',
+  `remind_off_rage` int(10) DEFAULT NULL COMMENT '下班时间点后XX内未签退则发起提醒',
+  `sign_on` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否开启签到提醒（0:禁用，1:启用）',
+  `sign_off` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否开启签退提醒（0:禁用，1:启用）',
+  `late_work_time` int(10) DEFAULT NULL COMMENT '最晚上班时间',
+  `absenteeism_range` int(3) DEFAULT NULL COMMENT '实际工作时长少于最小工作时长算旷工,50、100',
+  `min_work_hours` decimal(3,1) DEFAULT NULL COMMENT '最小工作时长',
+  `sign_start_range` int(10) NOT NULL DEFAULT '0' COMMENT '上班时间点前XX分钟开始签到',
+  `sign_end_range` int(10) NOT NULL DEFAULT '0' COMMENT '下班时间点后XX分钟结束签退',
+  `rule` tinyint(10) unsigned NOT NULL DEFAULT '1' COMMENT '考勤规则1:默认,2:自定义',
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '班次类型1:常规班次,2:弹性班次',
+  `late_range_on` tinyint(3) unsigned DEFAULT '0' COMMENT '是否启用加班 0:禁用, 1:启用',
+  `late_work_time_on` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '启用最晚上班时间0:禁用,1:启用',
+  `come_late_range_on` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用迟到规则0:禁用,1:启用',
+  `absenteeism_range_on` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '是否启用旷工规则0:禁用,1:启用',
+  `flag` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '是否是默认排版0:不是,1:是',
+  `status` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '新建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`sbid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='班次表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_department{$suffix}` (
+  `sdid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `sbid` int(10) unsigned NOT NULL COMMENT '班次id',
+  `department` int(10) unsigned NOT NULL COMMENT '部门d',
+  `status` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '新建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`sdid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='班次部门关联表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_location{$suffix}` (
+  `sl_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `m_uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '签到人UID',
+  `m_username` varchar(54) NOT NULL DEFAULT '' COMMENT '签到人名称',
+  `sl_signtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '签到时间',
+  `sl_ip` varchar(15) NOT NULL DEFAULT '0.0.0.0' COMMENT '签到IP',
+  `sl_longitude` decimal(9,6) NOT NULL COMMENT '经度',
+  `sl_latitude` decimal(9,6) NOT NULL COMMENT '纬度',
+  `sl_address` varchar(255) NOT NULL COMMENT '地址',
+  `sl_note` text NOT NULL COMMENT '签到备注',
+  `sl_status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '记录状态, 1初始化，2=已更新, 3=已删除',
+  `sl_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  `sl_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `sl_deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`sl_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='签到上报位置表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_record{$suffix}` (
+  `sr_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `m_uid` int(10) unsigned NOT NULL COMMENT '签到人UID',
+  `m_username` varchar(54) NOT NULL COMMENT '签到人名称',
+  `cd_id` int(10) NOT NULL COMMENT '签到时班次ID对应的部门ID',
+  `sr_signtime` int(10) unsigned NOT NULL COMMENT '签到时间',
+  `sr_ip` varchar(15) NOT NULL COMMENT '签到IP',
+  `sr_type` tinyint(3) unsigned NOT NULL COMMENT '签到类型, 2: 下班; 1: 上班',
+  `sr_longitude` decimal(9,6) NOT NULL COMMENT '经度',
+  `sr_latitude` decimal(9,6) NOT NULL COMMENT '纬度',
+  `sr_device` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '签到设备：0=无设备；1=ibeacon',
+  `sr_address` varchar(255) NOT NULL COMMENT '地址',
+  `sr_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '记录状态',
+  `sr_created` int(10) unsigned NOT NULL COMMENT '删除时间',
+  `sr_updated` int(10) unsigned NOT NULL COMMENT '更新时间',
+  `sr_deleted` int(10) unsigned NOT NULL COMMENT '删除时间',
+  `sr_sign` int(10) NOT NULL COMMENT '考勤状态  0=未知, 1=出勤，2=迟到，4=早退, 8=旷工, 16=请假, 32=出差, 64=删除',
+  `sr_batch` int(10) NOT NULL COMMENT '所属班次',
+  `sr_overtime` int(10) NOT NULL COMMENT '加班时长',
+  `sr_addunusual` int(10) NOT NULL DEFAULT '0' COMMENT '地理位置异常,1异常, 0正常',
+  `sr_sign_start_range` int(10) DEFAULT NULL COMMENT '上班时间点前XX分钟开始签到',
+  `sr_sign_end_range` int(10) DEFAULT NULL COMMENT '下班时间点后XX分钟结束签退',
+  `sr_come_late_range` int(10) DEFAULT NULL COMMENT '迟到规则',
+  `sr_leave_early_range` int(10) DEFAULT NULL COMMENT '早退规则',
+  `sr_late_range` int(10) unsigned DEFAULT NULL COMMENT '加班规则',
+  `sr_late_work_time` int(10) DEFAULT NULL COMMENT '最晚上班时间',
+  `ba_type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '班次类型1:常规班次,2:弹性班次',
+  `sr_absenteeism_range` int(3) DEFAULT NULL COMMENT '实际工作时长少于最小工作时长算旷工,50、100',
+  `sr_min_work_hours` decimal(3,1) DEFAULT NULL COMMENT '最小工作时长',
+  `sr_work_status` tinyint(2) unsigned DEFAULT NULL COMMENT '工作状态：1-休息(休息日签到时的状态，用于统计加班)',
+  `sr_work_begin` int(10) unsigned DEFAULT NULL COMMENT '工作开始时间',
+  `sr_work_end` int(10) unsigned DEFAULT NULL COMMENT '工作结束时间',
+  `sr_absenteeism_range_time` int(10) unsigned DEFAULT NULL COMMENT '旷工时长',
+  `rep_late_time` int(10) unsigned DEFAULT NULL COMMENT '迟到时长',
+  `rep_early_time` int(10) unsigned DEFAULT NULL COMMENT '早退时长',
+  `rep_work_time` int(10) unsigned DEFAULT NULL COMMENT '出勤时长',
+  `schedule_id` int(11) DEFAULT NULL COMMENT '排班id',
+  `sign_schedule_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`sr_id`),
+  KEY `m_uid` (`m_uid`,`sr_status`),
+  KEY `sq_signtime` (`sr_signtime`,`sr_status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='签到记录表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_record_location{$suffix}` (
+  `loid` int(10) NOT NULL AUTO_INCREMENT COMMENT '自动增量',
+  `longitude` decimal(9,5) NOT NULL COMMENT '经度',
+  `latitude` decimal(9,5) NOT NULL COMMENT '纬度',
+  `address` varchar(255) NOT NULL COMMENT '地址',
+  `status` tinyint(3) NOT NULL DEFAULT '1' COMMENT '状态=1.初始化，2.更新，3删除',
+  `created` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`loid`),
+  KEY `longitude` (`longitude`),
+  KEY `latitude` (`latitude`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='经纬度 地址 存储表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_setting{$suffix}` (
+  `ss_key` varchar(50) NOT NULL COMMENT '变量名',
+  `ss_value` text NOT NULL COMMENT '值',
+  `ss_type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '缓存类型, 0:非数组, 1:数组',
+  `ss_comment` text NOT NULL COMMENT '说明',
+  `ss_status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '记录状态, 1初始化，2=已更新, 3=已删除',
+  `ss_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `ss_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `ss_deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`ss_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='签到设置表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_alert{$suffix}` (
+  `said` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '提醒记录id',
+  `batch_id` int(10) unsigned NOT NULL COMMENT '班次ID',
+  `schedule_id` int(10) unsigned NOT NULL COMMENT '排班ID',
+  `alert_time` int(10) unsigned NOT NULL COMMENT '提醒记录时间',
+  `type` tinyint(1) unsigned NOT NULL COMMENT '提交类型（1 => 上班, 0 => 下班）',
+  `status` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '新建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`said`),
+  KEY `batch_id` (`batch_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='消息提醒记录表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_schedule{$suffix}` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cd_id` int(10) NOT NULL COMMENT '部门ID',
+  `sbid` text COMMENT '班次id',
+  `enabled` tinyint(2) NOT NULL COMMENT '1-禁用;2-启用,3-禁用中',
+  `schedule_begin_time` int(10) NOT NULL COMMENT '排班开始时间',
+  `schedule_end_time` int(10) DEFAULT NULL COMMENT '排班结束时间,为空到永久',
+  `cycle_unit` tinyint(2) NOT NULL COMMENT '周期单位 1-天,2-周,3-月',
+  `cycle_num` tinyint(2) DEFAULT NULL COMMENT '如果周期单位是天，才有效，1-7天',
+  `schedule_everyday_detail` text NOT NULL COMMENT '每天排班详情,Array-班次id',
+  `add_work_day` text COMMENT '增加上班日期',
+  `remove_day` text COMMENT '排除节假日',
+  `range_on` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否开启考勤范围',
+  `address` varchar(255) DEFAULT NULL COMMENT '考勤地点',
+  `address_range` int(10) unsigned DEFAULT NULL COMMENT '考勤范围',
+  `longitude` double DEFAULT NULL COMMENT '经度',
+  `latitude` double DEFAULT NULL COMMENT '纬度',
+  `status` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '新建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='排班表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}sign_schedule_log{$suffix}` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `begin_time` int(10) unsigned NOT NULL COMMENT '开始时间',
+  `end_time` int(10) unsigned NOT NULL COMMENT '结束时间',
+  `init_time` int(10) NOT NULL DEFAULT '0' COMMENT '排班启用时间',
+  `cycle_unit` tinyint(2) NOT NULL COMMENT '周期单位 1-天,2-周,3-月',
+  `cycle_num` tinyint(2) DEFAULT NULL COMMENT '如果周期单位是天，才有效，1-7天',
+  `add_work_day` text COMMENT '增加上班日期',
+  `remove_day` text COMMENT '排除节假日',
+  `schedule_everyday_detail` text NOT NULL COMMENT '每天排班详情,Array-班次规则',
+  `cd_id` int(10) NOT NULL COMMENT '部门ID',
+  `schedule_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排班id',
+  `status` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '新建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='排班规则变更表';

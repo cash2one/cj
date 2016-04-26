@@ -1,0 +1,21 @@
+<h1><%= listName %></h1>
+<div class="listContainer plugin_scrollbar">
+	
+	<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+	<div class="viewport">
+		 <div class="overview">
+			<ul class="mod_common_list2">
+				<% for (var i=0, lng=list.length; i<lng; i++) { %>
+					<% var item = list[i]; %>
+					<li <%= i==lng-1
+									?'class="last"'
+									:'' %> id="chkinMenu_<%= i %>">
+									
+						<a class="m_link" href="<%= item.url %>"><%= item.title %></a>
+					</li>
+				<% } %>
+			</ul>
+		 </div>
+	 </div>
+		
+</div>

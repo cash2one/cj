@@ -1,0 +1,140 @@
+CREATE TABLE IF NOT EXISTS `{$prefix}exam_setting{$suffix}` (
+  `key` varchar(50) NOT NULL COMMENT '变量名',
+  `value` text NOT NULL COMMENT '值',
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '缓存类型:0=非数组; 1=数组',
+  `comment` text NOT NULL COMMENT '说明',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '数据状态:1=新创建; 2=已更新; 3=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='考试中心 - 设置表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}exam_tiku{$suffix}` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '题库名称',
+  `dan_num` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '单选题数量',
+  `duo_num` mediumint(5) unsigned NOT NULL DEFAULT '0' COMMENT '多选数量',
+  `pan_num` mediumint(5) unsigned NOT NULL DEFAULT '0' COMMENT '判断数量',
+  `tian_num` mediumint(5) unsigned NOT NULL DEFAULT '0' COMMENT '填空数量',
+  `num` mediumint(5) unsigned NOT NULL DEFAULT '0' COMMENT '总数',
+  `username` varchar(20) NOT NULL COMMENT '建立人',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `created` int(10) unsigned NOT NULL DEFAULT '0',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='题库表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}exam_ti{$suffix}` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tiku_id` int(10) unsigned NOT NULL COMMENT '题库id',
+  `type` tinyint(3) unsigned NOT NULL COMMENT '题目类型',
+  `title` text NOT NULL COMMENT '标题',
+  `score` tinyint(3) unsigned NOT NULL COMMENT '分数',
+  `options` text COMMENT '选项',
+  `answer` varchar(255) NOT NULL COMMENT '答案',
+  `orderby` int(10) unsigned NOT NULL COMMENT '序号',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `created` int(10) unsigned NOT NULL DEFAULT '0',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `tiku_id` (`tiku_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='题目表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}exam_paper{$suffix}` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `username` varchar(54) NOT NULL COMMENT '发布人',
+  `type` tinyint(3) unsigned NOT NULL COMMENT '试卷类型',
+  `name` varchar(200) NOT NULL COMMENT '试卷标题',
+  `tiku` varchar(80) NOT NULL COMMENT '用到的题库',
+  `use_all` tinyint(3) unsigned NOT NULL COMMENT '是否使用题库全部',
+  `ti_num` mediumint(5) unsigned NOT NULL COMMENT '题目数',
+  `cover_id` int(11) DEFAULT NULL COMMENT '封面',
+  `begin_time` int(10) unsigned DEFAULT NULL COMMENT '开始时间',
+  `end_time` int(10) unsigned DEFAULT NULL COMMENT '结束时间',
+  `paper_time` mediumint(5) unsigned DEFAULT NULL COMMENT '考试时间',
+  `is_notify` tinyint(1) unsigned DEFAULT NULL COMMENT '是否通知',
+  `notify_begin` tinyint(3) unsigned DEFAULT NULL COMMENT '开始前通知',
+  `notify_end` tinyint(3) unsigned DEFAULT NULL COMMENT '结束前通知',
+  `notifynow` tinyint(1) unsigned DEFAULT NULL COMMENT '马上通知',
+  `total_score` mediumint(5) unsigned DEFAULT NULL COMMENT '总分',
+  `pass_score` mediumint(5) unsigned DEFAULT NULL COMMENT '及格分',
+  `intro` text NOT NULL COMMENT '考试说明',
+  `rules` varchar(255) DEFAULT NULL COMMENT '规则',
+  `is_all` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否全部',
+  `cd_ids` varchar(255) DEFAULT NULL COMMENT '部门',
+  `m_uids` varchar(255) DEFAULT NULL COMMENT '用户',
+  `flag` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '通知标记',
+  `reason` varchar(200) DEFAULT NULL COMMENT '终止理由',
+  `reason_user` varchar(54) NOT NULL COMMENT '终止人员',
+  `reason_time` int(10) unsigned NOT NULL COMMENT '提前终止时间',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `created` int(10) unsigned NOT NULL DEFAULT '0',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='试题表';
+
+CREATE TABLE IF NOT EXISTS `{$prefix}exam_paper_detail{$suffix}` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `paper_id` int(10) unsigned NOT NULL COMMENT '试卷id',
+  `ti_id` int(10) unsigned NOT NULL COMMENT '题目Id',
+  `score` mediumint(5) unsigned NOT NULL COMMENT '分数',
+  `orderby` int(10) unsigned NOT NULL COMMENT '序号',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `created` int(10) unsigned NOT NULL DEFAULT '0',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `paper_id` (`paper_id`),
+  KEY `ti_id` (`ti_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}exam_tj{$suffix}` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `m_uid` int(10) unsigned NOT NULL COMMENT '用户id',
+  `paper_id` int(10) unsigned NOT NULL COMMENT '试卷id',
+  `paper_name` varchar(200) NOT NULL COMMENT '试卷名称',
+  `total_score` mediumint(5) unsigned NOT NULL COMMENT '总分',
+  `pass_score` mediumint(5) unsigned NOT NULL COMMENT '及格分',
+  `ti_num` mediumint(5) unsigned NOT NULL COMMENT '题目数',
+  `begin_time` int(10) unsigned NOT NULL COMMENT '开始时间',
+  `end_time` int(10) unsigned NOT NULL COMMENT '结束时间',
+  `paper_time` mediumint(5) unsigned DEFAULT NULL COMMENT '考试时间',
+  `departments` varchar(200) NOT NULL COMMENT '部门',
+  `intro` text NOT NULL COMMENT '介绍',
+  `my_score` mediumint(5) unsigned NOT NULL COMMENT '考生分数',
+  `my_begin_time` int(10) unsigned DEFAULT NULL COMMENT '考生开始考试时间',
+  `my_time` mediumint(5) unsigned NOT NULL COMMENT '考生用时',
+  `my_error_num` mediumint(5) unsigned NOT NULL COMMENT '考生答错的数量',
+  `my_is_pass` tinyint(1) unsigned NOT NULL COMMENT '考生是否通过',
+  `random_tids` text NOT NULL COMMENT '随机题目id',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `created` int(10) unsigned NOT NULL DEFAULT '0',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `m_uid` (`m_uid`),
+  KEY `paper_id` (`paper_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}exam_ti_tj{$suffix}` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `m_uid` int(10) unsigned NOT NULL COMMENT '用户id',
+  `paper_id` int(10) unsigned NOT NULL COMMENT '试卷id',
+  `ti_id` int(10) unsigned NOT NULL COMMENT '题目ID',
+  `tj_id` int(10) unsigned NOT NULL COMMENT '统计ID',
+  `is_pass` tinyint(1) unsigned NOT NULL COMMENT '是否通过',
+  `my_answer` varchar(200) NOT NULL COMMENT '我的答案',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `created` int(10) unsigned NOT NULL DEFAULT '0',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY m_uid (`m_uid`),
+  KEY `paper_id` (`paper_id`),
+  KEY `ti_id` (`ti_id`),
+  KEY `tj_id` (`tj_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='试题统计';

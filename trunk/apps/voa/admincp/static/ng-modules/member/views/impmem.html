@@ -1,0 +1,55 @@
+<div class="panel panel-default" data-ng-controller="ImpmemCtrl">
+<div class="panel-heading impmem-head">
+    <div class="border-b hearder-center">
+        <a href="#" ng-click="goBack()" class="btn btn-default">返回</a>
+
+        <div class="impmem-head-center">批量导入通讯录设置</div>
+    </div>
+</div>
+    </div>
+<div class="panel panel-default">
+
+    <div class="panel-heading"><strong>一. 模板下载</strong></div>
+    <div class="panel-body">
+        <ul>
+            <li><a href="/PubApi/Apicp/Field/download" class="btn btn-info">下载模板文件</a></li>
+            <li class="panel-warn-col">
+
+                <div>请按照数据模板的格式准备导入数据，模板中的表头不可作任何修改，否则将会无法正常导入</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="pull-right"><a href="javascript:;" onclick="javascript:_reset_import();">
+            <i class="fa fa-refresh"></i> 重新导入</a></span>
+        <strong>二. 选择需要导入的 Excel 文件</strong>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="/admincp/manage/member/impmem/?act=uploadexcel"
+              method="post" enctype="multipart/form-data">
+            <input type="hidden" name="formhash" value="70f184950730697770cb7c291b40f213">
+            <div class="form-group" id="id-fileupload-area">
+                <input id="fileupload" type="file" name="upload" data-url="" class="panel-form-control"
+                       required="required" accept="application/vnd.ms-excel">
+                <div class="impmem-group">
+                    <div>
+                        <a class="btn btn-info" href="/admincp/manage/member/impmem">批量导入</a></div>
+                </div>
+            </div>
+
+            <div id="upload-operation" style="display: none">
+                <div id="upload-result"></div>
+                <div id="progress" class="progress">
+                    <div class="bar-upload progress-bar progress-bar-success" role="progressbar"
+                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="50" style="width: 200%">
+                    </div>
+                    <div class="bar-import progress-bar progress-bar-success" role="progressbar"
+                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="50" style="width: 200%">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

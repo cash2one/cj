@@ -1,0 +1,35 @@
+<div class="table-light" data-ng-controller="databaseCtrl">
+    <div class="table-header">
+        <div class="table-caption font12">
+            分享总榜
+        </div>
+    </div>
+    <table class="table table-striped table-bordered table-hover font12" id="table_mul">
+        <thead>
+            <tr>
+                <th>排行</th>
+                <th>姓名</th>
+                <th>部门</th>
+                <th>分享数</th>
+                <th>浏览量</th>
+            </tr>
+        </thead>
+        <tbody id="tbdoy_id">
+            <tr data-ng-repeat="item in reportList">
+                <td data-ng-bind="item.sort"></td>
+                <td data-ng-bind="item.m_username"></td>
+                <td><span data-ng-repeat="value in item.cd_name.split(',') track by $index" class="label label-primary more-item-cls" data-ng-bind="value" data-ng-style="{'margin-left':'5px'}"></span></td>
+                <td data-ng-bind="item.share"></td>
+                <td data-ng-bind="item.hits"></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="warning" data-ng-if="reportList.length<=0">暂无任何分享</td>
+            </tr>
+        </tbody>
+        <tfoot id="tbody-page">
+            <tr data-ng-show="resultCount>0">
+                <td colspan="7" class="text-right vcy-page" poler-pagination="polerPaginationCtrl" download="getReportPage(page)"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

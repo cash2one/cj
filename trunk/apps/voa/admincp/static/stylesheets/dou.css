@@ -1,0 +1,26 @@
+/* 
+* @Author: ppker
+* @Date:   2015-08-07 
+* @Last Modified by:   ChangYi
+* @Last Modified time: 2015-08-21 11:56:16
+* @Description 抖动效果CSS3 很酷吧
+*/
+
+@-ms-keyframes tada {0%,100%,20%,40%,60%,80%{-ms-transform:scale(1) rotate(13deg);}10%,50%,70%,30%,90%{-ms-transform:scale(1) rotate(-13deg);}}
+
+@-moz-keyframes tada {0%,100%,20%,40%,60%,80%{-moz-transform:scale(1) rotate(13deg);}10%,50%,70%,30%,90%{-moz-transform:scale(1) rotate(-13deg);}}
+
+@-webkit-keyframes tada {0%,100%,20%,40%,60%,80%{-webkit-transform:scale(1) rotate(13deg);}10%,50%,70%,30%,90%{-webkit-transform:scale(1) rotate(-13deg);}}
+
+@-o-keyframes tada {0%,100%,20%,40%,60%,80%{-o-transform:scale(1) rotate(13deg);}10%,50%,70%,30%,90%{-o-transform:scale(1) rotate(-13deg);}}
+
+@keyframes tada {0%,100%,20%,40%,60%,80%{transform:scale(1) rotate(13deg);}10%,50%,70%,30%,90%{transform:scale(1) rotate(-13deg);}}
+
+.dou_mov{
+	height:60px;
+ -ms-animation: tada 2.5s ease .2s 2;	
+ -webkit-animation: tada 2.5s ease .2s 2;
+ -moz-animation: tada 2.5s ease .2s 2;
+ -o-animation: tada 2.5s ease .2s 2;
+ animation: tada 2.5s ease .2s 2;
+}

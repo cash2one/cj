@@ -1,0 +1,30 @@
+<% $.each(goods.data, function (key, item){ %>
+<li class="js-item">
+    <!-- <span class="pro_new"></span> -->
+    <a href="<%=item.detail_url%>" class="js-cover">
+				<span class="mt_title js-subject">
+					<%=item.subject%>
+				</span>
+        <div class="imgbox">
+            <img src="<%=item.cover%>" >
+        </div>
+    </a>
+
+    <ul class="tab">
+        <li class=""> <i class="icon money"></i><span class="js-price"><%=item.price %><%=item.price_unit%></span>
+        </li>
+        <li class=""> <i class="icon icon_sales"></i>历史销量<span class="js-goodsct"><%=item.goodsct%></span>
+        </li>
+        <!-- <li class="">
+            <a href="#/customers_list/<%=item.dataid%>" class="js-add-customer">
+                <i class="icon add"></i>关联客户
+            </a>
+        </li> -->
+    </ul>
+    <% if (window.userinfo.saleid) { %>
+				<span class="<% if (item.fav!='1') {%>notop<% } %> mt_top js-top" data-id="<%=item.dataid%>">
+				</span>
+    <% } %>
+</li>
+
+<% }); %>

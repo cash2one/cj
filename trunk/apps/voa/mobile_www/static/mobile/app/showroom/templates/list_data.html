@@ -1,0 +1,10 @@
+<% $.each(ls.list, function (key, item){ %>
+<li>
+	<a href="#/detail/<%= item.ta_id %>">
+		<h3<% if(!item.read){ %> class="new"<% } %>>
+			<span><%= item.title %></span>
+		</h3>
+		<p class="time">更新于 <%=formatDate(item.updated)%> <%= item.author %></p>
+	</a>
+</li>
+<% }); %>

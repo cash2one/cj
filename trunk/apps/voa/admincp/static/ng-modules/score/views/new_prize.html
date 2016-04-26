@@ -1,0 +1,91 @@
+<div ng-controller="newPrizeCtrl">
+    <div class="panel panel-default font12">
+        <div class="panel-body">
+            <form class="form-horizontal font12" role="form">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">奖品名称</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control form-small" ng-model="formData.title" placeholder="不超过15个汉字" maxlength="15" required="required" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">奖品库存</label>
+                    <div class="col-sm-9">
+                        <input type="number" min="1" class="form-control form-small score_input" ng-model="formData.stock">
+                        <p class="form-control-static text-warning">
+                            * 请填写>0的整数
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">兑换限制</label>
+                    <div class="col-sm-9">
+                        <label class="radio-inline">
+                            <input type="radio" name="limit" ng-model="limit" checked value="0"> 不限制
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="limit" ng-model="limit" value="1"> 限制
+                        </label>
+                        <input type="number" min="1" class="score_input" data-ng-disabled="limit==0?true:false" ng-model="limitNum"> 件
+                        <p class="form-control-static text-warning">
+                            * 每个人可兑换的数量。若限制，请填写>0的整数
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">兑换条件</label>
+                    <div class="col-sm-9">
+                        兑换单件奖品需消耗
+                        <input type="number" class="form-control form-small score_input" min="1" ng-model="formData.score" /> 积分
+                        <p class="form-control-static text-warning">
+                            * 请填写>0的整数
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">兑换范围</label>
+                    <div class="col-sm-9">
+                        <div id="user_dep_container">
+                            <div class="row">
+                                <div id="users_container" class="col-sm-10">
+                                    <div class="angularjs-area" data-ng-controller="ChooseShimCtrl">
+                                        <a class="btn btn-defaul" data-ng-click="selectPerson(m_uid,selectedMuidCallBack)">选择人员</a>
+                                    </div>
+                                    <pre data-ng-if="!initisshow && m_uid.length > 0" style="margin-top: 10px;font-size: 12px;letter-spacing: 1px;background-color: #fafafa;"><span data-ng-repeat="o in m_uid" data-ng-bind="$last ? o.m_username : o.m_username + ' '"></span></pre>
+                                    <pre data-ng-if"initisshow" data-ng-show="initisshow" id="m_uid_deafult_data"></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <p class="form-control-static text-warning">
+                            * 设定兑换范围，只有在兑换范围中的成员才允许兑换当前商品。
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">奖品图片</label>
+                    <div class="col-sm-9">
+                        <div cycp-upload-more name="cover" data-ng-model="uploadImgs" limit-num="5" init-load="loadImg"></div>
+                        <p class="form-control-static text-warning">
+                            * 推荐尺寸为640*320，最多上传5张图片
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">
+                        <span id="ue_label">奖品介绍</span>
+                    </label>
+                    <div class="col-sm-9">
+                        <div id="myEditor"></div>
+                    </div>
+                </div>
+                <div class="form-group" id="submit_warp">
+                    <div class="col-sm-offset-2 col-sm-9">
+                        <button type="button" data-ng-class="{'btn':true,'btn-success':!saveing}" data-ng-click="save()">保存</button>
+                        <!-- <input type="submit"  class="btn btn-success" data-ng-click="checkForm()" value="保存"> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

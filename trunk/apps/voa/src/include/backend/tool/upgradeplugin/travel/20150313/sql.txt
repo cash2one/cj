@@ -1,0 +1,171 @@
+ALTER TABLE `oa_goods_data` ADD `percentage` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '提成百分比' AFTER `classid`;
+ALTER TABLE `oa_travel_share_count` DROP `src_goods_id`;
+ALTER TABLE `oa_travel_share_count` CHANGE `count` `viewcount` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '浏览次数';
+ALTER TABLE `oa_travel_share_count` ADD `inquirycount` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '咨询次数' AFTER `viewcount`;
+INSERT INTO `oa_travel_setting` (`skey`, `value`, `type`, `comment`, `status`, `created`, `updated`, `deleted`) VALUES
+('goods_tpl_style', 'crm', 0, '产品模板, travel: 旅游; crm: 在线商品;', 2, 0, 1423703015, 0);
+DELETE FROM `oa_goods_tablecol` WHERE `tc_id`=2 AND `fieldalias`='goodsct';
+INSERT INTO `oa_common_setting` (`cs_key`, `cs_value`, `cs_type`, `cs_comment`, `cs_status`, `cs_created`, `cs_updated`, `cs_deleted`) VALUES
+('mchid', '', 0, '微信支付商家号 mchid', 2, 0, 1417757139, 0),
+('mchkey', '', 0, '微信支付商家秘钥 mchkey', 2, 0, 1417757139, 0),
+('mp_appid', '', 0, '服务号 appid', 2, 0, 1417757139, 0),
+('mp_appsecret', '', 0, '服务号 appsecret', 2, 0, 1417757139, 0),
+('mp_token', '', 0, '服务号 token', 2, 0, 1417757139, 0);
+
+
+CREATE TABLE IF NOT EXISTS `oa_travel_mem2goods` (
+  `mgid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户uid',
+  `username` varchar(40) NOT NULL COMMENT '用户名',
+  `dataid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '产品id',
+  `fav` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '是否收藏, 1: 收藏; 0: 不收藏',
+  `status` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态, 1: 新建; 2: 更新; 3: 删除;',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`mgid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='用户和产品对照表;';
+
+CREATE TABLE IF NOT EXISTS `oa_mpuser` (
+  `mpuid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户UID',
+  `openid` char(32) NOT NULL DEFAULT '' COMMENT '唯一键值',
+  `saleid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属销售的 m_uid',
+  `web_access_token` varchar(255) NOT NULL DEFAULT '' COMMENT 'web access token',
+  `web_token_expires` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'web token expires',
+  `mobilephone` char(11) NOT NULL DEFAULT '' COMMENT '手机号码',
+  `email` char(80) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `unionid` char(32) NOT NULL DEFAULT '' COMMENT '微信unionid',
+  `username` char(54) NOT NULL DEFAULT '' COMMENT '姓名',
+  `index` char(4) NOT NULL DEFAULT '' COMMENT '名字字母索引字符，同通讯录cab_index',
+  `password` char(32) NOT NULL DEFAULT '' COMMENT '用户密码',
+  `groupid` mediumint(9) NOT NULL DEFAULT '0' COMMENT '用户组ID',
+  `gender` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '性别, 0: 未知, 1:男; 2:女',
+  `face` char(255) NOT NULL DEFAULT '' COMMENT '用户头像',
+  `facetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '头像更新时间',
+  `salt` char(6) NOT NULL DEFAULT '' COMMENT '密码干扰串',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '状态, 1=初始化，2=已更新, 3=待验证，4=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`mpuid`),
+  UNIQUE KEY `openid` (`openid`),
+  KEY `status` (`status`),
+  KEY `mobilephone` (`mobilephone`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+CREATE TABLE IF NOT EXISTS `oa_travel_styles` (
+  `styleid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '款式id',
+  `goodsid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '产品id',
+  `stylename` varchar(255) NOT NULL DEFAULT '' COMMENT '款式名称',
+  `amount` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '数量',
+  `price` decimal(8,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '价格, 单位: 分',
+  `state` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '规格状态, 1: 使用中; 2: 未启用;',
+  `status` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '数据状态, 1: 创建; 2: 更新; 3: 删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`styleid`),
+  KEY `goodsid` (`goodsid`),
+  KEY `status` (`status`),
+  KEY `state` (`state`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='产品规格表';
+
+CREATE TABLE IF NOT EXISTS `oa_order` (
+  `orderid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ordersn` char(20) DEFAULT NULL COMMENT '订单编号',
+  `wx_orderid` char(40) DEFAULT NULL COMMENT '微信订单号',
+  `amount` int(10) unsigned NOT NULL COMMENT '总额(以分为单位)',
+  `profit` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '提成(分)',
+  `sale_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '售销id',
+  `sale_name` char(10) DEFAULT '' COMMENT '员工姓名',
+  `sale_phone` char(15) DEFAULT '' COMMENT '销售电话',
+  `sale_memo` varchar(255) DEFAULT NULL COMMENT '销售备注',
+  `order_status` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '订单状态(1待支付,2.支付中,3已支付,4已发货,9已完成/已经签收,20已取消,30已失效,40支付失败)',
+  `customer_id` int(10) unsigned DEFAULT '0' COMMENT '客户id',
+  `customer_name` char(20) DEFAULT '' COMMENT '客户名称',
+  `customer_openid` char(32) DEFAULT NULL COMMENT '客户微信开放id',
+  `address` varchar(255) DEFAULT NULL COMMENT '客户地址',
+  `mobile` char(15) DEFAULT NULL COMMENT '手机/电话',
+  `customer_memo` varchar(255) DEFAULT NULL COMMENT '客户备注',
+  `pay_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '支付时间',
+  `complete_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '签收时间(完成时间)',
+  `ship_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '发货时间',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '数据状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`orderid`),
+  UNIQUE KEY `ordersn` (`ordersn`),
+  KEY `sale_id` (`sale_id`),
+  KEY `customer_id` (`customer_id`),
+  KEY `status` (`status`),
+  KEY `order_status` (`order_status`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='订单表';
+
+CREATE TABLE IF NOT EXISTS `oa_order_cart` (
+  `cartid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `openid` char(32) NOT NULL COMMENT '微信openid',
+  `goods_id` int(10) unsigned NOT NULL COMMENT '产品id',
+  `goods_name` varchar(255) NOT NULL COMMENT '产品名称',
+  `style_id` int(10) unsigned DEFAULT NULL COMMENT '规格id',
+  `style_name` varchar(255) DEFAULT NULL COMMENT '规格',
+  `num` int(10) unsigned DEFAULT '1' COMMENT '数量',
+  `price` int(10) unsigned DEFAULT NULL COMMENT '价格(单位:分)',
+  `scale` int(10) unsigned NOT NULL COMMENT '提成百分比',
+  `profit` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收益(分)',
+  `status` tinyint(1) DEFAULT '1' COMMENT '数据状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) unsigned DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`cartid`),
+  KEY `openid` (`openid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='购物车';
+
+CREATE TABLE IF NOT EXISTS `oa_order_goods` (
+  `ogid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` char(32) NOT NULL COMMENT '订单id',
+  `goods_id` int(10) unsigned NOT NULL COMMENT '产品id',
+  `goods_name` varchar(255) NOT NULL COMMENT '产品名称',
+  `style_id` int(10) unsigned DEFAULT '0' COMMENT '规格id',
+  `style_name` varchar(255) DEFAULT NULL COMMENT '规格名称',
+  `num` int(10) unsigned DEFAULT '1' COMMENT '数量',
+  `price` int(10) unsigned DEFAULT NULL COMMENT '价格(单位:分)',
+  `scale` int(10) unsigned NOT NULL COMMENT '价格(单位:分)',
+  `profit` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收益(分)',
+  `status` tinyint(1) DEFAULT '1' COMMENT '数据状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) unsigned DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`ogid`),
+  KEY `order_id` (`order_id`),
+  KEY `goods_id` (`goods_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='订单产品表';
+
+CREATE TABLE IF NOT EXISTS `oa_order_log` (
+  `logid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(10) unsigned NOT NULL COMMENT '订单id',
+  `old_status` tinyint(2) unsigned NOT NULL COMMENT '旧状态',
+  `new_status` tinyint(2) unsigned NOT NULL COMMENT '新状态',
+  `oper_id` int(10) unsigned NOT NULL COMMENT '操作人',
+  `oper_name` char(20) DEFAULT NULL,
+  `memo` varchar(255) NOT NULL COMMENT '原因',
+  `status` tinyint(1) DEFAULT '1' COMMENT '数据状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned NOT NULL COMMENT '操作时间',
+  `updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`logid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='订单操作日志';
+
+CREATE TABLE IF NOT EXISTS `oa_sale` (
+  `saleid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` char(20) DEFAULT NULL COMMENT '姓名',
+  `phone` char(20) DEFAULT NULL COMMENT '电话',
+  `adr` varchar(255) DEFAULT NULL COMMENT '地址',
+  `memo` varchar(255) DEFAULT NULL COMMENT '申请理由',
+  `sale_status` tinyint(1) unsigned DEFAULT '0' COMMENT '销售状态(0申请中,1已通过)',
+  `status` tinyint(1) DEFAULT '1' COMMENT '数据状态, 1初始化，2=已更新, 3=已删除',
+  `created` int(10) unsigned DEFAULT '0' COMMENT '创建时间',
+  `updated` int(10) unsigned DEFAULT '0' COMMENT '更新时间',
+  `deleted` int(10) unsigned DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`saleid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='直销员';

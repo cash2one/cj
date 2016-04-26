@@ -1,0 +1,24 @@
+<style>
+    .tab{
+        background-color: #ccc;
+    }
+    .tab .active{
+        color:#f90;
+    }
+    .tabCon div{
+        display: none;
+    }
+    .tabCon div.active{
+        display: block;
+    }
+</style>
+<div c-tab data-tab="div.tab" data-con="div.tabCon" data-active="active" data-event="click hover" >
+    <div class="tab">
+        <span class="active">按钮1</span>
+        <span>按钮2</span>
+    </div>
+    <div class="tabCon">
+        <div class="active">内容1</div>
+        <div>内容2</div>
+    </div>
+</div>

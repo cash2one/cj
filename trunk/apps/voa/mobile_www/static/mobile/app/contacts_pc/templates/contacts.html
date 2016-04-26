@@ -1,0 +1,55 @@
+    <% if (contacts_enable && deps_enable) { %>
+    <ul id="uidemo-tabs-default-demo" class="js-nav nav nav-tabs nav-tabs-xs">
+        <li class="active">
+            <a href="#uidemo-tabs-default-demo-home" data-for="js-contacts" data-toggle="tab">同事</a>
+        </li>
+        <li class="">
+            <a href="#uidemo-tabs-default-demo-profile" data-for="js-deps" data-toggle="tab">部门 </a>
+        </li>
+    </ul>
+    <% } %>
+    <div class="contacts-search-box clearfix">
+        <div class="mod_select-contacts">
+            <div class="contacts-scrollable js-current-checked">
+            </div>
+        </div>
+        <div class="input-group no-margin ">
+			<span class="input-group-addon" style="border:none;background: #fff;"><i class="fa fa-search"></i></span>
+			<input type="text" id="search" value="" placeholder="搜索" class="form-control no-padding-hr" >
+		</div>
+
+    </div>
+   
+        <div class="tab-pane fade active in" id="uidemo-tabs-default-demo-home">
+            <% if (contacts_enable) { %>
+           <div id="js-contacts" data-role="listview" class="<%=input_type%>-contral" >
+                <table class="table table-hover">
+                <% $.each(contacts, function (k, item){ %>
+                <% if (k > 0) { if (contacts[k-1].alphaindex.slice(0, 1) != item.alphaindex.slice(0, 1)) { %>
+                <tr class="js-index" ><td colspan="4"><%=item.alphaindex.slice(0, 1)%></td></tr>
+                <% }} else { %>
+                <tr class="js-index"><td colspan="4"><%=item.alphaindex.slice(0, 1)%></td></tr>
+                <% } %>
+                <tr class="js-input-tr" data-index="<%=item.alphaindex.slice(0, 1)%>">
+                <td width="10%"><!--<i class="fa fa-square-o"></i><i class="fa fa-check-square text-primary"><!-- fa-square-o为没有选中状态。fa-check-square 为选中状态</i>--><alphaindex><%=item.alphaindex%></alphaindex><input data-type="<%=input_name_contacts%>" data-name="<%=item.realname%>" type="<%=input_type%>" name="______id" value="<%=item.uid%>"></td>
+
+                    <td class="js-select-input" width="20%"><img data-src="<%=item.face%>"  class="lazy-loaded"></td>
+                    <td class="js-select-input" width="35%"> <%=item.realname%> </td>
+                    <td class="js-select-input"><%=item.jobtitle%></td></tr>
+                <% }) %>            
+                </table>
+            </div>
+            <% } %>
+            <% if (deps_enable) { %>
+            <div id="js-deps" data-role="listview" class="<%=input_type%>-contral" style="<% if (contacts_enable == true) { %>display: none<% } %>">
+                <table class="table table-hover">
+                <% $.each(deps, function (k, item){ %>
+                <tr class="js-input-tr">
+                <td width="10"><input data-type="<%=input_name_deps%>"  data-name="<%=item.name%>" type="<%=input_type%>" name="______id" value="<%=item.departmentid%>"></td>
+                <td class="js-select-input"><%=item.name%></td></tr>
+                <% }) %>            
+                </table>
+            </div>
+            <% } %>
+        </div>
+  

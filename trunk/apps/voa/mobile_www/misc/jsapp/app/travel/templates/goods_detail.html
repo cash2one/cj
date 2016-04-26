@@ -1,0 +1,71 @@
+<div data-role="header">
+	<h1>
+		<%=goods.subject%></h1>
+	<a href="#/goods_list" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+
+	<a href="#/customers_list/<%=goods.dataid%>
+		"  class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-icon-carat-l">关联客户
+	</a>
+
+</div>
+<!-- /header -->
+
+<div role="main" class="ui-content jqm-content" id="mt_product_details">
+	<div class="head_box">
+		<a class="top_img">
+			<img src="<%=goods.cover%>" ></a>
+		<div class="content">
+			<span class="money">
+				<%=goods.price%>
+				<small><%=goods.price_unit%></small>
+			</span>
+			<br>
+			<span class="title"><%=goods.feature%></span>
+		</div>
+	</div>
+	<div class="general_frame">
+		<div data-role="tabs" id="tabs">
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href="#one" data-ajax="false" class="ui-btn-active">概况</a>
+					</li>
+					<li>
+						<a href="#two" data-ajax="false">行程详情</a>
+					</li>
+				</ul>
+			</div>
+			<div id="one" class="ui-body-d ui-content">
+                <% $.each(goods.customized, function (k, v){ %>
+				<span class="one_head"><%=v.fieldname%></span>
+				<p>
+                    <% if (v.ct_type == 'attach') { %>
+                        <% for(var i in v.value) { %>
+                            <% if (v.value[i].isimage == '1') { %>
+                            <img org="<%=v.value[i].url%>" src="<%=v.value[i].url%>/45">
+                            <% } else { %>
+                            文件： <%=v.value[i].filename%>
+                            <% } %>
+                        <% } %>
+                    <% } else { %>
+					<%=v.value%>
+                    <% } %>
+				</p>
+				<div class="line"></div>
+                <% }); %>
+			</div>
+			<div id="two">				
+				<div class="box">
+					<%=goods.message%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="list_sale">
+		<ul data-role="listview" id="mod_common_list">
+   			<li><a href="tel:8699950">卖家电话 1362323343444 <span class="ui-li-count copy">复制</span></a></li>
+   			<li><a href="tel:8699950">卖家电话 1362323343444 <span class="ui-li-count copy">复制</span></a></li>
+		</ul>
+	</div>
+</div>
+<!-- /content -->

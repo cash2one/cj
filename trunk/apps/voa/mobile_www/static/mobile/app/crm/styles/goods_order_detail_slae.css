@@ -1,0 +1,34 @@
+#goods_order_detail_slae p .money{color:#fe5955;padding-left: 0;}
+#goods_order_detail_slae p{padding: 5px 10px 3px 0;font-size: 14px;margin: 0}
+
+#goods_order_detail_slae .status ,#goods_order_detail_slae .total{
+  color: #fe5955;
+}
+.order-box {
+  text-align: right;
+}
+
+#goods_order_detail_slae ul.list li .imgbox {
+  overflow: hidden;
+  display: block; 
+}
+
+
+#goods_order_detail_slae ul.list li .imgbox img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 13px;
+  border: 1px solid #e1e1e1;
+  vertical-align: middle;
+}
+
+#goods_order_detail_slae .ui-listview li h3{
+  word-break: normal;
+  white-space: normal;
+  word-wrap: break-word;
+  margin: 0;
+}
+#goods_order_detail_slae .ui-listview li .conten{
+  margin-bottom: 8px;
+}

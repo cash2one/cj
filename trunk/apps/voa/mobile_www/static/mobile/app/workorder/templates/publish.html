@@ -1,0 +1,74 @@
+<!-- <a href="#">返回列表</a> -->
+<div role="main" class="mod-common-list">
+<form action="javascript:;" id="publish">
+	<fieldset>	
+		<h4>基本信息</h4>	
+		<ul data-role="listview" class="form-group">
+			<li>
+				<span>联系人　</span>
+				<input name="contacter" class="form-control" type="text" placeholder="可填写姓名" data-role="none">
+			</li>
+			<li>
+				<span>联系电话</span>
+				<input name="phone" class="form-control" type="tel" placeholder="可填写联系电话" data-role="none">
+			</li>
+			<li>
+				<span>联系地址</span>
+				<input name="address" class="form-control" type="text" required="" placeholder="必须填执行工单的地址" data-role="none">
+			</li>
+		</ul>	
+		<h4>备注</h4>
+		<ul data-role="listview" class="form-group-textarea">
+		<textarea placeholder="必须填写工单备注" required="" name="remark" class="form-control" data-role="none"></textarea>
+		</ul>
+		<h4>接收人</h4>
+	
+			<!-------------------------------- 组件~开始 -------------------------------->
+			<div id="photoDiv">
+				
+			</div>
+			<!-------------------------------- 组件~结束 -------------------------------->
+	
+		<div class="ui-grid-a footer" style="clear:both;">
+   			<div class="ui-block-a no-shadow"><input type="reset" value="取消" onclick="javascript:location.href='#';"></div>
+    		<div class="ui-block-b ui-btn-b btn-submit"><input id="save" type="submit" value="提交"></div>
+		</div>
+		<!-- <div class="foot">
+			<div class="numbtns double">
+				<input type="reset" value="取消" data-role="none" onclick="javascript:location.href='#';">
+				<input type="submit" id="save" value="提交" data-role="none">
+			</div>
+		</div> -->
+	</fieldset>
+</form>
+</div>
+
+<!-- 弹出框 -->
+<div id="popup" class="ui-content" data-role="popup" data-theme="a">
+    <p id="question"></p>
+</div>
+<style>
+#photoDiv {
+	width: 100%;
+	background: #fff;
+	height: 50px;
+}
+img.thumbnail {
+	height: 40px!important;
+    margin-top: -20px;
+    position: absolute;
+    top: 50%;
+    width: 40px!important;;
+}
+#js-contacts label h3, #js-contacts label p {
+	padding-left: 50px;
+}
+.clearfix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+</style>

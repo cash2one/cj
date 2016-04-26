@@ -1,0 +1,112 @@
+
+#goods_selected ul.list li .imgbox {
+  overflow: hidden;
+  display: block; 
+}
+#goods_selected ul.list li .imgbox img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 13px;
+  border: 1px solid #e1e1e1;
+  vertical-align: middle;
+}
+#goods_selected ul.list li .mt_title {
+  height: 32px;
+  overflow: hidden;
+  font-size: 14px;
+  color: #252525;
+  line-height: 16px;
+  margin: 0;
+}
+#goods_selected .view li{
+  margin-left: 10px;
+}
+#goods_selected .view li.format{
+  padding-right:0 ;
+  padding-bottom: 0;
+}
+#goods_selected ul.list li .js-price {
+  color: #e4393c;
+  font-size: 14px;
+  margin: 0px;
+}
+#goods_selected ul.list li.format h3,#goods_selected ul.list li.shopping h3{
+  margin: 0 0 13px 0;
+}
+#goods_selected ul.list li.format a{
+  float: left;
+  position: relative;
+  border: 1px solid #e1e1e1;
+  margin-right:10px;
+  width: 143px;
+  border-radius: 3px;
+  overflow: hidden;
+  height: 33px;
+  text-align: center;
+  line-height: 33px;
+  margin-bottom: 17px;
+  color: #666;
+  padding:0;
+}
+#goods_selected ul.list li.format a.selected{
+  border: 1px #fe5955 solid;
+}
+#goods_selected li.shopping a.shop{
+  background-color: #fe5955;
+  color: #fff;
+  text-shadow:none;
+  padding: 10px; 
+}
+
+#goods_selected li.shopping a.ui-btn:hover,
+#goods_selected li.shopping a.ui-btn:focus {
+  background-color: #fe5955!important;
+  color: #fff;
+  text-shadow:none;
+  padding-bottom:10px;
+  padding-top: 10px; 
+}
+.empty_good{
+  display: block;
+  background-image:url(../images/empty_good.png);
+  -webkit-background-size: 250px 230px;
+  background-size: 250px 230px;
+  width:250px;
+  height: 230px;
+  margin: 3px auto;  
+}
+.empty_good_text{
+  font-size: 16px;
+  color: #a1a1a1;
+  text-align: center;
+  display: block;
+  padding: 10px;
+  margin: 3px auto; 
+  line-height: 28px;
+
+}
+#goods_selected .goods-num .ui-controlgroup-horizontal{position: relative;}
+#goods_selected .goods-num .ui-controlgroup-horizontal .ui-icon-plus,
+#goods_selected .goods-num .ui-controlgroup-horizontal .ui-icon-minus{
+  width: 0.9em;
+  background-color: #fff;
+}
+#goods_selected .goods-num .ui-controlgroup-horizontal .ui-icon-plus:after,
+#goods_selected .goods-num .ui-controlgroup-horizontal .ui-icon-minus:after{
+  filter:alpha(opacity=50); 
+  -moz-opacity:0.5; 
+  opacity:0.5;
+}
+#goods_selected .format .ui-btn-icon-notext{display: none;}
+#goods_selected .goods-num .controlgroup-textinput{
+  padding: 4px 3px 3px 3px!important;
+  width: 40px;
+  border: 1px solid #ddd!important;
+  border-width:1px 0 1px 1px!important;
+}
+#goods_selected .goods-num .controlgroup-textinput input{
+  text-align: center;
+}
+#goods_selected  .goods-num .mun{position:absolute;bottom:0;right: 10px;color:#697285}
+

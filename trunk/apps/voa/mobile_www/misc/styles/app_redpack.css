@@ -1,0 +1,292 @@
+/*红包*/
+.ui-btn-lg, .ui-form{
+	border-radius: 5px;
+}
+
+.ui-btn-lg:before, .ui-form:before{
+	border: 0;
+}
+
+.red-top{
+	background-image: url("../images/red-top.png");
+	-webkit-background-size:100% 87px;
+	width: 100%;
+	height: 87px;
+}
+
+.red-status{
+	margin-left: 15px;
+	color: #666;
+	padding-bottom: 0;
+	margin-bottom: 5px;
+}
+.ui-btn-lg.ui-btn-danger-disabled{
+	border-color: #f8ada7;
+	background-color: #f8ada7;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #f8ada7), to(#f8ada7));
+
+}
+.ui-btn-danger{
+	color: #fff;
+	border-color: #f75549;
+	background-color: #f75549;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #f75549), to(#f75549));
+}
+
+.ui-btn-danger:not(.disabled):not(:disabled):active, .ui-btn-danger.active {
+	background: #e2574d;
+	border-color: #e2574d;
+	color:#fff;
+}
+
+.red-avatar{
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: center;
+	text-align: center;
+	padding-top:40px;
+}
+
+.red-directed{
+	padding-bottom: 30px;
+}
+
+.red-directed p span{
+	color:#999;
+}
+
+.red-avatar h2{
+	font-size: 24px;
+	margin-bottom: 6px;
+}
+
+.red-avatar-one{
+	width: 75px;
+	height: 75px;
+	margin-bottom: 10px;
+}
+
+.red-ui-list{
+	margin:0;
+}
+
+.red-ui-form{
+	margin-top: 10px;
+}
+
+
+/*首页*/
+.red-bg-red{
+	background-color: #a6463a;
+	width: 100%;
+	height: 100%;
+}
+
+.red-bottom{
+	background-image: url("../images/red-bottom.png");
+	-webkit-background-size:100% 97px;
+	width: 100%;
+	height: 97px;
+	position: absolute;
+	bottom: 0;
+}
+
+.red-home-body{
+	margin: 30px;
+}
+
+.ui-btn-yellow{
+	color: #fff;
+	border-color: #ffb230;
+	background-color: #ffb230;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #ffb230), to(#ffb230));
+}
+
+.ui-btn-yellow:not(.disabled):not(:disabled):active, .ui-btn-danger.active {
+	background: #e5a029;
+	border-color: #e5a029;
+	color:#fff;
+}
+
+
+.ui-btn-white{
+	color: #a6463a;
+	border-color: #f9f9e1;
+	background-color: #f9f9e1;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #f9f9e1), to(#f9f9e1));
+}
+
+.ui-btn-white:not(.disabled):not(:disabled):active, .ui-btn-danger.active {
+	background: #e0dec7;
+	border-color: #e0dec7;
+	color:#a6463a;
+}
+
+/*收到的红包*/
+.red-bg-white{
+	background-color: #fff;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.red-receive-one{
+	margin-top:-77px;
+}
+
+
+.red-receive-one p span{
+	color: #999;
+	font-size: 15px;
+}
+
+.red-receive-one p label{
+	color: #999;
+	font-size: 12px;
+}
+
+.red-receive-one h1{
+	color: #000;
+	font-size: 50px;
+}
+
+
+.red-receive-one h1 span{
+	font-size: 14px;
+}
+
+.red-list-right h4{
+	margin-top:10px;
+	color: #333;
+	font-size: 14px;
+}
+
+.red-company-avatar{
+	background-image: url("../images/red-company-avatar.png");
+}
+
+/*收到的红包（年度）*/
+.red-receive p{
+	color: #999;
+	font-size: 15px;
+}
+
+.red-receive h1{
+	color: #f75549;
+	font-size: 50px;
+}
+
+.red-receive h1 span{
+	font-size: 14px;
+}
+
+.red-receive-float{
+	float: left;
+	text-align: center;
+	width: 50%;
+	color:#999;
+	margin-bottom: 6px;
+}
+
+.red-receive-float h2{
+	font-size: 30px;
+}
+
+.red-receive-float p{
+	font-size: 15px;
+}
+
+
+/*发起红包*/
+.red-form-item input:not([type="checkbox"]){
+	padding-left:0;
+}
+
+.red-money{
+	font-size: 36px;
+	text-align: center;
+	padding: 10px;
+}
+
+/*签到失败*/
+.red-sign-fail{
+	background-image: url("../images/red-sign-fail.png");
+	-webkit-background-size:75px;
+}
+
+/*签到成功*/
+.red-btn-sign{
+	margin: 0 30px;
+}
+
+/*收红包*/
+.red-bonus-top{
+	background-image: url("../images/red-bonus.png");
+	-webkit-background-size:100% 274px;
+	width: 100%;
+	height: 274px;
+}
+
+.red-bonus-avatar{
+	width: 52px;
+	height: 52px;
+	margin-bottom: 10px;
+}
+
+.red-bonus-top p{
+	color: #fff;
+	font-size: 15px;
+}
+
+.red-bonus-top p span{
+	color: #d97c6d;
+	font-size: 15px;
+}
+
+.red-bonus-top h2{
+	color: #fff;
+	font-size: 16px;
+	margin: 20px;
+}
+
+.red-open{
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: center;
+	text-align: center;
+	margin:-46px 0 80px;
+}
+.red-open-img{
+	color: #fff;
+	font-size: 18px;
+	background-clip: padding-box;
+	border-radius: 60px;
+	width: 92px;
+	text-align: center;
+	height: 92px;
+	line-height: 92px;
+	background-color: #ffb230;
+}
+
+.red-open-gif{
+	width: 92px;
+	height: 92px;
+	line-height: 92px;
+	background: url("../images/red-bonus-8.png") no-repeat;
+	-webkit-background-size:auto 92px;
+	background-position: 0;
+}
+
+.red-bg-red-bonus{
+	border-radius: 5px;
+	background-color: #a6463a;
+	width: 90%;
+	height: 90%;
+	margin: 10px auto;
+}
+

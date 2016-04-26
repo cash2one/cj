@@ -1,0 +1,119 @@
+<!-- 排班主页 -->
+<div class="sign-member-main container-fluid" data-ng-controller="SignMemberMain">
+    <div class="panel panel-default font12">
+        <div class="panel-heading"><strong>搜索排班</strong></div>
+        <div class="panel-body padding-bottom-none">
+            <form id="id-form-search" class="form-inline vcy-from-search" role="form" action="/admincp/office/sign/blist/pluginid/14/">
+                <input type="hidden" name="issearch" value="1" />
+                <div class="form-row">
+                    <div class="form-group">
+                        <span class="space"></span>
+                        <label class="vcy-label-none">选择部门：</label>
+                        <div  class="form-control form-small department" data-ng-click="selectDepartment($event)">
+                            <i class="icon-plus plus"></i>部门
+                        </div>
+                        <div class="form-control form-small department mian-choose" data-ng-if="depList.length">
+                            <span data-ng-repeat="dep in depList">
+                                {{dep.name}}
+                                <i data-ng-click="delDep(dep)" style="font-style: normal">x</i>
+                            </span>
+                        </div>
+                        <label class="vcy-label-none" >排班起止时间：</label>
+                        <div class="input-daterange input-group" style="width: 290px;display: inline-table;vertical-align:middle;" id="bs-datepicker-range1">
+                            <div class="input-daterange input-group" style="width: 220px;display: inline-table;vertical-align:middle;" id="bs-datepicker-range">
+                                <input type="text" class="input-sm form-control" data-ng-model="startDate" style="cursor: pointer" placeholder="开始日期" readonly date-time-picker is-control="three" enddate="endDate" />
+                                <span class="input-group-addon">至</span>
+                                <input type="text" class="input-sm form-control" data-ng-model="endDate" style="cursor: pointer" placeholder="结束日期" readonly date-time-picker is-control="three" startdate="startDate" />
+                            </div>
+                        </div>
+                        <span class="space"></span>
+                        <span class="space"></span>
+                        <span class="space"></span>
+                        <button type="button" data-ng-click="searchMemberClass()" class="btn btn-info form-small form-small-btn margin-left-12"><i class="fa fa-search"></i> 搜索</button>
+                        <span class="space"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-light">
+        <div class="table-header border-back-no">
+            <div class="add-member"><i class="icon-exclamation-sign blue-ico"></i> 系统默认有一个针对全公司的排班，您可以在【班次管理】设置班次后，再进行对人员排班。</div>
+            <div class="table-caption font12 clearfix">
+                <a class= "btn btn-success pull-right" data-ng-href="#/app/page/sign/sign-member-add"><i class="fa fa-plus-square"></i> 新增人员排班</a>
+            </div>
+        </div>
+        <div class="table-light">
+            <div class="table-header">
+                <form class="form-horizontal" role="form" method="post" action="#">
+                    <div class="table-caption font12">
+                        记录列表
+                    </div>
+                </form>
+            </div>
+            <table class="table table-striped table-hover font12 table-bordered" id="ta_enable">
+                <colgroup>
+                    <col class="t-col-15" />
+                    <col class="t-col-10" />
+                    <col class="t-col-15" />
+                    <col class="t-col-10" />
+                    <col class="t-col-20" />
+                    <col class="t-col-10" />
+                    <col class="t-col-20" />
+                </colgroup>
+
+                <thead>
+                <tr>
+                    <th>部门</th>
+                    <th>班次信息</th>
+                    <th>排班起止时间</th>
+                    <th>排班循环周期</th>
+                    <th>考勤位置</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr data-ng-repeat="memberClass in memberClassList">
+                    <td data-ng-bind="memberClass.cd_name"></td>
+                    <td data-ng-bind="memberClass.sbnames"></td>
+                    <td data-ng-bind="memberClass._schedule_time"></td>
+                    <td data-ng-bind="memberClass._cycle_unit"></td>
+                    <td data-ng-bind="memberClass._address"></td>
+                    <td> {{classStatusDesc[memberClass.enabled]}}</td>
+                    <td>
+                        <span style="cursor:pointer;color:#555252;" class ="enable" >
+                            <a class="margin-one" data-ng-click="controlStatus(memberClass)">
+                                <img data-ng-if="memberClass.enabled == 2" src="/admincp/static/images/oloc.png">
+                                <img data-ng-if="memberClass.enabled != 2" src="/admincp/static/images/loc.png">
+                                {{memberClass.enabled != 1 ? '禁用' : '启用'}}
+                            </a>
+                        </span>
+                        <a class="margin-one" data-ng-click="editPage(memberClass)"> 编辑</a>
+                        <a class="text-danger _delete" data-ng-if="memberClass.cd_id != 0" data-ng-click="delMemberClass(memberClass)" ><i class="fa fa-times"></i> 删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tr data-ng-show="memberClassList.length > 0">
+                    <td colspan="7" class="text-right vcy-page"
+                        poler-pagination="polerPaginationCtrl" download="getClassPage(page)">
+                        <!-- 分页 -->
+                    </td>
+                </tr>
+                <tr data-ng-show="memberClassList.length==null || memberClassList.length==0">
+                    <td colspan="7" class="success">
+                        暂无任何数据
+                    </td>
+                </tr>
+            </table>
+            <tfoot>
+            </tfoot>
+        </div>
+    </div>
+    <div id="main-menu-bg"></div>
+</div>
+
+
+</div>

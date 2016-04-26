@@ -1,0 +1,11 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !\.(js|ico|gif|jpg|png|css|xml|swf|txt|woff|ttf|eot|svg|otf|php|htm|html|map)$
+RewriteRule ^(OaRpc|QyApi|CaRpc|PubApi)(.*) /Nfw.php/$1$2 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !\.(js|ico|gif|jpg|png|css|xml|swf|txt|woff|ttf|eot|svg|otf|php|htm|html|map)$
+RewriteRule .* /index.php [L]

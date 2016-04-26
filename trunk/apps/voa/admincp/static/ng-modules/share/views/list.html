@@ -1,0 +1,70 @@
+<!-- 魏世超 -->
+<div data-ng-controller="shareList">
+    <div class="panel panel-default">
+
+        <div class="panel-heading"><strong>搜索</strong></div>
+        <div class="panel-body">
+            <form id="id-form-search" class="form-inline vcy-from-search" role="form">
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label class="vcy-label-none">状态</label>
+                        <select  name="ac_type" class="form-control form-small" data-width="auto" data-ng-options="n.id as n.name for n  in selectHig" data-ng-model="seleted" data-ng-selected="n.id==seleted">                           
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-5">
+                        <label class="vcy-label-none" >活动名称</label>
+                        <input type="text" class="form-control form-small" name="ac_name" maxlength="54" ng-model="searchMember"/>
+                       
+                    </div>
+
+                    <div class="form-group col-sm-2">
+                        <button type="submit" class="btn btn-info form-small form-small-btn margin-left-12"  ng-click="searchInfo(searchMember)"><i class="fa fa-search"></i> 搜索</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="table-light">
+        <div class="table-header">
+            <div class="table-caption font12">
+                记录列表
+            </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover font12" id="table_mul">
+            <thead>
+    	        <tr>
+    	            <th>素材标题</th>
+    	            <th>素材状态</th>
+    	            <th>最后修改时间</th>
+    	            <th>作者</th>
+    	            <th>操作</th>
+    	        </tr>
+            </thead>
+
+               
+            <tbody id="tbdoy_id" >
+                <tr ng-repeat="list_n in reportList">
+                    <td data-ng-bind="list_n.title"></td>
+                    <td data-ng-bind="statusT[list_n.status]"></td>
+                    <td data-ng-bind="list_n.last_modify_time*1000 | date : 'yyyy-MM-dd hh:mm:ss'"></td>
+                    <td data-ng-bind="list_n.m_username"></td>
+                    <td><a href="#/app/page/share/detail?material_id={{list_n.material_id}}">查看</a></td>
+                </tr>
+
+                <tr>
+                    <td colspan="8" class="warning" data-ng-if="reportResult.length == 0">暂无任何成员信息</td>
+
+                </tr>
+            </tbody>
+            <tfoot id="tbody-page">
+                    <tr>
+                        <td colspan="7" class="text-right vcy-page" poler-pagination="polerPaginationCtrl" download="getReportPage(page)"></td>
+                    </tr>
+            </tfoot>
+        </table>
+
+      
+    </div>
+</div>
+

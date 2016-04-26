@@ -1,0 +1,25 @@
+<% $.each(goods.data, function (key, item){ %>
+    <li  class="js-row" <% if (item.pulled) { %>
+        data-icon="check"
+        <% } %>
+        >
+        <div class="supply_content js-goods-item" data-href="#/goods_detail/<%=item.dataid%>/1/<%=item.pulled%>">
+            <h4 class="js-subject">
+            <a href="#/goods_detail/<%=item.dataid%>/1/<%=item.pulled%>">
+                <%=item.subject%></a></h4>
+            <label class="money js-price">
+                ¥
+                <%=item.price%></label>
+            <p>
+                <span class="supply_lable"><%=item.fintime%>结束</span>
+                <!-- <span class="supply_lable red">60人团</span> -->
+            </p>
+            
+            </div>
+            <% if (null == item.pulled) { %>
+            <a href="#" data-dataid="<%=item.dataid%>" class="js-supply-add add"></a>
+
+            <% } %> 
+            <span <% if (null == item.pulled) { %>style="display:none"<% } %> class="add_gray js-added" alt="已添加"></span>
+    </li>
+    <% }); %>

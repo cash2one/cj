@@ -1,0 +1,72 @@
+<div data-ng-controller="changeLogCtrl">
+    <div class="panel panel-default font12">
+        <div class="panel-heading"><strong>搜索</strong></div>
+        <div class="panel-body">
+            <form id="id-form-search" class="form-inline vcy-from-search" role="form">
+                <div class="row">
+                    <div class="form-group col-sm-3">
+                        <label class="vcy-label-none">姓名：</label>
+                        <input type="text" class="form-control form-small" name="ac_name" data-ng-model="userName" />
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label class="vcy-label-none" >部门名：</label>
+                        <input type="text" class="form-control form-small" name="ac_no" maxlength="54" data-ng-model="cdName" />
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label class="vcy-label-none" >调整类型：</label>
+                        <select name="ac_status" class="form-control form-small" data-width="auto" data-ng-options="n.id as n.name for n in [{id:0,name:'全部'},{id:2,name:'积分惩罚'},{id:1,name:'积分奖励'}]" data-ng-selected="n.id==integralType" data-ng-model="integralType">
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <button type="submit" class="btn btn-info form-small form-small-btn" style="margin-right: 10px;"  data-ng-click="search($event)"><i class="fa fa-search"></i> 搜索</button>
+                        <a data-ng-href="{{export}}" type="submit" class="btn btn-warning form-small form-small-btn"><i class="fa fa-cloud-download"></i> 导出</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="table-light">
+        <div class="table-header">
+            <div class="table-caption font12">
+                兑换列表
+            </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover font12" id="table_mul">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>部门</th>
+                    <th>操作时间</th>
+                    <th>积分调整类型</th>
+                    <th>分值</th>
+                    <th>调整原因</th>
+                    <th>操作人</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbdoy_id">
+                <tr data-ng-repeat="item in reportList">
+                    <td data-ng-bind="item.m_username"></td>
+                    <td data-ng-bind="item.cd_name"></td>
+                    <td data-ng-bind="item.create_time * 1000 | date:'yyyy-MM-dd HH:mm:ss'"></td>
+                    <td data-ng-bind="item.type==1 ? '增加' : '减少'"></td>
+                    <td data-ng-bind="item.num"></td>
+                    <td data-ng-bind="item.desc"></td>
+                    <td data-ng-bind="item.op_username"></td>
+                </tr>
+                <tr>
+                    <td colspan="7" class="warning" data-ng-if="reportList.length<=0">暂无任何积分调整消息</td>
+                </tr>
+            </tbody>
+
+            <tfoot id="tbody-page">
+                <tr data-ng-show="resultCount>0">
+                    <td colspan="7" class="text-right vcy-page"
+                        poler-pagination="polerPaginationCtrl" download="getReportPage(page)">
+                        <!-- 分页 -->
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

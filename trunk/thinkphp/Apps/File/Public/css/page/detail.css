@@ -1,0 +1,51 @@
+.detail-wrap {
+  padding: .375rem .156rem;
+}
+.exhibition-img {
+  display: block;
+  max-width: 100%;
+}
+.exhibition-file-wrap {
+  background: #fff;
+  border: 0.031rem solid #dfdfdf;
+  padding: 1.56rem;
+  text-align: center;
+}
+.detail-line {
+  font-size: .5em;
+  background: #fff;
+  margin-bottom: .468rem;
+}
+.detail-line:last-child {
+  margin-bottom: 0;
+}
+.detail-line.mt {
+  margin-top: .937rem;
+}
+.detail-file-name {
+  font-size: 1em;
+}
+.detail-file-timestamp,
+.detail-file-uploader,
+.detail-file-size {
+  font-size: .8em;
+  color: #999999;
+}
+.ppt-wrap {
+  background: #fff;
+}
+.exhibition-download-info {
+  text-align: center;
+  font-size: .437em;
+  padding: .41rem 0;
+}
+.download-info-percent {
+  padding-left: .468rem;
+}
+.mlr {
+  margin: 0 .47rem;
+}
+.download-size,
+.comment-size {
+  font-size: 1.5em;
+}

@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS `oa_project_attachment` (
+  `pat_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `p_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '任务id',
+  `pp_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '进度id，如果为0则是任务附件，否则为对应进度附件',
+  `at_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '附件id',
+  `m_uid` int(10) unsigned NOT NULL COMMENT '用户UID',
+  `m_username` varchar(54) NOT NULL COMMENT '用户名称',
+  `pat_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '记录状态, 1=正常; 2=更新; 99=已删除',
+  `pat_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `pat_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `pat_deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`pat_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任务的附件表';

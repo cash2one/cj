@@ -1,0 +1,22 @@
+<div data-role="header" data-position="fixed" data-theme="a" class="mod-list-header">
+    <div class="mod-search-box"><input id="js-search" data-type="search"  type="search" placeholder="搜索"></div>	
+</div>
+
+	
+	<div role="main" class="mod-common-list">
+		<form><a href="#/customers_list" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">返回</a>
+			<a href="#" class="ui-btn ui-btn-inline ui-icon-carat-l ui-btn-icon-left ui-mini ui-nodisc-icon ui-alt-icon ui-corner-all">返回目录</a>
+			<ul id="list" class="touch iscroll-wrapper ui-nodisc-icon ui-alt-icon" data-role="listview" >
+				<%=data%>
+			</ul>
+		</form>
+	</div>
+	<div class="ui-field-footer footer-one">        
+        <button class="js-btn-nextpage ui-btn ui-btn-a ui-corner-all">显示更多</button>
+    </div>
+	<!-- /content -->
+	<div class="empty">		
+		<div class="empty-text">
+			<p>还没有文章哦</p>
+		</div>
+	</div>

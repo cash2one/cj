@@ -1,0 +1,509 @@
+/*背景色*/
+body,.ui-page{
+  background-color: #f0f0f0!important;
+}
+a {
+    text-decoration: none;
+  }
+.clearfix{*zoom:1}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}  
+.m-t-10{
+  margin-top: 25px;
+}
+/*头部*/
+.mod-list-header{
+  border-color: #c8d0d7!important;
+  background-color: #fff!important;
+  color:#3b475a!important;
+  border-top-width: 0;
+}
+/*头部返回按钮*/
+
+.ui-icon-back-l{  
+  background-color: #fff!important;  
+  border: 0;
+}
+.ui-icon-back-l:after {
+    background-image: url("../images/back-icon.png");
+    /* Make your icon fit */
+    background-size: 26px 26px;    
+    width:26px;
+    margin-top:-9px; 
+}
+/*头部返回按钮后面数字*/
+.mod-list-header .num{
+  display: block;
+  position: absolute;
+  top:3px;
+  left: 25px;
+  border-radius: 20px;
+  background-color: #fe585c;
+  width: 16px;
+  height: 16px;
+  line-height: 15px;
+  color: #fff;
+  font-size: 10px;
+  z-index: 10;
+  text-align: center;
+  padding: 1px;
+  font-weight: normal;
+  text-shadow:none;
+}
+/*去发光,去焦点*/
+.ui-shadow{
+  box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+}
+ a:active,a:focus,a:hover,button:focus{
+  background:none!important;
+  box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+}
+
+/*搜索框*/
+.ui-shadow-inset,select,select:focus {
+  border-radius: 23px;
+  -webkit-border-radius: 23px;
+  box-shadow:none!important;
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+  border: 0;  
+}
+.mod-search-box{
+  padding: 1px 13px;
+  display: block;
+}
+.mod-search-box input{
+  background:none; 
+  background-color:#fff;
+  padding-left: 2em;
+}
+.mod-search-box input:focus{
+  background:none; 
+  box-shadow: none;
+  background-color:#fff;
+}
+.mod-search-box .ui-input-search:after{
+  width: 20px;
+  height: 16px;
+  -webkit-background-size: 20px 16px;
+  background-size: 20px 16px;  
+  margin-left: 5px;
+  background-image: url("../images/icon_search.png");
+}
+/*搜索框结束*/
+
+/*栏标题*/
+.mod-common-list h4{
+  padding: 10px 13px;
+  margin:0; 
+  font-size: 14px;
+  font-weight: normal;
+  color: #a1a1a1;
+}
+
+/*列表公共*/
+.mod-common-list .ui-listview {  
+  border: 1px solid #c8d0d7!important;
+  border-width: 1px 0 1px 0!important;
+  background-color: #ffffff!important;  
+}
+.mod-common-list .ui-listview li {
+  border-top: 0;
+  border-bottom: 1px solid #c8d0d7; 
+  margin: 0 0 0 15px;
+  padding: 0;   
+  font-size: 16px;  
+  position: relative;
+}
+/*列表公共--一行方式*/
+
+.mod-common-list .view li{  
+  padding: 17px 13px 17px 0;  
+}
+.mod-common-list .view li label{
+  margin: 0;  
+  position: absolute;
+}
+.mod-common-list .view li span{
+  padding-left:88px;
+  color:#696969; 
+  white-space: normal;
+  word-break: break-all; 
+  word-wrap:break-word;
+  display: inline-block;   
+}
+.mod-common-list .link li a{ 
+  padding: 10px 40px 10px 0!important;
+}
+/*列表公共--两行方式*/
+.mod-common-list .ui-listview li h3{ 
+  color: #3b475a; 
+  text-shadow:none;
+}
+.mod-common-list .ui-listview li a{
+  border: 0;
+  background: none;
+  padding: 0 40px 0 0;
+}
+.mod-common-list .ui-listview li a:after{
+  opacity: 0.3;
+}
+.mod-common-list .ui-listview li p{
+  font-size: 12px;
+  color:#707989;
+  margin-top:6px;
+  display: block;
+  text-shadow:none;
+}
+.mod-common-list .ui-listview li:last-of-type {
+  border: none;
+}
+
+/*针对有表单的列表*/
+.mod-common-list .form-group li{
+  padding:17px 20px 17px 0;
+}
+.mod-common-list .form-group li .form-control{
+  border: 0;
+  min-width: 200px;
+  position: absolute;
+  left:90px;
+  color: #696969;
+}
+/*大的编辑框*/
+.mod-common-list .form-group-textarea{
+  padding:13px 20px 0 0;
+}
+.mod-common-list .form-group-textarea .form-control{
+  border: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-left: 13px;
+  color: #696969;
+  min-height: 60px;
+}
+.mod-common-list .form_textarea_text{
+  padding:17px 13px;
+  color:#696969;
+}
+/*针对有表单的列表结束*/
+/*列表选择*/
+.mod-common-list .select .ui-checkbox{
+  position: absolute;
+  width: 3.5em;
+  height: 100%;
+  min-height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-left-width: 1px;
+  top: 50%;
+  right: 0;
+  margin: 0px;
+  padding: 0px;
+  z-index: 2;
+  margin-top: -32px;
+  background-color: #fff!important; 
+  border: 0!important;
+  opacity: 1;
+
+}
+.mod-common-list .select .ui-checkbox label{
+  background-color: #fff!important; 
+  border: 0!important;
+  width: 30px;
+  height: 30px; 
+}
+.mod-common-list .select .ui-checkbox label:focus{box-shadow: 0;}
+.mod-common-list .select .ui-checkbox label:after{ 
+  width: 28px;
+  height: 28px;    
+  background-image:url(../images/noselect.png);
+  -webkit-background-size: 25px 25px;
+  background-size: 25px 25px; 
+  background-color: #fff!important; 
+  border: 0!important; 
+  opacity:1 !important;   
+}
+
+.mod-common-list .select .ui-checkbox-on:after{
+  width: 28px;
+  height: 28px;
+  -webkit-background-size: 25px 25px;
+  background-size: 25px 25px; 
+  background-color: #fff!important; 
+  border: 0!important;
+  background-image:url(../images/select.png)!important;
+}
+.mod-common-list .select .ui-checkbox input{
+  background-color: #fff!important; 
+  border: 0!important;
+  
+}
+
+
+
+/*上传图片*/
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin: 0px;
+  margin-bottom: 12px;
+}
+.mod_photo_uploader .js-attach-close{  
+  width: 18px;
+  height: 18px;  
+  background-image:url(../images/mdlg_btn_x.png);
+  -webkit-background-size: 18px 18px;
+  background-size: 18px 18px;
+  position: absolute;
+  top: 0;
+  right: 5px; 
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+.popphoto {
+  border: 1px solid #ccc;
+  width: 45px;
+  height: 45px;
+}
+
+.mod_photo_uploader {
+  border: 1px solid rgba(169, 169, 169, 0.6);
+  border-width: 1px 0 1px 0;
+  overflow: hidden;
+  padding-top: 12px;
+  padding-left: 16px;
+  background-color: #fff;
+}
+.mod_photo_uploader > a {
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 12px;  
+  overflow: visible;  
+}
+.mod_photo_uploader > a.add {
+  background: url('../images/up_add.png') no-repeat 0 0;
+  -webkit-background-size: contain;
+  background-size: contain;
+  position: relative;
+}
+.mod_photo_uploader > a:active, 
+.mod_photo_uploader > a:focus, 
+.mod_photo_uploader > a:hover{
+  background-image:url(../images/up_add.png)!important; 
+  -webkit-background-size: 45px 45px!important; 
+  background-size: 45px 45px!important; 
+}
+.mod_photo_uploader > a.add input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45px;
+  height: 45px;
+  opacity: .01;
+}
+.mod_photo_uploader > a.photo {
+  position: relative;
+  text-align: left;
+}
+.mod_photo_uploader > a.photo img {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.mod_photo_uploader > a.photo span {
+  position: absolute;
+  display: inline-block;
+  width: 1px;
+  height: 3px;
+  font-size: 0px;
+  line-height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #0066FF;
+}
+.mod_photo_uploader > a.photo i.rm {
+  top: -14px;
+  right: -14px;
+  position: absolute
+}
+
+/*公共nav*/
+.mod_list_nav {
+  height: 41.5px;  
+  width: 100%;
+}
+.mod_list_nav > a {
+  display: inline-block;
+  float: left;
+  height: 40px;
+  font-size: 16px;
+  line-height: 41.5px;
+  text-align: center;
+  color: #0099FF;
+  width: 50%;
+  position: relative;
+}
+/*三列nav */
+.nav_three a{
+  width: 33.33%;
+}
+
+.mod_list_nav > a.current {
+  background-color: #fff;
+  color: #333;
+  font-weight: bold;
+}
+.mod_list_nav> a:before {
+  content:"";
+  display:block;
+  position:absolute;
+  left:0;
+  height:100%;
+  width:1px;
+  background-color:#d4d4d4;
+  top:0;
+}
+.mod_list_nav a.ui-link {
+  background: #f3f3f3;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+}
+.mod_list_nav a.ui-link.current {
+  background: #fff;
+  color: #09f;
+  border-bottom: 1px solid #09f;
+}
+/*nav-1后面新改的12-18*/
+nav.mod_list_nav{height: 41px;background-color:#fff;border-bottom: 1px solid #c8d0d7; }
+.mod_list_nav a.ui-link{border-width: 0; background-color:#fff;text-shadow: none;color:#515167}
+.mod_list_nav a.ui-link.current:before{border-bottom: 2px solid #00a2f6;left:5%;margin-left:-3%;position: absolute;width: 96%;z-index: 99;}
+.mod_list_nav a.ui-link.current{border-bottom:0;}
+.mod_list_nav> a:before{background: none;}
+
+/*复选单行选择列表*/
+.checkbox-contral li,.radio-contral li{ 
+  position: relative;
+}
+.checkbox-contral li .ui-checkbox,.radio-contral li .ui-radio{
+  margin:0!important; 
+}
+.checkbox-contral li .ui-checkbox label,.radio-contral li .ui-radio label{  
+  border: 0!important;
+  background-color: #fff;
+  padding: 0;
+  padding-left: 42px;
+}
+.checkbox-contral li .ui-checkbox label:hover,.radio-contral li .ui-radio label:hover{
+  background-color: #fff;
+}
+.Single li .ui-checkbox label h3,.Single li .ui-radio label h3{
+  padding: 11px 0!important;
+}
+
+.li-Single{
+  padding: 10px 0!important;
+}
+
+/*复选-单选两行选择有头像列表*/
+
+.checkbox-contral li .ui-checkbox label h3,
+.checkbox-contral li .ui-checkbox label p,
+.radio-contral li .ui-radio label h3,
+.radio-contral li .ui-radio label p{
+  padding-left: 50px;
+}
+.checkbox-contral .ui-bar-inherit,.radio-contral .ui-bar-inherit{
+  padding-left: 10px!important;
+  border:0 !important;
+  border-radius:0 !important;
+}
+.checkbox-contral li .ui-checkbox label p,.radio-contral li .ui-radio label p{
+  color: #a1a1a1;
+}
+.checkbox-contral .thumbnail,.radio-contral .thumbnail{
+  position: absolute;
+  width:40px;
+  height: 40px;
+  top:50%;
+  margin-top: -20px;
+  border-radius: 5px;
+}
+/*底部二个按钮*/
+.footer{
+  padding: 10px 5px;
+}
+/*底部一个按钮*/
+.footer-one{
+  padding: 10px 10px;
+}
+/*底部提交按钮*/
+.footer .btn-submit .ui-btn{  
+  color: #fff;
+  background:green;
+  font-weight: normal;
+  text-shadow:none;
+}
+
+.footer .btn-submit input{opacity: 1;}
+/*文章详细*/
+.mod-common-detail h3{
+
+}
+.mod-common-detail .time,.mod-common-detail .author{
+  font-size: 12px;
+  color: #999;
+  margin: 3px 0;
+}
+.mod-common-detail .ui-body-a{ 
+  border: 1px solid rgba(169, 169, 169, 0.6);  
+  border-width:1px 0 1px 0;
+}
+/*空记录显示*/
+.empty-conten{
+  display: block;
+  background-image:url(../images/empty.png);
+  -webkit-background-size: 230px 259px;
+  background-size: 230px 259px;
+  width:230px;
+  height: 259px;
+  margin: 3px auto;  
+}
+.empty-text{
+  font-size: 16px;
+  color: #a1a1a1;
+  text-align: center;
+  display: block;
+  padding: 10px;
+  margin: 3px auto; 
+  line-height: 28px;
+}

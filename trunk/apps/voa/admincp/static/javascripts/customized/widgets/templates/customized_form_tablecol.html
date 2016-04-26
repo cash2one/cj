@@ -1,0 +1,146 @@
+
+    <td width="35%"><%= fieldname %></td>
+    <td width="65%">
+    <% if (ct_type == 'float' || ct_type == 'int') { %>
+        <% if (unit) { %>
+        <div class="input-group">
+                            <input id="_<%= tc_id %>" type="text" name="_<%= tc_id %>" class="form-control" placeholder="<%= tc_desc %>" value="<%= value %>">
+                            
+                            <span class="input-group-btn">
+                                <button class="btn" type="button"><%= unit %></button>
+                            </span>
+                            
+                        </div>
+        <% } else { %>
+        <input id="_<%= tc_id %>" type="text" name="_<%= tc_id %>" placeholder="<%= tc_desc %>" class="form-control" value="<%= value %>">
+        <% }  %>
+    <% } %>
+    <!-- <td width="65%" class="has-error "> -->
+    <% if ( ct_type == 'varchar' || ct_type == 'passwd' || ct_type == 'qq' || ct_type == 'email' || ct_type == 'mobile' || ct_type == 'idcard' || ct_type == "postalcode" || ct_type == "diy") { %>
+        <input id="_<%= tc_id %>" type="text" name="_<%= tc_id %>" class="form-control" reg="<%= reg_exp %>" value="<%= value %>" placeholder="<%= tc_desc %>">
+    <% } %>
+    <% if (ct_type == 'select') { %>
+        <% if (!_.isEmpty(options_data)) { %>
+        <select name="_<%= tc_id %>" class="form-control form-group-margin"
+        style="margin-bottom: 0 !important;">
+            <% $.each(options_data, function (k, opt) { %>
+            <option value="<%= opt.tco_id %>"  <% if (value == opt.tco_id) { print("selected"); } %> ><%= opt.value %></option>
+            <% }) %>
+        </select>
+        <% } %>
+    <% } %> 
+    <% if (ct_type == 'text') { %>
+        <% if (ftype == 2) { %>
+        <script id="_<%= tc_id %>" type="text/plain"><%= value %></script>
+        <% } else { %>
+        <textarea name="_<%= tc_id %>" class="form-control" placeholder="<%= tc_desc %>"><%= value %></textarea>
+        <% } %>
+        
+    <% } %>
+    <% if (ct_type == 'radio') { %>
+    <% $.each(options_data, function (k, opt) {%>
+        <% if (ftype != '2') { %>
+        <label class="checkbox-inline"> <input type="radio" name="_<%= tc_id %>"
+            name="inlineCheckbox1" value="<%= opt.tco_id %>" class="px" <% if (value == opt.tco_id) { print("checked='true'"); } %> > <span
+            class="lbl">.<%= opt.value %></span>
+        </label>
+        
+        <% } else { %>
+        <div class="checkbox-pic col-xs-6 col-md-3  item">
+        <img src="<%=opt.attachurl%>">
+        <label class="checkbox-inline"> <input type="radio" name="_<%= tc_id %>"
+            name="inlineCheckbox1" value="<%= opt.tco_id %>" class="px" <% if (value == opt.tco_id) { print("checked='true'"); } %> > <span
+            class="lbl"><%= opt.value %>.</span>
+        </label>
+        </div>
+        <% } %>
+    <% }) %>
+    <% } %>
+    <% if (ct_type == 'checkbox') { %>        
+        <% $.each(options_data, function (k, opt) {%>
+        <% if (ftype != '2') { %>
+            <label class="checkbox-inline"> <input name="_<%= tc_id %>[]"
+                type="checkbox" value="<%= opt.tco_id %>" <% if (_.find(value, function (v2) { return v2 == opt.tco_id})) { print("checked='true'"); } %>
+                class="px"> <span class="lbl"><%= opt.value %></span>
+            </label>
+        <% } else { %>
+        <div class="checkbox-pic col-xs-6 col-md-3  item">
+        <img src="<%=opt.attachurl%>">
+        <label class="checkbox-inline"> <input name="_<%= tc_id %>[]"
+                type="checkbox" value="<%= opt.tco_id %>" <% if (_.find(value, function (v2) { return v2 == opt.tco_id})) { print("checked='true'"); } %>
+                class="px"> <span class="lbl"><%= opt.value %>.</span>
+            </label>            
+        </div>
+        <% } %>
+        <% }) %>    
+    <% } %>
+    <% if (ct_type == 'attach') { %>    
+        <!-- file -->
+        
+        <div class="media">
+            <div class="js-media-sample media-body item" style="display: none">
+                <h4 class="media-heading">liuao130584_b.jpg</h4>
+                <div class="">
+                    <small>文件大小: <i></i> Byte</small> <a class="js-attach-close" href="#">
+                       删除
+                    </a>
+
+                </div>
+                
+            </div>
+        </div> 
+        <!-- file end -->
+        <!-- pic -->
+        <div class="row">
+            <div class="js-image-sample col-xs-6 col-md-3  item" style="display: none">
+                <div class="" onmouseover="this.className='hover'"
+                    onmouseout="this.className=''">
+                    <span class="thumbnail"> <img
+                        data-src="holder.js/100%x180" alt="100%x180"
+                        style="width: 100%; display: block;"
+                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=">
+                    </span> <i class="fa fa-times js-attach-close"></i>
+                </div>
+            </div>
+        </div>
+        <!-- The fileinput-button span is used to style the file input field as button -->
+     
+        <div style="position: relative;">
+        <span  class="btn btn-default fileinput-button" style="position: relative;">
+            <i class="fa fa-upload"></i>
+            <span>上传</span>
+            <input class="fileupload" type="file" name="data" multiple >
+        </span>
+        <div class="clearfix"></div>
+        </div>
+        <!-- pic end -->
+    <% } %>
+    <% if (ct_type == 'datetime') { %>
+        <div class="input-group date">
+            <input type="text" class="form-control input-datetime" placeholder="<%= tc_desc %>" name="_<%= tc_id %>" value="<%= value %>"> <span
+                class="input-group-addon"> <i
+                class="fa fa-calendar"></i>
+            </span>
+        </div>
+    <% } %>
+    <% if (ct_type == 'date') { %>
+        <div class="input-group date">
+            <input type="text" class="form-control input-date" placeholder="<%= tc_desc %>" name="_<%= tc_id %>" value="<%= value %>"> <span
+                class="input-group-addon"> <i
+                class="fa fa-calendar"></i>
+            </span>
+        </div>
+    <% } %>
+    <% if (ct_type == 'time') { %>
+        <div class="input-group date ">
+            <input type="text" class="form-control input-time" placeholder="<%= tc_desc %>" name="_<%= tc_id %>" value="<%= value %>"
+                id="bs-timepicker-component"> <span
+                class="input-group-addon"> <i
+                class="fa fa-clock-o"></i>
+            </span>
+        </div>
+    <% } %>
+    <!-- 
+        <p class="help-block ">Example block-level help text here.</p> -->
+    </td>
+    

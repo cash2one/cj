@@ -1,0 +1,43 @@
+<div data-role="header"   data-position="fixed" class="mod-list-header" role="banner" id="superreport_view_header">
+    <h1 class="ui-title" role="heading" aria-level="1">
+        <input name="mode1" id="datepicker" type="text" data-role="datebox" data-options='{"mode":"datebox", "useLang": "zh-CN", "overrideDateFieldOrder":["y", "m"],"overrideDateFormat":"%Y-%m"}' value="<%= year+'-'+month %>" />
+    </h1>
+
+    <a id="backward" href="javascript:;" data-rel="back" class="ui-btn-left ui-alt-icon no-ui-shadow ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-left ui-corner-all" data-role="button" role="button">前一月</a>
+
+    <a href="javascript:;" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-r ui-btn-icon-right ui-corner-all" id="forward">后一月</a>
+</div>
+<div role="main" class="mod-common-list" id="superreport_view">
+    <% if (report.length) { %>
+    <ul class="view" data-role="listview">
+        <li class="name">
+            <h3><%= csp_name %></h3>
+        </li>
+        <li class="title-line">
+            <span class="rank-0">项目</span>
+            <span class="rank-1">本月</span>
+            <span class="rank-2">上月</span>
+            <span class="rank-2">趋势</span>
+        </li>
+
+        <% $.each(report, function (key, item){ %>
+            <% if (item.type == 'int') {%>
+            <li>
+                <span class="rank-0"><%= item.fieldname %></span>
+                <span class="rank-1"><%= item.current+item.unit %></span>
+                <span class="rank-2"><%= item.forward+item.unit %></span>
+                <span class="rank-3 <% if(item.gap>0){ %>up<% }else if(item.gap<0){ %>down <%}else{ %>stay<%}%>"><%= item.gap %></span>
+            </li>
+            <% } %>
+        <% }); %>
+
+    </ul>
+    <% } else { %>
+    <div class="empty-text">
+        <p>暂无数据<p>
+    </div>
+    <% } %>
+</div>
+<div class="footer footer-one ">
+    <button class="js-btn-nextpage ui-btn ui-btn-a ui-corner-all" onclick="history.back()">返回</button>
+</div>

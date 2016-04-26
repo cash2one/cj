@@ -1,0 +1,111 @@
+/*我的*/
+
+#my ul {
+  margin:0;
+}
+#my .iscroll-content,#my .ui-content{padding: 0!important;}
+.ui-shadow{
+  box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+}
+#my a.thumbnail:after{
+  background-image:url("../images/icon_next_r.png");
+  background-size: 22px 22px;
+}
+#my .thumbnail img{
+  width: 40px;
+  height: 40px;
+  border-radius: 90px;
+  margin: 20px 10px;
+}
+#my .info li a{
+  padding-left: 62px;
+  background-color: #fff;
+}
+#my .info li a h2{
+  font-weight: normal;
+  color: #3a475b;
+  padding: 11px 0;
+}
+#my .info li a p{ 
+  color: #fe5955;
+  font-size: 14px;
+  margin: 0;
+}
+#my .info li a p span{ 
+  font-size: 28px;
+  font-weight: bold;
+}
+#my ul.crm {
+  margin:0;
+  border-radius: 0;  
+  padding: 0 0 10px 10px;
+}
+#my ul.crm li {
+  float:left;
+  position: relative;   
+  width: 50%;  
+  padding: 0;
+  border: 0;
+  background-color: rgba(255,255,255,0);
+}
+#my ul.crm li .item-box{
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e1e1e1;
+  margin: 10px 10px 0 0;  
+  border-radius: 3px; 
+  text-align: center;
+ 
+  background-color: #fff;  
+}
+#my ul.crm li .item-box.my-order{
+  padding: 9px 10px;
+}
+#my ul.crm li .item-box .title{
+  height:50px;
+  line-height: 50px;
+}
+#my ul.crm li .item-box p{
+  color:#70798a;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+#my ul.crm li a{
+  color:#3a475b;
+  border: 0;
+  padding:0; 
+}
+
+/*图标*/
+#my .icon {
+  background: url("../images/img.png");
+  background-size: 200px 200px;
+  background-position: 0 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  margin-bottom: 3px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#my .icon-results {
+  background-position: -20px 0;
+}
+#my .icon-data {
+  background-position: -40px 0;
+}
+#my .icon-shop {
+  background-position: -60px 0;
+}
+#my .icon-customer {
+  background-position: -80px 0;
+}
+#my .icon-message {
+  background-position: -100px 0;
+}
+#my .icon-qr {
+  background-position: -120px 0;
+}

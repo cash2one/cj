@@ -1,0 +1,58 @@
+<!-- 考勤规则弹性 -->
+<div class="modal-header">
+    <button type="button" class="close" data-ng-click="$dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title text-center">考勤规则</h4>
+</div>
+<div class="modal-body">
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <td class="active">考勤时间范围</td>
+            <td>
+                <!--最早签到时间--> <span data-ng-bind="classData._str_work_begin"></span> -
+                <!--最晚签退时间--> <span data-ng-bind="classData._str_work_end"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">工作时长</td>
+            <td>
+                最小工作时长 <span data-ng-bind="classData.min_work_hours"></span> 小时
+            </td>
+        </tr>
+        <tr data-ng-if="classData.late_work_time_on == 1">
+            <td class="active">最晚上班时间</td>
+            <td>
+                最晚上班时间 <span data-ng-bind="classData.late_work_time*1000 | date: 'hh:mm'"></span>
+            </td>
+        </tr>
+        <tr data-ng-if="classData.come_late_range_on == 1">
+            <td class="active">迟到规则</td>
+            <td>
+                晚于最晚上班时间 <span data-ng-bind="classData.come_late_range/60"></span> 分钟 签到计为迟到
+            </td>
+        </tr>
+        <tr data-ng-if="classData.absenteeism_range_on == 1">
+            <td class="active">旷工规则</td>
+            <td>
+                实际工作时长少于{{classData.min_work_hours}}小时算旷工 <span data-ng-bind="classData.absenteeism_range"></span>％
+            </td>
+        </tr>
+        <tr data-ng-if="classData.sign_on == 1">
+            <td class="active">签到提醒</td>
+            <td>
+                上班时间点前 <span data-ng-bind="classData.remind_on_rage / 60"></span> 分钟提醒<br />
+                提醒语：<span data-ng-bind="classData.remind_on"></span>
+            </td>
+        </tr>
+        <tr data-ng-if="classData.sign_off == 1">
+            <td class="active">签退提醒</td>
+            <td>
+                下班时间点后 <span data-ng-bind="classData.remind_off_rage/60"></span> 分钟内未签退则发起提醒<br />
+                提醒语：<span data-ng-bind="classData.remind_off"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

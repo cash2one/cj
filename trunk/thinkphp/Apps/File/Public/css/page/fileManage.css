@@ -1,0 +1,45 @@
+.search-wrap {
+  position: relative;
+  padding: .156rem .218rem;
+}
+.ft-search-icon {
+  position: absolute;
+  font-size: .54rem;
+  top: .4rem;
+  left: .487rem;
+}
+.search-wrap input {
+  padding: .28rem .812rem;
+}
+.file-share {
+  background: #fff;
+  border-top: 0.031rem solid #dfdfdf;
+  border-bottom: 0.031rem solid #dfdfdf;
+  margin-bottom: .312rem;
+}
+.file-share section.list-item {
+  color: #333333;
+  padding: .218rem 0;
+  margin: 0 .468rem;
+  font-size: .5em;
+}
+.file-share section.list-item a {
+  display: block;
+  color: #333333;
+}
+.file-name {
+  font-size: 1em;
+}
+.file-timestamp,
+.file-uploader,
+.file-size {
+  font-size: .8em;
+  padding-right: .15rem;
+  color: #999999;
+}
+.toArrow {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.5em;
+  color: #999999;
+}

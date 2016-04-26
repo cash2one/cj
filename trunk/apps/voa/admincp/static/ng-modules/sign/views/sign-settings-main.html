@@ -1,0 +1,64 @@
+<!-- 设置主页 -->
+<div class="sign_settings container-fluid" data-ng-controller="SignSettingsMainCtrl">
+    <ul class="list-unstyled sign_settings_main">
+        <li>
+            <a data-ng-href="#/app/page/sign/sign-settings-signin">
+                <dl class="dl-horizontal">
+                    <dt><span class="h4">签到设置</span></dt>
+                    <dd><span class="icon-angle-right pull-right"></span>设置签到时间范围、迟到规则等</dd>
+                </dl>
+            </a>
+        </li>
+        <li>
+            <a data-ng-href="#/app/page/sign/sign-settings-signout">
+                <dl class="dl-horizontal">
+                    <dt><span class="h4">签退设置</span></dt>
+                    <dd><span class="icon-angle-right pull-right"></span>设置签退时间范围、迟到规则等</dd>
+                </dl>
+            </a>
+        </li>
+        <li>
+            <a data-ng-href="#/app/page/sign/sign-settings-weixin">
+                <dl class="dl-horizontal">
+                    <dt><span class="h4">微信菜单设置</span></dt>
+                    <dd><span class="icon-angle-right pull-right"></span>可自定义手机端三个菜单</dd>
+                </dl>
+            </a>
+        </li>
+        <li>
+            <dl class="dl-horizontal">
+                <dt><span class="h4">外出考勤必须上传图片</span></dt>
+                <dd>
+                    <div class="pull-right checkbox checkbox-slider-lg checkbox-slider--b-flat">
+                        <label data-ng-if="buttonSwitch.out_sign_upload_img == 1">
+                            <input type="checkbox" data-ng-click="SwitchOperation('out_sign_upload_img', 1)"><span>{{buttonSwitch.out_sign_upload_img == 1 ? '已关闭' : '已开启'}}</span>
+                        </label>
+                        <label data-ng-if="buttonSwitch.out_sign_upload_img == 2">
+                            <input type="checkbox" checked data-ng-click="SwitchOperation('out_sign_upload_img', 1)"><span>{{buttonSwitch.out_sign_upload_img == 1 ? '已关闭' : '已开启'}}</span>
+                        </label>
+                    </div>
+                    开启后，必须上传图片才能提交考勤信息；关闭后，可以选择不上传图片。
+                </dd>
+            </dl>
+        </li>
+        <li>
+            <dl class="dl-horizontal">
+                <dt><span class="h4">休息日允许考勤</span></dt>
+                <dd>
+                    <div class="pull-right checkbox checkbox-slider-lg checkbox-slider--b-flat">
+                        <label data-ng-if="buttonSwitch.rest_day_sign == 1">
+                            <input type="checkbox" data-ng-click="SwitchOperation('rest_day_sign', 2)"><span>{{buttonSwitch.rest_day_sign == 1 ? '已关闭' : '已开启'}}</span>
+                        </label>
+                        <label data-ng-if="buttonSwitch.rest_day_sign == 2">
+                            <input type="checkbox" checked data-ng-click="SwitchOperation('rest_day_sign', 2)"><span>{{buttonSwitch.rest_day_sign == 1 ? '已关闭' : '已开启'}}</span>
+                        </label>
+                    </div>
+                    开启后，休息日允许考勤，工作时间计为加班；关闭后，休息日不允许考勤。
+                </dd>
+            </dl>
+        </li>
+    </ul>
+
+
+
+</div>

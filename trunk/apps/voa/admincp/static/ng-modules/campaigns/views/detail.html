@@ -1,0 +1,43 @@
+<div class="de_con" data-ng-controller="detailCtrl">
+    <div class="panel left-col de-left">
+        <!-- left -->
+        <div class="panel-heading" >
+            <div class="sh_heading">
+                <h1 class="panel-title sh_title" data-ng-bind="subject"></h1>
+                <a href="#/app/page/campaigns/edit?id={{id}}">编辑</a>
+            </div>
+            <div class="sh_info">
+                <span>活动分类：{{title}}</span>
+            </div>
+           <div class="sh_info">
+               <span class="sh_time">活动时间：{{begintime}} 至 {{overtime}} </span>
+               <span class="sh_num">分享数：{{share}}</span>
+               <span class="sh_view">浏览量：{{hits}}</span>
+           </div>
+        </div>
+        <div class="panel-body">
+            <div class="padding-sm content" id="content" style="border:1px solid #dcdcdc;margin-bottom: 20px;">
+            </div>
+            <button class="btn btn-default padding-sm" data-ng-click="back()">返回</button>
+        </div>
+
+    </div>
+    <!-- right  -->
+    <div class="right-col panel de-right">
+        <div class="panel-body">
+            <h3 class="st_title">
+                <i class="fa fa-bar-chart-o st-title-icon"></i>
+                推广排行
+            </h3>
+            <ul class="st_list">
+                <li data-ng-repeat="top in tops">
+                    <span data-ng-bind="top.m_username"></span>
+                    <span>分享数 {{top.share}}</span>
+                    <span>浏览量 {{top.hits}}</span>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</div>

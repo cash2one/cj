@@ -1,0 +1,114 @@
+/*�������*/
+
+.kdzs-ui-noset i {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.kdzs-ui-noset p{
+    text-align: left;
+}
+
+.kdzs-ui-noset h2{
+    color: #999;
+    font-size: 18px;
+    margin: 10px;
+}
+
+.kdzs-ui-title{
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin:20px auto 25px;
+}
+
+.kdzs-ui-success i {
+    background-image: url(../images/icon-success-blue.png);
+    -webkit-background-size: 127px auto;
+    margin-top: 80px;
+}
+
+.kdzs-ui-margin-top {
+    margin-top: 20px;
+}
+
+.kdzs-ui-margin-bottom {
+    margin-bottom: 30px;
+}
+
+.kdzs-ui-sign h4{
+    display: inline-block;
+    padding: 3px 4px;
+    background-clip: padding-box;
+    background-color:#26a7c7 ;
+    position: absolute;
+    border-radius: 18px 18px 18px 18px;
+    width: 40px;
+    height: 20px;
+    right: 20px;
+    top:17px;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+}
+
+.ui-barcode{
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.ui-barcode-text{
+    color: #999;
+    font-size: 12px;
+}
+
+.kdzs-detail-title{
+    background: url("../images/bg-detail-title.png") no-repeat;
+    -webkit-background-size:100% 64px;
+    padding: 20px 40px;
+}
+.kdzs-detail-title label{
+    vertical-align: middle;
+    color: #fff;
+    font-size: 18px;
+}
+
+.kdzs-detail-received {position: absolute;right: 100px;top: 4px;}
+
+.kdzs-detail-received-bg:before{
+    background:  url(../images/detail-received.png) no-repeat;
+    -webkit-background-size: 60px auto;
+    width: 60px;
+    height: 44px;
+}
+
+.kdzs-detail-not-received:before{
+    background:  url(../images/detail-not-received.png) no-repeat;
+    -webkit-background-size: 60px auto;
+    width: 60px;
+    height: 44px;
+}
+
+.kdzs-ui-instead{
+    text-align: center;
+    color: #158BA7;
+    font-size: 14px;
+}
+
+.ui-icon-photo {width: 24px;height: 24px;position: absolute;right: 7px;top: 4px;}
+.ui-icon-photo:before {
+    background-image:  url(../images/icon.png?_bid=306) ;
+    background-position: -127px -200px;
+    width: 24px;
+    height: 24px;
+    margin: 8px;
+    position: static;
+}
+.kdzs-img-size{
+    height: 150px;
+    width: 150px;
+    padding:10px;
+}
+
+

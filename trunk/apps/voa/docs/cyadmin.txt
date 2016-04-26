@@ -1,0 +1,63 @@
+主站总后台
+---------------------------------
+web目录入口开放：/apps/voa/cyadmin_www
+---------------------------------
+web服务配置：
+<VirtualHost *:80>
+    ServerAdmin deepseath@localhost
+    DocumentRoot "***\apps\voa\cyadmin_www"
+    ServerName cyadmin.vchangyi.com
+    ServerAlias cyadmin.vchangyi.com
+    ErrorLog "***\vcy_dev_admin_error.log"
+    CustomLog "***\vcy_dev_admin_access.log" common
+    <IfModule mod_rewrite.c>
+	RewriteEngine on
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !\.(js|ico|gif|jpg|png|css|xml|swf|txt|woff|ttf|eot|svg|otf|php|htm|html)$
+        RewriteRule .* /index.php [L]
+    </IfModule>
+    SetEnv RUN_MODE development
+</VirtualHost>
+---------------------------------
+修改数据库配置：/apps/src/config/[development|production]/db.php
+加入或者对应修改：
+/** 畅移主站 后台 数据库配置 */
+$conf['cyadmin'] = array(
+		array(
+				'host' => '127.0.0.1',
+				'user' => 'root',
+				'pw' => 'password',
+				'charset' => 'utf8',
+				'pconnect' => 0,
+				'dbname' => 'vchangyi_main',
+				'tablepre' => 'cy_'
+		)
+);
+$conf['cyadmin.tables'] = array();
+---------------------------------
+数据库表结构：/apps/voa/docs/cyadmin_structure.sql
+---------------------------------
+数据表默认数据：/apps/voa/docs/cyadmin_data.sql
+---------------------------------
+路由规则：/apps/src/config/route/cyadmin.php
+---------------------------------
+缓存配置：/apps/src/config/cache.php
+加入或对应修改：
+/** 畅移主站后台缓存 */
+$service_cyadmin = &service::factory('voa_s_cyadmin_mtc', array('pluginid' => startup_env::get('pluginid')));
+$conf['mtc.cyadmin'] = array(
+	'class' => 'cache_memory',
+	'service' => $service_cyadmin,
+	'keys' => array(),
+	'options' => array()
+);
+---------------------------------
+c：/apps/voa/src/include/c/cyadmin
+---------------------------------
+s：/apps/voa/src/include/s/cyadmin
+---------------------------------
+d：/apps/voa/src/include/d/cyadmin
+---------------------------------
+template：/apps/voa/src/templates/cyadmin
+---------------------------------

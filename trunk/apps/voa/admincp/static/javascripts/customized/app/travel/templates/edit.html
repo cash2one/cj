@@ -1,0 +1,161 @@
+<!-- 新建-编辑项目 -->
+<div class="">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel" id="edit">
+                <div class="panel-heading">
+                    <span class="panel-title">编辑</span>
+                    <div class="panel-heading-controls">
+                        <div class="panel-heading-text"></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <!-- 
+                    <div class="note note-info">
+                    了解更多操作，请点击
+                    <a href="" target="_blank">帮助</a>
+                </div>
+                -->
+                <form id="js-form">
+                    <input type="hidden" name="dataid" value="<%= dataid %>"/>
+                    <table id="js-form-customize" class="table table-bordered table-striped" style="margin-bottom:0;">
+                        <tbody>
+                        <!-- 二级分类隐藏
+                            <tr>
+                                <td>分类</td>
+                                <td>
+                                    <select name="classid" class="form-control">
+                                        <option value="0">请选择分类</option>
+                                        <% $.each(cate, function (k1, c1){ if (c1.pid == "0") {%>
+                                        <optgroup label="<%=c1.classname%>
+                                            ">
+                                            <% $.each(cate, function (k2, c2){ if (c2.pid == c1.classid){ %>
+                                            <option value="<%=c2.classid%>
+                                                ">
+                                                <%=c2.classname%></option>
+                                            <% }}); %></optgroup>
+                                        <% }}); %></select>
+        
+                                </td>
+                            </tr>
+                             -->
+                            <tr>
+                            <td>权限</td>
+                                <td>
+                                   <div id="contacts_container"></div>
+
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>分类</td>
+                                <td>
+                                    <select name="classid" class="form-control">
+                                        <option value="0">请选择分类</option>
+                                        <% $.each(cate, function (k1, c1){ if (c1.pid == "0") {%>
+                                        <option value="<%=c1.classid%>">
+                                                <%=c1.classname%></option>
+                                        
+                                        <% }}); %></select>
+        
+                                </td>
+                            </tr>
+                            <% if (window._style == 'crm') {%>
+                            <tr>
+                                <td>商品规格(尺寸)</td>
+                                <td>
+                                    
+                                    <% if (!_.isEmpty(goods.styles)) { var i = 0;%>
+                                    <% $.each(goods.styles, function (k, item) { %>
+                                    <div class="row format-box js-format-row">
+                                    <input value="<%=item.styleid%>"  type="hidden" name="styles[styleid][]" >
+                                        <div class="col-xs-5">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">规格</span>
+                                                <input value="<%=item.stylename%>" name="styles[stylename][]" type="text" class="form-control" placeholder="例：黑色M/165,没有规格可不填"></div>
+
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">价格</span>
+                                                <input value="<%=item.price%>" type="text" name="styles[price][]"  class="form-control js-style-price" placeholder="必填"></div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">库存</span>
+                                                <input value="<%=item.amount%>"  type="text" name="styles[amount][]" class="form-control" placeholder="必填"></div>
+                                        </div> <div class="col-xs-1">
+                                            
+                                              <a href="javascript:;" class="add-format js-del-format" <% if ( i++ == 0) {%> style="display: none"<% } %> > <i class="fa  fa-minus-circle text-danger"></i>
+                                    </a>
+                                               
+                                        </div> 
+                                    </div>
+                                    <% }); %>
+                                    <% } else { %>
+                                    <div class="row format-box js-format-row">
+                                        <div class="col-xs-5">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">规格</span>
+                                                <input name="styles[stylename][]"  type="text" class="form-control" placeholder="例：黑色M/165,没有规格可不填"></div>
+
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">价格</span>
+                                                <input type="text" name="styles[price][]"   class="form-control js-style-price" placeholder="必填"></div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">库存</span>
+                                                <input type="text" name="styles[amount][]"  class="form-control" placeholder="必填"></div>
+                                        </div> <div class="col-xs-1">
+
+                                        <a href="javascript:;" class="add-format js-del-format" style="display:none;"> <i class="fa  fa-minus-circle text-danger"></i>
+                                        </a>
+
+                                    </div>
+                                    </div>
+                                    <% } %>
+                                    <div class="row">
+                                        <div class="col-xs-1">
+                                            
+                                              <span class="js-add-format btn btn-default"> <i class="fa fa-plus-circle "></i>
+                                              <span>添加</span>
+                                    </span>
+                                               
+                                        </div> 
+                                    </div>
+                                   
+                                </div>
+
+                            </td>
+                        </tr>
+                        <% } %>
+                    <!-- 
+                            <tr>
+                    <td>是否货源</td>
+                    <td>
+                        <select name="src_field" class="form-control">
+                            <option value="2">非货源</option>
+                            <option value="1" <% if (src_field == '1') {%>
+                                selected
+                                <% } %>>货源</option>
+                        </select>
+                    </td>
+                </tr>
+                -->
+                <!-- 表单 --> </tbody>
+        </table>
+    </form>
+</div>
+<div class="note note-info padding-xs-vr">企业员工添加了产品以后，后台产品修改不会对员工已添加的产品内容有改动。</div>
+<div class="panel-footer">
+    <a href="#" class="js-btn-save btn btn-primary">保存</a>
+    &nbsp;&nbsp;
+    <a href="#" class="btn btn-default">取消</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 新建编辑面页结束 -->

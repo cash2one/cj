@@ -1,0 +1,59 @@
+<!--通讯录v2-->
+<% if (isRoot) { %>
+	<h3><%=name%></h3>
+<% } else { %>
+	<a class="pageReturn" href="javascript:void(0)"><%=name%></a>
+<% } %>
+<% if (_type != 0) { %>
+	<a class="pageClose" href="javascript:void(0)">&times;</a>
+<% } %>
+<ul class="mod_common_list">
+	<% if (isPerson) { %>
+		<li class="psn" id="person_only">
+			<a class="m_link" href="<%=profileURL%>">
+				<img src="<%=face%>"/>
+				<%=name%>
+				<em><%=job%></em>
+			</a>
+		</li>
+	<% }else { %>
+		<% for (var i=0, lng=nodes.length; i<lng; i++){ %>
+			<% var node = nodes[i]; %>
+			<% if (node.isPerson && existIds.indexOf(node.id.toString()) === -1 ) { %>
+				<%
+					var selStr = '', 
+						t2_nodes = t2_selected_nodes;
+					if (t2_nodes != null){
+						for (var j=0; j<t2_nodes.length; j++){
+							var t2_n = t2_nodes[j];
+							if (node.id === t2_n.id){
+								selStr = 'selected';
+								break;
+							}
+						}
+					}
+				%>
+				<li class="psn uid<%= node.id %> <%= selStr %>" id="person_<%= node.path.replace(/\,/g, '_') %>" data-path="<%= node.path %>">
+					<a class="m_link" href="<%= node.profileURL %>">
+						<img src="<%= node.face %>"/>
+						<%= node.name %>
+						<em><%= node.job %></em>
+					</a>
+				</li>
+			<% } else { %>
+				<% if (node.numNodes) { %>
+					<li class="dpm" id="department_<%= node.path.replace(/\,/g, '_') %>" data-idx="<%=i%>" data-path="<%= node.path %>">
+						<a class="m_link" href="javascript:void(0)">
+							<%= node.name %>
+						</a>
+					</li>
+				<% } %>
+			<% } %>
+		<% } %>
+	<% } %>
+</ul>
+
+
+<div class="numbtns single" hidden>
+	<a href="javascript:void(0)" class="mod_button1" id="adb_okbtn">确定</a>
+</div>

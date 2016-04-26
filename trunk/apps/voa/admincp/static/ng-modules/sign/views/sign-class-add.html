@@ -1,0 +1,403 @@
+<!-- 班次新增 -->
+<div class="sign_class container-fluid" data-ng-controller="SignClassAddCtrl">
+    <form class="form-horizontal col-md-8">
+        <div class="form-group">
+            <label class="col-md-3 control-label">
+                <span class="text-danger">*</span>
+                班次名称：
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" data-ng-model="nameClass"
+                       placeholder="请输入20字以内的字符" minlength="1" maxlength="20" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">
+                <span class="text-danger">*</span>
+                班次类型：
+            </label>
+            <div class="col-md-9">
+                <button type="button" class="btn btn-default btn-lg"
+                        data-ng-class="{'col-md-offset-1':$index == 1 ? true : false,'btn-info':tab.isActive}"
+                        data-ng-repeat="tab in tabClass" data-ng-click="tabClassFn($index)">
+                    <span data-ng-bind="tab.name"></span>
+                </button>
+                <span class="h4 text-success icon-question-sign"
+                      data-toggle="tooltip" data-placement="right"
+                      title="员工在设置的弹性时间范围内签到，只要工作时长不少于最小时长，则这天考勤计为正常"></span>
+            </div>
+        </div>
+        <!-- 常规班次内容 -->
+        <div data-ng-show="isShow && tabClass[0].isActive">
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <span class="text-danger">*</span>
+                    时间段：
+                </label>
+                <div class="col-md-9">
+                    <div class="input-group">
+                        <span class="input-group-addon">上班时间</span>
+                        <input type="text" class="form-control" placeholder="选择上班时间" data-ng-model="defaultInTime"
+                               readonly date-time-picker is-control="one" starttime="defaultInTime" />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">下班时间</span>
+                        <input type="text" class="form-control" placeholder="选择下班时间" data-ng-model="defaultOutTime"
+                               readonly date-time-picker is-control="two" endtime="defaultOutTime" />
+
+                    </div>
+                    <p class="help-block">时段格式为24小时制，如18：30</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <span class="text-danger">*</span>
+                    考勤规则：
+                </label>
+                <div class="col-md-9">
+                    <label class="radio-inline" data-ng-click="defaultToggleRule(1)">
+                        <input type="radio" name="rule" checked />
+                        默认考勤规则
+                        <span class="h4 text-success icon-question-sign"
+                           data-toggle="tooltip" data-placement="right" title="默认应用默认考勤规则，请在‘设置’中修改"></span>
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline" data-ng-click="defaultToggleRule(2)">
+                        <input type="radio" name="rule"  />
+                        自定义考勤规则
+                    </label>
+                </div>
+            </div>
+            <!-- 可不可填写 -->
+            <fieldset data-ng-disabled="isDefaultRule">
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <span class="text-danger">*</span>
+                    考勤时间范围：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">上班时间点前</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" min="1" max="720"
+                                   data-ng-keyup="checkValMax('defult_rule.sign_start_range',1,720)"
+                                   data-ng-model="defult_rule.sign_start_range" placeholder="请输入小于720的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟开始签到</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">下班时间点后</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" min="1" max="720"
+                                   data-ng-keyup="checkValMax('defult_rule.sign_end_rage',1,720)"
+                                   data-ng-model="defult_rule.sign_end_rage" placeholder="请输入小于720的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟结束签退</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <span class="text-danger">*</span>
+                    迟到规则：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">上班时间点后</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" min="1" max="120"
+                                   data-ng-keyup="checkValMax('defult_rule.sign_come_late_range',1,120)"
+                                   data-ng-model="defult_rule.sign_come_late_range" placeholder="请输入小于120的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟签到计为迟到</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <span class="text-danger">*</span>
+                    早退规则：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">下班时间点前</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" min="1" max="120"
+                                   data-ng-keyup="checkValMax('defult_rule.sign_leave_early_range',1,120)"
+                                   data-ng-model="defult_rule.sign_leave_early_range" placeholder="请输入小于120的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟签退计为早退</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <input type="checkbox" data-ng-init="late_range_on = true"
+                           data-ng-checked="late_range_on" data-ng-model="late_range_on" />
+                    启用加班：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">下班时间点后</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" min="1" max="120"
+                                   data-ng-keyup="checkValMax('defult_rule.sign_late_range',1,120)"
+                                   data-ng-disabled="!late_range_on"
+                                   data-ng-model="defult_rule.sign_late_range" placeholder="请输入小于120的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟后签退计为加班</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <input type="checkbox" data-ng-init="default_sign_on = true"
+                           data-ng-checked="default_sign_on" data-ng-model="default_sign_on" />
+                    签到提醒：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">上班时间点前</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" min="1" max="60"
+                                   data-ng-keyup="checkValMax('defult_rule.sign_remind_on_rage',1,60)"
+                                   data-ng-disabled="!default_sign_on"
+                                   data-ng-model="defult_rule.sign_remind_on_rage" placeholder="请输入小于60的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟提醒</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">提醒语</div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" minlength="1" maxlength="20"
+                                   data-ng-disabled="!default_sign_on"
+                                   data-ng-model="defult_rule.sign_remind_on" placeholder="请输入20字以内的字符" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <input type="checkbox" data-ng-init="default_sign_off = true"
+                           data-ng-checked="default_sign_off"  data-ng-model="default_sign_off" /> 签退提醒：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">下班时间点后</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" min="1" max="60"
+                                   data-ng-keyup="checkValMax('defult_rule.sign_remind_off_rage',1,60)"
+                                   data-ng-disabled="!default_sign_off"
+                                   data-ng-model="defult_rule.sign_remind_off_rage" placeholder="请输入小于60的数字"/>
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟内未签退则发起提醒</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">提醒语</div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" minlength="1" maxlength="20"
+                                   data-ng-disabled="!default_sign_off"
+                                   data-ng-model="defult_rule.sign_remind_off" placeholder="请输入20字以内的字符" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </fieldset>
+        </div>
+
+        <!-- 弹性班次内容 -->
+        <div data-ng-show="isShow && tabClass[1].isActive">
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <span class="text-danger">*</span>
+                    时间段：
+                </label>
+                <div class="col-md-9">
+                    <div class="input-group">
+                        <span class="input-group-addon">最早签到时间</span>
+                        <input type="text" class="form-control" placeholder="选择最早签到时间"
+                               data-ng-model="flexInTime" readonly
+                               date-time-picker is-control="one" starttime="flexInTime" />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">最晚签退时间</span>
+                        <input type="text" class="form-control" placeholder="选择最晚签退时间"
+                               data-ng-model="flexOutTime" readonly
+                               date-time-picker is-control="two" endtime="flexOutTime" />
+
+                    </div>
+                    <p class="help-block">时段格式为24小时制，如18：30</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <span class="text-danger">*</span>
+                    最小工作时长：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">最小工作时长</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control"
+                                   data-ng-keyup="checkValMax('min_work_hours',1,12)"
+                                   data-ng-model="min_work_hours" min="1" max="12" placeholder="请输入小于12的数字"  />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">小时</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <input type="checkbox"
+                           data-ng-init="late_work_time_on = false" data-ng-model="late_work_time_on" />
+                    最晚上班时间：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">最晚上班时间</div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control"
+                                   data-ng-disabled="!late_work_time_on" data-ng-model="late_work_time"
+                                   placeholder="请选择时间" date-time-picker is-control="one" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" data-ng-show="late_work_time_on">
+                <label class="col-md-3 control-label">
+                    <!--<input type="checkbox"
+                           data-ng-checked="late_work_time_on" data-ng-model="late_work_time_on" />-->
+                    <span class="text-danger">*</span>
+                    迟到规则：<!--come_late_range_on-->
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">晚于最晚上班点</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control"
+                                   data-ng-keyup="checkValMax('come_late_range',1,120)"
+                                   data-ng-model="come_late_range"
+                                   min="1" max="120" placeholder="请输入小于120的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟签到计为迟到</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <input type="checkbox" data-ng-model="absenteeism_range_on" />
+                    旷工规则：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-6 control-label text-left">实际工作时长少于最小工作时长算旷工</div>
+                        <div class="col-md-4">
+                            <select class="form-control"
+                                    data-ng-disabled="!absenteeism_range_on" data-ng-model="absenteeism_range">
+                                <option value="50">50%</option>
+                                <option value="100">100%</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <input type="checkbox" data-ng-model="flex_sign_on" />
+                    签到提醒：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">
+                            <span data-ng-show="late_work_time_on">最晚上班时间前</span>
+                            <span data-ng-show="!late_work_time_on">最早签到时间后</span>
+
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control"
+                                   data-ng-keyup="checkValMax('remind_on_rage',1,60)"
+                                   data-ng-disabled="!flex_sign_on" data-ng-model="remind_on_rage"
+                                   min="1" max="60" placeholder="请输入小于60的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟提醒</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">提醒语</div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control"
+                                   data-ng-disabled="!flex_sign_on" data-ng-model="remind_on"
+                                   placeholder="请输入20字以内的字符" minlength="1" maxlength="20" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    <input type="checkbox"  data-ng-model="flex_sign_off" /> 签退提醒：
+                </label>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">早于最晚签退点</div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control"
+                                   data-ng-keyup="checkValMax('remind_off_rage',1,60)"
+                                   data-ng-disabled="!flex_sign_off" data-ng-model="remind_off_rage"
+                                   min="1" max="60" placeholder="请输入小于60的数字" />
+                        </div>
+                        <div class="col-md-4 control-label">
+                            <p class="text-left">分钟提醒</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label text-left">提醒语</div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control"
+                                   data-ng-disabled="!flex_sign_off" data-ng-model="remind_off"
+                                   placeholder="请输入20字以内的字符" minlength="1" maxlength="20" />
+                            <p class="help-block">若签退时间点前未签退则发起提醒</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表单提交按钮 -->
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9 text-left">
+                <button type="button" class="btn btn-primary btn-lg" repeat-submit="classAddSuccess()">
+                    提交
+                </button>
+                <button type="button" class="btn btn-default btn-lg" data-ng-click="classAddCancel()">
+                    取消
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>

@@ -1,0 +1,84 @@
+<div class="container-fluid padding-tb padding-lr" data-ng-controller="integrationRuleCtrl">
+    <div class="row">
+        <div class="col-sm-4">
+            <select class="form-control" data-ng-model="app_type">
+                <option value="">点击按应用查看</option>
+                <option value="2">创创活动</option>
+                <option value="3">投票调研</option>
+                <option value="1">创友分享</option>
+                <option value="4">课程查询</option>
+                <option value="5">校园动态</option>
+                <option value="6">创友推广</option>
+            </select>
+        </div>
+    </div>
+    <div class="padding-tb table-light">
+        <table class="table table-striped table-bordered table-hover font12" id="table_mul">
+            <thead>
+            <tr>
+                <th>状态</th>
+                <th>应用</th>
+                <th>积分项目</th>
+                <th>循环周期</th>
+                <th>次数</th>
+                <th>获得积分</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+
+            <tbody id="tbdoy_id" data-ng-click="offApp($event)">
+            <tr data-ng-repeat="item in listData">
+                <td data-ng-switch="item.status">
+                    <span data-ng-switch-when="1">启用</span>
+                    <span data-ng-switch-when="0" style="color: #FF0000;">禁用</span>
+                </td>
+                <td data-ng-bind="item.app_name">
+                </td>
+                <td data-ng-bind="item.title"></td>
+                <td>
+                    <select class="form-control" data-ng-model="rules[item.rule_id]['loop']">
+                        <option data-ng-selected="item.loop == 1" value="1">无限制</option>
+                        <option data-ng-selected="item.loop == 2" value="2">每天</option>
+                        <option data-ng-selected="item.loop == 3" value="3">每周</option>
+                        <option data-ng-selected="item.loop == 4" value="4">每月</option>
+                        <option data-ng-selected="item.loop == 5" value="5">每年</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" data-ng-model="rules[item.rule_id]['limit']">
+                        <option data-ng-selected="item.limit == 0" value="0">不限制</option>
+                        <option data-ng-selected="item.limit == 1" value="1">1次</option>
+                        <option data-ng-selected="item.limit == 5" value="5">5次</option>
+                        <option data-ng-selected="item.limit == 10" value="10">10次</option>
+                    </select>
+                </td>
+                <td style="width: 14.284714%">
+                    <input type="text" class="form-control" value="{{item.score}}" data-ng-model="rules[item.rule_id]['score']">
+                </td>
+                <td>
+                    <a href="javascript:;" data-rule-id="{{item.rule_id}}" data-ng-switch="item.status">
+                        <span data-ng-switch-when="0" data-status="1">启用</span>
+                        <span data-ng-switch-when="1" data-status="0">禁用</span>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot id="tbody-page">
+            <tr>
+                <td colspan="7" class="text-left">
+                    <div class="tishi-wrap">
+                       <a id="save_list" class="btn btn-primary" data-ng-click="saveRules()" href="javascript:;" style="position: relative;z-index: 2">
+                           保存
+                           <span class="ani_dot" id="waiting-dot">...</span>
+                       </a>
+                        <div class="tishi" id="tishi">
+                            <span data-ng-bind="saveHint"></span>
+                            <input type="hidden" data-ng-model="saveHint"/>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

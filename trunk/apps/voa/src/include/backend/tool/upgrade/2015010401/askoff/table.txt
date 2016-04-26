@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS `oa_askoff_attachment` (
+  `aoat_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `ao_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '请假id',
+  `aopt_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论id，如果为0则是请假主题附件，否则为对应评论附件',
+  `at_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '附件id',
+  `m_uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户UID',
+  `m_username` varchar(54) NOT NULL DEFAULT '' COMMENT '用户名称',
+  `aoat_status` tinyint(4) unsigned NOT NULL DEFAULT '1' COMMENT '记录状态, 1=正常; 2=更新; 99=已删除',
+  `aoat_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `aoat_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `aoat_deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`aoat_id`),
+  KEY `aoat_status` (`aoat_status`),
+  KEY `ao_id` (`ao_id`),
+  KEY `aopt_id` (`aopt_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='请假的附件表';

@@ -1,0 +1,20 @@
+<% $.each(goods.data, function (key, item){ %>
+<li class="js-item">
+    <div class="item-box">
+        <a href="<%=item.detail_url%>" class="js-cover">
+
+            <div class="imgbox">
+               <!--  <img src="<%=item.cover%>" > -->
+                <span style="background-image:url(<%=item.cover%>)" class="goods_img"></span><span class="js-price">¥ <%=item.price %></span>
+            </div>
+            <div class="mt_title js-subject">
+                <%=item.subject%>
+            </div>
+        </a>
+        <% if (window.userinfo.saleid == undefined) { %>
+				<span class="<% if (item.fav!='1') {%>notop<% } %> mt_top js-top" data-id="<%=item.dataid%>">
+				</span>
+        <% } %>
+    </div>
+</li>
+<% }); %>

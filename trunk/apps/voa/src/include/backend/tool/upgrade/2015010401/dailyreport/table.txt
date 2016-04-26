@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS `oa_dailyreport_attachment` (
+  `drat_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `dr_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '日报id',
+  `drp_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论id，如果为0则是日报附件，否则为对应评论附件',
+  `at_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '附件id',
+  `m_uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户UID',
+  `m_username` varchar(54) NOT NULL DEFAULT '' COMMENT '用户名称',
+  `drat_status` tinyint(4) unsigned NOT NULL DEFAULT '1' COMMENT '记录状态, 1=正常; 2=更新; 99=已删除',
+  `drat_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `drat_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `drat_deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`drat_id`),
+  KEY `drat_status` (`drat_status`),
+  KEY `dr_id` (`dr_id`),
+  KEY `drp_id` (`drp_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日报的附件表';

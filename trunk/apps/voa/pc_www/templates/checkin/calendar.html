@@ -1,0 +1,37 @@
+<div class="header">
+	<h1><%= pageName %></h1>
+</div>
+<div class="shoulder">
+	<span class="y"><span class="mod_combox"><select>
+		<% var x = 0; %>
+		<%for(var y in search.range){%>
+			<option id="ysel_<%=y%>" value="<%=y%>" <%= x++?"":"selected" %>><%=y%></option>
+		<%}%>
+	</select></span><%=search.unit.y%></span>
+	<span class="m"><span class="mod_combox"><select></select></span><%=search.unit.m%></span>
+	<a class="mod_btn1 searchBtn"><%=search.btn.label%></a>
+</div>
+<div class="body plugin_scrollbar">
+	
+	<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+	<div class="viewport">
+		 <div class="overview">
+			
+			<ul class="summary">
+				<% for (k in calendar.summary){ %>
+					<li><em><%= calendar.summary[k] %></em><%= k %></li>
+				<% } %>
+			</ul>
+			
+			<table>
+				<tbody>
+					<tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>
+				</tbody>
+			</table>
+			
+			<a class="complaintBtn mod_btn1" href="<%= complaint.url %>" ><%= complaint.label %></a>
+			
+		</div>
+	 </div>
+		
+</div>

@@ -1,0 +1,55 @@
+<div data-ng-controller="reportTemplateCtrl">
+<a class="btn btn-success leixing" data-ng-href="#/app/page/dailyreport/reportTpl" >新增报告类型</a>
+<!--表格-->
+<br/>
+<br/>
+<br/>
+
+    <table class="table table-bordered biaoge font12">
+        <thead>
+        <tr class="toubu">
+            <th>序号</th>
+            <th>报告类型</th>
+            <th class="scope">可见范围</th>
+            <th>是否启用</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="item in modoleListData.result.list">
+            <td data-ng-bind="item.drt_sort"></td>
+            <td data-ng-bind="item.drt_name"></td>
+            <td>
+                <span data-ng-if="item.drt_departments.length > 0" class="label label-primary" data-ng-repeat="obj in item.drt_departments" data-ng-bind="obj.cd_name" style="margin-left: 5px;"></span>
+                <span data-ng-if="item.drt_departments.length == 0" class="label label-primary" style="margin-left: 5px;">全公司</span>
+            </td>
+            <td>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions_{{item.drt_id}}" data-ng-model="item.drt_switch" value="1" data-ng-change="isOpen(item)">启用
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions_{{item.drt_id}}" data-ng-model="item.drt_switch" value="0" data-ng-change="isOpen(item)">禁用
+                </label>
+            </td>
+            <td>
+                <a href="" class="compile" data-ng-href="#/app/page/dailyreport/reportTpl?id={{item.drt_id}}">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                <span>编辑</span>
+                </a>
+                <a href="" class="delete" id="delete" data-ng-click="deleteItem(item)">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                <span>删除</span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+            <tr data-ng-show="resultCount > 0">
+                <td colspan="7" class="text-right vcy-page"
+                    poler-pagination="polerPaginationCtrl" download="getReportPage(page)">
+                    <!-- 分页 -->
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

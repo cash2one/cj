@@ -1,0 +1,15 @@
+<div class="ui-corner-all custom-corners mod-common-detail">
+	<div class="ui-bar">
+		<h3><%=d.title%></h3>
+		<p class="time">发布时间: <%=d.updated%></p>
+		<p class="author">作者: <%=d.author%></p>
+	</div>
+	<div class="ui-body ui-body-a">
+		
+		<%=d.content%>
+		
+	</div>
+</div>
+<div class="footer-one">
+	<button style="background: green;color:#fff;font-weight: normal;text-shadow:none;" onclick="location.href='#/list/<%=d.tc_id%>'" class="js-btn-nextpage ui-btn ui-btn-a ui-corner-all">返回列表</button>
+</div>

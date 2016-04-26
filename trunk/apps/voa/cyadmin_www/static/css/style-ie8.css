@@ -1,0 +1,9 @@
+.navbar-collapse:before
+	,.navbar-collapse:after
+		,.navbar-collapse{display:inline-block;}
+.navbar-nav{display:inline-block}
+.navbar-right{float:right;}
+.navbar-nav li{display:inline-block;float:left;}
+
+.navbar-header{float:left;}
+.navbar-collapse{width:100%;}

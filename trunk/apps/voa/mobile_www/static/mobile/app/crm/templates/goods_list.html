@@ -1,0 +1,60 @@
+
+<div class="ui-panel-wrapper">
+<div data-role="header" class="mod-list-header">
+    <h1>产品列表</h1>
+	<% if (!window.userinfo.saleid) { %>
+	<a href="/frontend/travel/cpindex" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+	<% } %>
+	<!-- <a id="back" href="javascript:history.go(-1);" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">返回</a> -->
+
+    <a href="#right-panel" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-icon-back-r ui-icon-catalog">Open right panel</a>
+</div>
+
+<div class="iscroll-wrapper" id="mt_index">
+
+	<div data-role="content" class="ui-content jqm-content" >
+	    <% if (goods.data.length) { %>
+		<ul class="crm js-container clearfix" data-role="listview" data-inset="true" >
+		<%=data%>
+		</ul>
+		<% if (more_data) { %>
+		<div class="ui-field-footer">
+	   		<button  class="ui-btn ui-btn-a js-btn-nextpage ui-corner-all">显示更多</button>
+		</div>
+		<% } %>
+		<% } else { %>
+		<div class="empty_conten">
+			<div class="empty_good"></div>
+			<div class="empty_good_text">您还没有产品哦<br>点击页面右上角“添加产品”添加产品
+			</div>
+		</div><% } %>
+
+	</div>
+</div>
+<div data-role="footer" data-position="fixed" id="mt-footer">
+	<% if (window.userinfo.saleid != undefined && goods.cart_total > 0) { %>
+	<div class="cart">
+		<a href="#/mycart">
+			<div class="cart-box">
+				<span class="icon icon-cart"></span>
+
+				<span class="label-num"><%=goods.cart_total%></span>
+			</div>
+		</a>
+	</div>
+	<% } %>
+</div>
+</div>
+
+<div data-role="panel" id="right-panel" data-display="push" data-theme="a" data-position="right">
+<ul data-role="listview" data-theme="a" data-divider-theme="a" data-count-theme="a" class="ui-nodisc-icon ui-alt-icon">
+    <li data-role="list-divider"></li>
+    <li data-icon="false"><a href="#/goods_list" data-theme="a">全部分类 </a></li>
+	<% $.each(goodsclass.data, function (k, item) {%>
+	<% if (item.pid == 0) { %>
+    <li data-icon="false"><a href="#/goods_list/<%=item.classid%>"><%=item.classname%> </a></li>
+	<% } %>
+	<% }) %>
+</ul>
+       <!--  <a href="javascript:void(0);" data-rel="close" class="ui-btn ui-corner-all ui-shadow ui-mini ui-btn-inline ui-icon-delete ui-btn-icon-right">Close</a> -->
+</div><!-- /panel -->

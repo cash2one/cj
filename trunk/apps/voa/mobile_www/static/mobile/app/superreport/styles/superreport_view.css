@@ -1,0 +1,144 @@
+@charset "utf-8";
+#superreport_view .name {
+  text-align: center;
+  padding: 8px 0;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+#superreport_view .view {
+  border-width: 0 0 1px 0!important;
+}
+#superreport_view .rank-0,
+#superreport_view .rank-1,
+#superreport_view .rank-2,
+#superreport_view .rank-3 {
+  width: 28%;
+  font-weight: normal;
+  font-size: 12px;
+  padding-left: 0;
+  font-weight: normal;
+}
+
+#superreport_view .title-line {
+  padding: 5px 0;
+  margin: 0;
+  background-color: #00a0f9;
+  text-shadow: none;
+}
+
+#superreport_view .title-line .rank-3 {
+  width: 19%;
+}
+#superreport_view .up {
+  color: #f45a8b;
+}
+#superreport_view .down {
+  color: #588cf7;
+}
+#superreport_view .stay {
+  color: #999;
+}
+#superreport_view .up:before {
+  content: '↑';
+}
+#superreport_view .stay:before {
+  content: '- ';
+}
+#superreport_view .down:before {
+  content: '↓';
+}
+#superreport_view .report-time {
+  float: right;
+}
+#superreport_view .comment {
+  font-size: 12px;
+  position: absolute;
+  bottom: 5px;
+  right: 13px;
+}
+#superreport_view .comment:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 16px;
+  height: 14px;
+  background-image: url("../images/icon-comment.png");
+  background-size: 16px 14px;
+  margin-top: 0px;
+  margin-left: -20px;
+}
+#superreport_view .comment-title {
+  font-size: 16px;
+  word-break: normal;
+  white-space: normal;
+  word-wrap: break-word;
+}
+#superreport_view .form_textarea_text {
+  position: relative;
+}
+#superreport_view .ui-listview .ui-li-aside {
+  bottom: 8px;
+  top: initial;
+  right: 13px;
+}
+#superreport_view_header .ui-icon-back-l {
+  left: 3px;
+  padding-left: 23px;
+}
+#superreport_view_header .ui-icon-back-r {
+  right: 3px;
+  padding-right: 23px;
+}
+#superreport_view_header .ui-icon-back-l:after,
+#superreport_view_header .ui-icon-back-r:after {
+  background-size: 16px 16px;
+  width: 16px;
+  margin-top: -10px;
+  padding-left: 0;
+}
+#superreport_view .edit-daily{
+  position: absolute;
+  padding: 10px;
+}
+.red{
+  color:#b92c28;
+}
+#superreport_view .edit-daily:after{
+  content: "";
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-image: url("../images/icon-edit.png");
+  background-size: 16px 16px;
+  opacity: 1;
+}
+.mod-common-list .form-group li .form-control{left:102px;}
+#superreport_view_header .ui-icon-calendar{
+  padding: 0;
+  margin-top:-13px ;
+  margin-left:-20px;
+}
+#comment_input .btn-submit{float:right;}
+#superreport_view_header .ui-icon-calendar:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-image: url("../images/icon-date.png");
+  background-size: 16px 16px;
+  opacity: 1;
+  background-color: #fff;
+
+}
+#superreport_view_header .ui-title{
+  padding: 0;
+}
+#superreport_view_header input{
+  text-align: center;
+  min-width:98px;
+}
+#superreport_view_header .ui-input-text{
+  margin: 4px 0;
+}

@@ -1,0 +1,51 @@
+﻿
+/** * head*/
+.head {
+	display: block;
+	position: relative;
+	color: #fff;
+	background:#e4393c;
+	text-align: right;
+	overflow: hidden;
+	border-bottom: 1px solid #7c170a;
+	padding: 1px 0;
+}
+
+
+/*scroll*/
+#header {
+    position:absolute;
+    left:0;
+    width:100%;
+}
+#footer {
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    width:100%;
+}
+#wrapper {
+    position:absolute;
+    bottom:62px;
+    left:0;
+    width:100%;
+    overflow:auto;
+}
+
+.jdchat {
+    top:46px;
+}
+
+.sjchat {
+    top:46px;
+}
+
+
+#scrollDiv {
+    position: absolute;
+    overflow: auto;
+    width: 100%;
+    overflow-y: scroll; 
+    -webkit-overflow-scrolling: touch; 
+    height:100%;
+}

@@ -1,0 +1,40 @@
+
+<form action="javascript:;" method="post" id="report_form">
+    <div role="main" class="mod-common-list m-t-10">
+        <% if(list_int.length > 0) { %>
+        <ul data-role="listview" class="form-group">
+            <% $.each(list_int, function (key, item){ %>
+
+            <li class="ui-field-contain">
+                <span><%= _.escape(item.fieldname) %>
+
+                    <% if(item.required == 1) { %><span class="red">*</span><% } %>
+                </span>
+                <input name="<%= item.field %>" value="<%= item.fieldvalue %>" class="form-control" type="number"  data-role="none"
+                       placeholder=" <% if(item.unit != '') { %><%= item.unit %><% } %>"
+
+                    <% if(item.required == 1) { %>need="1"<% } %> fieldname=<%= _.escape(item.fieldname) %>>
+            </li>
+            <% }); %>
+        </ul>
+        <% } %>
+
+        <% if(list_text.length > 0) { %>
+        <% $.each(list_text, function (key, item){ %>
+        <h4><%= _.escape(item.fieldname) %><% if(item.required == 1) { %><span class="red">*</span><% } %></h4>
+        <ul data-role="listview" class="form-group-textarea">
+            <textarea  name="<%= item.field %>" class="form-control" <% if(item.required == 1) { %>need="1"<% } %>  fieldname=<%= _.escape(item.fieldname) %>><%= item.fieldvalue %></textarea>
+        </ul>
+        <% }); %>
+        <% } %>
+        <input type="hidden" name="dr_id" value="<%= dr_id %>">
+        <input type="hidden" name="csp_id" value="<%= csp_id %>">
+    </div>
+</form>
+
+
+<div class="footer footer-one ">
+    <div class="btn-submit">
+        <a class="js-btn-nextpage ui-btn ui-btn-a ui-corner-all" id="send">提交</a>
+    </div>
+</div>

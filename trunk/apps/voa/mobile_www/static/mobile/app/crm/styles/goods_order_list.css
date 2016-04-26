@@ -1,0 +1,46 @@
+
+#goods_order_list .cancel-order,#goods_order_list .go-payment,#goods_order_list .again-order{
+  display: inline-block;
+  float:right;
+  text-align: center;
+  padding: 6px 16px;
+  color: #fff;
+  margin: 10px;
+  border-radius: 3px;
+  text-shadow:none;
+}
+#goods_order_list .cancel-order{
+  background-color:#c5cccd;
+}
+#goods_order_list .again-order{
+  background-color:#1bc6c3;
+}
+#goods_order_list p {
+  padding: 5px 10px 3px 0;
+  font-size: 14px;
+}
+#goods_order_list .go-payment{
+  background-color:#fe5955;
+}
+#goods_order_list .status ,#goods_order_list .total{
+  color: #fe5955;
+  font-size: 13px;
+}
+#goods_order_list .cancel-order:hover,
+#goods_order_list .cancel-order:focus {
+  background: #c5cccd!important;
+  color: #fff;
+  text-shadow: none;
+}
+#goods_order_list .go-payment:hover,
+#goods_order_list .go-payment:focus {
+  background: #fe5955!important;
+  color: #fff;
+  text-shadow: none;
+}
+#goods_order_list .again-order:hover,
+#goods_order_list .again-order:focus {
+  background: #1bc6c3!important;
+  color: #fff;
+  text-shadow: none;
+}

@@ -1,0 +1,26 @@
+#superreport_list .ui-li-aside .time {
+  display: block;
+}
+#superreport_list .ui-listview li p {
+  right: 13px;
+  top: 50%;
+  margin-top: -13px;
+}
+#superreport_list .ui-listview li h3 {
+  padding-right: 43px;
+}
+#superreport_list_header .ui-icon-back-l {
+  left: 3px;
+  padding-left: 23px;
+}
+#superreport_list_header .ui-icon-back-r {
+  right: 3px;
+  padding-right: 23px;
+}
+#superreport_list_header .ui-icon-back-l:after,
+#superreport_list_header .ui-icon-back-r:after {
+  background-size: 16px 16px;
+  width: 16px;
+  margin-top: -10px;
+  padding-left: 0;
+}

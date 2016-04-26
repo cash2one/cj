@@ -1,0 +1,91 @@
+body{text-shadow:none!important;background-color: #EFEFF4!important;}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{background-color: #EFEFF4!important;}
+#goods_supply ul{
+	margin:10px 0!important;}
+#goods_supply .iscroll-content{padding: 0!important;}
+#goods_supply .iscroll-scroller{
+	width: 100%;
+}
+.ui-shadow{
+  box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+}
+#goods_supply li{
+	margin: 0!important;
+	margin-bottom: 10px!important;
+	background-color: #fff;
+	border: 1px solid #bec2c2;
+	border-width: 1px 0;	
+	padding: 3px 67px 3px 13px ; 
+	position: relative; 
+    border-radius: 0;
+
+}
+#goods_supply .supply_content a{
+	color: #696a6c;
+	text-decoration:none;
+}
+#goods_supply .supply_content:before {
+  content:"";
+  display:block;
+  position:absolute;
+  right:0;
+  height:56px;
+  width:1px;
+  background-color:#d4d4d4;
+  top:50%;
+  margin-top:-28px;
+  margin-right: 80px;
+}
+#goods_supply h4{
+	font-size: 14px;
+	color: #696a6c;
+	font-weight: normal;
+}
+#goods_supply .money{
+	font-size: 18px;
+	color: #f5a623;
+}
+#goods_supply .supply_lable{
+  display: inline-block;
+  min-width:28px;
+  background-color: #06c1ae;
+  color: #fff;   
+  padding: 5px 10px;
+  -webkit-border-radius: 23px;
+  border-radius: 23px;
+  text-shadow:none;
+  font-size: 12px;
+  text-align: center;  
+  margin-right: 10px;
+}
+.red{background-color: #f05e57!important;}
+#goods_supply .add,#goods_supply .add_gray{
+	display: block;
+	position: absolute;
+	width: 20px;	
+	right:0;
+	top:0;
+	bottom: 0;	 
+	border: 0;
+	background-color: #fff;
+}
+#goods_supply .add:after{
+	background: url('../images/btn_add.png') no-repeat right 0;
+	-webkit-background-size: 253px 36px;
+	background-size: 22px 22px;
+	right: 28px;
+
+}
+#goods_supply .add_gray{
+	background: url('../images/btn_add_gray.png') no-repeat right 50%;
+	-webkit-background-size: 253px 36px;
+	background-size: 22px 22px;
+	right: 28px;	
+	opacity: .2;
+}
+#goods_supply .ui-field-footer{
+  display: block;  
+  margin: 20px 10px 40px 10px;
+}

@@ -1,0 +1,123 @@
+<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="a" data-fullscreen="true" class="mod-list-header goods-detail-header">
+    <a id="back" href="#/goods_list" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">返回</a>
+
+    </div>
+<!-- /header -->
+<div role="main" class="mod-common-list" id="mt_product_details">
+    <div class="head_box">
+        <div class="carousel-box" >
+            <!-- start carousel widget html -->
+            <div class="carousel-img">
+                <div  id="carousel" class="carousel">
+                    <div id="carousel_scrollpane" class="carousel-content">
+                        <div id="carousel_content" class="carousel-content-scroller"></div>
+                    </div>
+                    <div id="carousel_nav" class="carousel-nav">
+                        <div id="carousel_mid" class="carousel-mid"></div>
+                    </div>
+                </div>
+            </div>          
+            <div id="carousel_template">
+                <div class="carousel-item">
+                    <div id="carousel_item_@{id}" >
+                        <div style="width:100%">
+                            <img data-src="@{image}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle_box">
+
+        <label class="title">
+            <%=goods.subject%></label>
+        <label>
+            <span class="price">
+                ¥<%=goods.price%> <%=goods.price_unit%></span>
+            <span class="other">
+                编号:<%=goods.goodsnum%>  累计售出: <%=goods.saledcount%></span>
+        </label>
+        <% if (! window.userinfo.saleid) { %>
+        <div class="btn-share">
+            <span class="js-share-out ui-btn ui-corner-all ui-btn-b">分享给朋友</span>
+        </div>
+        <% } %>
+    </div>    
+    <div class="m-t-10 details-conten">
+        <h4><%=goods.message_col.fieldname%></h4>
+        <p ><%=goods.message.replace('src', 'data-src')%></p>
+    </div>
+
+    <% if (goods.customized) { %>
+    <% $.each(goods.customized, function (k, v){ %>
+    <div class="m-t-10 details-conten"><h4><%=v.fieldname%></h4>
+    <p>
+        <% if (v.ct_type == 'attach') { %>
+        <% for(var i in v.value) { %>
+        <% if (v.value[i].isimage == '1') { %>
+        <img class="swipe" data-org="<%=v.value[i].url%>" data-src="<%=v.value[i].url%>/45">
+        <% } else { %>
+        文件： <%=v.value[i].filename%>
+        <% } %>
+        <% } %>
+        <% } else { %>
+        <% if (v.ct_type == 'checkbox' || v.ct_type == 'radio') { %>
+
+        <% if (v.ftype == '2' && typeof v.value != 'string' ) { %><!-- 图片选项 -->
+        <% if (v.ct_type == 'radio') { %>
+    <div class="mod_photo_uploader">
+                                        <span class="thumbnail">
+                                     <img data-org="<%= v.attachurl %>" class="swipe" data-src="<%= v.attachurl %>/45" />
+                                     <span class="title"><%= v.value %></span>
+                                     </span>
+    </div>
+    <% } else { %>
+    <% $.each(v.value, function (k2, v2) { %>
+    <div class="mod_photo_uploader">
+                                        <span class="thumbnail">
+                                     <img class="swipe" data-org="<%= v2.attachurl %>" data-src="<%= v2.attachurl %>/45" />
+                                     <span class="title"><%= v2.value %></span>
+                                     </span>
+    </div>
+    <% }); %>
+    <% } %>
+    <% } else { %>
+    <%= v.value %>
+    <% } %>
+    <% } else { %>
+    <%=v.value%>
+    <% } %>
+    <% } %>
+    </p>
+    <div class="line"></div>
+    </div>
+    <% }); }%>
+
+</div>
+<div id="debug" style="display: block;">
+
+</div>
+<% if (window.userinfo.saleid) { %>
+<div data-role="footer" data-position="fixed" class="details-footer" data-tap-toggle="false">
+    <div class="cart-btns-box">
+        <a class="ui-btn-b btn btn-buy" id="directorder" href="/frontend/talk/index#/chat_client/<%=goods.dataid%>/<%=goods.sales.uid%>">联系客服</a>
+        <!--<a href="#/goods_selected/<%=goods.dataid%>" class="btn btn-cart" id="add_cart">立即购买</a>-->
+        <a href="<%=buy_url%>" class="btn btn-cart" id="add_cart">立即购买</a>
+        <!-- <a href="javascript:void(0)" class="btnc cart-num"></a> -->
+    </div>
+    <% if (goods.cart_total > 0) { %>
+    <div class="cart">
+        <a href="#/mycart">
+    	<div class="cart-box">
+    		<span class="icon icon-cart"></span>
+    		<span class="label-num"><%=goods.cart_total%></span>
+    	</div>
+        </a>
+    </div>
+    <% } %>
+</div>
+<% } %>
+<div id="js-share-out" data-role="popup" data-theme="none" data-shadow="false" class="weixin_share">
+</div>
+<!-- /content -->

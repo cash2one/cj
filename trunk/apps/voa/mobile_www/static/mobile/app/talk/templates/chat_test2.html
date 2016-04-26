@@ -1,0 +1,37 @@
+<div data-role="header" data-position="fixed" class="mod-list-header">
+    <h1></h1>
+    
+    <a id="back" href="<% if(userinfo.m_uid > 0){ %>#/<% }else{ %>javascript:;<% } %>" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-back-l ui-nodisc-icon">返回</a>
+    <span class="num" style="display:none;"></span>
+</div>
+<!-- /header -->
+<div class="iscroll-wrapper"  data-iscroll id="chat_view" >
+<div role="main" class="mod-common-list" >
+	<!--<div class="iscroll-pulldown">
+        <span class="iscroll-pull-icon"></span>
+        <span class="iscroll-pull-label"></span>
+    </div>-->
+    <div  class="good-title"></div>
+    <div class="chat-box" id="listDiv">
+        <div class="empty">		
+			<div class="empty-text">
+				<p>还没有聊天记录</p>
+			</div>
+		</div>
+    </div>
+</div>
+</div>
+
+<div id="chat_view_footer">
+
+    <div class="ui-bar">
+        <form action="javascript:;" method="get">
+            <div class="left">
+                <input type="text" id="msg" value="" placeholder="">
+            </div>
+            <div class="right">
+                <button id="send" type="submit" class="ui-btn ui-btn-a ui-corner-all ui-mini submit">发送</button>
+            </div>
+        </form>
+    </div>
+</div>

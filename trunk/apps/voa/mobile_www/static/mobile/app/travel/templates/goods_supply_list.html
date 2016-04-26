@@ -1,0 +1,50 @@
+<div data-role="header">
+    <h1 class="ui-title" role="heading" aria-level="1">货源</h1>
+    <a href="#/goods_list" data-rel="back" data-transition="slide" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+</div>
+<!-- /header -->
+<div class="iscroll-wrapper" data-iscroll id="goods_supply">
+
+  <div class="iscroll-pulldown">
+      <span class="iscroll-pull-icon"></span>
+      <span class="iscroll-pull-label"></span>
+  </div>
+  <div data-role="content" class="ui-content jqm-content">
+      <% if (no_data) { %>
+      <div class="empty_conten">
+      <div class="empty_good"></div>
+      <div class="empty_good_text">您的公司管理员未添加货源<br>请联系公司的管理员进行添加
+      </div>
+    </div>
+     
+      <% } else { %>
+          <ul class="list" data-role="listview" data-inset="true">
+          <%=data%>
+          </ul>
+           <% if (more_data) { %>
+          <div class="ui-field-footer">
+              <button  class="ui-btn ui-btn-a js-btn-nextpage ui-corner-all">显示更多</button>
+          </div>
+          <% } %>
+      <% } %>
+      <!-- 
+      <div class="iscroll-pullup">
+          <span class="iscroll-pull-icon"></span>
+          <span class="iscroll-pull-label"></span>
+        </div>
+         -->
+  </div>
+</div>  
+<div id="confirm" class="ui-content" data-role="popup" data-dismissible="false" data-theme="a">
+  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+  <div style="padding:0 30px;">
+    <p id="question">确定添加本产品？</p>
+         
+        <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a ui-corner-all" data-rel="back">添加</a>
+    
+  </div>
+</div>
+<!-- /popup -->
+<div data-role="popup" class="js-tips-window" class="ui-content" data-theme="a">
+<p>I am positioned to the window.</p>
+</div>

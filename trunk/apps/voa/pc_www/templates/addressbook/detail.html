@@ -1,0 +1,23 @@
+<div class="header">
+	<img src="<%= face %>" />
+	<h1 data-uid="<%= id %>"><%= name %></h1>
+</div>
+<div class="body plugin_scrollbar">
+	
+	<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+	<div class="viewport">
+		 <div class="overview">
+				<ul>
+					<% for (var k in infos){ %>
+					<li class="<%=k%>">
+						<% var item = infos[k]; %>
+						<i style="background-image:url(<%= item.icon[0] %>); background-position:<%= item.icon[1] %>;"></i>
+						<h2><%= item.label %></h2>
+						<span><%= item.value %></span>
+					</li>
+					<% } %>
+				</ul>
+		</div>
+	 </div>
+		
+</div>

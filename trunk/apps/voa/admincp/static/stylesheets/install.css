@@ -1,0 +1,28 @@
+@CHARSET "utf-8";
+.bind-tip{background: #ececec;height: 50px;line-height: 50px;border: 1px solid #ddd;color: #191957;font-weight: bold;font-size: 19px;padding-left: 17px;cursor: pointer}
+	.bind-tip-btn{float: right;font-size:41px;margin-right:20px}
+.bind-step{border: 1px solid #ddd;background: #fff;padding: 10px;border-top: none}
+	.bind-step h2{font-size: 28px;text-align: center;color: #343535;font-weight: bold}
+		.bind-step-intro{width: 800px;text-align: left;color: #343535;margin: 20px auto;background: url(../images/install_step.png) center 0 no-repeat;min-height: 170px;padding-top: 170px}
+
+		.intro-step{display: block;float: left;width: 260px;margin-left: 10px;height: 150px}
+			.step-1{margin-left: 0}
+			.step-2{}
+			.step-3{}
+
+			.intro-step span{display: block;text-align: center;color: #666460}
+				.step-1 span{margin-left: 25px;margin-right: 8px}
+				.step-2 span{margin-left: 16px;margin-right: 16px}
+				.step-3 span{margin-left: 8px;margin-right: 25px}
+
+				span.line-1{text-align: left;height: 60px}
+					span.line-1 a{text-decoration: none}
+				span.line-2{height: 50px}
+				span.line-3{height: 40px}
+					span.line-3 a{color: #4e92de;text-decoration: underline}
+	.bind-step hr{border-top: 1px solid #ececec;width: 96%;height: 1px;}
+
+	.bind-step .view-step-doc{margin: 0 auto 10px;height: 50px;line-height: 50px;text-align: center}
+		.view-step-doc a{display: block;width: 220px;height: 40px;margin: 0 auto;text-decoration: none;background: url(../images/step_review.png) 0 0 no-repeat}
+			.view-step-doc a span{display: block;margin-left: 26px;width: 140px;text-align: center;font-size: 16px;color: #3bade2;text-decoration: none;height: 40px;line-height: 44px;font-weight: bold}
+

@@ -1,0 +1,48 @@
+<!-- 设置主页 -->
+<div class="sign-in-main container-fluid" data-ng-controller="SignSetSignOutCtrl">
+    <div class="con-one">
+        <dl class="row">
+            <dt class="col-md-1">签退时间范围：</dt>
+            <dd class="col-md-9">
+                <h5>签退时间点后</h5>
+                <input type="text" data-ng-model="signOut.sign_end_rage"
+                       data-ng-keyup="checkValMax('signOut.sign_end_rage',1,720)" placeholder="请输入小于720的数字" />
+                <h5>分钟结束</h5>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-md-1">早退规则：</dt>
+            <dd class="col-md-9">
+                <h5>早于签退时间</h5>
+                <input type="text" maxlength="3" data-ng-model="signOut.sign_leave_early_range"
+                       data-ng-keyup="checkValMax('signOut.sign_leave_early_range',1,120)" placeholder="请输入小于120的数字" />
+                <h5>分钟签退记为早退</h5>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-md-1">加班规则：</dt>
+            <dd class="col-md-9">
+                <h5>签退时间点后</h5>
+                <input type="text" maxlength="4" data-ng-model="signOut.sign_late_range"
+                       data-ng-keyup="checkValMax('signOut.sign_late_range',1,120)" placeholder="请输入小于120的数字" />
+                <h5>分钟签退记为加班</h5>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-md-1">签退提醒：</dt>
+            <dd class="col-md-9">
+                <h5>签退时间点后</h5>
+                <input type="text"  maxlength="4" data-ng-model="signOut.sign_remind_off_rage"
+                       data-ng-keyup="checkValMax('signOut.sign_remind_off_rage',1,60)" placeholder="请输入小于60的数字" />
+                <h5>分钟提醒</h5>
+                <input class="input2" type="text"  maxlength="20" data-ng-model="signOut.sign_remind_off"
+                       placeholder="请输入20字以内的字符" />
+            </dd>
+        </dl>
+    </div>
+    <div class="container-fluid con-two">
+        <button repeat-submit="signOutSave()" class="btn btn-primary btn-lg">保存</button>
+        <button data-ng-click="returnPage()" class="btn btn-default btn-lg">返回</button>
+    </div>
+    <div class="con-three">提示：上述签到设置适用于常规班次的考勤规则</div>
+</div>

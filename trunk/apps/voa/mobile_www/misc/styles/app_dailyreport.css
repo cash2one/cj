@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+.ui-form-item p {
+	width: 100%;
+	padding-left: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #666;
+	word-break: normal;
+	white-space: normal;
+	word-wrap: break-word;
+	padding-top: 11px;
+	padding-bottom: 10px;
+	line-height: 26px;
+}
+
+
+.ui-form-item label {
+	width: 39% !important;
+	position: absolute !important;
+	text-align: left !important;
+	-webkit-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+	white-space: nowrap !important;
+	text-overflow: ellipsis !important;
+	overflow: hidden !important;
+}
+
+.daily-content img{
+	max-width:100%;
+}
+
+img[data-expression-code] {
+  width: 15px;
+}

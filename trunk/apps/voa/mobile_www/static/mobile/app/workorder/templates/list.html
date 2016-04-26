@@ -1,0 +1,31 @@
+<nav class="mod_list_nav">
+	<a href="#/list/<%=type%>/sent"<% if(res == 'sent' || !res) { %> class="current"<% }; %>>我发出的</a>
+	<a href="#/list/<%=type%>/received"<% if(res == 'received') { %> class="current"<% }; %>>我收到的</a>
+</nav>
+<div id="workmain"  role="main" class="mod-common-list">
+	<ul id="workleft">
+		<li<% if(type == 'wait_confirm'){ %> class="over"<% } %>><a href="#/list/wait_confirm/sent">待确认</a>　</li>
+		<li<% if(type == 'wait_complete'){ %> class="over"<% } %>><a href="#/list/wait_complete/sent">待执行</a>　</li>
+		<li<% if(type == 'completed'){ %> class="over"<% } %>><a href="#/list/completed/sent">已完成</a>　</li>
+		<li<% if(type == 'refused'){ %> class="over"<% } %>><a href="#/list/refused/sent">已拒绝</a>　</li>
+		<li<% if(type == 'canceled'){ %> class="over"<% } %>><a href="#/list/canceled/sent">已撤回</a>　</li>
+	</ul>
+	<ul class="touch iscroll-wrapper ui-nodisc-icon ui-alt-icon ui-listview" id="workright" data-role="listview">
+		<% if(ls.data.length > 0) { %>
+			<% $.each(ls.data, function (key, item){ %>
+			<li>
+				<a href="#/detail/<% if(item.woid){%><%=item.woid%><% }else{ %><%=item.id%><% } %>" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+					<h3><%=item.address%></h3>
+					<p><%=item.ordertime%></p>
+				</a>
+			</li>
+			<% }); %>
+		<% }else{ %>
+			<li>
+				<div class="empty-text"><br>
+					<img src="/static/images/empty_notice.png" width="20px"><p>暂无派单数据<p>
+				</div>
+			</li>
+		<% } %>
+	</ul>
+</div>

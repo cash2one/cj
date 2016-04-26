@@ -1,0 +1,45 @@
+<div data-ng-controller="wechatSettingCtrl">
+<div class="hint">
+    <p>提示：发布至少24小时才会更新到新的菜单。</p>
+</div>
+<div class="outer">
+    <div class="centre">
+        <span>显示排序</span>
+        <span>菜单名称</span>
+    </div>
+<div class="within">
+    <div data-ng-repeat="item in weChatData">
+       <div class="menu-name">
+        菜单{{$index+1}}
+       </div>
+        <input type="text" class="form-control menu" data-ng-model="item.name">
+        <p data-ng-if="$first">最多输入5个字符</p>
+        <br/>
+        <div class="within_1" data-ng-if="!$first">
+            <img src="/admincp/static/images/line.png" alt=""/>
+            <br/>
+
+            <div class="shuru">
+                <div data-ng-repeat="obj in item.sub_button">
+                    <input type="text" class="form-control menu_1" data-ng-model="obj.name">
+                    <br data-ng-if="$first"/>
+                </div>
+                <p>最多输入5个字符</p>
+                <br/>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="button">
+        <button type="button" class="btn btn-success save" data-ng-click="weChatSave()">保存</button>
+        <button type="button" class="btn btn-danger restore" data-ng-click="weChatrestore()">一键还原</button>
+     <span class="hint_1">
+        <img src="/admincp/static/images/u83.png" alt=""/>
+        <span>一键还原为默认菜单设置</span>
+    </span>
+    </div>
+
+</div>
+
+</div>
+</div>

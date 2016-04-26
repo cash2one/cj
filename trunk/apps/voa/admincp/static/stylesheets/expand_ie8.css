@@ -1,0 +1,4 @@
+/**
+ * 用于IE8的适配样式
+ */
+.theme-default #main-navbar{position:static !important;top: 40px !important}

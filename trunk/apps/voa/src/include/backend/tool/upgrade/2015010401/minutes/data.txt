@@ -1,0 +1,4 @@
+REPLACE INTO `oa_minutes_setting` (`mis_key`, `mis_value`, `mis_type`, `mis_comment`, `mis_status`, `mis_created`, `mis_updated`, `mis_deleted`) VALUES
+('upload_image', '1', 0, '', 1, 1419598578, 0, 0),
+('upload_image_max_count', '10', 0, '', 1, 1419598578, 0, 0),
+('upload_image_min_count', '0', 0, '', 1, 1419598578, 0, 0);

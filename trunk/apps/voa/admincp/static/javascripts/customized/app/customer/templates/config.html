@@ -1,0 +1,76 @@
+<div class="" id="config">
+
+	<!-- 标题部分 -->
+    <!-- 
+	<form action="" class="panel form-horizontal">
+		<div class="panel-body">
+			<div class="row form-group">
+				<label class="col-sm-1 control-label col-xs-2">应用标题</label>
+				<div class="col-sm-3 col-xs-4">
+					<input type="text" name="name" class="form-control" placeholder="应用标题"></div>
+				<div class="col-sm-6 col-xs-6">
+					<span class="help-block">应用标题出现在工作区的应用导航中，以4-8字为准</span>
+				</div>
+			</div>
+			<div class="row form-group" style="margin-bottom:0">
+				<label class="col-sm-1 control-label col-xs-2">数据名称</label>
+				<div class="col-sm-3 col-xs-4">
+					<input type="email" name="email" class="form-control"  placeholder="数据名称"></div>
+				<div class="col-sm-6 col-xs-6">
+					<span class="help-block">应用中单条数据的名称</span>
+				</div>
+			</div>
+		</div>
+	</form>
+     -->
+	<!-- 标题部分结束 -->
+	<!-- 页面主体 -->
+	<div class="panel">
+		<div class="panel-heading">
+			<span class="panel-title">应用数据结构</span>
+			
+		<!-- Modal -->
+		<div id="myModal" class="modal fade model-select" tabindex="-1" role="dialog" style="display: none;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title" id="myModalLabel">电商产品模板</h4>
+					</div>
+					<div class="modal-body text-center">
+						<div class="select-btn panel-padding clearfix">
+						<a href="#notifications" class="selected">
+							<div class="icon-ly"></div>
+							旅游产品模板
+						</a>
+												
+						<a href="#notifications">
+							<div class="icon-ds"></div>
+							<div>电商产品模板</div>
+						</a>						
+						</div>
+									
+					</div><div class="note note-info">
+					 	提示：修改模板会清空所有数据，请慎重选择！
+				</div>	
+					<!-- / .modal-body -->
+
+				</div>
+				<!-- / .modal-content -->
+			</div>
+			<!-- / .modal-dialog -->
+		</div>
+		<!-- /.modal -->
+		</div>
+		<div class="panel-body buttons-with-margins">
+			<div class="row">
+				<div class="col-md-3">
+					<ul class="nav nav-pills nav-stacked box" id="draggable"></ul>
+				</div>				
+				<div class="col-md-9" role="main" id="sortable"><div class="note note-info">系统默认字段不可删除</div><div class="portleft-txt">拖动到此处</div></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 页面主体 -->
+</div>

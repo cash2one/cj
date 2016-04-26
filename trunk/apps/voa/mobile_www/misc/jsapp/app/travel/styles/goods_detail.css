@@ -1,0 +1,176 @@
+/*旅游_产品详情 头部*/
+body{text-shadow:none!important;background-color: #EFEFF4!important;}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{background-color: #EFEFF4!important;}
+#mt_product_details .head_box {
+  position: relative;
+}
+#mt_product_details .head_box .top_img {
+  height: 145px;
+  overflow: hidden;
+  display: block;
+}
+#mt_product_details .head_box .top_img img {
+  width: 100%;
+}
+#mt_product_details .head_box .content {
+  padding: 4px 13px; 
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  color: #fff;
+  font-size: 14px;
+  background-color: rgba(0,0,0,0.5);;
+ 
+}
+#mt_product_details .general_frame {
+  margin-top: 10px;  
+}
+
+#mt_product_details{
+  padding: 0!important;
+}
+#mt_product_details .head_box .title{
+  font-size: 14px;
+  text-shadow:none;
+}
+#mt_product_details .head_box .money{
+  text-shadow:none;
+  font-size: 24px;
+}
+#mt_product_details .head_box .money small{
+  font-size: 12px;
+}
+
+/*tab*/
+
+#mt_product_details .general_frame{  
+  border-top: 1px solid #bec2c2;
+  border-bottom: 1px solid #bec2c2; 
+}
+#mt_product_details .ui-tabs{
+  padding: 0!important;
+  margin:0!important;
+  background-color: #fff;  
+}
+#mt_product_details .ui-tabs li{
+  border:0;
+  box-shadow:none;
+  position: relative;
+}
+#mt_product_details .ui-tabs li:before {
+  content:"";
+  display:block;
+  position:absolute;
+  left:0;
+  height:16px;
+  width:1px;
+  background-color:#d4d4d4;
+  top:50%;
+  margin-top:-.5em;
+  z-index: 2;
+}
+#mt_product_details .ui-tabs li:first-child:before {
+width: 0;
+}
+#mt_product_details .ui-tabs li a{
+  background-color:#fff;
+  text-shadow:none;
+  color:#696a6c;
+  border: 0;
+  border-bottom: 1px;
+  font-size: 16px;
+  border-bottom:2px solid #dedfdf;
+}
+#mt_product_details .ui-tabs li .ui-btn-active{
+  color:#06c1ae;
+  border-bottom:2px solid #06c1ae;
+}
+#mt_product_details .ui-tabs li a:focus{
+  box-shadow: none;
+}
+#mt_product_details #one{
+  padding:0 0 0 10px;
+}
+#mt_product_details #one .round{padding: 5px; }
+.line{height: 1px;display: block;border-bottom:1px solid rgba(220, 227, 230, 0.6)}
+#mt_product_details #one .one_head{
+  display: inline-block;
+  min-width:28px;
+  background-color: #06c1ae;
+  color: #fff;   
+  padding: 5px 10px;
+  -webkit-border-radius: 23px;
+  border-radius: 23px;
+  text-shadow:none;
+  font-size: 12px;
+  text-align: center;  
+  margin-top: 13px;  
+}
+.red{background-color: #f05e57!important;}
+#mt_product_details p{
+  color:#a1a1a1;
+  font-size: 13px;
+}
+#mt_product_details label{
+  color:#a1a1a1;
+  font-size: 13px;
+}
+#mt_product_details .list_sale{
+  padding: 10px 0;
+}
+#mt_product_details .list_sale ul{
+  padding:  0!important;
+  margin: 0!important;
+}
+
+
+
+#mt_product_details .box{
+  padding: 13px;  
+  color: #a1a1a1;
+  font-size: 13px;
+}
+
+#mt_product_details #mod_common_list {  
+  border: 1px solid rgba(169, 169, 169, 0.6);
+  border-width: 1px 0 1px 0;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+#mt_product_details #mod_common_list > li a{
+  border-top: 0;
+  border-bottom: 1px solid rgba(220, 227, 230, 0.6); 
+  margin: 0 0 0 20px;
+  padding: 1em;
+  padding-left: 0;
+  color:#696a6c;
+  font-size: 13px;
+  background-color: #fff;
+
+}
+#mt_product_details #mod_common_list > li a:hover{
+  background-color: #fff;
+}
+#mt_product_details #mod_common_list .copy{
+  background-color: #eeefef;
+  color:#16bfae;
+  font-size: 16px;
+  margin-top: -14px;
+  right: 20px;
+}
+
+#mt_product_details #mod_common_list > li:last-of-type {
+  border: none;
+}
+
+#mt_product_details #mod_common_list a:after{
+  background: url('../images/tel.png') no-repeat right 0;
+  -webkit-background-size: 34px 22px;
+  background-size: 34px 22px; 
+  right: 100px;
+  width: 38px;
+}
+#mt_product_details #mod_common_list > li:last-of-type {
+  border: none;
+}
+

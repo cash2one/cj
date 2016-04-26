@@ -1,0 +1,41 @@
+<div data-role="header">
+	<h1>产品列表</h1>
+	<a href="#/goods_supply_list" data-transition="slideup" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-icon-carat-l ui-mini">添加货源
+	</a>
+</div>
+<!-- /header -->
+
+<div data-role="content" class="ui-content jqm-content" id="mt_index" data-iscroll>
+<div class="iscroll-pulldown">
+        <span class="iscroll-pull-icon"></span>
+        <span class="iscroll-pull-label"></span>
+      </div>
+	<ul class="list iscroll-wrapper" data-role="listview" data-inset="true">
+	<% $.each(goods.data, function (key, item){ %>
+		<li class="js-item">
+			<span class="pro_new"></span>
+			<div class="mt_title js-subject">
+				<span></span>
+				<%=item.subject%>
+			</div>
+			<a href="#/goods_detail/<%=item.dataid%>" class="imgbox js-cover">
+				<img src="<%=item.cover%>" ></a>
+			<ul class="tab">
+				<li class=""> <i class="icon money"></i><span class="js-price"><%=item.price %><%=item.price_unit%></span>
+				</li>
+				<li class=""> <i class="icon people"></i>意向客户 <span class="js-goodsct"><%=item.goodsct%></span>
+				</li>
+				<li class="">
+					<a href="#/customers_list/<%=item.dataid%>" class="js-add-customer">
+						<i class="icon add"></i>关联客户
+					</a>
+				</li>
+			</ul>
+		</li>
+	<% }); %>
+	</ul>
+    <div class="iscroll-pullup">
+        <span class="iscroll-pull-icon"></span>
+        <span class="iscroll-pull-label"></span>
+      </div>
+</div>

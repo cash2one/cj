@@ -1,0 +1,178 @@
+/*图片上传*/
+#customer_datail .fileinput-button {
+  position: relative;
+  overflow: hidden; 
+}
+#customer_datail .fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+#customer_datail .thumbnail{
+  width: 30%;
+  display: inline-block;
+  height: 48px;
+  overflow: hidden; 
+  position: relative;
+}
+#customer_datail .thumbnail img{
+  width: 100%;
+}
+#customer_datail .thumbnail .title{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-shadow:none;
+}
+#customer_datail .mod_photo_uploader{
+  padding-left: 76px;
+  display: inline-block;
+}
+#customer_datail .popphoto{
+  width: 100%;
+  padding: 0 3px; 
+}
+#customer_datail a.js-image-sample{
+  width: 30%; 
+  
+  display: block;
+  overflow: hidden;
+  max-height: 48px;
+}
+/*新的*/
+
+body{text-shadow:none!important;background-color: #EFEFF4!important;}
+
+.clearfix:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#customer_datail{padding: 0;margin: 0;}
+#customer_datail .content-view{padding: 0;}
+#customer_datail .head_title{
+  color: #a1a1a1 ;   
+  font-size: 14px;  
+  margin:10px 20px;
+}
+#customer_datail .head_title .ui-min{
+  color: #a1a1a1 ;   
+  font-size: 12px;  
+  margin:0;
+  padding: 2px 3px;
+  right: 0;
+}
+#customer_datail .ui-listview{
+  margin: 0!important;
+}
+#customer_datail .ui-field-contain{
+  padding:13px 0;
+  margin:0;
+  position: relative;
+}
+
+#customer_datail .ui-field-contain label {
+  width:65px;
+  min-width: 40px!important; 
+  padding: 0;
+  margin:0;
+  padding-right: 10px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  display: inline-block;
+
+}
+
+#customer_datail .mod_common_list {
+  border: 1px solid rgba(169, 169, 169, 0.6);
+  border-width: 1px 0 1px 0;
+  background-color: #ffffff;
+  padding-left: 20px;
+}
+#customer_datail .mod_common_list span{
+  color:#a1a1a1;
+}
+#customer_datail .mod_comment_list p {
+  font-size: 16px;
+  line-height: 22px;
+  min-height: 45px;
+  padding-right: 20px;
+}
+#customer_datail .ui-field-contain,
+#customer_datail li a.ui-btn{
+  border: 0;
+  border-bottom: 1px solid rgba(220, 227, 230, 0.6);  
+  position: relative;
+  background:none;
+  padding:13px 13px 13px 0;
+}
+#customer_datail .ui-field-contain{}
+#customer_datail .ui-field-contain .updated_date{  
+  display: block;
+  position: absolute;
+  top:50%;
+  left:0;
+  margin-top: -10px;
+  color: #666;
+  padding: 5px auto;
+}
+#customer_datail .ui-field-contain .message{
+  padding-left:92px; 
+  display: block;
+  color: #666;
+  word-wrap: break-word;  
+  word-break: normal;
+  margin:0;
+}
+#customer_datail .ui-field-contain:last-of-type,#customer_datail li {
+  border: none;
+}
+#customer_datail #mod_common_list .ui-last-child {
+border: none;
+}
+#customer_datail .ui-field-footer{
+  display: block;  
+  margin: 20px 10px 40px 10px;
+}
+#customer_datail .ui-input-text input, #customer_datail .ui-input-search input, #customer_datail textarea.ui-input-text{
+  width: 200px;
+}
+#customer_datail .love_prodeuct a:after{
+  background-image:none;
+  -webkit-background-size: 18px 18px;
+  background-color: #fff;
+  background-size: 18px 18px;
+  width:18px;
+  height: 18px;
+}
+.more{color:#666!important;text-decoration:none!important;}
+#customer_datail .ui-responsive{
+  width: 100%;  
+  font-size: 14px;
+  color: #a1a1a1;
+}
+#customer_datail table th{
+  width: 80px;
+}
+#customer_datail table td{
+  padding: 5px 3px;
+}
+#customer_datail table label{
+  text-align: left;
+  width: 80px;
+}
+
+.textarea-box{padding:10px 20px;}
+.textarea-box #remark{width: 260px; height:120px!important;border: 1px solid #eee!important;border-radius: 5px;box-shadow: none;}

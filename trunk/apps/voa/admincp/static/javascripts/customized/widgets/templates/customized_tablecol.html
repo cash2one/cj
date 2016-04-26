@@ -1,0 +1,299 @@
+<!-- 主体头部 -->
+<div class="page-header" tc_id="<%= tc_id %>" coltype="<%= coltype %>">
+    <form>
+    <input type="hidden" value="<%= ct_type %>" name="ct_type" />
+    <input type="hidden" value="<%= field %>" name="field" />
+    <input type="hidden" value="<%= orderid %>" name="orderid" />
+    <div class="col-sm-12">
+        <div class="col-sm-2">
+            <!-- <span class="fa fa-bars "></span>-->
+            <% if (coltype == 2 || field == "recommend") { %>
+                <button type="button" class="down pull-left">
+                <span class="fa fa-chevron-up glyphicon-toggle pull-left"></span>
+                <span class="sr-only">down</span>
+            </button>
+            <% } %>
+            <div class="big-icon">
+                
+                <span class="fa <%= icon %>"></span>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <input type="text" value="<%= fieldname %>" name="fieldname" class="form-control"/></div>
+        <div  class="col-sm-3">
+            <% if (coltype == 2) { %>
+            <button type="button" class="close">
+                <span class="glyphicon fa fa-times glyphicon-toggle"></span>                
+                <span class="sr-only">Close</span>
+            </button>
+            <% } %>
+            
+
+        </div>
+    </div>
+    </form>
+</div>
+<!-- 主体头部结束 -->
+<!-- 内容 -->
+<div class="portlet-content">
+
+<!-- 字符串 -->
+<form class="form-horizontal" role="form">
+    <% if (ct_type == 'attach') { %>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">格式</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="ftype" value="1">文本文件
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="ftype" value="2">图片文件
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="ftype" value="4">语音文件
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="ftype" value="8">视频文件
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">数量</label>
+        <div class="col-sm-7">
+            <input type="text" name="max" value="<%= max %>" class="form-control" placeholder="文件数量限制"></div>
+    </div>
+    <% } %>
+    
+    <% if (ct_type == 'select' || ct_type == 'radio' || ct_type == 'checkbox') { %>
+     <% if (ct_type == 'radio' || ct_type == 'checkbox') { %>
+    <% if (coltype == 2) { %>
+    <!-- 添加多项下拉 -->
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">选项</label>
+        <div class="">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="radio" name="ftype" value="1" checked="checked" class="px">
+                    <span class="lbl">文本</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="ftype" value="2" class="px">
+                    <span class="lbl">图文</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <!-- pic -->
+    
+    <div class="form-group upload js-image-text" <% if (ftype == 2) { %>style="display:block" <% } else { %>style="display:none"<% } %>>
+      
+        <div class="col-sm-offset-2 col-sm-10">           
+            <div class="js-customize-option-sample col-xs-6 col-md-3  item" style="display:none">
+                <div class="" onmouseover="this.className='hover'"
+                    onmouseout="this.className=''">
+                    <span class="thumbnail">
+                    <img
+                        data-src="holder.js/100%x180" alt="100%x180"
+                        style="width: 100%; display: block;"
+                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=">
+                        <div class="upload-box">
+                        <span  class="btn btn-default fileinput-button" style="position: relative;">
+                            <i class="fa fa-upload"></i>
+                            <span>上传</span>
+                            <input class="fileupload" type="file" name="data" multiple >
+                        </span>
+                        <div class="clearfix"></div>
+                        </div>
+                    </span> 
+                    <i class="fa fa-times js-btn-option-minus"></i>
+                    <input type="text" class="form-control" attachid="" tco_id="" tc_id="<%= tc_id %>">
+                    
+                </div>
+                
+            </div>  
+            <% if (ftype == 2) { %>
+            <% if (!_.isEmpty(options_data)) { $.each(options_data, function (k, opt) {%>
+
+            <div class="js-customize-option col-xs-6 col-md-3  item">
+                <div class="" onmouseover="this.className='hover'"
+                    onmouseout="this.className=''">
+                    <span class="thumbnail">
+                    <img
+                        alt="100%x180"
+                        style="width: 100%; display: block;"
+                        src="<%=opt.attachurl%>">
+                        <div class="upload-box">
+                        <span  class="btn btn-default fileinput-button" style="position: relative;">
+                            <i class="fa fa-upload"></i>
+                            <span>上传</span>
+                            <input class="fileupload" type="file" name="data" multiple >
+                        </span>
+                        <div class="clearfix"></div>
+                        </div>
+                    </span> 
+                    <i class="fa fa-times js-btn-option-minus"></i>
+                <input type="text" name="options_values[]" class="js-options-values form-control"  attachid="<%= opt.attachid %>"  value="<%= opt.value %>" tco_id="<%= opt.tco_id %>" tc_id="<%= tc_id %>">
+                    
+                </div>
+                
+            </div>
+            
+            <% })} %>
+            <% } %>
+       </div>
+        <!-- The fileinput-button span is used to style the file input field as button -->
+        <div  class="col-sm-offset-2 col-sm-10" style="position: relative;">
+        <span  class="btn js-btn-option-plus btn-default " style="position: relative;">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span>添加</span>
+        </span>
+        
+        </div>
+
+        <!-- pic end -->
+       
+    </div>
+     <% } %>
+       
+
+    <div class="form-group js-text" id="select" <% if (ftype != 2) { %>style="display:block" <% } else { %>style="display:none"<% } %>>
+        <label for="inputEmail3" class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+            
+            <div class="input-group col-sm-5 js-customize-option-sample" style="display:none">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </span>
+                <input type="text" class="form-control" tco_id="" tc_id="<%= tc_id %>">
+                <span class="js-btn-option-minus input-group-addon input-group-addon-cursor">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </span>
+            </div>
+            <% if (ftype != 2) { %>
+            <% if (!_.isEmpty(options_data)) { $.each(options_data, function (k, opt) {%>
+
+            <div class="input-group col-sm-5 js-customize-option">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </span>
+                <input type="text" name="options_values[]" class="js-options-values form-control" value="<%= opt.value %>" tco_id="<%= opt.tco_id %>" tc_id="<%= tc_id %>">
+                <span class="js-btn-option-minus input-group-addon input-group-addon-cursor">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </span>
+            </div>
+            
+            <% })} %>
+            <% } %>
+            <button type="button" class="js-btn-option-plus btn btn-default btn-sm col-sm-5">
+                <span class="glyphicon glyphicon-plus"></span>
+                添加
+            </button>
+        </div>
+    </div>
+    <!-- 添加多项下拉结束 -->
+    <% } %>
+    <% if (ct_type == 'checkbox') { %>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label ">数量</label>
+        <div class="col-sm-10">
+            <input class="form-control col-sm-5" type="text" name="max" value="<%= max %>" placeholder="输入数量">
+        </div>
+    </div>
+    <% } %>
+    <% if (ct_type == 'text') { %>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">输入</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="radio" name="ftype" value="1" class="px">
+                    <span class="lbl">多行文本</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="ftype" value="2" class="px">
+                    <span class="lbl">富文本</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <% if (coltype == 2) { %>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">文本说明</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="3"  name="tc_desc" placeholder="说明如何填写"><%= tc_desc %></textarea>
+        </div>
+    </div>
+    <% } %>
+    <% if (ct_type == 'varchar' || ct_type == 'passwd') { %>
+    <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">字符长度</label>
+        <div class="col-sm-7">
+            <div id="bs-datepicker-range" class="input-daterange input-group">
+                <input type="text" placeholder="不小于" name="min" class="input-sm form-control" value="<%= min %>">
+                <span class="input-group-addon">到</span>
+                <input type="text" placeholder="不大于" name="max" class="input-sm form-control" value="<%= max %>"></div>
+        </div>
+    </div>
+    <% } %>
+    <% if (ct_type == 'int' || ct_type == 'float') { %>
+    <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">数值范围</label>
+        <div class="col-sm-7">
+            <div id="bs-datepicker-range" class="input-daterange input-group">
+                <input type="text" placeholder="最小值" name="min" class="input-sm form-control" value="<%= min %>">
+                <span class="input-group-addon">到</span>
+                <input type="text" placeholder="最大值" name="max" class="input-sm form-control" value="<%= max %>"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">单位</label>
+        <div class="col-sm-7">
+            <input type="text" name="unit" class="form-control" placeholder="数字单位" value="<%= unit %>"></div>
+    </div>
+    <% } %>
+    <% if (ct_type == 'diy') { %>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">正则</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="reg_exp" placeholder="正则表达式" value="<%= reg_exp %>">
+        </div>
+    </div>
+    <% } %>
+    <% if (coltype == 2) { %>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">选项</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="required" class="px js-required-checkbox" <% if (required=='1') {print('checked');} %> value="1" />
+                    <span class="lbl">必填</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <% if (coltype == 2 || field == 'recommend') { %>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">是否启用</label>
+        <div class="">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="radio" name="isuse" value="1" checked="checked" class="px">
+                    <span class="lbl">启用</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="isuse" value="3" class="px">
+                    <span class="lbl">不启用</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</form>
+<!-- 字符串结束 -->
+</div>
+<!-- 内容结束 -->

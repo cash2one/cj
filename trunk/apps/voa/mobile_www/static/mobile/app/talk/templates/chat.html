@@ -1,0 +1,42 @@
+<header>
+    <div class="head mod-list-header ui-header">
+        <h1 class="ui-title"></h1>
+        <div class="head-l">
+           <a id="back" href="<% if(userinfo.m_uid > 0){ %>#/<% }else{ %>javascript:;<% } %>" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-back-l ui-nodisc-icon">返回</a>
+            <span class="num" style="display:none;"></span>
+        </div>
+    </div>
+</header>
+<div id="chatarea">
+    <div id="service">
+
+        <div id="wrapper" class="sjchat" style="overflow: hidden;" >
+            <div id="scrollDiv">
+                <div role="main" class="mod-common-list" id="chat_view">
+
+                    <div class="good-title"></div>
+                    <div class="chat-box " id="listDiv">
+                        <div class="empty">
+                            <div class="empty-text">
+                                <p>还没有聊天记录</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="sendbox">
+        <div id="chat_view_footer">
+            <div class="ui-bar">
+                <form action="javascript:;" method="get">
+                    <div class="left">
+                        <textarea id="msg" rows="1" class="common-input"></textarea></div>
+                    <div class="right">
+                        <button id="send" type="submit" class="submit ui-btn ui-btn-a ui-corner-all ui-mini">发送</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

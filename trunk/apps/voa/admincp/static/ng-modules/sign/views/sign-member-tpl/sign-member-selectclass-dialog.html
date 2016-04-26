@@ -1,0 +1,50 @@
+<div  style="width: 600px; border: 1px solid #ccc;padding: 10px 40px 20px 40px;" data-ng-controller="SignMemberSelectclassDialogCtrl">
+    <div style="width: 100%; height: 60px;line-height: 60px;font-size: 14px;text-align: center;" >选择班次</div>
+    <div class="ts" style="margin-bottom: 10px;"><i class="icon-exclamation-sign red-btn" ></i>若您要选择多个班次，请按班次时间顺序进行选择，如“早班、中班、晚班”</div>
+    <table class="table table-striped table-hover table-bordered table-main">
+        <colgroup>
+            <col class="t-col-20" />
+            <col class="t-col-60" />
+            <col class="t-col-20" />
+        </colgroup>
+
+        <thead>
+        <tr>
+            <th>班次名称</th>
+            <th>时间段</th>
+            <th>选择</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>休息</td>
+            <td>-</td>
+            <td><input type="button" value="休息" data-ng-click="$close()" /></td>
+        </tr>
+        <tr data-ng-repeat="class in classList">
+            <td data-ng-bind="class.name"></td>
+            <td>{{class._str_work_begin}} - {{class._str_work_end}}</td>
+            <td><label style="width:100%;"><input type="checkbox" data-ng-model="class.checked" data-ng-click="selectedClass(class)" /></label></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr data-ng-show="classList && classList.length > 0">
+            <td colspan="6" class="text-right vcy-page"
+                poler-pagination="polerPaginationCtrl" download="getClassPage(page)">
+                <!-- 分页 -->
+            </td>
+        </tr>
+        <tr data-ng-show="!classList || classList.length==0">
+            <td colspan="6" class="success">
+                暂无任何数据
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+    <div style="width:100%;height:30px;line-height:30px; padding-left: 20%;">
+        <input type="button" value="提交" style="margin-right:150px; height:30px; line-height:24px;width:80px;border-radius: 5px;border:1px solid #f19a1f;background: #f19a1f;color:#fff;" data-ng-click="apply()" >
+        <input type="button" value="关闭" style="height:30px; line-height:24px;width:80px;border-radius: 5px;border:1px solid #999;background: #f4f4f4;" data-ng-click="$dismiss()">
+    </div>
+</div>
+
+

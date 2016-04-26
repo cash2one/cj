@@ -1,0 +1,95 @@
+#goods_order_detail_detail p.remark, #goods_order_detail_detail p.tel{padding: 13px 10px 13px 0}
+#goods_order_detail_detail p{padding: 5px 10px 3px 0;font-size: 14px;}
+.cancel-order,.go-payment,.again-order{
+  display: inline-block;
+  float:right;
+  text-align: center;
+  padding: 6px 16px;
+  color: #fff!important;
+  margin: 10px;
+  border-radius: 3px;
+  text-shadow:none!important;
+}
+.cancel-order{
+  background-color:#c5cccd!important;
+}
+.again-order{
+  background-color:#1bc6c3!important;
+}
+.go-payment{
+  background-color:#fe5955!important;
+}
+#goods_order_detail_detail .status ,#goods_order_detail_detail .total{
+  color: red;
+}
+#goods_order_detail_detail .cancel-order:hover,
+#goods_order_detail_detail .cancel-order:focus {
+  background: #c5cccd!important;
+  color: #fff;
+  text-shadow: none;
+}
+#goods_order_detail_detail .go-payment:hover,
+#goods_order_detail_detail .go-payment:focus {
+  background: #fe5955!important;
+  color: #fff;
+  text-shadow: none;
+}
+#goods_order_detail_detail .again-order:hover,
+#goods_order_detail_detail .again-order:focus {
+  background: #1bc6c3!important;
+  color: #fff;
+  text-shadow: none;
+}
+.order-box {
+  text-align: right;
+}
+#goods_order_detail ul.list li .imgbox {
+  overflow: hidden;
+  display: block; 
+}
+#goods_order_detail ul.list li .imgbox img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 13px;
+  border: 1px solid #e1e1e1;
+  vertical-align: middle;
+}
+#goods_order_detail ul.list li .mt_title {
+  min-height: 36px;
+  overflow: hidden;
+  font-size: 14px;
+  color: #252525;
+  line-height: 16px;
+  margin: 0;
+  padding-right: 85px;
+  word-break: normal;
+  white-space: normal;
+  word-wrap: break-word;
+}
+#goods_order_detail ul.list li .mt_title a{color:#252525}
+#goods_order_detail .view li{
+  margin-left: 10px;
+}
+#goods_order_detail .view li .format{
+  color: #818998;
+  font-size: 12px;
+  margin: 0px;
+  padding-right: 66px;
+}
+#goods_order_detail ul.list li .js-price {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  font-size: 16px;
+  margin: 0px;
+}
+#goods_order_detail ul.list li .num{
+  margin-top: 3px;
+  font-weight: bold;
+}
+.mod-common-list .view .total{text-align: right;color: #666;font-size: 12px;font-weight: normal;}
+.mod-common-list .view .total span{font-size: 20px;color: #fe5955;padding-left:5px;}
+.footer .ui-btn{word-break: normal;white-space: normal;word-wrap: break-word;font-size: 12px;}
+.footer .btn-red .ui-btn{background-color: #fe5955;text-shadow:none;color:#fff;}
+.footer .btn-red .ui-btn:hover, .footer .btn-red .ui-btn:focus{background-color: #fe5955;}

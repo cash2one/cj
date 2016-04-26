@@ -1,0 +1,113 @@
+    
+    <label for="text-12"><%= fieldname %>:</label>
+    <% if (ct_type == 'float' || ct_type == 'int') { %>
+        <% if (unit) { %>
+            <input fieldname="<%=fieldname%>" type="text" name="_<%= tc_id %>"  reg_exp="<%= reg_exp %>" required="<%= required %>" placeholder="<%= tc_desc %>" value="<%= value %>">
+            <button class="btn" type="button"><%= unit %></button>
+                            
+        <% } else { %>
+        <input fieldname="<%=fieldname%>" type="text" name="_<%= tc_id %>" reg_exp="<%= reg_exp %>" required="<%= required %>" placeholder="<%= tc_desc %>" value="<%= value %>">
+        <% }  %>
+    <% } %>
+    <!-- <td width="65%" class="has-error "> -->
+    <% if ( ct_type == 'varchar' || ct_type == 'passwd' || ct_type == 'qq' || ct_type == 'email' || ct_type == 'mobile' || ct_type == 'idcard' || ct_type == "postalcode" || ct_type == "diy") { %>
+        <input fieldname="<%=fieldname%>" type="text" name="_<%= tc_id %>" reg_exp="<%= reg_exp %>" required="<%= required %>" value="<%= value %>" placeholder="<%= tc_desc %>">
+    <% } %>
+    <% if (ct_type == 'select') { %>
+        <% if (!_.isEmpty(options_data)) { %>
+        <select fieldname="<%=fieldname%>" name="_<%= tc_id %>" reg_exp="<%= reg_exp %>" required="<%= required %>">
+            <% $.each(options_data, function (k, opt) { %>
+            <option value="<%= opt.tco_id %>"  <% if (value == opt.tco_id) { print("selected"); } %> ><%= opt.value %></option>
+            <% }) %>
+        </select>
+        <% } %>
+    <% } %> 
+    <% if (ct_type == 'text') { %>
+        <textarea fieldname="<%=fieldname%>" name="_<%= tc_id %>" reg_exp="<%= reg_exp %>" required="<%= required %>" placeholder="<%= tc_desc %>"><%= value %></textarea>
+
+        <% if (ftype == 2) { %>
+        <!--<script id="_<%= tc_id %>" type="text/plain"><%= value %></script>-->
+        <% } else { %>
+        <!--<textarea name="_<%= tc_id %>"  placeholder="多行文本"><%= value %></textarea>-->
+        <% } %>
+        
+    <% } %>
+    <% if (ct_type == 'radio') { %>
+        
+        <fieldset data-role="controlgroup" data-type="horizontal">
+        <% $.each(options_data, function (k, opt) {%>
+            <input fieldname="<%=fieldname%>" type="radio" reg_exp="<%= reg_exp %>" required="<%= required %>" name="_<%= tc_id %>" id="radio-choice-h-<%= opt.tco_id %>a" value="<%= opt.tco_id %>" <% if (value == opt.tco_id) { print("checked='true'"); } %> >
+            <label for="radio-choice-h-<%= opt.tco_id %>a"><%= opt.value %></label>
+        <% }) %>
+        </fieldset>
+    
+    <% } %>
+    <% if (ct_type == 'checkbox') { console.log('checkbox', value, options_data);%>  
+        <fieldset data-role="controlgroup" data-type="horizontal">
+        <% $.each(options_data, function (k, opt) {%>
+            <input fieldname="<%=fieldname%>" type="checkbox" reg_exp="<%= reg_exp %>" required="<%= required %>" name="_<%= tc_id %>[]" id="checkbox-h-<%= opt.tco_id %>a" value="<%= opt.tco_id %>" <% if (_.find(value, function (v2) { return v2 == opt.tco_id})) { print("checked='true'"); } %> >
+            <label for="checkbox-h-<%= opt.tco_id %>a"><%= opt.value %></label>
+        <% }) %>
+        </fieldset>
+   
+    <% } %>
+    <% if (ct_type == 'attach') { %>    
+        <!-- file -->
+        
+        <div class="media">
+            <div class="js-media-sample media-body item" style="display: none">
+                <h4 class="media-heading">liuao130584_b.jpg</h4>
+                <div class="">
+                    <small>文件大小: <i></i> Byte</small> <a class="js-attach-close" href="#">
+                       删除
+                    </a>
+
+                </div>
+                
+            </div>
+        </div> 
+        <!-- file end -->
+        <!-- pic -->
+        <div class="mod_photo_uploader">       
+
+            <a href="javascript:;" data-rel="popup" data-position-to="window" data-transition="fade" class="js-image-sample" style="display:none;"><img class="popphoto" src=""><i class="js-attach-close"></i></a>
+
+        
+        <!-- The fileinput-button span is used to style the file input field as button -->
+        <div class="clearfix">
+        <span class="ui-btn ui-icon-plus ui-btn-icon-left ui-corner-all fileinput-button ui-mini">
+            <span>添加文件</span>
+                <input type="file" fieldname="<%=fieldname%>" class="fileupload" name="data" multiple data-role="none"/>
+            </span>
+        </div>
+        </div>
+    </div>
+        </div>
+        <!-- pic end -->
+    <% } %>
+    <% if (ct_type == 'datetime') { %>
+        <div class="input-group date ui-btn ui-btn-inline">
+            <input type="text" fieldname="<%=fieldname%>" class="form-control input-datetime" placeholder="<%= tc_desc %>" reg_exp="<%= reg_exp %>" required="<%= required %>" name="_<%= tc_id %>" value="<%= value %>"> <span
+                class="input-group-addon"> <i
+                class="fa fa-calendar"></i>
+            </span>
+        </div>
+    <% } %>
+    <% if (ct_type == 'date') { %>
+        <div class="input-group date">
+            <input type="text" fieldname="<%=fieldname%>" class="form-control input-date" placeholder="<%= tc_desc %>" reg_exp="<%= reg_exp %>" required="<%= required %>" name="_<%= tc_id %>" value="<%= value %>"> <span
+                class="input-group-addon"> <i
+                class="fa fa-calendar"></i>
+            </span>
+        </div>
+    <% } %>
+    <% if (ct_type == 'time') { %>
+        <div class="input-group date ">
+            <input type="text" class="form-control input-time" fieldname="<%=fieldname%>"  placeholder="<%= tc_desc %>" reg_exp="<%= reg_exp %>" required="<%= required %>" name="_<%= tc_id %>" value="<%= value %>"
+                id="bs-timepicker-component"> <span
+                class="input-group-addon"> <i
+                class="fa fa-clock-o"></i>
+            </span>
+        </div>
+    <% } %>
+    

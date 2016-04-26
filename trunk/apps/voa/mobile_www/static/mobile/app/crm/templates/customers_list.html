@@ -1,0 +1,66 @@
+<div data-role="header" data-position="fixed" data-theme="a" id="customers_list_head">
+<!-- <div data-role="header" role="banner" class="ui-header ui-bar-inherit"> -->
+	<h1 class="ui-title" role="heading" aria-level="1">客户</h1>
+    <a href="/frontend/travel/cpindex" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+    <% if (goods_id) {%>
+
+    
+	<span  id="js_btn_customer_add" data-role="button" class="ui-btn js-btn-add ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-icon-carat-l ui-mini">完成
+	</span>
+    <% } else { %>
+    <a href="#/customer_edit" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-icon-carat-l ui-mini">添加
+    </a>
+    <% } %>
+    
+	
+</div>
+<!-- /header -->
+<div id="customers_list">
+<div class="search-box"><input id="js-search" data-type="search"  type="search" placeholder="搜索"></div>	
+<% if (goods_id) {%>
+    <a href="#/customer_edit/goods_id/<%=goods_id%>
+		" class="ui-btn ui-icon-plus ui-btn-icon-left customers_new">关联新客户
+	</a>
+<% } %>
+    <% if (customers.data.length) { %>
+	<div role="main" class="ui-content">  <form id="customer_form">       
+		<ul id="mod_common_list " class="touch iscroll-wrapper" data-role="listview" data-icon="false" data-split-icon="delete">
+
+       
+            <% $.each(customers.data, function (key, item){ %>
+                <li data-dataid="<%=item.dataid%>">
+                    <h3><span><%= _.escape(item.truename) %></span><small><%= item.gender %></small></h3>
+                    <div class="tel"><%= item.mobile %> </div>
+                    <p class="ui-li-aside<% if (!goods_id) { %> aside-right-0 <% } %>">
+                        <!--&nbsp;<%= item.customst %>-->
+                        <!--<span class="time"><i class="ui-alt-icon ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all"></i><%= item.updated %></span>-->
+                        <!--用于通用CRM>-->
+                        <span class="order">交易成功<%=item.order_total%>笔</span>
+                    </p>
+                    <% if (goods_id) { %>
+                    <input value="<%=item.dataid%>" type="checkbox" name="customer[]" id="checkbox-v-<%=item.dataid%>a">
+                    <label for="checkbox-v-<%=item.dataid%>a"></label>
+                    <% } %>
+
+                </li>
+            <% }); %>
+       
+		</ul>
+         </form>
+        
+	</div>
+	<!-- /content -->
+    <% } else { %>
+    <% if (!goods_id) { %>
+    <div class="empty_conten">
+    <div class="empty_customer">        
+    </div>
+    <div class="empty_customer_text">您还没有客户哦<br>点击页面右上角“添加”添加客户</div>
+    </div>
+    <% } %>
+    <% } %>
+</div>
+<div data-role="popup" id="positionWindow" class="ui-content" data-theme="a">
+<p>I am positioned to the window.</p>
+</div>
+

@@ -1,0 +1,210 @@
+<div class="stat-cell col-sm-9 bordered no-padding" data-ng-controller="MemberPropsCtrl">
+    <ul class="nav nav-tabs nav-justified" style="padding:10px 0 0 10px;width: 280px;">
+        <li role="presentation" data-ng-class="{active:tab1}" data-ng-click="propsTab(1)">
+            <a href="javascript:void(0);" style="margin-right: 10px;">员工属性</a>
+        </li>
+        <li role="presentation" data-ng-class="{active:tab2}" data-ng-click="propsTab(2)">
+            <a href="javascript:void(0);">敏感成员设置</a>
+        </li>
+    </ul>
+    <!-- 员工属性 -->
+    <div data-ng-show="tab1">
+        <div class="panel-heading heading-border">
+            <div class="border-b hearder-center">
+                <!--<a class="btn btn-default" data-ng-click="return()">返回</a>-->
+                <div class="panel-head-center">员工属性信息</div>
+                <a class="btn btn-info btn-float" href="javascript:void(0);" data-ng-click="add()">
+                    <i class="fa fa-cog"></i> 新增属性
+                </a>
+            </div>
+        </div>
+        <div class="stat-panel tag-panel">
+            <div class="stat-cell col-sm-9 bordered no-padding no-border-r no-border-l">
+                <table class="table  font12 margin-0">
+                    <colgroup>
+                        <col class="t-col-3">
+                        <col class="t-col-20">
+                        <col class="t-col-8">
+                        <col class="t-col-12">
+                        <col class="t-col-15">
+                        <col class="t-col-12">
+                        <col class="t-col-10">
+                    </colgroup>
+                    <thead class="panel-t-head">
+                    <tr class="panel-title">
+                        <td>显示顺序</td>
+                        <td>信息名称</td>
+                        <td>
+                            <span>是否开启</span>
+                        </td>
+                        <td>
+                            <span>是否设置必填</span>
+                        </td>
+                        <td>
+                            <span>是否在通讯录中显示</span>
+                        </td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <!--.panel-grey加在td上：禁止操作-->
+                    <tbody class="panel-t-body ">
+                    <!-- 固定属性 -->
+                    <tr class="row_member " data-ng-repeat="fixedField in fixed">
+                        <td class="td_name panel-grey">
+                            -
+                        </td>
+                        <td class="panel-grey" data-ng-bind="fixedField.name"></td>
+                        <td class="panel-checkbox panel-grey">
+                            <label>
+                                <input type="checkbox" data-ng-checked="{{ fixedField.open == 1 }}"
+                                   data-ng-disabled="true"
+                                       data-ng-click="toggleCheckbox('open',fixedField, $event)">
+                                <span>开启</span>
+                            </label>
+                        </td>
+                        <td class="panel-checkbox panel-grey">
+                            <label>
+                                <input type="checkbox" data-ng-checked="{{ fixedField.required == 1 }}"
+                                       data-ng-disabled="true"
+                                       data-ng-click="toggleCheckbox('required',fixedField, $event)">
+                                <span>必填</span>
+                            </label>
+                        </td>
+                        <td class="panel-checkbox panel-grey">
+                            <label>
+                                <span>
+                                    <input type="checkbox" data-ng-checked="{{ fixedField.view == 1 }}"
+                                           data-ng-disabled="{{fixedField.level == 0 }}"
+                                           data-ng-click="toggleCheckbox('view',fixedField, $event)">
+                                    <span>显示</span>
+                                </span>
+                            </label>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <!--固定自定义属性 -->
+                    <tr class="row_member" data-ng-repeat="customField in custom" data-ng-if="customField.name">
+                        <td class="td_name">
+                            <input type="number" class="props-number" data-ng-change="modifyNo(customField)"
+                                   data-ng-disabled="{{customField.level <= 1 }}" data-ng-model="customField.number"
+                                   step="1" min="0" max="99"/>
+                        </td>
+                        <td data-ng-bind="customField.name"></td>
+                        <td class="panel-checkbox">
+                            <label>
+                                <input type="checkbox" data-ng-checked="{{ customField.open == 1 }}"
+                                       data-ng-disabled="{{customField.level == 0 }}"
+                                       data-ng-click="toggleCheckbox('open',customField, $event)">
+                                <span>开启</span>
+                            </label>
+                        </td>
+                        <td class="panel-checkbox">
+                            <label>
+                                <input type="checkbox" data-ng-checked="{{ customField.required == 1 }}"
+                                       data-ng-disabled="{{customField.level == 0 }}"
+                                       data-ng-click="toggleCheckbox('required',customField, $event)">
+                                <span>必填</span>
+                            </label>
+                        </td>
+                        <td class="panel-checkbox">
+                            <label>
+                                <input type="checkbox" data-ng-checked="{{ customField.view == 1 }}"
+                                       data-ng-disabled="{{customField.level == 0 }}"
+                                       data-ng-click="toggleCheckbox('view',customField, $event)">
+                                <span>显示</span>
+                            </label>
+                        </td>
+                        <td>
+                            <!-- TODO 不能使用style，鼠标样式不正确 -->
+                            <span class="props-delete" data-ng-click="delete(customField)"
+                                  data-ng-if="customField.level == 3">删除</span>
+                            <span class="props-edit" data-ng-click="add()"
+                                  data-ng-if="customField.level == 3">编辑</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="panel-sev-right">
+                    <a class="btn btn-default" data-ng-click="return()">取消</a>
+                    <a class="btn btn-info" data-ng-click="save()">保存</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 敏感成员 -->
+    <div data-ng-show="tab2">
+        <div class="stat-panel tag-panel">
+            <div class="stat-cell col-sm-9 bordered no-padding no-border-r no-border-l">
+                <div class="panel-sev">
+                    <div class="panel-sev-inf">
+                        <span>设置敏感成员的显示信息</span>
+                        <span><a data-ng-click="setLabel()" style="cursor: pointer;">设置</a></span>
+                    </div>
+                    <div class="panel-sev-check">
+                        <ul data-ng-if="isHide">
+                            <li data-ng-repeat="label in labelList">
+                                <label class="props-tag">
+                                    <div class="mian-choose" data-ng-click="showTag(label)">
+                                        <div class="sev-label-alert" data-ng-hide="label.selectedTagList && label.selectedTagList.length != 0"> 请选择标签 </div>
+                                        <span class="sev-label" data-ng-repeat="tag in label.selectedTagList">
+                                            {{tag.name}}
+                                            <i data-ng-click="delTag($event,label.selectedTagList,tag)">x</i>
+                                        </span>
+                                    </div>
+
+                                    <a class="btn btn-danger danger-padding"
+                                       data-ng-click="delLabel(label)">删除</a>
+                                    <div class="props-select"
+                                         data-ng-if="label.isSelectedHied && tagList.length != 0">
+                                        <ul>
+                                            <li data-ng-repeat="tag in tagList" data-ng-bind="tag.name"
+                                                data-ng-click="selectedTag(label,tag)"></li>
+                                        </ul>
+                                    </div>
+                                </label>
+
+
+                                <h4>敏感成员可见信息</h4>
+
+                                <div class="panel-sev-input">
+                                    <label data-ng-repeat="fixedField in label.fixed" >
+                                        <input type="checkbox" data-ng-checked="fixedField.ischecked"
+                                               data-ng-click="checkedFixed(label,fixedField,$event)" data-ng-disabled="fixedField.name == '姓名'"/>
+                                        <span data-ng-bind="fixedField.name"></span>
+                                    </label>
+                                    <label data-ng-repeat="customField in label.custom" >
+                                        <input type="checkbox" data-ng-checked="customField.ischecked"
+                                               data-ng-click="checkedFixed(label,customField,$event)"/>
+                                        <span data-ng-bind="customField.name"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="sev-btn-con">
+                            <a class="btn btn-info" data-ng-click="addLabel()" data-ng-if="isHide">继续添加</a>&nbsp;
+                            <div class="panel-sev-right" data-ng-if="isHide">
+                                <a class="btn btn-default" data-ng-click="cancelLabel()">取消</a>
+                                <a class="btn btn-info" data-ng-click="save()">保存</a>
+                            </div>
+                        </div>
+                        <div data-ng-repeat="label in labelList" data-ng-if="isInfoHide">
+                            <div class="sev-label-group">
+                                <span>敏感标签成员:</span>
+                                <span class="sev-label" data-ng-repeat="tag in label.selectedTagList"
+                                      data-ng-bind="tag.name"></span>
+                            </div>
+                            <div class="sev-label-show">
+                                <span>显示信息:</span>
+                                <span class="label-show-color" data-ng-repeat="fex in label.view" >
+                                  <span data-ng-bind="fex.name"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

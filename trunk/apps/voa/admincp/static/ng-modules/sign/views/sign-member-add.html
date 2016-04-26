@@ -1,0 +1,210 @@
+<!-- 设置主页 -->
+<div class="newadd-main container-fluid" data-ng-controller="SignMemberAddCtrl">
+    <div class="newadd-top clearfix">
+        <span>排班适用对象：</span>
+        <div class="department " data-ng-click="selectDepartment($event)"><i class="icon-plus plus color-green"></i>部门</div>
+        <div class="form-control form-small department mian-choose" data-ng-if="depList.length">
+            <span  data-ng-repeat="dep in depList">
+                {{dep.name}}
+                <i data-ng-click="delDep(dep)">x</i>
+            </span>
+        </div>
+    </div>
+    <div class="newadd-con">
+        <div class="newadd-con-top  row">
+            <dl>
+                <dt>排班起止时间：</dt>
+                <dd>
+                    <div class="input-daterange input-group" style="width: 300px;display: inline-table;vertical-align:middle;" id="bs-datepicker-range1">
+                        <div class="input-daterange input-group" style="width: 300px;display: inline-table;vertical-align:middle;" id="bs-datepicker-range">
+                            <input type="text" class="input-sm form-control"  placeholder="开始日期" data-ng-model="schedule_begin_time" readonly date-time-picker is-control="three" enddate="schedule_end_time" />
+                            <span class="input-group-addon">至</span>
+                            <input type="text" class="input-sm form-control" placeholder="不填则到永久" data-ng-model="schedule_end_time" readonly date-time-picker is-control="three" startdate="schedule_begin_time" />
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <span><i class="icon-exclamation-sign"></i>提示：班次在排班开始、结束时间内按周期循环</span>
+        </div>
+        <div class="newadd-con-bottom row">
+            <dl>
+                <dt>排班循环周期：</dt>
+                <dd>
+                    <span>周期单位</span>
+                    <select ng-model="selected" data-ng-options="list.name for list in scheduling" data-ng-selected="list.selected" ></select>
+                </dd>
+
+                <!--选择天的时候才会出现周期数-->
+                <dd data-ng-show="selected == scheduling.day">
+                    <span>周期数</span>
+                    <input type="text" class="zq" data-ng-model="countDay" data-ng-init="countDay = 3" data-ng-keyup="keyupCheck('countDay',7,1)" maxlength="1">
+                    <p>天</p>
+                    <p>周期范围1~7天</p>
+                </dd>
+                <dd data-ng-show="selected == scheduling.month">
+                    <p>若当月不足31天,则下月排班仍从1号开始循环</p>
+                </dd>
+            </dl>
+            <!-- 天 -->
+            <table  data-ng-if="selected == scheduling.day"  class="table table-striped table-hover table-bordered table-main">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>班次</th>
+                    <th><label><input name="newadd-top" type="checkbox" data-ng-model="selected.checkedAll"  data-ng-click="checkedAll()" />全选</label></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="day in selected.value" data-ng-show="countDay >= $index + 1">
+                    <td data-ng-bind="day.text"></td>
+                    <td>
+                        <span data-ng-show="day.selectedClass == null">休息</span>
+                        <span data-ng-repeat="selectedClass in day.selectedClass">{{selectedClass.name}}{{$last ? '':',' }}</span>
+                    </td>
+                    <td>
+                        <label>
+                            <input name="newadd-top" type="checkbox" data-ng-model="day.checked" />
+                        </label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- 周 -->
+            <table data-ng-if="selected == scheduling.week" class="table table-striped table-hover table-bordered table-main" >
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>班次</th>
+                    <th><label><input name="newadd-top" type="checkbox" data-ng-model="selected.checkedAll" data-ng-click="checkedAll()" />全选</label></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="week in selected.value">
+                    <td data-ng-bind="week.text"></td>
+                    <td>
+                        <span data-ng-if="week.selectedClass == null">休息</span>
+                        <span data-ng-repeat="selectedClass in week.selectedClass">{{selectedClass.name}}{{$last ? '':',' }}</span>
+                    </td>
+                    <td>
+                        <label>
+                            <input name="newadd-top" type="checkbox" data-ng-model="week.checked"/>
+                        </label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- 月 -->
+            <div class="month clearfix"   data-ng-if="selected == scheduling.month">
+                <ul>
+                    <li data-ng-repeat="month in selected.value">
+                        <label>
+                            <h5 data-ng-bind="month.text"></h5>
+                            <p> <span data-ng-if="month.selectedClass == null">休息</span>
+                                <span data-ng-repeat="selectedClass in month.selectedClass">{{selectedClass.name}}{{$last ? '':',' }}</span></td>
+                            </p>
+                            <input type="checkbox"  data-ng-model="month.checked">
+                        </label>
+                    </li>
+                </ul>
+                <span class="span1 btn-default span-checkbox">
+                    <label>
+                        <input type="checkbox" data-ng-click="checkedAll()" data-ng-model="monthCheckAll" data-ng-init="monthCheckAll = false">{{monthCheckAll ? '反选':'全选'}}
+                    </label>
+                </span>
+            </div>
+            <span class="span1 btn-success" data-ng-click="selectClassDialog()">选择班次</span>
+            
+            <div class="ts"><i class="icon-exclamation-sign red-btn"></i>排班时，班次之间时间不得冲突，且总时间跨度不得超过二十四小时！</div>
+        </div>
+        <div class="con-three">
+            <div class="out-date" style="margin-left: 0;">
+                <div class="newadd-con-top top row">
+                    <dl>
+                        <dt style="width: 98px;text-align: right;">排除假期：</dt>
+                        <dd>
+                            <div class="input-daterange input-group" style="width: 300px;display: inline-table;vertical-align:middle;" >
+                                <div class="input-daterange input-group" style="width: 300px;display: inline-table;vertical-align:middle;" >
+                                    <input type="text" class="input-sm form-control" data-ng-model="legalStartDate" placeholder="开始日期" readonly date-time-picker is-control="three" enddate="legalEndDate" />
+                                    <span class="input-group-addon">至</span>
+                                    <input type="text" class="input-sm form-control" data-ng-model="legalEndDate" placeholder="结束日期" readonly date-time-picker is-control="three" startdate="legalStartDate" />
+                                </div>
+                            </div>
+                        </dd>
+                        <dd>
+                            <input type="button" value="添加" data-ng-click="addCustomDate('legalStartDate','legalEndDate',datetime.legaDate.custom)" class="input1 blue">
+                            <input type="button" value="添加法定假日" data-ng-click="addLegalHoliday()" class="input2 btn-green">
+                        </dd>
+                    </dl>
+                </div>
+                <div class="bottom clearfix">
+                    <ul>
+                        <li data-ng-repeat="date in datetime.legaDate.legal">
+                            {{date.startTime}}<span>至</span>{{date.endTime}}<i data-ng-click="delDate(date,datetime.legaDate.legal)">x</i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bottom clearfix">
+                    <ul>
+                        <li data-ng-repeat="date in datetime.legaDate.custom">
+                            {{date.startTime}}<span>至</span>{{date.endTime}}<i data-ng-click="delDate(date,datetime.legaDate.custom)">x</i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="out-date border-no"  style="margin-left: 0;">
+                <div class="newadd-con-top top row">
+                    <dl>
+                        <dt style="width: 98px;text-align: right;">新增工作日：</dt>
+                        <dd>
+                            <div class="input-daterange input-group" style="width: 300px;display: inline-table;vertical-align:middle;" >
+                                <div class="input-daterange input-group" style="width: 300px;display: inline-table;vertical-align:middle;" >
+                                    <input type="text" class="input-sm form-control"  placeholder="开始日期" data-ng-model="addStartDate" readonly date-time-picker is-control="three"  enddate="addEndDate" />
+                                    <span class="input-group-addon">至</span>
+                                    <input type="text" class="input-sm form-control" placeholder="结束日期" data-ng-model="addEndDate" readonly date-time-picker is-control="three"  startdate="addStartDate" />
+                                </div>
+                            </div>
+                        </dd>
+                        <dd>
+                            <input type="button" value="添加" data-ng-click="addCustomDate('addStartDate','addEndDate',datetime.addDate.custom)"  class="input1 blue">
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="bottom clearfix">
+                    <ul>
+                        <li data-ng-repeat="date in datetime.addDate.custom">
+                            {{date.startTime}}<span>至</span>{{date.endTime}}<i data-ng-click="delDate(date,datetime.addDate.custom)">x</i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="newadd-top clearfix border-none margin-none">
+        <span>考勤范围开关：</span>
+        <p class="margin-left-30">
+            <label><input type="radio" data-ng-model="isOpen" data-ng-value="true"/>开启范围</label>
+        </p>
+        <p>
+            <label><input type="radio" data-ng-model="isOpen" data-ng-value="false"/>关闭范围</label>
+        </p>
+        <p class="ts">（开启范围后可能由于微信定位不准确导致签到范围异常，请谨慎操作）</p>
+    </div>
+    <div data-ng-show="isOpen">
+    <div class="map" baidu-map> </div>
+    <div class="range row border-none" style="border:none">
+        <dl class="col-md-10">
+            <dt>考勤范围<i>*</i></dt>
+            <dd>
+                <input type="text" placeholder="输入数字" data-ng-model="address_range">
+                <p>单位：米 建议范围500-1000</p>
+            </dd>
+        </dl>
+    </div>
+    </div>
+    <div class="button">
+        <input type="button" class="input1 bg-yellow" repeat-submit="save()" value="保存">
+        <input type="button" data-ng-click="returnPage()" value="取消" class="btn btn-default">
+    </div>
+</div>

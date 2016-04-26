@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+/*nav*/
+nav.mod_list_nav{border-bottom: 0;}
+.mod_list_nav a.ui-link{border-bottom: 1px solid #ccc;}
+.mod_list_nav a.ui-link.current{border-bottom: 1px solid #09f;}
+
+/*搜索人员*/
+.contacts-search-box{
+	display: block;
+	position: relative;
+	padding: 8px;
+}
+.mod_photo_uploader{
+	padding-top:0;
+	padding-left:0;
+	display: block;
+	height: 40px;
+	float:left; 
+	border: 0;
+	background: none;
+	max-width:240px;
+	overflow-x:auto;
+	overflow-y:hidden;
+	white-space:nowrap;
+}
+.mod_photo_uploader .photo-scrollable span {
+  	width: 40px;
+  	height: 38px; 
+  	line-height: 38px;
+  	font-size: 10px;
+  	margin-right: 4px;
+	margin-bottom: 0;
+	text-align: center;
+	display: inline-block;	
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden; 
+	border: 1px solid #ccc;
+	color: #999;
+	background: #fff;
+}
+
+
+.search-content{	
+	overflow:hidden;
+	display: inline-block;
+	background-color: #888;
+	width: 100%;
+	position: absolute;
+
+}
+.search-contacts{
+	display: block;
+	float:left;
+	margin-left: 6px;
+}
+
+.contacts-search-box input{
+	width: 100%;
+	position: absolute;
+	border: 0;
+	background: rgba(0,0,0,0);
+	padding: 10px 0;
+}
+
+/*选择人员*/
+.checkbox-contral li{	
+	padding: 0!important;
+	margin:0!important;
+	position: relative;
+}
+.checkbox-contral li .ui-checkbox{
+	margin:0!important;	
+}
+.checkbox-contral li .ui-checkbox label{	
+	border: 0!important;
+	background-color: #fff;
+	padding: 0;
+	padding-left: 42px;
+}
+.Single li .ui-checkbox label h3{
+	padding: 11px 0!important;
+}
+.checkbox-contral .ui-bar-inherit{
+	padding-left: 10px!important;
+}
+.checkbox-contral li .ui-checkbox label p{
+	color: #a1a1a1;
+}
+.checkbox-contral .thumbnail{
+	position: absolute;
+	width:40px;
+	height: 40px;
+	top:50%;
+	margin-top: -20px;
+}
+/*头像滚动*/
+.photo-scrollable {
+width: 100%;
+overflow-x: auto;
+overflow-y: hidden;
+}

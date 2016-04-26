@@ -1,0 +1,159 @@
+.iphoneBox{
+    background: url(/admincp/static/images/act_preview.png) no-repeat;
+    height: 613px;
+    background-size: 100% 613px;
+    margin: 20px auto;
+    width: 300px;
+    overflow: hidden;
+}
+.iphoneContextBox {
+    width: 264px;
+    margin: 132px auto;
+    margin-top: 112px;
+    height: 428px;
+    background: #fff;
+    overflow-y: auto;
+}
+.iphoneContent {
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.datepicker,.bootstrap-timepicker-widget {
+    z-index: 999999 !important;
+}
+.addBtn,.addBtn:hover{
+    background:#5bc0de !important;
+    color:#fff !important;
+}
+.introduce{
+    line-height: 30px;
+    color:#959595;
+}
+
+.left-col {
+    width: 339px;
+}
+.profile-photo {
+    position: relative;
+}
+#mobile_body {
+    position: absolute;
+    top: 150px;
+    left: 32px;
+    width: 265px;
+    height: 418px;
+    overflow: hidden;
+}
+#prev_content {
+    width: 100%;
+}
+#prev_content div img {
+    width: 267px;
+}
+#prev_title {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 131px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    width: 175px;
+    margin-left: 87px;
+    overflow: hidden;
+    height: 15px;
+}
+.de_con{
+    border:1px solid #dcdcdc;
+    overflow: hidden;
+    min-height: 500px;
+}
+.de-left{
+    margin-bottom: 0;
+    border-bottom: 0;
+    border-top:0;
+    border-left:0 ;
+    width:70%;
+}
+.de-right{
+    border:0;
+    padding-left:0px;
+}
+.sh_heading{
+    position: relative;
+}
+.sh_heading > .sh_title{
+    font-size:22px;
+    padding:5px 35px 5px 0;
+}
+.sh_heading>a{
+   position:absolute;
+    right:5px;
+    top:5px;
+    line-height: 20px;
+}
+.sh_info{
+    padding: 5px 0;
+}
+.sh_info>span{
+    color:#A699A6;
+    font-size: 14px;
+}
+.sh_info>span.sh_time{
+    margin-right:15px ;
+}
+.sh_info>span.sh_num,.sh_info>span.sh_view{
+    text-align: right;
+    margin: 0 15px;
+}
+
+.st_list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.st_list>li{
+    padding: 5px;
+}
+.st_list >li:before{
+    font-size: 16px;
+    line-height: 25px;
+}
+.st_list >li:nth-child(1):before{
+    content:"①";
+}
+.st_list >li:nth-child(2):before{
+    content:"②";
+}
+.st_list >li:nth-child(3):before{
+    content:"③";
+}
+.st_list >li:nth-child(4):before{
+    content:"④";
+}
+.st_list >li:nth-child(5):before{
+    content:"⑤";
+}
+.st_list >li:nth-child(6):before{
+    content:"⑥";
+}
+.st_list >li:nth-child(7):before{
+    content:"⑦";
+}
+.st_list >li:nth-child(8):before{
+    content:"⑧";
+}
+.st_list >li:nth-child(9):before{
+    content:"⑨";
+}
+.st_list >li:nth-child(10):before{
+    content:"⑩";
+}
+.st_list >li>span{
+    font-size: 16px;
+    line-height: 25px;
+    padding:0 8px;
+}
+.delete{
+    cursor: pointer;
+}

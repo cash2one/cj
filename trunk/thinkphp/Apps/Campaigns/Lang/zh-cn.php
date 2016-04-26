@@ -1,0 +1,31 @@
+<?php
+
+return array(
+    '_CAM_TYPE_SUM_MAX_ERR' => '3200001:分类不能超过10个',
+    '_CAM_TYPE_TITLE_NOT_NULL_ERR' => '3200002:分类名不能为空',
+    '_CAM_TYPE_TITLE_MAX_ERR' => '3200003:分类名不能超过10个字',
+    '_CAM_TYPE_ID_NOT_NULL_ERR' => '3200004:分类ID不能为空',
+    '_CAM_TYPE_SORT_NOT_NULL_ERR' => '3200005:分类排序不能为空',
+    '_CAM_TYPE_ID_IS_NUM_ERR' => '3200006:分类ID必须为数字',
+    '_CAM_TYPE_SORT_IS_NUM_ERR' => '3200007:排序必须为数字',
+    '_CAM_TYPE_DEL_IDS_ERR' => '3200008:分类删除的id格式不正确',
+    '_CAM_TYPE_DEL_DIE_ERR' => '3200009:分类删除失败',
+    '_CAM_TYPE_SAVE_ERR' => '3200010:分类保存失败',
+    '_CAM_TYPE_ADD_ERR' => '3200011:分类保存失败',
+    '_CAM_SUBJECT_NOT_NULL_ERR' => '3200012:活动标题不能为空',
+    '_CAM_SUBJECT_MAX_LEN_ERR' => '3200013:活动标题不能超过64个字符',
+    '_CAM_TYPEID_NOT_NULL_ERR' => '3200014:活动类型不能为空',
+    '_CAM_TYPEID_NOT_FOUND_ERR' => '3200015:活动类型不存在',
+    '_CAM_COVER_NOT_NULL_ERR' => '3200016:活动封面不能空',
+    '_CAM_BEGINTIME_NOT_NULL_ERR' => '3200017:开始时间不能空',
+    '_CAM_OVERTIME_NOT_NULL_ERR' => '3200018:结束时间不能空',
+    '_CAM_OVERTIME_LT_BEGINTIME_ERR' => '3200019:结束时间不能小于开始时间',
+    '_CAM_CD_IDS_FORMAT_ERR' => '3200020:部门id格式不正确',
+    '_CAM_M_UIDS_FORMAT_ERR' => '3200021:用户id格式不正确',
+    '_CAM_CONTENT_NOT_NULL_ERR' => '3200022:内容不能为空',
+    '_CAM_SEARCH_DATE_FORMAT_ERR'=>'3200023:搜索日期格式不正确',
+    '_CAM_NOT_MORE_ERR'=>'3200024:没有更多活动',
+    '_CAM_USER_P_ERR'=>'3200025:用户权限保存失败',
+    '_CAM_DP_P_ERR'=>'3200026:部门权限保存失败',
+    '_CAM_NOT_FUND_ERR'=>'3200027:活动不存在'
+);

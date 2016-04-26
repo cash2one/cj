@@ -1,0 +1,52 @@
+<!-- 考勤规则常规 -->
+<div class="modal-header">
+    <button type="button" class="close" data-ng-click="$dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title text-center">考勤规则</h4>
+</div>
+<div class="modal-body">
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <td class="active">考勤时间范围</td>
+            <td>
+                上班时间点前 <span data-ng-bind="classData.sign_start_range/60"></span> 分钟开始签到
+                下班时间点后 <span data-ng-bind="classData.sign_end_range/60"></span> 分钟结束签退
+            </td>
+        </tr>
+        <tr data-ng-if="classData.come_late_range_on == 1">
+            <td class="active">迟到规则</td>
+            <td>
+                晚于上班时间 <span data-ng-bind="classData.come_late_range/60"></span> 分钟签到计为迟到
+            </td>
+        </tr>
+        <tr>
+            <td class="active">早退规则</td>
+            <td>
+                早于下班时间 <span data-ng-bind="classData.leave_early_range/60"></span> 分钟签退计为早退
+            </td>
+        </tr>
+        <tr data-ng-if="classData.late_range_on == 1">
+            <td class="active">启用加班</td>
+            <td>
+                下班时间点 <span data-ng-bind="classData.late_range/60"></span> 分钟后签退计为加班
+            </td>
+        </tr>
+        <tr data-ng-if="classData.sign_on == 1">
+            <td class="active">签到提醒</td>
+            <td>
+                上班时间点前 <span data-ng-bind="classData.remind_on_rage/60"></span> 分钟提醒<br />
+                提醒语：<span data-ng-bind="classData.remind_on"></span>
+            </td>
+        </tr>
+        <tr data-ng-if="classData.sign_off == 1">
+            <td class="active">签退提醒</td>
+            <td>
+                下班时间点后 <span data-ng-bind="classData.remind_off_rage/60"></span> 分钟内未签退则发起提醒<br />
+                提醒语：<span data-ng-bind="classData.remind_off"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

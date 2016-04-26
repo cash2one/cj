@@ -1,0 +1,82 @@
+<!-- 魏世超 -->
+<style type="text/css">
+	.modal-open{overflow: auto!important;}
+</style>
+<div class="tab-content" data-ng-controller="shareDetail">
+	<div class="tab-pane active" id="papaer_base">
+	
+		<div class="panel panel-default">
+			<div class="panel-body exam-paper-view">
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2 text-right">作者:</label>
+					<div class="col-sm-9" data-ng-bind="resDateil.username"></div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2 text-right">创建时间:</label>
+					<div class="col-sm-9" data-ng-bind="resDateil.c_time*1000 | date : 'yyyy-MM-dd hh:mm:ss'"></div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2 text-right">标题:</label>
+					<div class="col-sm-9" data-ng-bind="resDateil.title"></div>
+				</div>
+
+
+
+
+
+				<div class="form-group">
+					<label class="control-label col-sm-2 text-right">正文:</label>
+					<div class="col-sm-9" ng-bind-html="resDateil.desc">
+			
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2 text-right">附件:</label>
+					<div class="col-sm-9">
+						<ul id="attach_list" class="jt-attach-list" >
+						       <li style="	margin-top: 10px;float: left;width: 40%;margin-right: 1%;height: 64px;border: 1px solid #ddd;list-style: none;" data-ng-repeat="item in resDateil.arr_file">
+						       	<i class="ext-pdf" style="background-color: #ff3333;float: left;overflow: hidden;display: block;margin: 8px 0 0 8px;height: 48px;width: 48px;text-align: center;line-height: 48px;font-size: 16px;background-color: #666;color: #fff;font-weight: 600;font-style: normal;word-break: break-all;word-wrap: break-word;" data-ng-bind="item.ext"></i>
+						       	<p style="margin: 8px 0 0 62px;line-height: 16px;height: 16px;overflow: hidden;" data-ng-bind="item.at_filename"></p>      
+						       	<p><a data-ng-href="{{item.at_attachment}}">下载</a>
+						       	</p>
+						       </li> 
+						  </ul>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<div class="row">
+							
+							<a href="javascript:;" class="btn btn-primary col-sm-offset-1 col-md-2"  data-ng-click="conFirm('material_id='+resDateil.material_id+'&status=2')">同意收录</a>
+
+
+							<a href="javascript:;" class="btn btn-danger col-sm-offset-1 col-md-2" data-ng-click="proMpt('material_id='+resDateil.material_id+'&status=3'+'&desc=')" >驳回素材</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="tab-pane" id="papaer_questions">
+		
+		<div class="panel panel-default">
+
+
+			<div class="panel-body" id="comments_list"></div>
+
+			<div id="comments_page"></div>
+			
+		</div>
+
+	</div>
+
+</div>
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+<% $.each(customers.data, function (key, item){ %>
+                <li>
+
+                    <h3><%= item.truename %><small><%= item.gender %></small></h3>
+                    <div class="tel"><%= item.mobile %> </div>
+                    <p class="ui-li-aside">
+                        <%= item.customst %>
+                        <span class="time"><i class="ui-alt-icon ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all"></i><%= item.updated %></span>
+                    </p>
+                    
+                    <input value="<%=item.dataid%>" type="checkbox" name="customer" id="checkbox-v-<%=item.dataid%>a">
+                    <label for="checkbox-v-<%=item.dataid%>a"></label>
+                    
+
+                </li>
+                <% }); %>

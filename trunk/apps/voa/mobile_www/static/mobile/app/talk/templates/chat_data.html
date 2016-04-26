@@ -1,0 +1,14 @@
+<div class="chat-time" time="<%= item.created %>" style="display:none;"><span><%= item.createdStr %></span></div>
+<div class="chat-<%= type%>">
+    <a href="javascript:void(0)" class="avatar-<%= type%>"> 
+        <img src="<%= item.avatar %>" tw_type="<%= item.tw_type%>">
+    </a>
+    <div style="position: static;" class="ui-popup-container ui-popup-active conten">
+        <div class="ui-popup ui-body-inherit ui-corner-all <% if(type == 'you'){ %><% }else{ %>active<% } %>">
+            <p><%= item.message %></p>
+            <div class="ui-popup-arrow-container ui-popup-arrow-<% if(type == 'you'){ %>l<% }else{ %>r<% } %>">
+                <div class="ui-popup-arrow ui-body-inherit <% if(type == 'you'){ %><% }else{ %>active<% } %>"></div>
+            </div>
+        </div>
+    </div>
+</div>

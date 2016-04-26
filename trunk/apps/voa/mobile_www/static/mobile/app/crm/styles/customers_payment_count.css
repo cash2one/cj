@@ -1,0 +1,61 @@
+
+ #workrightone .right-time {
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 0px;
+  text-align: right;
+  height: 50px;
+  color: #6A727F;
+  margin-top: 0px;
+
+}
+
+#workrighttwo .right-time {
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 0px;
+  text-align: right;
+  height: 50px;
+  color: #6A727F;
+  margin-top: 0px;
+
+}
+
+
+li{
+	height: 50px; 
+	line-height: 50px;
+}
+#workrightone li label{
+	color:#2A3D54;
+}
+
+#workrightone h3{
+	font-size: 10px;
+}
+
+#workrightone {
+	margin-bottom: 15px;
+}
+
+#workrighttwo {
+	margin-bottom: 30px;
+}
+
+.count_description_p{
+	color: #B2BBBD;
+	margin-left: 15px;
+} 
+#paymentID{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#paymentID .ui-btn{
+   text-shadow:none;
+   color: #fff;
+   background-color: #1385CC;
+}
+
+ 

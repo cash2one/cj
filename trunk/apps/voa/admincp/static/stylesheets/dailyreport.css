@@ -1,0 +1,501 @@
+.iphoneBox{
+	background: url(../images/phone.png) no-repeat;
+	height: 613px;
+	background-size: 100% 613px;
+	margin: 20px auto;
+	width: 300px;
+	overflow: hidden;
+}
+.iphoneContextBox{
+	width: 264px;
+	margin: 132px auto;
+	margin-top: 112px;
+	height: 428px;
+	background : #fff;
+	overflow-y: auto;
+	//overflow: hidden;
+}
+.iphoneContent{
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+
+.phoneModelLabelTxt{
+	padding-top: 7px;
+	text-align: right;
+	padding-left: 20px;
+	float: left;
+	width: 130px;
+}
+.reportIsUse{
+	display: inline-block;
+	margin-top: 5px;
+	font-weight: 200;
+	margin-right: 10px;
+}
+
+.reportVisibleRangeBtn{
+	margin-right: 20px;
+}
+
+.btn-primary{
+	color: #fff !important;
+    background: #428bca !important;
+    border-color: #357ebd !important;
+}
+
+.pmltBox .btn-primary:hover {
+    color: #fff;
+    background: #428bca !important;
+    border-color: #357ebd !important;
+}
+
+.depListBox{
+	border : 1px soild #ccc;
+}
+
+.assemblyParentBox{
+	margin-top: 20px;
+}
+
+.iphoneModelList{
+	margin-top: 5px;
+	padding: 0 10px 18px 10px;
+	border-bottom: 1px solid #d5d5d5;
+}
+
+.iphoneModelList p{
+	margin-bottom: 5px;
+	font-family: "黑体";
+	font-size: 14px;
+	color : #000;
+}
+
+.iphoneModelList p span{
+	color: #ff3b30;
+}
+
+.iphoneModelList .imitateAssembly{
+	border : 1px solid #aaaaaa;
+	border-radius: 4px;
+}
+
+.iphoneModelList .imitateTypeText{
+	height: 36px;
+}
+.iphoneModelList .imitateTypeTextarea{
+	height: 64px;
+}
+.iphoneModelList .imitateTypeImages{
+	width: 65px;
+	height: 65px;
+	border:1px solid #bbb;
+	position: relative;
+	border-radius: 4px;
+}
+.iphoneModelList .imitateTypeRc,.iphoneModelList .rcNoFocus{
+	padding-left: 20px;
+	position: relative;
+}
+.iphoneModelList .imitateTypeRc s{
+	position: absolute;
+	background: url(../images/assIcon.png) no-repeat;
+	left: 0;
+	top: 3px;
+	width: 12px;
+	height: 12px;
+}
+.iphoneModelList .rcNoFocus s{
+	position: absolute;
+	left: 0;
+	top: 2px;
+	width: 12px;
+	height: 12px;
+	border:1px solid #ccc;
+}
+
+.iphoneModelList .rcNoFocus s.radionfc{
+	border-radius: 50%;
+}
+.iphoneModelList .imitateTypeRadio s{
+	background-position: -14px -37px;
+}
+.iphoneModelList .imitateTypeCheckbox s{
+	background-position: 0 -37px;
+}
+.iphoneModelList .imitateTypeImages i{
+	position: absolute;
+	width: 45px;
+	height: 32px;
+	background: url(../images/assIcon.png) no-repeat -13px 0;
+	left: 11px;
+	top: 14px;
+}
+.iphoneModelList input[type=text]{
+	width: 100%;
+}
+
+.assemblySaveBox{
+	text-align: center;
+	padding: 20px 0;
+}
+
+
+
+.seek{
+    float: right;
+}
+
+
+.derive{
+    float: right;
+}
+
+
+.dl-horizontal dt{
+    width: 100px;
+    text-align: left;
+    margin-left: 30px;
+}
+
+.dl-horizontal dd{
+    margin-left: 150px;
+}
+
+
+.headline{
+    color: #000000;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.explain{
+    color: #888888;
+    margin-left: 100px;
+}
+
+/*a:hover{*/
+    /*text-decoration: none;*/
+    /*color: #000000;*/
+/*}*/
+
+.click{
+    float: right;
+    font-size: 28px;
+    color: #888888;
+}
+
+.setting_all_s{
+    width: 90%;
+    margin-left: 40px;
+}
+
+.setting_all{
+    width: 100%;
+}
+
+.hint_1 span{
+    line-height: 40px;
+}
+
+.explain_1{
+    color: #888888;
+    margin-left: 140px;
+}
+
+
+.waibtn{
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.restore{
+    margin-left: 8%;
+    width: 100px;
+}
+
+.save{
+    width: 100px;
+}
+
+.return{
+    width: 100px;
+    height: 30px;
+    margin-left: 4%;
+}
+
+.shanchu{
+    margin-left: 6%;
+    height: 30px;
+    width: 100px;
+}
+
+.list-group{
+    padding: 1%;
+}
+
+.avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.commentTitleTxt{
+    margin: 0 10px;
+}
+
+.portrait{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.report-commentlist-box{
+    padding: 0 40px;
+    word-break:break-all;
+    position: relative;
+    color: #888888;
+}
+
+.comment-context-margin{
+    margin-left: 10px;
+}
+
+.comment-item-message{
+    line-height: 15px;
+    margin-top: 7px;
+}
+
+.comment-item-user{
+    margin-top: 7px;
+    border-left: 2px solid #ccc;
+    color: #999;
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.comment-item-removeBtn{
+    position: absolute;
+    right: 0;
+    top: 15px;
+    cursor: pointer;
+}
+
+.comment-item-removeBtn a{
+    color: red;
+}
+
+
+.hint{
+    border: 1px solid #f6deac;
+    height: 50px;
+    background: #f9f1c7;
+}
+
+.hint_1{
+
+}
+
+.hint p{
+    line-height: 45px;
+    margin-left: 20px;
+    color: #af8640;
+}
+
+.outer{
+    margin-top: 20px;
+    border: 1px solid #dcdcdc;
+    height: 712px;
+
+}
+
+.centre{
+
+    background: #dcdcdc;
+    height: 42px;
+}
+
+.centre span{
+    line-height: 45px;
+    margin-left: 7%;
+}
+
+.within{
+    margin-left: 7%;
+    margin-top: 5%;
+}
+
+.within_1{
+    margin-left: 13%;
+}
+
+
+.menu{
+    width: 220px;
+    margin-left: 13%;
+    margin-top: -30px;
+}
+
+.within p{
+    color: #999999;
+    margin-left: 13%;
+}
+
+.menu_1{
+    width: 180px;
+    margin-left: 40px;
+}
+
+
+.button{
+    margin-left: 60px;
+}
+
+
+
+.shuru{
+    margin-top: -70px;
+}
+
+.shuru p{
+    color: #999999;
+    margin-left: 5%;
+}
+
+.leixing{
+    float: right;
+    margin-right: 2%;
+}
+
+
+.biaoge{
+    margin:0px auto;
+    width: 96%;
+}
+
+
+.toubu{
+    background: #F2F2F2;
+    width: 100%;
+}
+
+.scope{
+    width: 50%;
+}
+
+.compile{
+    color: #00a0f9;
+}
+
+.compile:hover{
+    color: #00a0f9;
+}
+
+.delete{
+    color: red;
+    margin-left: 20px;
+}
+
+.delete:hover{
+    color: red;
+}
+
+.particulars{
+    width: 100%;
+    
+}
+
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.particulars_1{
+    line-height: 35px;
+}
+
+.tupian img{
+    width: 100%;
+}
+
+.report-btn{
+    float: right;
+}
+
+.type-inside{
+    margin-bottom: 0px;
+}
+
+.recipient-name{
+    padding: 0px;
+}
+
+
+.biaoqian{
+    padding-right: 10px;
+}
+
+.biaoqian-1{
+    background: orange;
+    color: #fff;
+    border-radius: 10%;
+}
+
+.select-btn{
+    line-height: 10px;
+}
+
+.menu-name{
+    border: 1px solid #dcdcdc;
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.interior-content{
+    margin-top: 2%;
+}
+
+.report-name{
+	    background: #67cea6;
+	    color: #fff;
+    font-size: 11px;
+    line-height: 20px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+    padding: 0 6px;
+    display: inline-block;
+    font-weight: 600;
+    border-radius:5px;
+    }
+    
+.submit-time{
+	color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 18px;
+    padding: 0 8px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+    background: #b0b0b0;
+    border: 1px solid #b0b0b0;
+    border-radius: 10px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.txt-right{
+    text-align: right;
+    font-weight: bold;
+}
+
+.gj-time{
+    font-weight: 200;
+    line-height: 18px;
+    height: 18px;
+    display: block;
+    margin-top: -6px;
+}

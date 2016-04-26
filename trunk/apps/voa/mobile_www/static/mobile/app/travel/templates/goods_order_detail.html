@@ -1,0 +1,56 @@
+<div data-role="header" class="mod-list-header">
+    <h1>订单详情</h1>
+    <a id="back" href="javascript:history.go(-1);" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">返回</a>
+</div>
+<!-- /header -->
+<div role="main" class="mod-common-list" id="goods_order_detail" >
+     <ul class="view list m-t-10 " data-role="listview">
+        <% $.each(order.goods_list, function(k, item) {%>
+        <li>
+            <div class="imgbox" style="float:left;">
+                <img src="<%=item.goods.cover%>" ></div>
+            <p class="mt_title js-subject"><a href="<%=item.detail_url%>"><%=item.goods_name%></a></p>
+            <% if (!_.isEmpty(item.style_name)) { %>
+            <p class="format">规格：<%=item.style_name%></p>
+            <% } %>
+            <p class="ui-li-aside js-price">单价：¥ <%=item.price%><br><span class="num">数量：<%=item.num%></span></p>
+            
+        </li>
+        <% }); %>
+        <li class="clearfix">            
+                <div class="total">共<%=order.goods_list.length%>件商品 合计：<span>¥<%=order.amount%></span></div>
+        </li>
+
+    </ul>
+    <ul class="ui-nodisc-icon ui-alt-icon m-t-10" data-role="listview">
+         <li>
+                <p>订单总额： ¥<%=order.amount%></p>
+                <p>订单状态： <span class="js-order-status"><%=order._order_status%></span></p>
+                <p>预订时间：<%=order._created%></p>
+            
+        </li>
+        <li>
+            <p>购&nbsp;买&nbsp;人：<%=order.customer_name%></p>
+            <p>联系电话：<%=order.mobile%></p>
+            <p>联系地址：<%=order.address%></p>
+        </li>
+        <li>
+            <p>卖家电话：<%=order.sale_phone%></p>
+        </li>
+    </ul>
+    <!--
+    <ul class="ui-nodisc-icon ui-alt-icon m-t-10" data-role="listview">
+        <li>
+            <p class="tel">卖家电话：138238838477</p>
+        </li>
+
+    </ul>-->
+
+  
+</div>
+<% if (order.order_status < 3) { %>
+<div class="order-box clearfix">        
+    <a  class="ui-btn ui-btn-inline go-payment js-go-payment"  data-orderid="<%=order.orderid%>">立即付款</a>
+    <a  class="ui-btn ui-btn-inline cancel-order js-cancel-order" data-orderid="<%=order.orderid%>">取消订单</a>
+</div>
+<% } %>

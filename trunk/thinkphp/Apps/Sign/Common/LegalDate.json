@@ -1,0 +1,83 @@
+{
+  "legalYearDateList": [
+    {
+      "dateId": "",
+      "dateType": 2,
+      "endTime": "2016-02-13",
+      "startTime": "2016-02-07",
+      "year": 2016
+    },
+    {
+      "dateId": "",
+      "dateType": 2,
+      "endTime": "2016-06-11",
+      "startTime": "2016-06-09",
+      "year": 2016
+    },
+    {
+      "dateId": "",
+      "dateType": "2",
+      "endTime": "2016-09-17",
+      "startTime": "2016-09-15",
+      "year": "2016"
+    },
+    {
+      "dateId": "",
+      "dateType": 2,
+      "endTime": "2016-05-02",
+      "startTime": "2016-04-30",
+      "year": 2016
+    },
+    {
+      "dateId": "",
+      "dateType": 2,
+      "endTime": "2016-10-07",
+      "startTime": "2016-10-01",
+      "year": 2016
+    },
+    {
+      "dateId": "",
+      "dateType": 2,
+      "endTime": "2016-04-04",
+      "startTime": "2016-04-02",
+      "year": 2016
+    }
+  ],
+  "addYearDateList": [
+    {
+      "dateId": "",
+      "dateType": 1,
+      "endTime": "2016-06-12",
+      "startTime": "2016-06-12",
+      "year": 2016
+    },
+    {
+      "dateId": "",
+      "dateType": 1,
+      "endTime": "2016-09-18",
+      "startTime": "2016-09-18",
+      "year": 2016
+    },
+    {
+      "dateId": "",
+      "dateType": 2,
+      "endTime": "2016-10-09",
+      "startTime": "2016-10-08",
+      "year": 2016
+    },
+    {
+      "dateId": "",
+      "dateType": 1,
+      "endTime": "2016-02-14",
+      "startTime": "2016-02-14",
+      "year": 2016
+    },
+    {
+      "dateId": "",
+      "dateType": 1,
+      "endTime": "2016-02-06",
+      "startTime": "2016-02-06",
+      "year": 2016
+    }
+  ]
+}

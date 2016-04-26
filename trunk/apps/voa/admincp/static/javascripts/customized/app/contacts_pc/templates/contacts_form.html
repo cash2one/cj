@@ -1,0 +1,48 @@
+
+<div class="contacts-search-box clearfix">
+    <div class="mod_select-contacts">
+        <div class="contacts-scrollable js-contacts-form-row">
+        <% if (typeof contacts != "undefined") { %>
+            <% $.each(contacts, function(k, item) { %>
+                <% if (item.id) { %>
+                    <a id="<%=item.input_name.replace('[', '').replace(']', '')%>_<%=item.id%>"><span><%=item.name%></span><input name="<%=item.input_name%>" value="<%=item.id%>" type="hidden"></a>
+                <% } %>
+            <% })%>
+        <% } %>
+        </div>
+    </div>
+    <!-- <div class="search-thumbnails">
+    <span class="thumbnail">
+        <img src="http://demos.jquerymobile.com/1.4.5/_assets/img/album-bb.jpg"></span>
+    <span class="thumbnail">
+        <img src="http://demos.jquerymobile.com/1.4.5/_assets/img/album-bb.jpg"></span>
+    <span class="thumbnail">
+        <img src="http://demos.jquerymobile.com/1.4.5/_assets/img/album-bb.jpg"></span>
+    <span class="thumbnail">
+        <img src="http://demos.jquerymobile.com/1.4.5/_assets/img/album-bb.jpg"></span>
+    <span class="thumbnail">
+        <img src="http://demos.jquerymobile.com/1.4.5/_assets/img/album-bb.jpg"></span>
+</div>
+-->
+<div  class="search-contacts"><a class="js-call-contacts" href="javascript:void(0)" title='选择联系人'><span class="glyphicon glyphicon-plus-sign"></span></a>
+        
+</div>
+</div>
+  
+<div class="js-contacts-window modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">选择<% if (deps_enable && !contacts_enable) { %>部门<% } else { %>联系人<% } %></h4>
+            </div>
+            <div class="modal-body">
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn js-contact-close btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn  js-contact-save btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,256 @@
+<div class="stat-cell col-sm-9 bordered no-padding" data-ng-controller="MemberTagCtrl">
+    <div class="panel-heading heading-border" style="background-color: #f5f5f5;">
+        <div class="border-b hearder-center">
+            <a data-ng-href="#/app/page/member/main" class="btn btn-default">返回</a>
+            <div class="panel-head-center tag-help">
+                标签管理
+                <div class="tag-istitle">
+                    <img src="/admincp/static/images/wenhao.png" data-ng-click="showTitle($event)"/>
+                    <ul data-ng-class="{'tag-tran':isTitle}">
+                            <li>标签可对通讯录中的成员或部门进行标记。管理员通过标签，</li>
+                            <li>可以在通讯录部门架构之外设置群组，通过快速选择成员范围，</li>
+                            <li>以方便地进行如下操作：</li>
+                            <li>a）发送消息时，快速选择群发对象；</li>
+                            <li> b）创建应用/设置时，快速选择可见范围。</li>
+                    </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="stat-panel tag-panel" >
+        <div class="stat-row">
+            <div class="stat-cell col-sm-3 padding-sm-hr bordered no-border-r no-border-l valign-top no-padding"
+                 style="background-color:#f5f5f5;">
+                <div class="category">
+                    <div class="padding-sm border-b">
+                        <div class="pull-left">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control tag-input" placeholder="搜索标签"
+                                       data-ng-model="searchTag" data-ng-keydown="searchEnterTag($event)">
+                                <span class="input-group-btn">
+                                    <button class="btn" type="button" data-ng-click="search()">
+                                        <span class="fa fa-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <button class="add-sub-cate btn btn-info pull-right" data-ng-click="addTag()">
+                            <i class="fa fa-plus"></i>新建标签
+                        </button>
+                    </div>
+                    <div class="border-t"></div>
+                    <div class=" tag-clear all-overflow">
+                        <div class="main-ul" data-loading="0" data-layer="10">
+                            <ul>
+                                <li  class="main-li" data-ng-repeat="tag in tagList">
+                                    <div class="main-name clearfix" data-ng-class="{gaoliang:tag.isActive}">
+                                        <span class="main-icon"  data-ng-click="toggleTag(tag,$event)">
+                                            <i class="fa fa-folder main-pos"></i>
+                                        </span>
+                                        <span title="{{tag.name}}" class="main-width" data-ng-bind="tag.name"
+                                              data-ng-click="toggleTag(tag,$event)"></span>
+                                        <div class="main-window" style="position: relative;">
+                                            <!--(<span data-ng-bind="tag.laid"></span>)-->
+                                            <span class="dropdown-toggle"
+                                                  data-ng-click="showPopup(tag,$event);">
+                                                <i class="fa fa-caret-square-o-down"></i>
+                                            </span>
+                                            <!--编辑小弹窗-->
+                                            <div data-ng-show="tag.isDialog">
+                                                <ul class="dropdown-menu" style="display: block;">
+                                                    <li><a href="javascript:void(0);"
+                                                           data-ng-click="editTag(tag)">编辑</a></li>
+                                                    <!-- 弹窗保险机制是否确定 -->
+                                                    <li><a href="javascript:void(0);"
+                                                           data-ng-click="delTag(tag)">删除</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="stat-cell col-sm-9 bordered no-padding no-border-r" style="overflow: hidden;">
+                <div class="panel-heading" style="background-color: #f5f5f5;">
+                    <div class="border-b">
+                        <a class="btn btn-info" href="javascript:void(0);" data-ng-click="addMember()">
+                            <i class="fa fa-plus"></i> 添加成员
+                        </a>
+                        <div class="panel-heading-controls" style="width:30%;margin-top: 0;">
+                            <form onsubmit="return false;">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="搜索姓名"
+                                           data-ng-model="searchMember"
+                                           data-ng-keydown="searchEnterMem($event)" />
+                                    <span class="input-group-btn">
+                                        <button class="btn" type="button" data-ng-click="searchMemberFn()">
+                                            <span class="fa fa-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <table class="table font12 margin-0" data-ng-show="memberList.length>0">
+                    <colgroup>
+                        <col class="t-col-3">
+                        <col class="t-col-20">
+                        <col class="t-col-8">
+                        <col class="t-col-12">
+                        <col class="t-col-15">
+                        <col class="t-col-12">
+                        <col class="t-col-10">
+                    </colgroup>
+                    <thead>
+                    <tr class="tag-title">
+                        <td class="text-left">
+                            <label class="checkbox">
+                                <span class="lbl lbl-width" data-ng-class="{'lbl-choose': isAll}"
+                                      data-ng-click="selectAll()">
+                                    全选
+                                </span>
+                            </label>
+                        </td>
+                        <td class="text-left">姓名</td>
+                        <td class="text-left">部门</td>
+                    </tr>
+                    </thead>
+
+                    <tbody id="table_member_list" class="tag-t-body ">
+                    <tr class="row_member" data-ng-repeat="list in memberList"
+                        data-ng-click="MemDetail($event,list)">
+                        <td class="text-left">
+                            <label class="px-single">
+                                <span class="lbl" data-ng-class="{'lbl-choose': list.isActive}"
+                                      data-ng-click="MemBatch($event,list,$index)"></span>
+                            </label>
+                        </td>
+                        <td class="text-left td_name">
+                            <img data-ng-src="{{list.m_face}}" />
+                            <span data-ng-bind="list.m_username"></span>
+                        </td>
+                        <td class="text-left" data-ng-bind="list.cd_name"></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="7" class="text-right vcy-page"
+                            poler-pagination="polerPaginationCtrl" download="getMemberPage(page)">
+                            <!-- 分页 -->
+                        </td>
+                    </tr>
+                    </tfoot>
+
+                </table>
+                <div class="no-infor" data-ng-show="memberList.length==0">暂无任何数据</div>
+
+                <!--人员详情-->
+                <div class="modal-content main-info" data-ng-class="{active:isMemDetail}"
+                     data-ng-click="clearClick($event)" >
+                    <div class="modal-header contact-detail-header " style="background-color: #f5f5f5;">
+                        <button type="button" class="close" data-ng-click="closeMemberDetail($event)">×</button>
+                        <h4 class="modal-title">成员资料</h4>
+                    </div>
+                    <div class="modal-body contact-detail-body no-padding modal-height contacts-img" id="div_member_detail_tpl">
+                        <input type="hidden" name="member_detail_uid" value="72">
+                        <input type="hidden" name="member_detail_active" value="1">
+
+                        <div class="profile clearfix">
+                            <div class="img-box pull-left panel-padding">
+                                <img src="{{memDetailData.m_face ? memDetailData.m_face : ''}}">
+                            </div>
+                            <div class="profile-name">
+                                <h4 class="col-md-6 text-left" data-ng-bind="memDetailData.m_username">尹梦璇</h4>
+                                <span data-ng-bind="memDetailData.m_qywxstatus_name"></span>
+                            </div>
+                        </div>
+                        <div class="cleafix"></div>
+                        <ul class="dl-horizontal padding-sm">
+                            <li>
+                                <span class="li-info-color">性别</span>
+                                <span class="text-left" data-ng-bind="memDetailData.m_gender"></span>
+                            </li>
+                            <li>
+                                <span class="li-info-color">手机号</span>
+                                <span class="text-left" data-ng-bind="memDetailData.m_mobilephone"></span>
+                            </li>
+                            <li>
+                                <span class="li-info-color">微信号</span>
+                                <span class="text-left" data-ng-bind="memDetailData.m_weixin"></span>
+                            </li>
+                            <li>
+                                <span class="li-info-color">电子邮箱</span>
+                                <span class="text-left" data-ng-bind="memDetailData.m_email"></span>
+                            </li>
+                            <li>
+                                <span class="li-info-color">职位</span>
+                                <span class="text-left" data-ng-bind="memDetailData.cj_name"></span>
+                            </li>
+                            <li>
+                                <span class="li-info-color">所在部门</span>
+                                <span class="text-left" data-ng-bind="memDetailData.cd_name"></span>
+                            </li>
+                            <!-- <li>
+                                <span class="li-info-color">浏览权限</span>
+                                    <span class="text-left">
+                                        <span class="sev-label">产品部</span>
+                                        <span class="sev-label">雨晴</span>
+                                        <span class="sev-label">万立</span>
+                                    </span>
+                            </li>
+                            <li>
+                                <span class="li-info-color">职级</span>
+                                &lt;!&ndash;<span class="text-left sev-label"></span>&ndash;&gt;
+                            </li>-->
+                            <li data-ng-repeat="custom in memDetailCustom">
+                                <span class="li-info-color" data-ng-bind="custom.name"></span>
+                                <span class="text-left" data-ng-bind="custom.value"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer contact-detail-footer text-left clearfix" style="padding-top: 9px;background-color: #f5f5f5;">
+                        <button type="button" class="btn btn-info" data-ng-click="delMemDetail($event)">
+                            移出标签
+                        </button>
+                    </div>
+                </div>
+
+                <!--批量选择-->
+                <div class="modal-content main-info contacts-img"
+                     data-ng-class="{'active':memBatchList.length}" >
+                    <div class="modal-header contact-detail-header" style="background-color: #f5f5f5;">
+                        <button type="button" class="close"
+                                data-ng-click="closeMemberBatch($event)">×</button>
+                        <h4 class="modal-title">批量选择</h4>
+                    </div>
+                    <div class="modal-body contact-detail-body padding-sm" style="background-color:#fdfdfd;">
+                        <div class="row">
+                            <div class="col-md-3" data-ng-repeat="batch in memBatchList track by $index">
+                                <div class="img-box">
+                                    <img src="{{batch.m_face ? batch.m_face : ''}}">
+                                    <span>{{batch.m_username}}</span>
+                                    <button type="button" class="close" data-ng-click="batchClose($index)">
+                                        <i class="fa fa-minus-circle text-danger"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer contact-detail-footer text-left" style="padding-top: 9px;background-color: #f5f5f5;">
+                        <button type="button" class="btn btn-info" name="btn_member_detail_invite"
+                                data-ng-click="delBatch()">
+                            移出标签
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

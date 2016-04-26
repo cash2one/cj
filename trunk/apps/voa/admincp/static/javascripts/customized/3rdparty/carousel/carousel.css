@@ -1,0 +1,182 @@
+.carousel-box{
+  height:168px;
+  width:100%;
+  overflow : hidden;
+}
+.carousel-img{ 
+  width:100%;
+}
+#carousel_template{
+    display: none;
+}
+.carousel {
+    height: auto;
+    border : 0px solid #000;
+    position : relative;
+    overflow : hidden;
+}
+
+.carousel a {
+    color : #363F53;
+    text-decoration:none;
+}
+
+.carousel li div {
+    font-size:1.0em;
+}
+
+.carousel-id {
+    text-align : center;
+    height : 18px;
+    color : #FFF;
+    float : left;
+    text-decoration:none;
+}
+
+.carousel-id a {
+    cursor : pointer;
+    color : #FFF;
+    text-decoration : none;
+}
+
+.carousel-id a:hover {
+    text-decoration : underline;
+}
+
+.carousel-item-title {
+    color : #333;
+    font-size:1.2em;
+    height: 1.5em;
+}
+
+.carousel a:hover {
+    text-decoration : underline;
+}
+
+.carousel-control {
+    z-index: 9900;
+    position:absolute;
+}
+
+.carousel-control img {
+    height : 55px;
+    width : 45px;
+}
+
+.carousel-control img:hover {
+    height : 50px;
+    width : 50px;
+}
+
+.carousel-left {
+    left :0px;
+}
+
+.carousel-right {
+    right :0px;
+}
+
+.carousel-item {
+    z-index : 2;   
+}
+
+.carousel-content {
+    width:100%!important;
+    font-size:.8em;
+    z-index :1;
+    position : relative;
+    overflow : hidden;
+}
+
+.carousel-content-scroller  {
+    z-index :1;
+    position : absolute;
+    overflow-x:hidden;
+    overflow-y:hidden;
+}
+
+.carousel-item-content {
+    height : 65px;
+    overflow : hidden;
+}
+
+.carousel-nav {
+    display:none;
+    height : 25px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 999;
+}
+
+.carousel-mid {
+    margin-left : auto;
+    margin-right : auto;
+    height : 1.5em;
+    width: auto!important;
+}
+
+.carousel-item-selected {  
+}
+
+.carousel-item-content {
+    padding:0 0.5em;
+    position:relative;
+    top:5px;
+}
+#carousel_content img{
+    width: 100%;
+}
+.carousel-title {
+    padding:0 0.5em;
+    font-size:12px;
+    position:relative;
+}
+
+.carousel-id {
+    width : 15px;
+    height : 15px;
+    margin-left : 3px;
+    margin-right : 3px;    
+    cursor : pointer;
+    text-shadow: none;
+}
+
+/*Carousel themes*/
+.carousel-theme {
+    font-family: Arial,sans-serif;   
+    border: 0;  
+}
+
+.carousel-item-theme {   
+    background:#fff;
+    position:relative;
+}
+
+.carousel-title-theme {
+    color:#fff;
+}
+
+.carousel-title-theme a:link, .carousel-title-theme a:visited {
+    color: #333;
+}
+
+.carousel-id-theme {    
+    -moz-border-radius: 34px;
+    -webkit-border-radius: 34x;
+    -opera-border-radius: 34px;
+    border-radius: 34px;
+    font-size: 10px;
+}
+
+.carousel-id-selected-theme {
+    color:#fff;
+    background : rgba(0,0,0,.3);
+}
+#carouse_item_0,#carouse_item_1,#carouse_item_2,#carouse_item_3,
+#carousel_item_0,#carousel_item_1,#carousel_item_2,#carousel_item_3{
+    height: 168px!important;
+}
+#carousel_scrollpane{
+    height: 180px!important;
+}

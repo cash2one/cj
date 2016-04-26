@@ -1,0 +1,69 @@
+<div class="modal-header contact-detail-header contacts-img" style="background-color: #f5f5f5;">
+    <button type="button" class="close" data-ng-click="closeMemberDetail()">×</button>
+    <h4 class="modal-title">成员资料</h4>
+</div>
+<div class="modal-body contact-detail-body no-padding modal-height" id="div_member_detail_tpl">
+    <input type="hidden" name="member_detail_uid" value="72">
+    <input type="hidden" name="member_detail_active" value="1">
+
+    <div class="profile clearfix">
+        <div class="img-box pull-left panel-padding">
+            <img src="{{member.m_face}}" style="width: 64px;height: 64px;"></div>
+        <div class="profile-name"><h4 class="col-md-6 text-left" data-ng-bind="member.m_username"></h4>
+            <span data-ng-bind="member.m_qywxstatus_name"></span>
+        </div>
+    </div>
+    <div class="cleafix"></div>
+    <ul class="dl-horizontal padding-sm">
+        <li>
+            <span class="li-info-color">性别</span>
+            <span class="text-left" data-ng-bind="member.m_gender"></span>
+        </li>
+        <li>
+            <span class="li-info-color">手机号</span>
+            <span class="text-left" data-ng-bind="member.m_mobilephone"></span>
+        </li>
+        <li>
+            <span class="li-info-color">微信号</span>
+            <span class="text-left" data-ng-bind="member.m_weixin"></span>
+        </li>
+        <li>
+            <span class="li-info-color">电子邮箱</span>
+            <span class="text-left" data-ng-bind="member.m_email"></span>
+        </li>
+        <li>
+            <span class="li-info-color">职位</span>
+            <span class="text-left" data-ng-bind="member.cj_name"></span>
+        </li>
+        <li>
+            <span class="li-info-color">所在部门</span>
+            <span class="text-left" data-ng-bind="member.cd_name"></span>
+        </li>
+        <!-- <li>
+            <span class="li-info-color">浏览权限</span>
+            <span class="text-left">
+                <span class="sev-label" data-ng-repeat="dep in browseDep" data-ng-bind="dep"></span>
+                <span class="sev-label" data-ng-repeat="user in browseUser" data-ng-bind="user"></span>
+            </span>
+        </li>
+        <li>
+            <span class="li-info-color">职级</span>
+            <span class="text-left sev-label">总监</span>
+        </li>-->
+        <li data-ng-repeat="custom in memDetailCustom">
+            <span class="li-info-color" data-ng-bind="custom.name"></span>
+            <span class="text-left" data-ng-bind="custom.value"></span>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer contact-detail-footer text-left clearfix" style="padding-top: 9px;background-color: #f5f5f5;">
+    <button type="button" class="btn btn-info" name="btn_member_detail_invite"
+            data-ng-click="invitePost(member)">邀请关注</button>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-add-member"
+            name="btn_member_detail_edit" data-ng-click="updateMember(member)">修改
+    </button>
+    <button type="button" class="btn btn-info" name="btn_member_detail_active"
+            data-ng-click="toggleMember(member)" >{{member.m_active == 1 ? '禁用':'启用'}}</button>
+    <button type="button" class="btn btn-danger" name="btn_member_detail_delete"
+            data-ng-click="delMember($event,member)">删除</button>
+</div>

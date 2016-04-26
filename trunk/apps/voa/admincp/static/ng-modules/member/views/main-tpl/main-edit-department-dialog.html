@@ -1,0 +1,103 @@
+<!-- 添加部门弹窗 -->
+<div class="modal-content" data-ng-controller="EditDepartmentCtrl">
+    <div class="modal-header contacts-img">
+        <button type="button" class="close" data-ng-click="$dismiss()">×</button>
+        <h4 class="modal-title">编辑部门</h4>
+    </div>
+    <form name="form_department" method="post" novalidate>
+        <div class="modal-body no-padding">
+            <table class="table">
+                <tbody>
+                <tr class="main-text">
+                    <td class="text-right"><span class="text-danger">*</span>部门名称</td>
+                    <td class="text-left">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="请输入"
+                                       data-ng-model="department" maxlength="16">
+                            </div>
+                        </div>
+                        <span class="help-block">请填写部门完整名称</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right">权限选择</td>
+                    <td class="text-left">
+                        <div class="form-inline">
+                            <select class="form-control" data-ng-model="power" data-ng-change="selectchange()">
+                                <option value="0">全公司</option>
+                                <option value="1">仅本部门</option>
+                                <option value="2">指定部门</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="main-border" data-ng-show="power == 2" data-ng-click="selectchange()">
+                    <td class="text-right"></td>
+                    <td class="text-left">
+                        <div class="mian-choose">
+                            <!-- 这里是遍历选择的部门 -->
+                        <span class="sev-label" data-ng-repeat="depName in depNames">
+                            {{depName.name}}
+                            <i data-ng-click="deldelNames($event,$index)">x</i>
+                        </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="main-border">
+                    <td class="text-right"></td>
+                    <td class="text-left dep-help">
+                        <span class="help-block" style="text-align: left">
+                            全公司：可以看到全公司通讯录<br>
+                            仅本部门：可以看到本部门及所有子部门通讯录<br>
+                            指定部门：可以看到指定部门及其所有子部门的通讯录<br>
+                        </span>
+                        <label for="dep" style="padding-top: 5px;">
+                            <input type="checkbox" id="dep" style="width: 15px;height: 15px;float:left;" data-ng-model="isDep">
+                            <span style="display:block;margin-top: 4px;padding-left: 5px;float:left;font-weight: normal">
+                                适用于该部门下的所有子部门
+                            </span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="main-text">
+                    <td class="text-right">排序号</td>
+                    <td class="text-left">
+                        <div class="form-inline">
+                            <input type="number" class="form-control" data-ng-model="order"  min="1"/>
+                        </div>
+                    <span class="help-block" style="text-align: left">
+                      填写数字。用于显示部门先后顺序，数字小的排在前面
+                    </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right">设置部门负责人</td>
+                    <td class="text-left">
+                        <button type="button" class="btn btn-info" data-ng-click="selectLeader($event)">
+                            选择上级
+                        </button>
+                    </td>
+                </tr>
+                <tr class="main-border" data-ng-show="names.length!=0">
+                    <td class="text-right"></td>
+                    <td class="text-left">
+                        <div class="mian-choose">
+                            <!-- 这里是遍历选择的人员 -->
+                        <span data-ng-repeat="name in names" class="sev-label">
+                            {{name.m_username}}
+                            <i data-ng-click="delNames($index)">x</i>
+                        </span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-ng-click="$dismiss()">关闭</button>
+            <button type="submit" class="btn btn-info" data-ng-click="apply()">提交</button>
+        </div>
+    </form>
+</div>

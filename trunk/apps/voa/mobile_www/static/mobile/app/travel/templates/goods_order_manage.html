@@ -1,0 +1,47 @@
+<div data-role="header" class="mod-list-header">
+    <h1>订单管理</h1>
+    <a href="#/my" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+
+
+</div>
+<!-- /header -->
+
+<div role="main" class="mod-common-list" id="goods_order" >
+    <h4>今天(<%=today_date%>)</h4>
+    <% if (goods) {%>
+    <% $.each(goods, function (k, item) {%>
+    <ul class="view list" data-role="listview">
+        <li>
+            <div class="imgbox" style="float:left;">
+                <img src="<%=item.goods.cover%>" ></div>
+            <p class="mt_title js-subject"><%=item.goods_name%></p>
+            <% if (item.style_name) { %>
+            <p class="format">规格：<%=item.style_name%></p>
+            <% } %>
+            <p class="ui-li-aside js-price">
+                ¥ <%=item.price > 0 ? (item.price*100) : item.price%>
+                <br>
+                <span class="num">× <%=item.num%></span>
+            </p>
+
+        </li>
+        <li class="clearfix">
+            <div class="total">
+                <p>
+                    产品提成：<%=item.scale%>
+                </p>
+                实际收益：
+                <span>¥<%=item.profit%></span>
+            </div>
+        </li>
+    </ul>
+    <% });  %>
+    <% }  else {%>
+     <div class="empty_conten">
+        <div class="empty_order"></div>
+        <div class="empty_order_text">暂无订单
+        </div>
+    </div>
+    <% } %>
+
+</div>

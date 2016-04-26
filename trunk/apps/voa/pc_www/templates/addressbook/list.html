@@ -1,0 +1,37 @@
+<h1><%= listName %></h1>
+<div class="sch">
+	<div class="area">
+		<input type="text" autocomplete="off" placeholder="<%= search.placeholder %>"
+			data-page="<%=page%>"
+			<%= query.length ? ' value="'+query+'" ' : '' %> />
+		<a data-url="<%= search.urlRoot %>" href="javascript:void(0)" class="btn">search</a>
+	</div>
+</div>
+<div class="listContainer plugin_scrollbar">
+	
+	<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+	<div class="viewport">
+		 <div class="overview">
+			<dl>
+				<% for (var gName in groups){ %>
+					<dt><i></i><%= gName %><span>(<%= groups[gName].length %>)</span></dt>
+					<dd>
+						<ul class="mod_common_list">
+						<% for (var i=0, arr=groups[gName], lng=arr.length; i<lng; i++){ %>
+							<% var model = arr[i]; %>
+							<li <%= i==lng-1
+									?'class="last"'
+									:'' %> id="ablst_<%= model.id %>">
+								<a href="#addressbook/<%= model.id %>">
+									<b><%= model.name %></b><span><%= model.job %></span>
+								</a>
+							</li>
+						<% } %>
+						</ul>
+					</dd>
+				<% } %>
+			</dl>
+		 </div>
+	 </div>
+		
+</div>

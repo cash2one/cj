@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS `oa_askfor_attachment` (
+  `afat_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `af_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '审批id',
+  `afc_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论id，如果为0则是审批主题附件，否则为对应评论附件',
+  `at_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '附件id',
+  `m_uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户UID',
+  `m_username` varchar(54) NOT NULL DEFAULT '' COMMENT '用户名称',
+  `afat_status` tinyint(4) unsigned NOT NULL DEFAULT '1' COMMENT '记录状态, 1=正常; 2=更新; 99=已删除',
+  `afat_created` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `afat_updated` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `afat_deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+  PRIMARY KEY (`afat_id`),
+  KEY `afat_status` (`afat_status`),
+  KEY `af_id` (`af_id`),
+  KEY `afc_id` (`afc_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='审批的附件表';

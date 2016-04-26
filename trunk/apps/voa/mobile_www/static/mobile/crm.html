@@ -1,0 +1,45 @@
+<!doctype html>
+<html class="no-js ui-mobile-rendering" lang="en">
+<head>
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta charset='utf-8'>
+	<script> 
+	function onBridgeReady(){
+        
+        WeixinJSBridge.call('hideOptionMenu');
+        
+        
+    }
+
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    }else{
+        onBridgeReady();
+    }
+    
+	window.mobile = true;
+	window.default_view = 'goods_supply_list';
+	window.default_arguments = null //{id: 130};
+	window.userinfo = {phone: 18607818925, name: "莫建元"};
+	window.companyinfo = {companyname: '中国旅行社'},
+	//window.share_from_saler = {phone: 18607818925, name: "莫建元"},
+	window._app = "crm";
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
+	window._root = dir;
+	</script>
+	<script src="lib/requirejs/require.js"></script>
+	<script src="config.js"></script>
+	<script src="main.js"></script>
+</head>
+<body>
+
+</body>
+</html>

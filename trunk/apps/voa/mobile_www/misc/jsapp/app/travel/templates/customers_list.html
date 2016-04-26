@@ -1,0 +1,39 @@
+	<div data-role="header" data-position="fixed" data-theme="a" id="customers_list_head">
+<!-- <div data-role="header" role="banner" class="ui-header ui-bar-inherit"> -->
+	<h1 class="ui-title" role="heading" aria-level="1">客户</h1>
+	<a href="#/goods_list" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+	<a  class="ui-btn js-btn-add ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-icon-carat-l ui-mini">完成
+	</a>
+<div class="search-box"><input id="js-search" data-type="search" placeholder="搜索"></div>
+	<a href="#/customer_edit/goods_id/<%=goods_id%>
+		" class="ui-btn ui-icon-plus ui-btn-icon-left customers_new">关联新客户
+	</a>
+</div>
+<!-- /header -->
+<div id="customers_list">	
+
+	<fieldset data-role="controlgroup">
+		<legend>所有</legend>
+	</fieldset>
+
+	<fieldset data-role="controlgroup" >
+		<div role="main" class="ui-content" data-iscroll>
+            <div class="iscroll-pulldown">
+            <span class="iscroll-pull-icon"></span>
+            <span class="iscroll-pull-label"></span>
+          </div>
+			<ul id="mod_common_list " class="touch iscroll-wrapper" data-role="listview" data-icon="false" data-split-icon="delete">
+            <%=data%>
+				</ul>
+            <div class="iscroll-pullup">
+            <span class="iscroll-pull-icon"></span>
+            <span class="iscroll-pull-label"></span>
+          </div>
+		</div>
+		<!-- /content -->
+        
+	</fieldset>
+</div>
+<!-- <div class="ui-field-footer">
+<button class="ui-btn js-btn-add">完成</button>
+</div> -->

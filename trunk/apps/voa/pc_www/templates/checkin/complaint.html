@@ -1,0 +1,54 @@
+<div class="header">
+	<h1><%= pageName %></h1>
+</div>
+<div class="body plugin_scrollbar">
+	
+	<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+	<div class="viewport">
+		 <div class="overview">
+			
+			<div class="fakeform">
+				<h1><%= subject.label %></h1>
+				<fieldset class="subject">
+					<input type="text" value="<%= subject.value %>" class="mod_form_field1" />
+				</fieldset>
+				
+				<h1><%= content.label %></h1>
+				<fieldset class="content">
+					<textarea class="mod_form_field1"></textarea>
+				</fieldset>
+				
+				<div class="btns">
+					<a class="mod_btn2 cancelBtn"><%= buttons.cancel.label %></a><a class="mod_btn1 submitBtn"><%= buttons.submit.label %></a>
+				</div>
+			</div>
+			
+			<div class="records">
+				<h1><%= records.title %></h1>
+				<table class="mod_form_field1">
+					<thead>
+						<tr>
+							<% for(var c=0,lng=records.cols.length; c<lng; c++){ %>
+								<th><%= records.cols[c] %></th>
+							<% } %>
+						</tr>
+					</thead>
+					<tbody>
+						<% for(var i=0,lng=records.items.length; i<lng; i++){ %>
+						<% var itemArr = records.items[i]; %>
+						<tr <%= i==lng-1
+									?'class="last"'
+									:'' %> id="chkinMenu_<%= i %>">
+							<% for(var j=0,lng=itemArr.length; j<lng; j++){ %>
+								<td><%= itemArr[j] %></td>
+							<% } %>
+						</tr>
+						<% } %>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+	 </div>
+		
+</div>

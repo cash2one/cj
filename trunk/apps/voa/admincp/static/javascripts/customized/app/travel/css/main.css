@@ -1,0 +1,269 @@
+#js-form-customize .checkbox-inline {
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+#container_main .actionBar .btn {
+	margin-right: 6px;
+}
+
+.table-scrollable > .table-bordered {
+	border-bottom: 1px solid #dcdcdc;
+	border-top: 1px solid #dcdcdc;
+}
+
+.bootgrid-table {
+	table-layout: inherit !important;
+}
+
+
+.thumbnail {
+	overflow: hidden;
+	height: 150px;
+}
+.checkbox-pic{
+	text-align: center;
+	padding: 5px;
+	position: relative;
+	
+}
+.checkbox-pic img{
+	max-width: 100%;
+}
+
+#js-form-customize .checkbox-pic .checkbox-inline,.checkbox-pic .title {
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+	background-color: rgba(0,0,0,0.3);
+	right: -5px;
+	color: #fff;
+}
+.checkbox-pic .title{
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.3);
+	right:0;
+	color: #fff;
+}
+.checkbox,.radio {
+	display: inline-block !important
+}
+
+.checkbox-inline,.radio-inline {
+	display: inline-block !important;
+	padding-top: 0!important;
+}
+
+#list .form-control {
+	height: 32px
+}
+
+#config #sortable {
+	border-style: dashed;
+	border-width: 2px;
+	border-color: #f6f6f6;
+	display: block;
+	min-height: 400px;
+	position: relative;
+	z-index: 1
+}
+
+#config #sortable li {
+	margin-bottom: 10px;
+	margin-top: 10px;
+	list-style-type: none;
+	background-color: #f6f6f6
+}
+
+#config #sortable .page-header {
+	margin: 0;
+	padding: 10px 0
+}
+
+#config .down,#config .close {
+	font-size: 15px;
+	margin-left: 6px;
+	float: right;
+	font-weight: 100;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	filter: alpha(opacity=20);
+	opacity: .2;
+	margin-top: 8px
+}
+
+#config .down:hover,#config .down:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+	filter: alpha(opacity=50);
+	opacity: .5
+}
+
+#config button.down {
+	-webkit-appearance: none;
+	cursor: pointer;
+	background: 0 0;
+	border: 0
+}
+
+#config #select .input-group {
+	margin-bottom: 10px
+}
+
+#config .nav>li {
+	cursor: move
+}
+
+#config .ui-sortable-handle:hover {
+	background-color: #f3f3f3
+}
+
+#config .px {
+	margin-top: 2px!important
+}
+
+#config .input-group-addon-cursor {
+	cursor: pointer
+}
+
+#config .glyphicon-edit {
+	color: #ccc
+}
+
+#config .big-icon .fa {
+	font-size: 14px;
+	padding: 3px;
+	color: #999
+}
+
+#config .big-icon .fa-bars {
+	cursor: move;
+	color: #ddd
+}
+
+.big-icon {
+	padding: 6px;
+	padding-left: 38px;
+}
+
+#config .portlet-content {
+	padding: 20px;
+	padding-bottom: 10px
+}
+
+#config .portlet-placeholder {
+	background: #D9EDF7!important;
+	border-color: #BCE8F1!important;
+	min-height: 52px!important;
+	width: 100%!important;
+	border-radius: 0!important
+}
+
+#config .dragging-menu-item {
+	padding: 8px 20px!important;
+	min-width: 220px!important;
+	margin-bottom: 0!important
+}
+
+#config .portleft-txt {
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-top: -20px;
+	margin-left: -30px;
+	font-size: 20px;
+	color: #f6f6f6;
+	z-index: -1
+}
+
+#config .btn {
+	padding: 7px 17px
+}
+
+#edit .btn {
+	padding: 7px 17px
+}
+
+#edit #upload {
+	position: relative
+}
+
+#edit .fa-times,.upload .fa-times {
+	cursor: pointer;
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	display: none;
+	padding: 3px;
+}
+.js-customize-option .upload-box{left:50%;margin-left:-34px;position: absolute;top: 43px;z-index: 2000;display: none;}
+
+#edit .hover .fa-times,.upload .hover .fa-times,.upload .hover .upload-box  {
+	display: block
+}
+
+.upload .thumbnail {
+	height: 108px;
+	margin-bottom: 8px;
+}
+
+.upload .item {
+	margin-bottom: 10px;
+}
+.go-back {
+	position: fixed;
+	top: 10px;
+	left: 30px;
+	z-index: 999
+}
+
+.go-back a {
+	padding: 10px
+}
+
+.loading {
+	text-align: center;
+	margin-top: 20%
+}
+
+.loading i {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background: url(../images/pixel-admin/tips_loading.gif) 0 0 no-repeat;
+	margin-right: 10px;
+	vertical-align: middle;
+	outline: 0 none;
+	text-indent: -9999em
+}
+
+td {
+	text-align: left;
+}
+#config .note.note-info{
+    padding:10px 0;
+    padding-left: 13px;
+    margin-bottom: 10px;
+}
+
+#config .model-select .modal-dialog{
+	width: 480px;
+}
+
+#config .model-select a{display:inline-block;margin: 20px;color:#666;padding:10px;border: 1px solid #fff;}
+#config .model-select .icon-ly,#config .model-select .icon-ds{
+    margin: 13px;
+}
+#config .model-select a:hover,#config .model-select a.selected{
+    background-color:#f4f4f4;
+    border: 1px solid #ddd; 
+}
+#config .model-select .close{
+    font-size: 20px;
+    margin-top: 5px;
+}
+/*产品详情表格图片太大样式*/
+#container_main table td p img,#container_main table td img{max-width: 100%;}

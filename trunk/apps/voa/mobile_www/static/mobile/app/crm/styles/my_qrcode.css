@@ -1,0 +1,35 @@
+
+#my_qrcode .div2{
+   font-size: 14px;
+}
+
+#my_qrcode .p1{
+    color:#00a0f9;
+    font-size: 12px;
+}
+#my_qrcode .h3{
+    color:#70798a;
+}
+#my_qrcode .container{
+    padding: 25px 20px;      
+}
+#my_qrcode .photo{
+    float: left;    
+}
+#my_qrcode .photo img{
+    width: 40px;
+    border-radius: 80px;
+}
+#my_qrcode .content{ 
+    font-size: 16px;
+    padding-left: 10px;
+    float: left;    
+}
+#my_qrcode .code-box{ 
+    margin-top: 5px; 
+    text-align:center;   
+}
+#my_qrcode .code-box img{  
+     width: 200px;
+     height: 200px;
+}

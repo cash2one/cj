@@ -1,0 +1,153 @@
+<!-- 添加员工弹窗 -->
+<div class="modal-content"   data-ng-controller="AddMemberCtrl">
+    <div class="modal-header contacts-img">
+        <button type="button" class="close" data-ng-click="$dismiss()">×</button>
+        <h4 class="modal-title">添加员工</h4>
+    </div>
+    <form name="form_member" method="post">
+        <div class="slimScrollDiv">
+            <div id="scroll-box">
+                <div class="modal-body tab-content-padding">
+                    <input type="hidden" name="id" value="0">
+                    <table class="table" id="inputs-table">
+                        <tbody id="table_member_edit">
+                        <tr>
+                            <td class="text-right"><span class="text-danger">*</span>姓名</td>
+                            <td class="text-left">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="请输入"
+                                               data-ng-model="fixed['name'].value" maxlength="30">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><span class="text-danger"></span>账号</td>
+                            <td class="text-left">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="成员唯一标识，不可更改，不支持中文"
+                                               data-ng-model="fixed['userid'].value" maxlength="30" data-ng-change="inputFilterChar('userid')">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><span class="text-danger">*</span>性别</td>
+                            <td class="text-left">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label class="main-sev">
+                                            <input type="radio"
+                                                   value="男" data-ng-model="fixed['gender'].value" >男
+                                        </label>
+                                        <label class="main-sev">
+                                            <input type="radio"
+                                                   value='女' data-ng-model="fixed['gender'].value" >女
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><span class="text-danger">*</span>选择部门</td>
+                            <td class="text-left">
+                                <button type="button"  class="btn btn-info"
+                                        data-ng-click="selectDepartment($event)">
+                                    选择部门
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"></td>
+                            <td class="text-left">
+                                <div class="mian-choose">
+                                    <span class="sev-label" data-ng-repeat="dep in depList">
+                                        {{dep.name}}
+                                        <i data-ng-click="clearDep(dep)">x</i></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-ng-if="isOpenleader == 1">
+                            <td class="text-right">直属上级</td>
+                            <td class="text-left">
+                                <button type="button"  class="btn btn-info"
+                                        data-ng-click="selectLeader($event)">
+                                    选择上级
+                                </button>
+                            </td>
+                        </tr>
+                        <tr data-ng-if="isOpenleader == 1">
+                            <td class="text-right"></td>
+                            <td class="text-left">
+                                <div class="mian-choose">
+                                    <span class="sev-label" data-ng-repeat="mem in memList">
+                                        {{mem.m_username}}
+                                        <i data-ng-click="clearMem(mem)">x</i></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class=" panel-padding-h" colspan="2">
+                                <span class="text-danger">*</span>
+                                身份验证信息(以下三种信息不可同时为空)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">手机号</td>
+                            <td class="text-left">
+                                <input type="text" class="form-control" maxlength="11" placeholder="手机号"
+                                       data-ng-model="fixed['mobile'].value"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">微信号</td>
+                            <td class="text-left" style="border:0px;">
+                                <input type="text" class="form-control" placeholder="微信号" maxlength="30"
+                                       data-ng-model="fixed['weixinid'].value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">电子邮箱</td>
+                            <td class="text-left" style="border:0px;">
+                                <input type="text" class="form-control" placeholder="电子邮箱" maxlength="50"
+                                       data-ng-model="fixed['email'].value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <hr>
+                            </td>
+                        </tr>
+
+                        <tr data-ng-repeat="custom in fixed.customArray"
+                            data-ng-if="custom.fieldName != 'leader' && custom.open == 1">
+                            <td class="text-right">
+                                <span class="text-danger" data-ng-if="custom.required == 1">*</span>
+                                {{custom.name}}
+                            </td>
+                            <td>
+                                <input type="text" data-ng-if="!custom['type']" class="form-control"
+                                       placeholder="{{custom.name}}"  data-ng-model="custom.value" />
+                                <input type="text" data-ng-if="custom['type'] == 'date'"
+                                       date-picker class="form-control" placeholder="{{custom.name}}"
+                                       data-ng-model="custom.value" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-ng-click="$dismiss()">关闭</button>
+            <button type="submit" name="btn_submit" class="btn btn-info" repeat-submit="apply()">提交</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,185 @@
+<style type="text/css">
+    .waiwei{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";font-size:14px; text-align: left;}
+    #l-map{height:300px;width:100%;}
+    #r-result{
+        width: 100%;
+        float: left;
+        padding: 5px 10px;
+        background: #f9f9f9;
+        border-bottom: 1px solid #ccc;
+    }
+    #r-result input{padding: 0 5px; height: 35px; margin-left:5px; }
+    .input2{
+        border-radius: 5px;
+        border: 1px solid #999;
+        width: 60px;
+    }
+</style>
+    <div class="waiwei">
+        <div id="r-result">请输入:<input type="text" id="suggestId" style="width:300px;" /> <input class="input2" type="button" value="搜索" onclick="search()"></div>
+        <div id="l-map"></div>
+        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:50px;height:auto; display:none; background: #ff0000;"></div>
+        <input type="hidden" id="longitude">
+        <input type="hidden" id="latitude">
+        <input type="hidden" id="address">
+    </div>
+
+<script type="text/javascript">
+    // 百度地图API功能
+    function G(id) {
+        return document.getElementById(id);
+    }
+
+    var map = new BMap.Map("l-map");
+    map.centerAndZoom("上海",12);                   // 初始化地图,设置城市和地图级别。
+    map.enableScrollWheelZoom(true);               //鼠标滚轮放大/缩小地图事件
+
+    // 百度地图API功能
+    var local = new BMap.LocalSearch(map, {
+        renderOptions:{map: map}
+    });
+
+
+    //------------------标尺控件
+
+    var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+    var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+    var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+    /*缩放控件type有四种类型:
+     BMAP_NAVIGATION_CONTROL_SMALL：仅包含平移和缩放按钮；BMAP_NAVIGATION_CONTROL_PAN:仅包含平移按钮；BMAP_NAVIGATION_CONTROL_ZOOM：仅包含缩放按钮*/
+
+    //添加控件和比例尺
+    map.addControl(top_left_control);
+    map.addControl(top_left_navigation);
+    map.addControl(top_right_navigation);
+
+    //------------------关键字输入事件
+
+    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+            {"input" : "suggestId"
+                ,"location" : map
+            });
+
+    ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+        var str = "";
+        var _value = e.fromitem.value;
+        var value = "";
+        if (e.fromitem.index > -1) {
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+        value = "";
+        if (e.toitem.index > -1) {
+            _value = e.toitem.value;
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+        G("searchResultPanel").innerHTML = str;
+    });
+
+    var myValue;
+    ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+        var _value = e.item.value;
+        myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+
+        setPlace();
+    });
+
+    function setPlace(){
+        map.clearOverlays();    //清除地图上所有覆盖物
+        function myFun(){
+            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+            map.centerAndZoom(pp, 18);
+            map.addOverlay(new BMap.Marker(pp));    //添加标注
+        }
+        var local = new BMap.LocalSearch(map, {
+            renderOptions:{map: map}
+        });
+        local.search(myValue);
+    }
+
+    //------------------添加单击事件(获取精度,设置覆盖物)
+
+    var geoc = new BMap.Geocoder();
+    function showInfo(e){
+        //获取地址
+        var pt = e.point;
+        geoc.getLocation(pt, function(rs){
+            var addComp = rs.addressComponents;
+            $('#suggestId').val(addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber);
+        });
+
+        //删除之前所有的覆盖物
+        var allOverlay = map.getOverlays();
+        for(var i = 0; i<allOverlay.length; i++){
+            map.removeOverlay(allOverlay[i]);
+        }
+        $('#latitude').val(e.point.lat);
+        $('#longitude').val(e.point.lng);
+
+        //设置覆盖物经纬度和图片
+        var point = new BMap.Point(e.point.lng,e.point.lat);
+        var myIcon = new BMap.Icon("/admincp/static/images/gprs.pic.jpg", new BMap.Size(27,65));
+        var marker = new BMap.Marker(point,{icon:myIcon});// 创建标注
+
+        map.addOverlay(marker);             // 将标注添加到地图中
+
+    }
+    map.addEventListener("click", showInfo);
+
+    //------------------自定义事件
+    /**
+     * 地址搜索
+     */
+    function search(){
+        local.search($('#suggestId').val());
+    }
+
+    function isPosition(){
+        return $('#latitude').val() && $('#longitude').val()  &&  $('#suggestId').val()
+    }
+
+    /**
+     * 获取
+     */
+    function getInfo(){
+        return {
+            latitude: $('#latitude').val(),
+            longitude: $('#longitude').val(),
+            address: $('#suggestId').val()
+        }
+    }
+
+    /**
+     * 设置
+     */
+    function setInfo(latitude,longitude,address){
+        $('#latitude').val(latitude);
+        $('#longitude').val(longitude);
+        $('#address').val(address);
+        flag = true;
+    }
+
+
+    var flag = true;
+    map.addEventListener("tilesloaded",function(){
+        var latitude = $('#latitude').val();
+        var longitude = $('#longitude').val();
+        $('#suggestId').val($('#address').val());
+
+
+        if(flag && latitude && longitude){
+            //设置覆盖物经纬度和图片
+            var point = new BMap.Point(longitude,latitude);
+            var myIcon = new BMap.Icon("/admincp/static/images/gprs.pic.jpg", new BMap.Size(27,65));
+            var marker = new BMap.Marker(point,{icon:myIcon});// 创建标注
+
+            map.addOverlay(marker);             // 将标注添加到地图中
+            map.setCenter(point);
+        }
+        flag = false;
+    });
+
+</script>

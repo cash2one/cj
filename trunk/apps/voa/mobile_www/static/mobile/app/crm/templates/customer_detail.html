@@ -1,0 +1,156 @@
+<div data-role="header">
+    <h1>详情</h1>
+    <a href="#/customers_list" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+    <a href="#/customer_edit/<%=goods.dataid%>" class="ui-btn-right ui-btn ui-icon-gear ui-btn-icon-left ui-shadow ui-corner-all ui-icon-edit" data-role="button" role="button">编辑
+    </a>
+</div>
+<!-- /header -->
+
+<div role="main" class="ui-content jqm-content jqm-fullwidth m-t-10" id="customer_datail">
+    <form>
+        <div class="head_title">基本资料</div>
+        <div class="content-view mod_common_list">
+        <!-- 
+        <% if (goods.classname) { %>
+        <div class="ui-field-contain">
+            <label for="text-12">分类:</label>
+            <span for="text-30" ><%=goods.classname%></span>
+        </div>
+        <% } %>
+         -->
+        <% $.each(table_cols, function(k1, col1) {%>
+            <div class="ui-field-contain">
+                <label for="text-12"><%= col1.fieldname %>:</label>
+                <span for="text-30" >
+                    <% if (col1.ct_type == 'attach') { %>    
+                        <!-- file -->
+                        <% if (_.isArray(goods["_"+col1.tc_id])) {%>
+                        
+                            
+                            <% $.each(goods["_"+col1.tc_id], function (k2, v2) { 
+                                if (v2.isimage == "0") {
+                            %>
+                            <div class="media-body item" >
+                                <h4 class="media-heading"><%= v2.filename %></h4>
+                                <div class="">
+                                    <small>文件大小:  <i><%= v2.filesize %> Byte</i></small>
+                                </div>
+                            </div>
+                            <% }}); %>
+                            
+                  
+                        <!-- file end -->
+                        <!-- pic -->
+                        
+                            <% $.each(goods["_"+col1.tc_id], function (k2, v2) { 
+                                if (v2.isimage == '1') {
+                            %>
+                                                         
+                                    <span class="thumbnail"> 
+                                        <img alt="100%x180" style="width:90%; display: inline-block;"  src="<%= v2.url %>-100">
+                                    </span>                               
+                           
+                            <% }}); %>
+                        
+                        <% } %>
+                    <% } else { %>
+                        <% if (col1.ct_type == 'checkbox' || col1.ct_type == 'radio') { %>  
+                             <% if (col1.ftype == '2' && typeof goods["_"+col1.tc_id] != 'string' ) { %><!-- 图片选项 -->
+                                    <div class="mod_photo_uploader">
+                                    <% if (col1.ct_type == 'radio') { %>
+                                        <span class="thumbnail">  <img alt="100%x180"src="<%= goods["_"+col1.tc_id].attachurl %>-100">
+                                                <span class="title"><%= goods["_"+col1.tc_id].value %></span>
+                                            </span>
+                                    <% } else { %>
+                                        <% $.each(goods["_"+col1.tc_id], function (k2, v2) {%>
+                                       
+                                             <span class="thumbnail">  <img alt="100%x180"src="<%= v2.attachurl %>-100">
+                                                <span class="title"><%= v2.value %></span>
+                                            </span>
+                                         
+                                        <% }) %>
+                                    <% } %>
+                                </div>
+                             <% } else { %> 
+                                <%= goods["_"+col1.tc_id] %>
+                             <% } %>
+                        <% } else { %> 
+                            <%= goods["_"+col1.tc_id] %>
+                        <% } %>
+                    <% } %>
+                    </span>
+            </div>
+        <% }) %> 
+           
+        </div>
+        <div class="head_title">消费记录</div>
+        <ul data-role="listview" class="mod_common_list js-follow-list love_prodeuct">
+            <li class="js-item" style="display:none">
+                <a href="#">Acura</a>
+            </li>
+            <!-- 
+            <li >
+                <a href="<%=dataid%>" class="more"><center>查看更多 >></center></a>
+            </li>
+             -->
+  
+        </ul>
+         <div class="head_title">备注</div>
+        <div class="content-view mod_common_list js-remark-list" data-role="listview">
+            <div class="ui-field-contain js-item" style="display:none">
+                 <p for="text-12" class="updated_date">12:16<br>
+                                    14/12/16</p>
+                <p class="message" for="text-30" >
+                </p>
+            </div>     
+            <div class="ui-field-contain js-image" style="display:none">
+                 <p for="text-12" class="updated_date">12:16<br>
+                                    14/12/16</p>
+                <p class="message" for="text-30" ><p class="message" for="text-30" ><a href="javascript:;" class="js-image-sample ui-link"><img class="popphoto swipe" src=""></a>
+                </p>
+            </div> 
+            <div class="ui-field-contain js-remark-more">
+               
+                <a href="#/customer_remarks/<%=goods.dataid%>" class="more "><center>查看更多 >></center></a>
+                
+            </div>  
+                
+          </div> 
+        <div class="ui-field-footer">
+            <span class="js-add-comment ui-btn ui-corner-all">添加文本备注</span>
+           
+            <span class="ui-btn  ui-corner-all fileinput-button ">
+                <span>添加图片备注</span>
+                    <input type="file" class="fileupload" name="data" accept="image/*" capture="camera" data-role="none"/>
+                </span>
+        </div>
+           
+          <!-- 
+            <span class=" ui-btn ui-corner-all">添加图片备注</span>
+             -->
+           
+        </div>
+    </form>
+</div>
+
+<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
+  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+  <div style="padding:0 30px;">
+    <p id="question">确定删除？</p>
+         
+        <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a ui-corner-all" data-rel="back">确定</a>
+    
+  </div>
+</div>
+<!-- /popup -->
+
+<!-- 弹出输入内容框 -->
+<div data-role="popup" id="js-add-comment-popup" data-theme="a" class="ui-corner-all">
+    <form>
+        <div class="textarea-box">
+            <textarea id="remark" placeholder="请输入备注" class="ui-input-text ui-body-inherit ui-corner-all ui-textinput-autogrow"></textarea>
+            <span id="remark_yes" class="ui-btn ui-corner-all ui-mini ui-btn-a ui-corner-all">提交</span>
+        </div>
+    </form>
+</div>
+<!-- /content -->

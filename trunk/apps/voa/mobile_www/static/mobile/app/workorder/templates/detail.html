@@ -1,0 +1,152 @@
+<div role="main" class="mod-common-list">
+<form action="javascript:;">
+	<fieldset>
+		<h4>基本信息</h4>	
+		<ul class="view" data-role="listview">
+			<li>					
+				<label>工 单 号</label>
+				<span><%=row.workorder.woid%></span>					
+			</li>
+			<li>
+				<label>派 单 人</label>
+				<span><%=row.workorder.sender_info.realname%></span>
+			</li>
+			<% if(state != 1 || is_sent) { %>
+			<li>
+				<label>接 收 人</label>
+				<span>
+				<% $.each(row.receiver_list, function (i, e){ %>
+					<%=e.user_info.realname %> 
+				<% }); %>
+				</span>
+			</li>
+			<% } %>
+			<li>			
+				<label>派单时间</label>
+				<span><%=row.workorder.ordertime%></span>
+			</li>
+			<li>
+				<label>联 系 人</label>
+				<span><%=row.workorder.contacter%></span>	
+			</li>
+			<li>					
+				<label>联系电话</label>
+				<span><a href="tel:<%=row.workorder.phone%>"><%=row.workorder.phone%></a></span>					
+			</li>
+			<li>					
+				<label>联系地址</label>
+				<span><%=row.workorder.address%></span>				
+			</li>
+		</ul>
+
+		<h4>备注</h4>
+		<ul data-role="listview" ><div class="form_textarea_text"><%=row.workorder.remark%></div></ul>
+
+		<% if(state == 3 || state == 4) { %>
+		<% if (state == 4) { %><h4>照片</h4><% } %>
+			<div class="mod_common_list_style pview">			
+			
+				<!-- 克隆用图片 -->
+		        <div class="media">
+		            <div class="js-media-sample media-body item" style="display: none">
+		                <h4 class="media-heading">liuao130584_b.jpg</h4>
+		                <div class="">
+		                    <small>文件大小: <i></i> Byte</small> <a class="js-attach-close" href="#">
+		                       删除
+		                    </a>
+		
+		                </div>
+		            </div>
+		        </div> 
+		        <!-- file end -->
+		        <% if(state == 4) { %>	<!-- 已完成，展示图片 -->
+		        	<div class="mod_photo_uploader">
+		        		 <% $.each(row.operation_result.attachment_list, function (i, e){ %>
+			        		<img class="img" src="<%=e.src%>" org="<%=e.url%>"/>
+			       		 <% }); %>	
+			        </div>
+		        <% } %>
+		        <!-- pic -->
+		        <% if(state == 3 && is_oper) { %>	<!-- 已接受且为接收者 -->
+			        <div class="mod_photo_uploader">       
+			            <a href="javascript:;" data-rel="popup" data-position-to="window" data-transition="fade" class="js-image-sample" style="display:none;">
+			            	<img class="popphoto" src=""><i class="js-attach-close"></i>
+			            </a>				        
+				        <div class="clearfix">
+				        	<span class="ui-btn ui-icon-plus ui-btn-icon-left ui-corner-all fileinput-button ui-mini">
+			            		<span>添加文件</span>
+				                <input type="file" fieldname="image" class="fileupload" name="data" multiple data-role="none"/>
+				            </span>
+				        </div>
+			        </div>
+		        <!-- pic end -->
+				<% } %>
+			</div>
+			<% if(state == 4) { %>
+				<h4>反馈</h4>
+				<ul data-role="listview" >
+					<div class="form_textarea_text">	
+					<%=row.operation_result.caption %>
+					</div>
+			</ul>
+			<% } %>
+			<% if(state == 3 && is_oper) { %>
+				<h4>反馈</h4>
+				<ul data-role="listview" >
+				<textarea placeholder="填写反馈信息" required="" name="caption" class="form_textarea"><%=row.operation_result.caption%></textarea>
+				</ul>
+				<div id="caption_memo"></div>
+			<% } %>
+		<% } %>
+		
+		<% if(state == 2) { %>
+		<h4>拒绝理由</h4>
+		<ul data-role="listview" >	
+			<div class="form_textarea_text">					
+				<%=row.workorder.refuse_reason %>			
+			</div>
+		</ul>
+		<% } %>
+		
+		<% if(state == 2 || state == 99 || (state == 1 && is_sent)) { %>
+		<h4>派单状态</h4>
+		<ul data-role="listview" >
+			<div class="form_textarea_text">			
+				<%=row.workorder.wostate_name%>
+			</div>
+		</ul>
+		<% } %>
+	</fieldset>
+	<div class="ui-grid-a footer">
+		<input type="hidden" id="woid" value="<%=row.workorder.woid%>"/>
+		<% if(state == 1 && is_sent){ //待确认-我发出的 %>
+			<div class="ui-block-a no-shadow btn-submit">
+				<input id="cancel" type="button" value="撤回工单" ></div>
+    		<div class="ui-block-b">
+			<input class="ui-btn ui-corner-all" type="button" value="返回列表" onclick="javascript:goback(<%=state%>,<%=is_sent%>);" >
+		</div>
+		<% }else if(state == 1 && is_oper){ //待确认-我收到的 %><div class="ui-block-a no-shadow btn-submit">
+			<input id="refuse" type="button" value="拒绝接单"></div>
+    		<div class="ui-block-b btn-submit">
+			<input id="confirm" type="button" value="确认接单" ></div>
+		<% }else if(state == 3 && is_oper){ //待执行,执行人 %>
+			<div class="ui-block-a no-shadow"><input class="ui-btn ui-corner-all" type="button" value="返回" onclick="javascript:goback(<%=state%>,<%=is_sent%>);" ></div>
+    		<div class="ui-block-b btn-submit">
+			<input id="complete" type="button" value="提交"></div>
+		<% }else{ %>
+			<input class="ui-btn ui-corner-all" type="button" value="返回列表" onclick="javascript:goback(<%=state%>,<%=is_sent%>);">
+		<% } %>
+		
+	</div>
+</form>
+</div>
+<!-- 拒绝理由 -->
+<div id="refuse_memo" class="ui-content" data-role="popup" data-theme="a">
+    <textarea placeholder="必须填写拒绝理由才能提交" required="" name="refuse_memo" class="form_textarea"><%=row.refuse_reason%></textarea>
+    <div id="require_memo"></div>
+    <center><input id="refuse_save" type="submit" value="提交" class="ui-btn ui-corner-all"></center>
+</div>
+<!-- 弹出框 -->
+<div id="popup" class="ui-content" data-role="popup" data-theme="a">
+    <p id="question"></p>
+</div>

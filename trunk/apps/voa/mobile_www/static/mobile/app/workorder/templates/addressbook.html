@@ -1,0 +1,26 @@
+<div data-role="header" role="banner" class="ui-header ui-bar-inherit">
+	<h1 class="ui-title" role="heading" aria-level="1">选择接收人</h1>
+	<a href="#/publish" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">返回</a>
+	<!--<div class="search-box"><input id="js-search" data-type="search" placeholder="搜索"></div>-->
+</div>
+<!-- /header -->
+<div id="customers_list">
+	<fieldset data-role="controlgroup">
+		<div role="main" class="ui-content">
+			<ul id="mod_common_list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
+				<% $.each(data.list, function (key, item){ %>
+				<li rel="<%=item.uid%>">
+					<!--<input value="<%=item.uid%>" type="checkbox" class="hide" name="member" id="checkbox-v-<%=item.uid%>a">
+					<label for="checkbox-v-<%=item.uid%>a"></label>-->
+					<img class="face" src="<%=item.face%>"/>
+					<h3>
+						<%= item.realname %><br/>
+						<%= item.department %>
+					</h3>
+				</li>
+				<% }); %></ul>
+		</div>
+		<!-- /content -->
+	</fieldset>
+</div>
+<!--<button id="finish" class="ui-btn js-btn-add">完成</button>-->

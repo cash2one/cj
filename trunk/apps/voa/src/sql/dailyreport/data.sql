@@ -1,0 +1,16 @@
+INSERT INTO `{$prefix}dailyreport_setting{$suffix}` (`drs_key`, `drs_value`, `drs_type`, `drs_comment`, `drs_status`, `drs_created`, `drs_updated`, `drs_deleted`) VALUES
+('daily_type', 'a:5:{i:1;a:2:{i:0;s:6:"日报";i:1;s:1:"1";}i:2;a:2:{i:0;s:6:"周报";i:1;s:1:"1";}i:3;a:2:{i:0;s:6:"月报";i:1;s:1:"1";}i:4;a:2:{i:0;s:6:"季报";i:1;s:1:"1";}i:5;a:2:{i:0;s:6:"年报";i:1;s:1:"1";}}', 1, '日报类型\r\ndrs_value:0关闭  1 开启', 2, 0, 1426660789, 0),
+('perpage', '10', 0, '分页数', 1, 0, 0, 0),
+('upload_image', '1', 0, '是否允许上传图片', 2, 1419249045, 0, 0),
+('upload_image_max_count', '10', 0, '最多允许上传的图片数', 2, 1419249045, 0, 0),
+('upload_image_min_count', '0', 0, '最少允许上传的图片数', 2, 1419249045, 0, 0),
+('wechat_menu_new','[{"type":"view","name":"新建报告","url":"/Dailyreport/Frontend/Index/NewDailyreport","form_name":"menu_1"},{"name":"我收到的","form_name":"menu_2","sub_button":[{"type":"view","name":"与我相关的","url":"/Dailyreport/Frontend/Index/AboutMe","form_name":"menu_2_1"},{"type":"view","name":"我负责的","url":"/Dailyreport/Frontend/Index/Responsibles","form_name":"menu_2_2"}]},{"name":"我发起的","form_name":"menu_3","sub_button":[{"type":"view","name":"草稿","url":"/Dailyreport/Frontend/Index/Draft","form_name":"menu_3_1"},{"type":"view","name":"已发出的","url":"/Dailyreport/Frontend/Index/SendList","form_name":"menu_3_2"}]}]', '0', '新的微信菜单', '1', '1419249045', '0', '0'),
+('wechat_menu_old','[{"type":"view","name":"新建报告","url":"/Dailyreport/Frontend/Index/NewDailyreport","form_name":"menu_1"},{"name":"我收到的","form_name":"menu_2","sub_button":[{"type":"view","name":"与我相关的","url":"/Dailyreport/Frontend/Index/AboutMe","form_name":"menu_2_1"},{"type":"view","name":"我负责的","url":"/Dailyreport/Frontend/Index/Responsibles","form_name":"menu_2_2"}]},{"name":"我发起的","form_name":"menu_3","sub_button":[{"type":"view","name":"草稿","url":"/Dailyreport/Frontend/Index/Draft","form_name":"menu_3_1"},{"type":"view","name":"已发出的","url":"/Dailyreport/Frontend/Index/SendList","form_name":"menu_3_2"}]}]', '0', '旧的微信菜单用于还原', '1', '1419249045', '0', '0');
+
+INSERT INTO `{$prefix}dailyreport_tpl{$suffix}` (`drt_id`, `drt_name`, `drt_switch`, `drt_departments`, `drt_status`, `drt_module`, `drt_sort`, `drt_created`, `drt_updated`, `drt_deleted`) VALUES
+('1', '日报', '1', '[]', '1', '[{"type":"textarea","title":"报告内容","value":[],"is_null":1,"name":"textarea_1"},{"type":"img","title":"附件","value":[{"max":9}],"is_null":0,"name":"img_2"}]', '1', '1458193484', '0', '0'),
+('2', '周报', '1', '[]', '1', '[{"type":"textarea","title":"报告内容","value":[],"is_null":1,"name":"textarea_1"},{"type":"img","title":"附件","value":[{"max":9}],"is_null":0,"name":"img_2"}]', '2', '1458196022', '0', '0'),
+('3', '月报', '1', '[]', '1', '[{"type":"textarea","title":"报告内容","value":[],"is_null":1,"name":"textarea_1"},{"type":"img","title":"附件","value":[{"max":9}],"is_null":0,"name":"img_2"}]', '3', '1458196033', '0', '0'),
+('4', '季报', '1', '[]', '1', '[{"type":"textarea","title":"报告内容","value":[],"is_null":1,"name":"textarea_1"},{"type":"img","title":"附件","value":[{"max":9}],"is_null":0,"name":"img_2"}]', '4', '1458196041', '0', '0'),
+('5', '年报', '1', '[]', '1', '[{"type":"textarea","title":"报告内容","value":[],"is_null":1,"name":"textarea_1"},{"type":"img","title":"附件","value":[{"max":9}],"is_null":0,"name":"img_2"}]', '5', '1458196047', '0', '0'),
+('6', '其它', '1', '[]', '1', '[]', '0', '1458196047', '0', '0')

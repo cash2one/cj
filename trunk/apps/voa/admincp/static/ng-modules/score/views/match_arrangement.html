@@ -1,0 +1,48 @@
+<link href="/admincp/static/stylesheets/lql-css.css" rel="stylesheet" type="text/css"/>
+<div class="container-fluid padding-tb" data-ng-controller="matchListCtrl">
+    <div class="row">
+        <div class="col-sm-4">
+            <a  href="#/app/page/score/new_prize" role="button" class="btn btn-default form-small form-small-btn">新增奖品</a>
+        </div>
+    </div>
+    <div class="padding-tb table-light">
+        <table class="table table-striped table-bordered table-hover font12">
+            <thead>
+                <tr>
+                    <th>奖品状态</th>
+                    <th>奖品</th>
+                    <th>数量</th>
+                    <th>兑换范围</th>
+                    <th>消耗积分</th>
+                    <th>兑换记录</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="tbdoy_id">
+                <tr data-ng-repeat="item in reportList">
+                    <td data-ng-bind="item.status=='1' ? '启用' : '禁用'"></td>
+                    <td data-ng-bind="item.title"></td>
+                    <td data-ng-bind="item.limit >= 0 ? (item.limit > 0 ? item.limit : '不限制')  : '库存不足'"></td>
+                    <td title="{{item.cd_name}}">
+                        <span data-ng-repeat="value in item.cd_name.split(',') track by $index" class="label label-primary more-item-cls" data-ng-bind="value" data-ng-if="$index < 2"></span>
+                        <span data-ng-if="item.cd_name.split(',').length > 2"
+                              style="margin-left: 6px; font-size: 20px;font-weight: bold; position: relative; top: -3px;">......</span></td>
+                    <td data-ng-bind="item.score"></td>
+                    <td data-ng-bind="item.exchange_count"></td>
+                    <td>
+                        <a data-ng-href="#/app/page/score/new_prize?id={{item.award_id}}" class="editor">编辑</a>
+                        &nbsp;
+                        <a class="delete" style="cursor: pointer;" data-ng-click="toggle($event,item)" data-ng-bind="item.status=='1' ? '禁用' : '启用'"></a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr data-ng-show="resultCount>0">
+                    <td colspan="7" class="text-right vcy-page" poler-pagination="polerPaginationCtrl" download="getReportPage(page)">
+                        <!-- 分页 -->
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

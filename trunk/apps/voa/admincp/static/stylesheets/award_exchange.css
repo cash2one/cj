@@ -1,0 +1,22 @@
+.goods_info {
+  width: 40%;
+  margin-bottom: 0;
+}
+.goods_info img {
+  height: 60px;
+}
+.score_num {
+  font-size: 18px;
+  color: #FF0000;
+  float: right;
+}
+.member_info {
+  margin-top: -6px;
+}
+.dl-horizontal dt {
+  text-align: left;
+  font-weight: normal;
+}
+.form-horizontal .control-label {
+  padding-top: 0;
+}

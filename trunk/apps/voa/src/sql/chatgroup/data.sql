@@ -1,0 +1,2 @@
+INSERT INTO `{$prefix}chatgroup_setting{$suffix}` (`cgs_key`, `cgs_value`, `cgs_type`, `cgs_comment`, `cgs_status`, `cgs_created`, `cgs_updated`, `cgs_deleted`) VALUES
+('perpage', '30', 0, '分页个数', 1, 0, 0, 0);

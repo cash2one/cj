@@ -1,0 +1,49 @@
+<div data-role="header" class="mod-list-header">
+    <h1>选择产品信息</h1>
+    <a id="back" href="javascript:history.go(-1);" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-back-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">返回</a>
+
+</div>
+<!-- /header -->
+
+<div data-role="content" class="m-t-10 mod-common-list" id="goods_selected" >
+    <ul class="view list" data-role="listview">
+        <li>
+            <div class="imgbox" style="float:left;">
+                <img src="<%=goods.cover%>" ></div>
+            <p class="mt_title js-subject"><%=goods.subject%></p>
+            <p class="js-price">¥<%=goods.price%></p>
+        </li>
+        <!--
+        <li class="format clearfix" data-icon="false">
+            <h3>规格</h3>
+            <a href="" class="selected">jjjjj</a>
+            <a href="">jjjjj</a>
+            <a href="">jjjjj</a>
+            <a href="">jjjjj</a>
+            <a href="">jjjjj</a>
+            <a href="" >jjjjj</a>
+        </li>-->
+        <li class="clearfix goods-num">
+            <h3>数量</h3>
+
+            <div data-role="controlgroup" data-type="horizontal">
+                <button class="js-plus-num ui-nodisc-icon ui-alt-icon ui-btn-icon-notext ui-btn ui-shadow ui-corner-all ui-icon-plus">+</button>
+                <input name="goods_num" value="1" type="text" id="search-control-group" data-wrapper-class="controlgroup-textinput ui-btn" >
+                <button class="js-minus-num ui-nodisc-icon ui-alt-icon ui-btn-icon-notext ui-btn ui-shadow ui-corner-all ui-icon-minus">-</button>
+                <!--<div class="mun">库存：300</div>-->
+            </div>
+        </li>
+        <li class="shopping">
+            <div class="ui-block-a">
+                <a  href="javascript:;" class="ui-btn ui-btn-a js-btn-nextpage ui-corner-all shop">购买</a>
+            </div>
+            <div class="ui-block-b">
+                <a  href="javascript:;" class="ui-btn ui-btn-a js-btn-addtocart ui-corner-all shop">加入购物车</a>
+            </div>
+        </li>
+
+    </ul>
+    <div id="debuging" style="display: none"></div>
+</div>
+
+<!-- /content -->

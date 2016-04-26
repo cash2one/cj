@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* #4b6d9c url(../images/login_bg.png) */
+body{background:#fff no-repeat;font-family:"Microsoft Yahei",Verdana,Arial,Helvetica,sans-serif;font-size:14px;}
+.login-panel{width:380px;height:200px;margin:50px auto;font-size:16px}
+	.login-panel label{font-weight:normal;color:#999;}
+	.login-panel .btn-lg{width:100%;}
+.font14{font-size:14px;}
+.login-panel .btn{border-bottom:4px solid #5c3807}
+.login-panel .btn:hover{border-bottom:4px solid #b0700f}
+.login-panel label{cursor:pointer}

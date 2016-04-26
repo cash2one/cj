@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Insert title here</title>
+</head>
+<body>
+<script>
+	window.mobile = true;
+	window._app = "workorder";
+	//window.default_view = 'list';
+	window.default_view = '';
+	var loc = window.location.pathname;
+	var dir = loc.substring(0, loc.lastIndexOf('/'));
+	window._root = dir;
+</script>
+<script src="lib/requirejs/require.js"></script>
+<script src="config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+

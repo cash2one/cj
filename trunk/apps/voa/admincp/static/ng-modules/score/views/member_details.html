@@ -1,0 +1,260 @@
+<div data-ng-controller="memberDetailsCtrl">
+<div class="container-fluid padding-tb">
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">基本信息</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">积分明细</a></li>
+            <li role="presentation"><a href="#logs" aria-controls="settings" role="tab" data-toggle="tab">奖品兑换记录</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content border-rbl">
+            <div role="tabpanel" class="tab-pane active" id="profile" style="font-size: 1.25em">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span class="table-tit">姓名</span><span class="table-cont padding-l" data-ng-bind="memberDetails.m_username"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span class="table-tit">部门</span><span class="table-cont" data-ng-bind="memberDetails.cd_name"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span class="table-tit">手机号</span><span class="table-cont" data-ng-bind="memberDetails.m_mobilephone"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span class="table-tit">微信号</span><span class="table-cont" data-ng-bind="memberDetails.m_weixin"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span class="table-tit">电子邮箱</span><span class="table-cont" data-ng-bind="memberDetails.m_email"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <span class="table-tit">当前积分</span><span class="table-cont" data-ng-bind="memberDetails.score"></span>
+                    </div>
+                </div>
+                <div class="row padding-tb">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#increase-jf">增加积分</button>
+                        <button class="btn btn-info margin-l" data-toggle="modal" data-target="#reduce-jf">积分惩罚</button>
+                        <a href="javascript: history.back();" class="btn btn-default active margin-l" role="button">返回</a>
+                    </div>
+                </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane table-light" id="messages">
+                <table class="table table-striped table-bordered table-hover font12">
+                    <!--<colgroup>
+                        <col class="t-col-5" />
+                        <col class="t-col-12" />
+                        <col class="t-col-15" />
+                        <col />
+                        <col class="t-col-15" />
+                        <col class="t-col-15" />
+                    </colgroup>-->
+                    <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>操作人</th>
+                        <th>变更原因</th>
+                        <th>积分数值</th>
+                        <th>备注</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-ng-repeat="item in listData">
+                        <td data-ng-bind="item.create_time*1000 | date:'yyyy-MM-dd HH:mm:ss'"></td>
+                        <td data-ng-bind="item.op_username"></td>
+                        <td data-ng-bind="item.reason"></td>
+                        <td data-ng-bind="item.num"></td>
+                        <td data-ng-bind="item.desc"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8" class="warning" data-ng-if="listData.length<=0">暂无任何积分信息</td>
+                        <!-- {if $issearch}未搜索到指定条件的日报信息{else} -->
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr data-ng-show="listData.length>0">
+                        <td colspan="7" class="text-right vcy-page"
+                            poler-pagination="polerPaginationCtrl" download="getPage(page)">
+                            <!-- 分页 -->
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div role="tabpanel" class="tab-pane table-light" id="logs">
+                <table class="table table-striped table-bordered table-hover font12">
+                    <!--<colgroup>
+                        <col class="t-col-5" />
+                        <col class="t-col-12" />
+                        <col class="t-col-15" />
+                        <col />
+                        <col class="t-col-15" />
+                        <col class="t-col-15" />
+                    </colgroup>-->
+                    <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>操作人</th>
+                        <th>兑换奖品</th>
+                        <th>兑换状态</th>
+                        <th>消费积分</th>
+                        <th>剩余积分</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-ng-repeat="item in listDataOth">
+                        <td data-ng-bind="item.create_time*1000 | date:'yyyy-MM-dd HH:mm:ss'"></td>
+                        <td data-ng-bind="item.op_username"></td>
+                        <td data-ng-bind="item.title"></td>
+                        <td data-ng-switch data-on="item.status">
+                            <span data-ng-switch-when="1">处理中</span>
+                            <span data-ng-switch-when="2">已处理</span>
+                        </td>
+                        <td data-ng-bind="item.score"></td>
+                        <td data-ng-bind="item.last_score"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8" class="warning" data-ng-if="listDataOth.length<=0">暂无任何兑换记录</td>
+                        <!-- {if $issearch}未搜索到指定条{else} -->
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr data-ng-show="listDataOth.length>0">
+                        <td colspan="7" class="text-right vcy-page"
+                            poler-pagination="polerPaginationCtrl1" download="getPageOth(page1)">
+                            <!-- 分页 -->
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 模态框 -->
+<!--增加积分-->
+<div class="modal fade" id="increase-jf" tabindex="-1" role="dialog" aria-labelledby="increaseLabel">
+    <div class="modal-dialog" role="document" style="margin-top: 8%;">
+        <form data-ng-submit="batchAdd()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="increaseLabel">积分奖励</h4>
+            </div>
+            <div class="modal-body">
+                <div class="m-table">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <span class="table-tit-1">类型</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="table-cont-1 padding-l">奖励积分</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <span class="table-tit-1">当前积分</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="table-cont-1 padding-l" data-ng-bind="memberDetails.score"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <span class="table-tit-1"><i class="imp">*</i>积分值</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="table-cont-1"><input type="number" data-ng-model="addData.score" class="form-control" placeholder="请输入奖励积分值，每次最多增加" required/></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <span class="table-tit-1"><i class="imp">*</i>备注</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="table-cont-1"><textarea data-ng-model="addData.notes" class="form-control" rows="3" placeholder="请输入具体理由" required></textarea></span>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit">提交修改</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<!--积分惩罚-->
+<div class="modal fade" id="reduce-jf" tabindex="-1" role="dialog" aria-labelledby="reduceLabel">
+    <div class="modal-dialog" role="document" style="margin-top: 8%;">
+        <form data-ng-submit="batchReduce()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="reduceLabel">积分惩罚</h4>
+            </div>
+            <div class="modal-body">
+                <div class="m-table">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="table-tit-1">类型</span>
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="table-cont-1 padding-l">惩罚积分</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="table-tit-1">当前积分</span>
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="table-cont-1 padding-l" data-ng-bind="memberDetails.score"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="table-tit-1"><i class="imp">*</i>积分值</span>
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="table-cont-1">
+                                <input type="number" data-ng-model="reduceData.score" class="form-control" placeholder="请输入惩罚积分值，最多可减少2876分" required/>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="table-tit-1"><i class="imp">*</i>备注</span>
+                        </div>
+                        <div class="col-sm-8">
+                            <span class="table-cont-1">
+                                <textarea class="form-control" data-ng-model="reduceData.notes" rows="3" placeholder="请输入具体理由" required></textarea>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">提交修改</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+</div>

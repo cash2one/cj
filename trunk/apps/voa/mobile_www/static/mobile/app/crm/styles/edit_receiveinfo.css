@@ -1,0 +1,19 @@
+@charset "utf-8";
+.mod-common-list{
+    margin-top: 20px;
+}
+
+.footer .btn-submit .ui-btn {
+    background-color: #67AD03;
+}
+.footer .btn-submit .ui-btn:hover,
+.footer .btn-submit .ui-btn:focus {
+    background: #ff0000 !important;
+    color: #fff;
+    text-shadow: none;
+}
+
+.mod-common-list .form-group .form-control-remark{
+    min-height: 60px;
+
+}

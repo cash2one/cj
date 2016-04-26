@@ -1,0 +1,25 @@
+<!-- 列表内容 -->
+
+
+			
+			<div class="table-scrollable">
+				<table class="table table-hover  table-bordered table-striped table-light">
+                <thead>
+                    <tr> 
+                        <th scope="col" data-column-id="classname">
+                            分类
+                        </th>
+                        <% $.each(columnlist, function(k1, col1) { %>
+                        <th scope="col" data-column-id="<%="_"+col1.tc_id %>">
+                            <%= col1.fieldname %>
+                        </th> 
+                       <% }) %>
+                    </tr>
+                </thead>
+
+            </table>
+
+			</div>
+
+
+<!-- 列表内容结束 -->

@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+/*nav*/
+nav.mod_list_nav{border-bottom: 0;}
+.mod_list_nav a.ui-link{border-bottom: 1px solid #ccc;}
+.mod_list_nav a.ui-link.current{border-bottom: 1px solid #09f;}
+
+/*选择人员复选*/
+.checkbox-contral li{	
+	padding: 0!important;
+	margin:0!important;
+	position: relative;
+}
+.checkbox-contral li .ui-checkbox{
+	margin:0!important;	
+}
+.checkbox-contral li .ui-checkbox label{	
+	border: 0!important;
+	background-color: #fff;
+	padding: 0;
+	padding-left: 42px;
+}
+.checkbox-contral li .ui-checkbox label h3,
+.checkbox-contral li .ui-checkbox label p{
+	padding-left: 50px;
+}
+.checkbox-contral .ui-bar-inherit{
+	padding-left: 10px!important;
+}
+.checkbox-contral li .ui-checkbox label p{
+	color: #a1a1a1;
+}
+.checkbox-contral .thumbnail{
+	position: absolute;
+	width:40px;
+	height: 40px;
+	top:50%;
+	margin-top: -20px;
+}
+
+/*选择人员单选*/
+.radio-contral li{	
+	padding: 0!important;
+	margin:0!important;
+	position: relative;
+}
+.radio-contral li .ui-radio{
+	margin:0!important;	
+	margin: 0;
+}
+.radio-contral li .ui-radio label{	
+	border: 0!important;
+	background-color: #fff;
+	padding: 0;
+	padding-left: 42px;
+}
+.radio-contral li .ui-radio label h3{
+	padding: 11px 0;
+}
+.radio-contral .ui-bar-inherit{
+	padding-left: 10px!important;
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/MOA.pc.login.css">
+<!--[if lte IE 8]>
+<script src="js/libs/require.js"></script>
+<script src="js/libs/json2.js"></script>
+<script src="js/libs/selectivizr-min.js"></script>
+<script src="js/libs/png24-ie6.js"></script>
+<script>window._isOldIE = true;</script>
+<![endif]-->
+<script src="js/libs/jquery-min.js"></script>
+<script src="js/libs/jquery-cookie.js"></script>
+<script src="/misc/scripts/md5.js"></script>
+<script src="js/libs/jquery.noty.packaged.min.js"></script>
+</head>
+<body>
+
+<div class="header">
+	<h1 class="center">畅移</h1>
+</div>
+
+<div class="body center">
+	<div class="way_qrcode">
+		<h2><span>方式一</span> 手机扫描二维码登录</h2>
+		<div class="figure">
+			<img src="img/qr.jpg" />
+		</div>
+		<p><i></i>扫描成功，请点击手机<em>“确定”</em>登录</p>
+	</div>
+	<div class="way_mobile">
+		<h2><span>方式二</span> 使用手机号登录</h2>
+		<form>
+			<p><input name="mobile" data-notice="请填写格式正确的手机号码" required pattern="^1[3|4|5|7|8][0-9]\d{8}$" class="mb" placeholder="手机号" type="text"/><i></i></p>
+			<p><input name="password" data-notice="请输入正确的格式（不少于6位的字母或数字）" required pattern="^[a-zA-Z0-9_-]{6,}$" class="pwd" placeholder="密码" type="password"/><i></i></p>
+			<div>
+				<input type="reset" class="mod_btn2" value="取 消" /><input type="submit" class="mod_btn1" value="登 录" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="footer center">
+	Copyright &copy; 2014 畅移（上海）信息科技有限公司 </div>
+
+<script>
+
+$(function(){
+		//console.log($.parseJSON($.cookie('pc_app_userdata')));
+	$.removeCookie('pc_app_userdata');
+
+	function _dialog(msg, type, layout, buttons){
+		var n = noty({
+			type: type||'alert',
+			layout: layout||'bottomLeft',
+			theme: 'defaultTheme',
+			dismissQueue: true,
+			timeout: 6180/2,
+			maxVisible: 7,
+			closeWith: ['click'], 
+			text: msg,
+			buttons: buttons
+		});
+		return n;
+	};
+	var Dlg = { //http://ned.im/noty/#creating-a-noty
+		alert: function(msg){
+			return _dialog(msg);
+		},
+		success: function(msg){
+			return _dialog(msg, 'success');
+		},
+		error: function(msg){
+			return _dialog(msg, 'error');
+		},
+		warning: function(msg){
+			return _dialog(msg, 'warning');
+		},
+		infomation: function(){
+			return _dialog(msg, 'infomation');
+		},
+		confirm: function(msg, btn1Label, btn2Label, btn1Callback, btn2Callback){
+			var b1 = {addClass:'button1', text:btn1Label},
+				b2 = {addClass:'button1', text:btn2Label};
+			if (btn1Callback) b1.onClick = btn1Callback;
+			if (btn2Callback) b2.onClick = btn2Callback;
+			return _dialog(msg, 'confirm', 'center', [b1, b2]);
+		}
+	};
+
+	$('.way_mobile form').submit(function(e){
+		e.preventDefault();
+		
+		function _showIcon($ipt, type){
+			var $i = $ipt.next();
+			$i.get(0).className = '';
+			$i.addClass(type);
+		}
+		
+		$mbIpt = $('.way_mobile input.mb');
+		$pwdIpt = $('.way_mobile input.pwd');
+		
+		//格式
+		var arr = [$mbIpt, $pwdIpt];
+		for (var i=0,lng=arr.length; i<lng; i++){
+			var $ipt = arr[i];
+			_showIcon($ipt, '');
+			var re = new RegExp($ipt.attr('pattern'));
+			var v = $ipt.val()||"";
+			if ( !re.test(v) ){
+				Dlg.warning( $ipt.attr('placeholder') + ": " 
+					+ $ipt.data('notice') );
+				_showIcon($ipt, 'fail');
+				return false;
+			}
+		};
+		arr = null;
+		
+		_showIcon($mbIpt, 'succ');
+		_showIcon($pwdIpt, 'succ');
+		
+		//这种方式可以保证silm获得Post数据
+		jQuery.ajax ({
+			url: "/api/auth/post/login/",
+			type: "POST",
+			data: {
+					//enumber: $enIpt.val(),	
+					account: $mbIpt.val(),
+					password: hex_md5($pwdIpt.val()),
+					//'_time': (new Date).getTime()
+				},
+			dataType: "json",
+			//contentType: "application/json; charset=utf-8",
+			success: function(json){
+				if (json.errcode === 0){
+					if (json.result.data) {
+						$.cookie('pc_app_userdata', JSON.stringify(json.result.data));
+						location.href = 'index.html';
+					}
+				}else{
+					Dlg.error(json.errmsg);
+				}
+			}
+		});
+		
+		
+		return false;
+	});
+	
+	
+	
+	if (window._isOldIE){
+		if (!Date.prototype.toISOString) { 
+			Date.prototype.toISOString = function() { function pad(n) { return n <10 ? '0' + n : n } return this.getUTCFullYear() + '-' + pad(this.getUTCMonth() + 1) + '-' + pad(this.getUTCDate()) + 'T' + pad(this.getUTCHours()) + ':' + pad(this.getUTCMinutes()) + ':' + pad(this.getUTCSeconds()) + '.' + pad(this.getUTCMilliseconds()) + 'Z'; } 
+		}
+		require.config({
+			paths: {
+				Underscore: 'libs/underscore-min',
+				Backbone: 'libs/backbone-min'
+			},
+			waitSeconds: 20
+		});
+		require([
+		  'js/utils/appUtils.js'
+		], function(appUtils){
+		  appUtils.parsePlaceholder();
+		});
+	}
+});
+</script>
+
+</body>
+</html>
